@@ -1,0 +1,55 @@
+1、在服务器上新建一个远程仓库
+
+	cd;
+
+	// 新建仓库
+	mkdir depot;
+
+	// 新建一个包含git的配置文件的裸仓库
+	git init --bare git-directory.git
+
+2、//配置服务器上网页根目录
+
+	cd /www	;
+
+	git init;
+
+	git remote add origin douyacun.cn/root/repos/git-directory.git
+
+	git fetch
+
+	git checkout master
+
+3、配置 Git Hook
+
+	cd /root/depot/git-directory.git/hooks
+
+	cp post-receive.sample post-receive
+
+	vim post-receive
+
+	//修改post-receive
+
+	#!/bin/bash
+
+	unset GIT_DIR
+
+	DeployPath = "/www"
+
+	cd $DeployPath;
+
+	git pull origin master;
+
+	exit 0;
+
+4、修改post-receive的权限
+	
+	chmod +x post-receive
+
+	                                                                                                                                                                 if(empty($appBanner['banner'])){
+            $shop['app_shop_banner'] = c("sf_domain").'mobile/assets/images/decorate_app_def.png';
+        }else{
+            $shop['app_shop_banner'] = c("static_oss_domain") .$appBanner['banner'];
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    12:43 2017/3/23 星期四                         kkkkkkkkkkkkkkkkkko
+	
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ruleset name="00h.tv" >
+    <rule ref="rulesets/codesize.xml/TooManyFields" />
+    <!--- 一个类中不能有太多fields字段,默认值15 -->
+    <rule ref="rulesets/codesize.xml/NPathComplexity" />
+    <!--- 一个方法中NPath复杂性,默认值200 -->
+    <rule ref="rulesets/codesize.xml/ExcessiveMethodLength" />
+    <!--- 相同的方法执行同一功能,默认值100 -->
+    <rule ref="rulesets/codesize.xml/ExcessiveClassLength" />
+    <!--- 一个类的最大行数,默认值1000 -->
+    <rule ref="rulesets/codesize.xml/TooManyMethods" />
+    <!--- 一个类的最大方法数,默认值25 -->
+    <rule ref="rulesets/controversial.xml/CamelCaseClassName" />
+    <!--- 以驼峰式命名类 -->
+    <rule ref="rulesets/controversial.xml/CamelCaseParameterName" />
+    <!--- 以驼峰式命名参数名字 -->
+    <rule ref="rulesets/controversial.xml/CamelCaseVariableName" />
+    <!--- 以驼峰式命名变量名字 -->
+    <rule ref="rulesets/design.xml/DevelopmentCodeFragment" />
+    <!--  代码中不要有var_dump(), print_r()等这种调试输出结构 -->
+    <rule ref="rulesets/design.xml/EvalExpression" />
+    <!--  代码中不要有eval()这种结构 -->
+    <rule ref="rulesets/design.xml/GotoStatement" />
+    <!--  代码中不要有goto这种结构 -->
+    <rule ref="rulesets/naming.xml/BooleanGetMethodName" />
+    <!--  返回值为布尔型而以'getX()'格式命名的方法改写成'isX()' 或者 'hasX()'-->
+    <rule ref="rulesets/naming.xml/ConstantNamingConventions" />
+    <!--  类/接口常量必须用大写字母定义-->
+    <rule ref="rulesets/unusedcode.xml/UnusedLocalVariable" />
+    <!--   存在已声明或赋值的局部变量，但是却未使用-->
+    <rule ref="rulesets/unusedcode.xml/UnusedPrivateField" />
+    <!--  存在已声明或赋值的局部变量，但是却未使用-->
+    <rule ref="rulesets/controversial.xml/Superglobals" />
+    <!--  全局变量必须封装在对象中，由框架或接口提供 -->
+</ruleset>

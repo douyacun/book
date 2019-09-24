@@ -1,0 +1,18 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "base"
+  config.vm.network "forwarded_port", guest: 80, host: 80
+  config.vm.network "forwarded_port", guest: 3306, host: 3306
+  config.vm.network "forwarded_port", guest: 1229, host: 1229
+  config.vm.network "forwarded_port", guest: 1116, host: 1116
+  config.vm.network "public_network", use_dhcp_assigned_default_route:true
+  config.vm.synced_folder "www", "/var/www/html", create:true, owner:"apache", group:"apache", :mount_options=>["dmode=755","fmode=644"]
+  config.vm.synced_folder ".", "/usr/local/nginx/conf/web", create:true, owner:"root", group:"root", :mount_options=>["dmode=755","fmode=644"]
+  config.ssh.username = "root"
+  config.ssh.password = "a123456"
+  config.vm.provider "virtualbox" do |v|
+    v.gui = false
+  end
+  config.vm.provision "shell" do |s|
+    s.inline = "ifconfig eth1|grep inet|awk -F ' ' '{print $2}'|awk -F ':' '{print \"vBoxIP \"$2}';sh /usr/local/src/chip.sh;service named restart"
+  end
+end

@@ -1,0 +1,13 @@
+$TTL 600
+@	IN 	SOA	douyacun.com.	admin.douyacun.com. (
+		2016021112 	;序列号
+		1D		;刷新时间
+		5M		;重试时间
+		1W		;超时时间
+		10H )		;否定答案缓存TTL值
+@	    IN	NS	douyacun.com.
+	    IN	A	192.168.199.184
+dk	    IN	A	192.168.199.184
+api	    IN	A	192.168.199.184
+yar	    IN	A	192.168.199.184
+moyu    IN  A   192.168.199.184

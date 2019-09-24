@@ -1,0 +1,6 @@
+#!/bin/sh
+a=`ifconfig eth1|grep inet|awk '{print $2}'|tr -d "addr:"`
+#sed -i "s/127.0.0.1/$a/g" /var/named/dev.zone
+#sed -i "s/127.0.0.1/$a/g" /var/named/fdev.zone
+sed -i "s/IN[\ ]*A[\ ]*[0-9\.]*/IN      A       $a/g" /var/named/dev.zone
+sed -i "s/IN[\ ]*A[\ ]*[0-9\.]*/IN      A       $a/g" /var/named/fdev.zone

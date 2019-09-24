@@ -1,0 +1,146 @@
+﻿/**
+* bind 安装配置	详解
+* @author 刘宁
+* @date	2017/04/10
+***
+安装：
+	yum --enablerepo=remi install -y bind 
+
+主配置文件：/etc/named.conf
+功能：
+	* 定义区域
+	* 定义区域的全局配置
+	* 定义视图
+	* 定义日志
+
+配置：
+	* 配置正向解析
+	* 配置反向解析
+	* 配置辅助bind
+	* 实现主辅dns之间的区域传送
+
+1 # cat /etc/named.conf
+
+// C/C++风格的语法，注释用//或/* */
+// named.conf
+//
+// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+// server as a caching only nameserver (as a localhost DNS resolver only).
+//
+// See /usr/share/doc/bind*/sample/ for example named configuration files.
+//
+ 
+options {
+	listen-on port 53 { 127.0.0.1; };
+	listen-on-v6 port 53 { ::1; };
+	directory 	"/var/named";     //指明存放区域文件根目录，下面给出的相对路径都是相对此目录
+	dump-file 	"/var/named/data/cache_dump.db";
+        statistics-file "/var/named/data/named_stats.txt";
+        memstatistics-file "/var/named/data/named_mem_stats.txt";
+	allow-query     { localhost; };    //允许哪些主机查询
+	recursion yes;        //是否允许递归查询
+ 
+	dnssec-enable yes;
+	dnssec-validation yes;
+	dnssec-lookaside auto;
+ 
+	/* Path to ISC DLV key */
+	bindkeys-file "/etc/named.iscdlv.key";
+ 
+	managed-keys-directory "/var/named/dynamic";
+};
+ 
+logging {          //定义日志
+        channel default_debug {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
+ 
+zone "." IN {              //定义根区域文件名称  
+	type hint;
+	file "named.ca";   //使用的是相对路径，默认存放在/var/named/named.ca  
+};
+//把另外两个文件也包含进来，作为主配置文件的一部分
+include "/etc/named.rfc1912.zones";     //定义区域配置文件
+include "/etc/named.root.key";       //根区域的key文件，与事务签名相关
+
+2 注释掉3行
+	listen-on port 53 { 127.0.0.1; };
+	listen-on-v6 port 53 { ::1; };
+	...
+	allow-query     { localhost; };    //允许哪些主机查询
+
+3 启动named服务：
+	# service named start
+
+4 验证namde是否启动
+	# ss -taunl |qrep '53'
+
+5 开机启动
+	# chkconfig named on
+
+6 编辑	区域配置文件
+	# vim /etc/named.rfc1912.zones
+	
+6.1 新建一个区域 
+	zone "区域名称" IN { 
+    		type master|slave|forward;  //注意每个语句要以分号结尾 
+    		file "ZONE_NAME.zone";     
+	};  //注意要以分号结尾
+	
+	//我的
+	zone "douyacun.com" IN {
+		type master;
+		file "douyacun.zone";
+	};
+6.2 创建区域数据文件
+	# vim /var/named/****
+	在/var/named下建立“ZONE_NAME.zone”文件，通常只包含宏定义和资源记录，且第一个记录必须是SOA记录（格式如下）；
+
+	（1）一个FQDN可对应同多个IP；(负载均衡) 
+	（2）多个FQDN可对应一个IP：(一台主机有多个名称，且可以用CNAME定义)
+SOA有两种写法：
+写法一：
+SOA：
+zone [TTL] IN  FQDN  admin_mailbox  (
+2013081201   ;序列号, serial number，每次更改配置值是都要在原来的基础上加上1，表示有更新
+2h                   ;刷新时间, refresh time, 通知(notify): 只通知给本区域解析库文件中定义NS记录的所有主机；
+5m ;重试时间, retry time
+7d ;过期时间, expire time
+1d ;否定答案的ttl
+)
+写法二：
+SOA：
+@ [TTL] IN  FQDN  admin_mailbox  (
+2013081201   ;序列号, serial number
+2h           ;刷新时间, refresh time, 通知(notify): 只通知给本区域解析库文件中定义NS记录的所有主机；
+5m ;重试时间, retry time
+7d ;过期时间, expire time
+1d ;否定答案的ttl
+)
+
+SOA记录：
+    magedu.com  600 IN SOA dns.magedu.com. admin.magedu.com. (     #也可以用@表示当前域magedu.com
+	2014101701      #序列号, serial number，每次更改配置值是都要在原来的基础上加上1，表示有更新
+	2H
+	20M
+	7D
+	5H )
+NS记录：  
+    magedu.com      600  IN  NS  dns.magedu.com.
+主机A记录：
+    dns.magedu.com. 600  IN  A   10.0.0.1
+别名记录：
+    ftp.magedu.com. 600  IN  CNAME  www
+邮件记录：
+    magedu.com      600  IN  MX 20  mailserver1.magedu.com.
+PTR记录：
+    1.0.0.10.in-addr.arpa  600  IN  PTR  dns.magedu.com.  
+
+6.3 使用相关命令(named-checkconf、named-checkzone)测试配置文件及区域文件是否存在语法错误
+	# named-checkconf
+	# named-checkzone "douyacun.zone" /var/named/douyacun.zone
+
+6.4 确保主配置文件和各区域解析库文件的权限为640，属主为root，属组为named；
+	
