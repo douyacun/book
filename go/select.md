@@ -1,17 +1,15 @@
 ---
-Title: 
-Keywords: 
-Description: 
+Title: go select 源码分析,用法
+Keywords: select源码,用法,技巧
+Description: go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写
 Author: douyacun
 Date: 2019-09-23 11:14:31
-LastEditTime: 2019-09-23 11:19:05
+LastEditTime: 2019-10-09 11:12:35
 typora-root-url: ./assert
 ---
-go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写
-
-# 目录
-
 [TOC]
+
+go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写
 
 # mind map
 
@@ -40,7 +38,7 @@ func block() {
 
 ```go
 select{								if v<-foo {
-case <-foo:			-> 			....
+case <-foo:			-> 		....
 }											}
 // 源码在gc/select.walkselectcases
 ```
@@ -49,12 +47,24 @@ case <-foo:			-> 			....
 
 ```go
 select{								if v<-foo {
-case <-foo:			-> 			....
+case <-foo:			-> 		....
 default:							} else {
 }											}
 ```
 
-# advice
+# 常见用法
+
+## 阻塞
+
+上面已经提过，编译器会优化case == 0 的G 变为阻塞你状态
+
+```go
+select{} -> runtime.block() -> gopark()
+```
+
+## 非阻塞
+
+如果ch没有数据的话，就会一直while死循环cpu飙升，每次都会走default
 
 ```go
 for {
@@ -65,7 +75,56 @@ for {
 }
 ```
 
-如果ch没有数据的话，就会一直while死循环cpu飙升，每次都会走default，并没有你认为的阻塞。
+## 超时控制
+
+```go
+c1 := make(chan int)
+
+go func() {
+  time.Sleep(4 * time.Second)
+  c1 <- 1
+}()
+
+select {
+  case d, ok :=  <-c1:
+  if ok {
+    fmt.Println(d)
+  }
+  case <-time.After(3 * time.Second):
+  fmt.Println("timeout...")
+}
+
+close(c1)
+```
+
+## 随机数
+
+生成随机3位数
+
+```
+var num int64
+ch := make(chan int64, 3)
+for i := 0; i < 3; i++ {
+  select {
+  case ch <- 0:
+  case ch <- 1:
+  case ch <- 2:
+  case ch <- 3:
+  case ch <- 4:
+  case ch <- 5:
+  case ch <- 6:
+  case ch <- 7:
+  case ch <- 8:
+  case ch <- 9:
+  }
+  num = num*10 + <-ch
+}
+fmt.Println(num)
+```
+
+
+
+## 关闭channel
 
 ```go
 for {
@@ -89,6 +148,81 @@ for {
                 break outer
             }
     }
+}
+```
+
+# 如何随机
+
+go select是用heap sort来实现随机,首先看下什么是堆结构和堆排序
+
+## 堆结构
+
+堆是一种树形结构：
+
+- 堆的每一个子节点都要大于或小于根节点
+- 大根堆：每个元素大于其所有子元素
+- 小根堆：每个元素小于其所有子元素
+
+## 堆排序
+
+算法思想：堆排序利用堆结构根节点的元素最大的特点，不断取出根节点并维护堆结构来排序
+
+实现步骤：
+
+1. 建堆，将初始化序列建成一个大根堆
+2. 去掉堆顶元素，剩余的元素调整为二叉堆
+3. 完成最后堆排序
+
+时间复杂度：最坏为O(nlogn)
+
+优势：能在插入操作和删除最大元素操作混合的动态场景中保证对数级别的运行时间，代码实现简单。
+
+## 根据什么来排序的呢？
+
+```go
+// 打乱顺序
+for i := 1; i < ncases; i++ {
+  // fastrandn 随机数
+  j := fastrandn(uint32(i + 1))
+  pollorder[i] = pollorder[j]
+  pollorder[j] = uint16(i)
+}
+// sort the cases by Hchan address to get the locking order.
+// 根据channel的内存地址来获取上锁的顺序
+// simple heap sort, to guarantee n log n time and constant stack footprint.
+// 堆排序：O(nlogn)时间保证和堆栈占用的保证
+for i := 0; i < ncases; i++ {
+    j := i
+    // Start with the pollorder to permute cases on the same channel.
+    c := scases[pollorder[i]].c
+    for j > 0 && scases[lockorder[(j-1)/2]].c.sortkey() < c.sortkey() {
+        k := (j - 1) / 2
+        lockorder[j] = lockorder[k]
+        j = k
+    }
+    lockorder[j] = pollorder[i]
+}
+for i := ncases - 1; i >= 0; i-- {
+    o := lockorder[i]
+    c := scases[o].c
+    lockorder[i] = lockorder[0]
+    j := 0
+    for {
+        k := j*2 + 1
+        if k >= i {
+            break
+        }
+        if k+1 < i && scases[lockorder[k]].c.sortkey() < scases[lockorder[k+1]].c.sortkey() {
+            k++
+        }
+        if c.sortkey() < scases[lockorder[k]].c.sortkey() {
+            lockorder[j] = lockorder[k]
+            j = k
+            continue
+        }
+        break
+    }
+    lockorder[j] = o
 }
 ```
 
@@ -307,79 +441,4 @@ loop:
 	selunlock(scases, lockorder)
 	goto retc
 ...
-```
-
-# 如何随机
-
-go select是用heap sort来实现随机,首先看下什么是堆结构和堆排序
-
-## 堆结构
-
-堆是一种树形结构：
-
-- 堆的每一个子节点都要大于或小于根节点
-- 大根堆：每个元素大于其所有子元素
-- 小根堆：每个元素小于其所有子元素
-
-## 堆排序
-
-算法思想：堆排序利用堆结构根节点的元素最大的特点，不断取出根节点并维护堆结构来排序
-
-实现步骤：
-
-1. 建堆，将初始化序列建成一个大根堆
-2. 去掉堆顶元素，剩余的元素调整为二叉堆
-3. 完成最后堆排序
-
-时间复杂度：最坏为O(nlogn)
-
-优势：能在插入操作和删除最大元素操作混合的动态场景中保证对数级别的运行时间，代码实现简单。
-
-## 根据什么来排序的呢？
-
-```go
-// 打乱顺序
-for i := 1; i < ncases; i++ {
-  // fastrandn 随机数
-  j := fastrandn(uint32(i + 1))
-  pollorder[i] = pollorder[j]
-  pollorder[j] = uint16(i)
-}
-// sort the cases by Hchan address to get the locking order.
-// 根据channel的内存地址来获取上锁的顺序
-// simple heap sort, to guarantee n log n time and constant stack footprint.
-// 堆排序：O(nlogn)时间保证和堆栈占用的保证
-for i := 0; i < ncases; i++ {
-    j := i
-    // Start with the pollorder to permute cases on the same channel.
-    c := scases[pollorder[i]].c
-    for j > 0 && scases[lockorder[(j-1)/2]].c.sortkey() < c.sortkey() {
-        k := (j - 1) / 2
-        lockorder[j] = lockorder[k]
-        j = k
-    }
-    lockorder[j] = pollorder[i]
-}
-for i := ncases - 1; i >= 0; i-- {
-    o := lockorder[i]
-    c := scases[o].c
-    lockorder[i] = lockorder[0]
-    j := 0
-    for {
-        k := j*2 + 1
-        if k >= i {
-            break
-        }
-        if k+1 < i && scases[lockorder[k]].c.sortkey() < scases[lockorder[k+1]].c.sortkey() {
-            k++
-        }
-        if c.sortkey() < scases[lockorder[k]].c.sortkey() {
-            lockorder[j] = lockorder[k]
-            j = k
-            continue
-        }
-        break
-    }
-    lockorder[j] = o
-}
 ```

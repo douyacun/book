@@ -12,7 +12,6 @@ keywords: meta keywords
 - 上面这样的标题，作者，关键字，标签解析方法
 - markdown解析方法
 - 选择next
-- 是否选用typescript
 - 路由和目录配置
 - 静态文件导出
 - 定制sitemap
