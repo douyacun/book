@@ -5,8 +5,9 @@ git:
   depth: 1
 before_install:
   - mkdir -p ~/.ssh
+  - ls -la ~/.ssh
   - openssl aes-256-cbc -K $encrypted_6ac805c1866b_key -iv $encrypted_6ac805c1866b_iv
-    -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+    -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host douyacun\n\thostname ${hostname}\n\tport ${port}\n\tuser ${user}\n\tIdentityFile  ~/.ssh/id_rsa" > ~/.ssh/config
   - echo ${key} >> ~/.ssh/known_hosts
