@@ -1,6 +1,6 @@
 language: go
 go:
-  - 1.13.x
+- 1.13.x
 git:
   depth: 1
 before_install:
@@ -14,11 +14,10 @@ deploy:
   provider: script
   script: bash scripts/travis.sh
   skip_cleanup: true
-  #on:
-  #  tags: true
 notifications:
   email:
     recipients:
     - douyacun@gmail.com
     on_success: change
     on_failure: always
+
