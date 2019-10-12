@@ -2,9 +2,10 @@
 Title: go channel 也是通过共享内存和互斥锁来实现通信的
 Keywords: channel,mutex
 Description: 神秘的channel。源码面前，了无密码
+Label: channel
 Author: douyacun
 Date: 2019-09-19 18:03:32
-LastEditTime: 2019-09-23 11:18:52
+LastEditTime: 2019-10-09 20:31:03
 typora-root-url: ./assert
 ---
 go语言提倡的并发模型就是：**不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存**
@@ -12,7 +13,6 @@ go语言提倡的并发模型就是：**不要通过共享内存的方式进行�
 # 目录
 
 [TOC]
-
 
 # mind map
 

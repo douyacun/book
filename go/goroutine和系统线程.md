@@ -2,9 +2,10 @@
 Title: goroutine vs 操作系统线程
 Keywords: goroutine,线程,channel
 Description: 
+Label: goroutine
 Author: douyacun
 Date: 2019-09-10 23:14:14
-LastEditTime: 2019-09-16 09:04:22
+LastEditTime: 2019-10-09 20:34:05
 ---
 
 疑问：

@@ -2,9 +2,10 @@
 Title: go select 源码分析,用法
 Keywords: select源码,用法,技巧
 Description: go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写
+Label: select
 Author: douyacun
 Date: 2019-09-23 11:14:31
-LastEditTime: 2019-10-09 11:12:35
+LastEditTime: 2019-10-09 20:34:26
 typora-root-url: ./assert
 ---
 [TOC]
