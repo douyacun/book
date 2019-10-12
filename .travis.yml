@@ -14,10 +14,4 @@ deploy:
   provider: script
   script: bash scripts/travis.sh
   skip_cleanup: true
-notifications:
-  email:
-    recipients:
-    - douyacun@gmail.com
-    on_success: change
-    on_failure: always
 
