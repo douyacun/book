@@ -18,6 +18,8 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host douyacun\n\thostname ${hostname}\n\tport ${port}\n\tuser ${user}\n\tIdentityFile  ~/.ssh/id_rsa" > ~/.ssh/config
   - echo ${key} >> ~/.ssh/known_hosts
+install: skip
+script: skip
 deploy:
   provider: script
   script: bash scripts/travis.sh
