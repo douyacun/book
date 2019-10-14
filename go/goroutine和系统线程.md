@@ -4,8 +4,9 @@ Keywords: goroutine,线程,channel
 Description: 
 Label: goroutine
 Author: douyacun
+Cover: groutine-cover.jpeg
 Date: 2019-09-10 23:14:14
-LastEditTime: 2019-10-09 20:34:05
+LastEditTime: 2019-10-14 13:00:49
 ---
 
 疑问：

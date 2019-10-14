@@ -4,8 +4,9 @@ Keywords: channel,mutex
 Description: 神秘的channel。源码面前，了无密码
 Label: channel
 Author: douyacun
+Cover: go-channel-cover.jpeg
 Date: 2019-09-19 18:03:32
-LastEditTime: 2019-10-09 20:31:03
+LastEditTime: 2019-10-14 13:00:04
 typora-root-url: ./assert
 ---
 go语言提倡的并发模型就是：**不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存**

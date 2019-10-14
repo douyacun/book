@@ -14,3 +14,6 @@
 
 # redis
 - [redis延迟](redis/redis延迟问题.md)
+
+# linux
+- [脏页](linux/页缓存.md)

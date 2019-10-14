@@ -6,7 +6,7 @@ WechatSubscription: douyacun
 WechatSubscriptionQrcode: /assert/douyacun_qrcode.jpg
 Topics:
   Redis:
-    Icon: 123
+    Icon:
     Dir: /redis
     Assert: /redis/assert
     Articles:
@@ -17,8 +17,9 @@ Topics:
     Assert: /mysql/assert
     Articles:
       - mysql主从同步.md
+      - mysql锁.md
   Golang:
-    Icon: 123
+    Icon:
     Dir: /go
     Assert: /go/assert
     Articles:
@@ -28,3 +29,9 @@ Topics:
       - goroutine和系统线程.md
       - channel.md
       - select.md
+  Linux:
+    Icon:
+    Dir: /linux
+    Assert: /linux/assert
+    Articles: 
+      - 页缓存.md
