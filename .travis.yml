@@ -20,5 +20,3 @@ deploy:
   provider: script
   script: bash scripts/travis.sh
   skip_cleanup: true
-  on:
-    tags: true
