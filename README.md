@@ -7,7 +7,7 @@
 - [go channel 也是通过共享内存和互斥锁来实现通信的](go/channel.md)
 - [go 函数方法接口](go/函数方法接口.md)
 - [go 拼接数组为字符串的几种方式](go/数组拼接为字符串.md)
-  
+- [go grpc](go/grpc入门.md)
 # mysql
 - [mysql主从同步](mysql/mysql主从同步.md)
 - [mysql锁](mysql/mysql锁.md)
@@ -17,3 +17,9 @@
 
 # linux
 - [脏页](linux/页缓存.md)
+
+# todo
+- [ ] go new & make
+- [ ] go rpc
+- [ ] go net
+- [ ] http/2

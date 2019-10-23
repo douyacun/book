@@ -1,7 +1,7 @@
 ---
-Title: goroutine vs 操作系统线程
-Keywords: goroutine,线程,channel
-Description: 
+Title: goroutine和线程的区别
+Keywords: goroutine,操作系统线程,线程,channel,
+Description: 操作系统只认线程调用，goroutine和线程有哪些区别
 Label: goroutine
 Author: douyacun
 Cover: groutine-cover.jpeg
@@ -13,8 +13,6 @@ LastEditTime: 2019-10-14 13:00:49
 
 1. 系统线程和goroutine有哪些区别？
 2. 什么原子操作，系统线程和goroutine是如何进行原子操作？
-
-
 
 # 目录
 

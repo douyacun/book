@@ -29,6 +29,7 @@ Topics:
       - goroutine和系统线程.md
       - channel.md
       - select.md
+      - grpc.md
   Linux:
     Icon:
     Dir: /linux
