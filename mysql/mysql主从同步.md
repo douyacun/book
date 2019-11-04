@@ -1,9 +1,13 @@
 ---
-title: mysql_主从同步_master-slave_主从复制_主从配置_配置详解
-keywords: mysql,主从同步，master-slave，bin_log,relay_log,配置解释
-description: mysql主从同步配置一台内网服务器和一台外网服务器
-author: douyacun
-date: 2019-02-01
+Title: mysql主从同步
+Keywords: 主从同步,master-slave,bin_log,relay_log
+Description: mysql主从同步配置一台内网服务器和一台外网服务器
+Label: 主从同步
+Author: douyacun
+Date: 2019-02-01
+Cover: mysql-master-slave.jpg
+LastEditTime: 2019-10-14 12:52:48
+typora-root-url: ./assert
 ---
 
 家里一台联想笔记本作为爬虫服务器，有一台公网阿里云服务器，目的爬虫跑完之后，公网服务器可以主从同步，家里的服务器和公网服务器通信的问题通过[内网穿透工具(frp)](https://github.com/fatedier/frp)解决, 优秀简单，具体可以看[frp内网穿透_mysql服务_ssh服务_http服务](/linux/frp内网穿透_mysql服务_ssh服务_http服务.md)

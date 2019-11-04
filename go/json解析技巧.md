@@ -2,9 +2,10 @@
 Title: go json 解析技巧,go json.Unmarshal 常见问题
 Keywords: Unmarshal,UnmarshalJSON,MarshalJSON
 Description: cannot unmarshal bool into Go struct field githubUser.site_admin of type models.IsSiteAdmin, go语言的json解析的确没有python和php安逸
+Label: json解析
 Author: douyacun
 Date: 2019-08-20 00:01:11
-LastEditTime: 2019-08-20 09:00:17
+LastEditTime: 2019-10-09 20:33:48
 ---
 
 在做github oauth第三方登录，code->access_token->user, user接口返回的是json数据，思路是：拿到access_token，请求用户信息，拿到response.json, `json.Unmarshal(data, &github)`, 直接入库就ok了，问题就出在json.Unmarshal上
