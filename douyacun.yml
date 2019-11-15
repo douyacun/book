@@ -21,7 +21,7 @@ Topics:
   Golang:
     Icon:
     Dir: /go
-    Assert: /go/
+    Assert: /go
     Articles:
       - 函数方法接口.md
       - 数组切片引用.md

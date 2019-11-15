@@ -4,7 +4,7 @@ Keywords: channel,mutex
 Description: 神秘的channel。源码面前，了无密码
 Label: channel
 Author: douyacun
-Cover: go-channel-cover.jpeg
+Cover: assert/go-channel-cover.jpeg
 Date: 2019-09-19 18:03:32
 LastEditTime: 2019-11-15 17:55:28
 typora-root-url: ./assert

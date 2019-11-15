@@ -3,10 +3,10 @@ Title: mysql锁
 Keywords: 共享锁,乐观锁,悲观锁，排他锁
 Description: 深入理解一下mysql的这些常用锁
 Author: douyacun
-Cover: mysql-locks.png
+Cover: assert/mysql-locks.png
 Label: mysql锁
 Date: 2019-06-04 14:05:09
-LastEditTime: 2019-10-14 12:04:42
+LastEditTime: 2019-11-15 18:09:17
 ---
 # 共享锁
 共享锁也叫读锁，简称S锁，原理：一个事务获取了一个数据行的共享锁，其他事务能获得该行对应的共享锁，但不能获得排他锁，即一个事务在读取一个数据行的时候，其他事务也可以读，但不能对该数据行进行增删改。

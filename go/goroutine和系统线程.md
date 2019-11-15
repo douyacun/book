@@ -4,9 +4,9 @@ Keywords: goroutine,操作系统线程,线程,channel,
 Description: 操作系统只认线程调用，goroutine和线程有哪些区别
 Label: goroutine
 Author: douyacun
-Cover: groutine-cover.jpeg
+Cover: assert/groutine-cover.jpeg
 Date: 2019-09-10 23:14:14
-LastEditTime: 2019-10-14 13:00:49
+LastEditTime: 2019-11-15 18:08:11
 ---
 
 疑问：

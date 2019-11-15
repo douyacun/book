@@ -5,8 +5,8 @@ Description: mysql主从同步配置一台内网服务器和一台外网服务�
 Label: 主从同步
 Author: douyacun
 Date: 2019-02-01
-Cover: mysql-master-slave.jpg
-LastEditTime: 2019-10-14 12:52:48
+Cover: assert/mysql-master-slave.jpg
+LastEditTime: 2019-11-15 18:09:02
 typora-root-url: ./assert
 ---
 
