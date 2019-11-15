@@ -8,6 +8,7 @@
 - [go 函数方法接口](go/函数方法接口.md)
 - [go 拼接数组为字符串的几种方式](go/数组拼接为字符串.md)
 - [go grpc](go/grpc入门.md)
+- [go 内存分配](go/内存分配.md)
 # mysql
 - [mysql主从同步](mysql/mysql主从同步.md)
 - [mysql锁](mysql/mysql锁.md)
