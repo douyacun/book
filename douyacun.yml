@@ -8,20 +8,20 @@ Topics:
   Redis:
     Icon:
     Dir: /redis
-    Assert: /redis/assert
+    Assert: /redis
     Articles:
       - redis延迟问题.md
   Mysql:
     Icon:
     Dir: /mysql
-    Assert: /mysql/assert
+    Assert: /mysql
     Articles:
       - mysql主从同步.md
       - mysql锁.md
   Golang:
     Icon:
     Dir: /go
-    Assert: /go/assert
+    Assert: /go/
     Articles:
       - 函数方法接口.md
       - 数组切片引用.md
@@ -35,6 +35,6 @@ Topics:
   Linux:
     Icon:
     Dir: /linux
-    Assert: /linux/assert
+    Assert: /linux
     Articles: 
       - 页缓存.md

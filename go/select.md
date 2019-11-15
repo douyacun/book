@@ -6,7 +6,7 @@ Label: select
 Author: douyacun
 Cover: go-select-cover.png
 Date: 2019-09-23 11:14:31
-LastEditTime: 2019-10-13 15:23:53
+LastEditTime: 2019-11-15 18:01:04
 typora-root-url: ./assert
 ---
 [TOC]
@@ -15,7 +15,7 @@ go select 是一种仅能用于channel发送和接收消息的专用语句，此
 
 # mind map
 
-![](/select.png)
+![](assert/select.png)
 
 # 编译器优化
 
