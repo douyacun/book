@@ -446,4 +446,6 @@ $ curl -X GET "http://localhost:8081/echo/douyacun"
 
 # 推荐阅读
 
-- https://bbengfort.github.io/programmer/2017/03/03/secure-grpc.html
+- [https://bbengfort.github.io/programmer/2017/03/03/secure-grpc.html](https://bbengfort.github.io/programmer/2017/03/03/secure-grpc.html)
+
+扫码关注获得更多关于深入理解redis、go、mysql源码的文章
