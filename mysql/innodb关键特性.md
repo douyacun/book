@@ -1,3 +1,13 @@
+---
+Title: innodb关键特性
+Keywords: insert buffer,double write
+Description: innodb说这些特性，相信比说支持事务要更有说服力
+Author: douyacun
+Cover: 
+Label: innodb
+Date: 2019-11-12 16:00:40
+LastEditTime: 2019-11-26 23:08:40
+---
 innodb关键特性包括：
 - 插入缓冲 (insert buffer)
 - 两次写(double write)

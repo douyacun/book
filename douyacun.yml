@@ -18,6 +18,8 @@ Topics:
     Articles:
       - mysql主从同步.md
       - mysql锁.md
+      - mysql索引.md
+      - mysql日志文件.md
   Golang:
     Icon:
     Dir: /go

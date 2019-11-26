@@ -1,3 +1,14 @@
+---
+Title: mysql索引
+Keywords: 索引,index,联合索引，覆盖索引
+Description: 记录一下mysql索引的概念，随时补充
+Author: douyacun
+Cover: 
+Label: 索引
+Date: 2019-11-26 10:24:07
+LastEditTime: 2019-11-26 23:07:12
+---
+
 innodb是索引存储表，表数据按主键顺序存放
 
 # 聚集索引
@@ -55,3 +66,4 @@ where (from_date between "2019-01-10" and "2019-02-10") and (salaries between 38
 
 启用ICP，则会在索引取出时就会进行where过滤，前提是where条件被索引覆盖
 
+explain 可以看到extra列 using index condition
