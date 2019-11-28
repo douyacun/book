@@ -6,38 +6,22 @@ WechatSubscription: douyacun
 WechatSubscriptionQrcode: /assert/douyacun_qrcode.jpg
 Topics:
   Redis:
-    Icon:
-    Dir: /redis
-    Assert: /redis
-    Articles:
-      - redis延迟问题.md
+    - redis延迟问题.md
   Mysql:
-    Icon:
-    Dir: /mysql
-    Assert: /mysql
-    Articles:
-      - mysql主从同步.md
-      - mysql锁.md
-      - mysql索引.md
-      - mysql日志文件.md
+    - mysql主从同步.md
+    - mysql锁.md
+    - mysql索引.md
+    - mysql日志文件.md
   Golang:
-    Icon:
-    Dir: /go
-    Assert: /go
-    Articles:
-      - 函数方法接口.md
-      - 数组切片引用.md
-      - json解析技巧.md
-      - goroutine和系统线程.md
-      - channel.md
-      - select.md
-      - grpc入门.md
-      - grpc进阶.md
-      - 内存分配.md
-      - 数组拼接为字符串.md
+    - 函数方法接口.md
+    - 数组切片引用.md
+    - json解析技巧.md
+    - goroutine和系统线程.md
+    - channel.md
+    - select.md
+    - grpc入门.md
+    - grpc进阶.md
+    - 内存分配.md
+    - 数组拼接为字符串.md
   Linux:
-    Icon:
-    Dir: /linux
-    Assert: /linux
-    Articles: 
-      - 页缓存.md
+    - 页缓存.md
