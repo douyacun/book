@@ -1,4 +1,13 @@
-* MySQL acid model
+---
+Title: mysql ACID事务含义
+Keywords: ACID，事务含义
+Description: 
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:36:34
+---
+
 
 ## introduction
   

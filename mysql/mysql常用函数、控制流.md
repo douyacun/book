@@ -1,9 +1,14 @@
-* author 刘宁
-* date 2017-09-01
+---
+Title: mysql函数整理
+Keywords: 函数,func,case when
+Description: 聚合函数、符串函数、控制流、日期函数
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:34:43
+---
 
-# 函数
-
-## 聚合函数
+# 聚合函数
 - avg(),        求取平均值
 - count(),      计算表中的行数
 - instr('mysql','sql')       计算子字符在字符串中第一次出现的位置
@@ -29,7 +34,7 @@
     + 相当于:select v from t order by v desc;
     + 结果整合成字符串,PHP implode(',',$res);
 
-## 字符串函数
+# 字符串函数
 - concat()  不多说
 - length() char_length() 以字节或字符 字符串长度
 - replace(str,old_string,new_string)     搜索并替换字符串中的子字符串
@@ -38,7 +43,7 @@
 - find_in_set('a','a,b,c')     允许您在逗号分隔的字符串列表中查找指定字符串的位置。
 - format(1111.22222,2);         相当于PHP number_format();
 
-## 控制流
+# 控制流
 - CASE表达式 
 ```
 CASE value
@@ -80,7 +85,7 @@ select ifnull(email,concat(phone,'@abc.com') as email from ln_users;
 mysql> select nullif(phone,15258157582) as phone from ln_users;
 ```
 
-## 日期函数
+# 日期函数
 - current_date()    返回当前日期
 - datediff()        计算两个日期之间的时间差
 - day()             获取指定日期的天数   2017-09-05  5天

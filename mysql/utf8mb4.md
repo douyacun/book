@@ -1,4 +1,13 @@
-# 1. mysql支持输入表情符号的问题
+---
+Title: utf8mb4格式存储数据
+Keywords: utf8mb4
+Description: mysql支持输入表情符号的问题
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:30:42
+---
+**mysql支持输入表情符号的问题**
 
 1. 备份,备份所有需要升级的字符串编码的数据库
 

@@ -1,3 +1,12 @@
+---
+Title: mysql常用命令：数据导出、数据库操作、不常用sql补充
+Keywords: 数据备份，mysql数据导出
+Description: 记录一下不常用的sql
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:28:54
+---
 
 - 导出数据库结构和数据
  mysqldump -u root -pa123456 demodb > demo.sql
@@ -29,14 +38,11 @@ grant select, update, insert, delete, alter, create, trucate
 - 刷新权限
 flush PRIVILEGES
 
-
 - 创建数据库
 CREATE DATABASE IF NOT EXISTS videos default charset utf8mb4 COLLATE utf8mb4_general_ci
 
-
 - 删除数据库
 mysqladmin -u root -p drop dahe;
-
 
 - 去掉重复数据:
 select * from `scrapy_proxy_ip` where ip IN (SELECT ip FROM `scrapy_proxy_ip` GROUP BY ip HAVING COUNT(*) > 1)

@@ -12,6 +12,11 @@ Topics:
     - mysql锁.md
     - mysql索引.md
     - mysql日志文件.md
+    - innodb关键特性.md
+    - 分布式事务最终一致性.md
+    - utf8mb4.md
+    - 权限管理.md
+    - mysql常用函数、控制流.md
   Golang:
     - 函数方法接口.md
     - 数组切片引用.md
