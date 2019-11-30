@@ -1,3 +1,12 @@
+---
+Title: gdb文档
+Keywords: gdb
+Description: linux调试神器
+Cover: 
+Label: 
+Date: 2019-05-30 17:39:11
+LastEditTime: 2019-11-29 11:48:54
+---
 # gdb 调试工具
 
 调试redis设置:

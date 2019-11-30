@@ -1,3 +1,12 @@
+---
+Title: 制作centos7系统盘
+Keywords: centos7系统盘制作
+Description: 
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:50:32
+---
 # 电脑重装成centos系统
 
 ## 下载iso镜像

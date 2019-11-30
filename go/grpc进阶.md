@@ -3,10 +3,10 @@ Title: gRPC进阶
 Keywords: gRPC,pbgo,grpc,权限认证,中间件,拦截器
 Description: gRPC是基于http2.0，这里实现证书认证、rpc和RESTful HTTP API共存
 Author: douyacun
-Cover: grpc-cover.png
+Cover: assert/grpc-cover.png
 Label: pbgo
 Date: 2019-10-21 19:17:31
-LastEditTime: 2019-10-23 20:33:06
+LastEditTime: 2019-11-30 16:05:01
 ---
 
 [TOC]

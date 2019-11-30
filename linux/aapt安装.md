@@ -1,3 +1,12 @@
+---
+Title: apktool、aapt安装
+Keywords: aapt安装,apktool安装
+Description: 
+Cover: 
+Label: 
+Date: 2019-05-12 11:23:44
+LastEditTime: 2019-11-29 11:53:05
+---
 # apktool安装
 
 首先安装java环境

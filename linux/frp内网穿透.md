@@ -1,9 +1,12 @@
 ---
-title: frp内网穿透_mysql服务_ssh服务_http服务
-keywords: frp内网穿透,mysql服务,ssh服务,http服务
-description: 通过frp加公网服务器提供mysql，ssh，http服务
+Title: frp内网穿透
+Keywords: frp mysql服务,frp ssh服务,frp http服务
+Description: 通过frp加公网服务器提供mysql，ssh，http服务
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:51:59
 ---
-
 使用的[frp](https://github.com/fatedier/frp),详情可以去github看，那里有中文文档，可以使用[supervisor管理frp连接进程](/linux/supervisor_安装_进程管理_配置_frp|spiderkeeper|jobs配置.md),以下介绍的是我的使用场景和一些个人理解
 
 需要两台服务器

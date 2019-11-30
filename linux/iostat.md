@@ -1,11 +1,19 @@
-# iostat 动态监视磁盘i/o活动
+---
+Title: iostat文档
+Keywords: iostat
+Description: iostat监视磁盘i/o
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:49:56
+---
 
-## 安装
+# 安装
 ```
 yum install sysstat
 ```
 
-## 实例1：显示所有设备负载情况
+# 实例1：显示所有设备负载情况
 ```
 iostat
 
@@ -44,7 +52,7 @@ svctm: 平均每次设备I/O操作的服务时间 (毫秒)。
 %util: 一秒中有百分之多少的时间用于 I/O 操作，即被io消耗的cpu百分比
 备注：如果 %util 接近 100%，说明产生的I/O请求太多，I/O系统已经满负荷，该磁盘可能存在瓶颈。如果 svctm 比较接近 await，说明 I/O 几乎没有等待时间；如果 await 远大于 svctm，说明I/O 队列太长，io响应太慢，则需要进行必要优化。如果avgqu-sz比较大，也表示有当量io在等待。
 
-## 实例2：定时显示所有信息
+# 实例2：定时显示所有信息
 ```
 iostat 2 3
 Linux 2.6.32-279.el6.x86_64 (colin)   07/16/2014      _x86_64_        (4 CPU)
@@ -78,7 +86,7 @@ dm-2              0.00         0.00         0.00          0          0
 说明：每隔 2秒刷新显示，且显示3次
 ```
 
-## 实例3：查看TPS和吞吐量
+# 实例3：查看TPS和吞吐量
 ```
 iostat -d -k 1 1
 Linux 2.6.32-279.el6.x86_64 (colin)   07/16/2014      _x86_64_        (4 CPU)

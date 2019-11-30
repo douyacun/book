@@ -1,4 +1,13 @@
-﻿- epel
+﻿---
+Title: centos7新手安装lnmp环境
+Keywords: lnmp,yum安装
+Description: 
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:46:43
+---
+- epel
     ```
     32位系统选择：
     rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm

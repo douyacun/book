@@ -1,9 +1,12 @@
 ---
-title: supervisor_安装_进程管理_配置_frp|spiderkeeper|jobs配置
-keywords: supervisor_frp配置_spiderkeeper配置_jobs配置
-descripts: supervisor管理各种进程的配置和走过的坑
+Title: supervisor使用姿势
+Keywords: supervisor,安装,进程管理,配置frp、spiderkeeper
+Description: supervisor管理各种进程的配置和走过的坑
+Cover: 
+Label: 
+Date: 2019-02-25 23:02:12
+LastEditTime: 2019-11-29 11:45:43
 ---
-
 
 # supervisor安装
 

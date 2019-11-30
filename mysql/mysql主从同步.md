@@ -5,9 +5,8 @@ Description: mysql主从同步配置一台内网服务器和一台外网服务�
 Label: 主从同步
 Author: douyacun
 Date: 2019-02-01
-Cover: assert/mysql-master-slave.jpg
-LastEditTime: 2019-11-15 18:09:02
-typora-root-url: ./assert
+Cover: assert/mysql-master-slave.png
+LastEditTime: 2019-11-30 15:13:21
 ---
 
 家里一台联想笔记本作为爬虫服务器，有一台公网阿里云服务器，目的爬虫跑完之后，公网服务器可以主从同步，家里的服务器和公网服务器通信的问题通过[内网穿透工具(frp)](https://github.com/fatedier/frp)解决, 优秀简单，具体可以看[frp内网穿透_mysql服务_ssh服务_http服务](/linux/frp内网穿透_mysql服务_ssh服务_http服务.md)
