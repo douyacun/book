@@ -28,6 +28,7 @@ Topics:
     - grpc进阶.md
     - 内存分配.md
     - 数组拼接为字符串.md
+    - db连接池.md
   Linux:
     - 页缓存.md
     - lnmp.md
@@ -37,3 +38,4 @@ Topics:
     - 制作centos7系统盘.md
     - frp内网穿透.md
     - vmstat.md
+    - libwebp.md
