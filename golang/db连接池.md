@@ -1,8 +1,10 @@
 ---
 Title: go数据库连接池
 Keywords: 数据库连接池源码分析
-Description:
+Description: db连接池理解，疑难解惑
 Label: 数据库连接池
+Date: 2019-12-03 20:00:53
+LastEditTime: 2019-12-06 14:51:01
 ---
 
 **go连接mysql为什么需要 import _ "github.com/go-sql-driver/mysql"**
@@ -17,7 +19,6 @@ func init() {
 ```
 
 
-
 **SetMaxIdleConns/SetMaxOpenConns/SetConnMaxLifetime 设置的值有什么用呢？**
 
 - db.maxLifetime 连接从创建开始存活的时间，mysql默认tcp连接的超时时间 8h
@@ -25,8 +26,7 @@ func init() {
 - db.maxIdle 空闲池维持的最大连接数量
 
 
-
-**sql.Open为什么只需要一次调用即可？ **
+**sql.Open为什么只需要一次调用即可?**
 
 1. 加载驱动程序 go-sql-driver/mysql
 2. 初始化DB数据结构
