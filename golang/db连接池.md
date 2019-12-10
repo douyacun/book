@@ -99,7 +99,7 @@ type DBStats struct {
 
 
 
-**DB.Ping()做了哪些事情？熟悉一下高大上的连接池记录了哪些属性。**
+**DB.Ping()做了哪些事情？DB是如何从连接池中获取一个可用的连接的？**
 
 1. 获取连接，可以复用连接 （cachedOrNewConn）
 2. 获取一个可用的连接 driverConn
