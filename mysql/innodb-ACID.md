@@ -9,17 +9,10 @@ LastEditTime: 2019-11-29 11:36:34
 ---
 
 
-## introduction
+# ACID
   
 - ACID 是注重可靠性的设计原则
 - mysql 引入 innodb components 并紧密结合ACID model,因此数据不会因为异常条件损坏丢失，同时具有innodb的灾难恢复和故障重启特性
-
-
-## 特性ACID
-- atomicity
-- consistency
-- isolation
-- durability
 
 ## atomicity 原子性
 
@@ -71,35 +64,24 @@ dowblwrite buffer 是一种 file flush技术，innodb 将 pages 写入数据文�
 
 # 隔离级别
 
-## READ UNCOMMITTED (未提交读)
+**READ UNCOMMITTED (未提交读)**
 事物的修改即使没有commit也可以被其他事物读到 - `脏读`
 
-## READ COMMITTED (已提交读)
+**READ COMMITTED (已提交读)**
 一个事物从开始到提交对其他事物都是不可见的 - `不可重复读` 两次执行同样的查询读取的结果不一致
 
-## REPEATABLE READ (可重复读)
+**REPEATABLE READ (可重复读)**
 保证在同一个事物中多次读取到的结果是一致的，
 
-## SERIALIZABLE (串行化)
+**SERIALIZABLE (串行化)**
 强制事物串行执行，在读取的每一行上加锁
 
-# 死锁
-多个事物在同一资源上相互占用，并请求锁定对方占用的资源
+# 事物的实现
 
-eg.
-```
-start transaction;
-update user set name = 'l' where id = 2；
-update user set name = 'm' where id = 3;
-commit;
+隔离性由锁来实现，原子性、一致性、持久性是通过redo log和undo log来实现。redo log保证原子性和持久性，undo log保证一致性。
 
-start transaction;
-update user set name = 'y' where id = 3;
-update user set name = 'z' where id = 2;
-commit;
-```
+## redo
 
-## 解决方法
+重做日志 redo log用来保证事物一致性，和double writr buffer一样由两部分组成。一是内存buffer，而是磁盘文件buffer。
 
-1. 死锁检测和死锁超时，innodb将最少行级锁的事物回滚
-2. 只有部分和或完全回滚其中一个事物，才能打破事物
+当事物提交时，会把所有的事物日志写入重做日志文件进行持久化
