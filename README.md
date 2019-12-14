@@ -21,6 +21,23 @@
 
 # todo
 - [ ] go new & make
-- [ ] go rpc
+
+- [x] go rpc
+
 - [ ] go net
+
 - [ ] http/2
+
+- [ ] go time
+
+- [ ] go text
+
+- [ ] interface
+
+- [ ] map
+
+- [ ] tcp/ip
+
+- [ ] mysql事物实现方式，mvvc：多版本并发控制
+
+    
