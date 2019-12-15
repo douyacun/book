@@ -10,7 +10,7 @@ LastEditTime: 2019-11-29 11:36:34
 
 
 # ACID
-  
+
 - ACID 是注重可靠性的设计原则
 - mysql 引入 innodb components 并紧密结合ACID model,因此数据不会因为异常条件损坏丢失，同时具有innodb的灾难恢复和故障重启特性
 
@@ -82,6 +82,10 @@ dowblwrite buffer 是一种 file flush技术，innodb 将 pages 写入数据文�
 
 ## redo
 
-重做日志 redo log用来保证事物一致性，和double writr buffer一样由两部分组成。一是内存buffer，而是磁盘文件buffer。
+innodb 在事物提交时，必须先将事务的所有事务写入到磁盘上的redo log file 和undo log file中进行持久化，为了确保每次日志都能写入到事务日志文件中，每次都会调用fsync，将内存中脏页同步到磁盘上
 
-当事物提交时，会把所有的事物日志写入重做日志文件进行持久化
+**innodb_flush_log_at_trx_commit** 控制重做日志刷新到磁盘的策略
+
+- 1（默认）：事务提交时，必须调用一次fysnc同步到磁盘
+- 0：事务提交不用讲log buffer写入的os buffer中，而是依赖master thread每秒将log buffer写入到os buffer并调用fsync
+- 2：每次提交都仅写入到os buffer，然后是每秒调用fsync()将os buffer中的日志写入到log file on disk。
