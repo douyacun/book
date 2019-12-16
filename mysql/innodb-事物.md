@@ -5,7 +5,7 @@ Description:
 Cover: 
 Label: 
 Date: 2019-02-25 23:02:12
-LastEditTime: 2019-11-29 11:36:34
+LastEditTime: 2019-12-16 23:50:46
 ---
 
 
@@ -86,9 +86,13 @@ innodb 在事物提交时，必须先将事务的所有事务写入到磁盘上�
 
 **innodb_flush_log_at_trx_commit** 控制重做日志刷新到磁盘的策略
 
-- 1（默认）：事务提交时，必须调用一次fysnc同步到磁盘
-- 0：事务提交不用讲log buffer写入的os buffer中，而是依赖master thread每秒将log buffer写入到os buffer并调用fsync
-- 2：每次提交都仅写入到os buffer，然后是每秒调用fsync()将os buffer中的日志写入到log file on disk。
+- 1（默认）：事务提交时，必须调用一次fysnc同步到磁盘，宕机不会丢失事务
+- 0：事务提交不用不会触发redo log写操作，而是依赖master thread每秒刷盘操作
+- 2：每次提交只write写入到os buffer，并不保证写入到磁盘，crash不会丢失事务，宕机会丢失事
+- 
+日常场景设置为1,系统高峰期可以修改成2以应对大负载。
+
+各个事务可以交叉拷贝到log bufeer中，一次事务commit触发的写redo(fysnc)到文件，可能隐式的帮别的线程也写了redo log，从而达到group commit操作。
 
 ## redo log 和 二进制文件的区别
 
@@ -97,4 +101,6 @@ innodb 在事物提交时，必须先将事务的所有事务写入到磁盘上�
 3. 二进制是每次事务提交后写入缓存中的日志文件，而redo log在数据准备修改前写入缓存中的redo log中，写入完成后才会执行修改操作
 4. 二进制日志只在提交时一次性写入，二进制记录顺序和提交顺序一致，redo log记录的物理页的修改，redo log文件同一个事务可能多次修改，
 5. 二进制记录所有影响数据库的操作，记录的内容较多。eg. 插入记录一次，删除记录一次，而redo log记录的物理页的情况，插入一次删除一次前后状态一致
+务
+
 
