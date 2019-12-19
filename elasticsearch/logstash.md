@@ -1,9 +1,9 @@
 ---
-Title: logstash初步接触
+Title: 认识logstash
 Keywords: logstash调试
 Desction: 第一次接触logstash，读取一个文件然后输出到控制台，历经坎坷
 Date: 2019-12-08 11:20:46
-LastEditTime: 2019-12-08 11:20:46
+LastEditTime: 2019-12-19 21:44:55
 ---
 
 # 文档
@@ -16,9 +16,9 @@ LastEditTime: 2019-12-08 11:20:46
 - logstash下载地址: https://www.elastic.co/cn/downloads/logstash
 - 测试数据集: https://grouplens.org/datasets/movielens/
 
-# 实践
+# 定义配置文件
 
-**定义logstash.conf**
+logstash.conf
 
 ```conf
 input {
@@ -51,7 +51,6 @@ filter {
                 strip => ["title"]
                 remove_field => ["path", "host","@timestamp","message","content"]
         }
-
 }
 
 output {
@@ -86,3 +85,16 @@ output {
     - document_id：指定文档id，否则会默认生成
 
   - stdout：标准输出到控制台
+
+# 运行
+
+```shell
+sudo ./bin/logstash -f logstash.conf
+```
+
+这里用sudo，是因为要写入到/dev/null, 需要root权限。
+
+具体 elasticsearch、kibana是如果运行的，看 [elasticsearch docker的安装步骤](安装运行.md)
+
+![](assert/movies.png)
+
