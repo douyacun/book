@@ -1,5 +1,5 @@
 ---
-Title: mysql ACID事务含义
+Title: mysql事务定义,常见问题
 Keywords: ACID，事务含义
 Description: 
 Cover: 
@@ -8,59 +8,7 @@ Date: 2019-02-25 23:02:12
 LastEditTime: 2019-12-16 23:50:46
 ---
 
-
-# ACID
-
-- ACID 是注重可靠性的设计原则
-- mysql 引入 innodb components 并紧密结合ACID model,因此数据不会因为异常条件损坏丢失，同时具有innodb的灾难恢复和故障重启特性
-
-## atomicity 原子性
-
-原子性主要与mysql的事物相关联
-
-- autocommit setting
-- commit statement
-- rollback statement
-- information_schema 中的操作数据
-
-
-## consistency 一致性
-
-与 innodb 进程关联，防止进程崩溃数据损坏
-
-- innodb doublewrite buffer
-- innodb crash recover
-
-## isolation 隔离性
-
-隔离性和 myaql 的事物关联，设置 isolation level，适应每个事物的隔离级别
-
-- autocommit
-- set isolation level statement
-- 低级别的事物系列 && 索引性能优化 都可以查看information_schema
-
-
-## durability 持久性
-
-mysql 软件特性与特定的硬件配置交互,大多数情况依赖于cpu, 网络，存储的性能
-
-- innob doublewrite buffer,innodb_doublrwrite 配置项是否开启
-- innodb_flush_log_at_trx_commit 控制每次事物提交写入flush_log的时机，评估数据安全和io性能上的平衡
-- sync_binlog 控制mysql server 
-- innodb_file_per_table
-- writer buffer
-- 电池支持的磁盘缓冲
-- 支持fsync的操作系统
-- 用不断电的电源保护mysql服务进程和数据存储
-- 备份策略，
-    - 周期
-    - 备份方式
-    - 备份保留时间
-- 对于分布式和托管的应用，mysql server的位置和网络连通性很重要
-
-
-> doublewrite buffer \
-dowblwrite buffer 是一种 file flush技术，innodb 将 pages 写入数据文件之前,会首先写入到 double buffer 中，只有写入和刷新double bufffer完成后，才会将他们写入对应的数据文件位置，如果在pages写入过程中发生操作系统或mysql进程崩溃，innodb可以从 double buffer 拷贝数据，虽然写入需要两次，但是double buffer 不需要两倍i/o开销，
+[toc]
 
 # 隔离级别
 
@@ -80,9 +28,32 @@ dowblwrite buffer 是一种 file flush技术，innodb 将 pages 写入数据文�
 
 隔离性由锁来实现，原子性、一致性、持久性是通过redo log和undo log来实现。redo log保证原子性和持久性，undo log保证一致性。
 
+-   atomicity 原子性
+-   consistency 一致性
+-   isolation 隔离性
+-   durability 持久性
+
 ## redo
 
 innodb 在事物提交时，必须先将事务的所有事务写入到磁盘上的redo log file 和undo log file中进行持久化，为了确保每次日志都能写入到事务日志文件中，每次都会调用fsync，将内存中脏页同步到磁盘上
+
+**mini transaction**是innodb对物理数据数据文件操作的最小事务单元，用于对page加锁，修改，释放以及日志提交到公共buffer等操作。mtr必须是原子性操作，一个事务可以包含多个mtr，每个mtr完成后需要将本地产生的日志拷贝到缓冲区，将修改的脏页放到flush list上
+
+**LSN(log sequence number)** 用于记录日志序号，它是一个不断递增的 unsigned long long 类型整数。在 InnoDB 的日志系统中，LSN 无处不在，它既用于表示修改脏页时的日志序号，也用于记录checkpoint，通过LSN，可以具体的定位到其在redo log文件中的位置（注意: LSN不是自增+1，而是每次+日志的大小）
+
+**Checkpoint**
+
+-   sharp checkpoint
+
+sharp checkpoint会把所有已提交事务相关的脏页刷到磁盘，并记录最新的已提交事务的LSN号。sharp checkpoint刷新到磁盘的脏页是某一时刻的一致性数据。
+当数据库关闭时，会发生sharp checkpoint
+
+-   fuzzy checkpoint
+
+fuzzy checkpoint则复杂很多。fuzzy checkpoint会一点点的把脏页刷新到磁盘，直到与sharp checkpoint达到相同的目的（即所有的已提交事务相关的脏页到刷到磁盘）。fuzzy checkpoint会把两个LSN之间的脏页刷新到磁盘。但是并不能保障LSN之间的数据时一致性的。所以被称为fuzzy（失真） checkpoint。
+innodb使用buffer pool来避免数据直接写入磁盘。这样数据可以再buffer pool中多次修改并最终写入磁盘，这样就减少了磁盘IO。buffer pool中维护了几个重要的list：free list、LRU list、flush list。当有新的数据读入buffer pool中时，会从free list中分配page。当free list中没有空闲page时，需要等待flush list中的数据刷到磁盘，这样很慢。所以innodb会定期的把flush list中的旧数据刷到磁盘。
+再者，innodb redo log文件是循环使用的，所以必须保证日志文件在重写前，所有buffer pool中相关的脏数据刷新的磁盘，不然数据库宕机后这些数据就会丢失。因为日志是按照数据修改的时间记录的，所以旧的脏数据会被先刷到磁盘，这也就是fuzzy checkpoint的工作。因为日志中的旧数据已经刷新到磁盘，所以数据库宕机后，实例恢复会从fuzzy checkpoint后的LSN开始。
+当数据库正常工作时，会进行fuzzy checkpoint
 
 **innodb_flush_log_at_trx_commit** 控制重做日志刷新到磁盘的策略
 
@@ -96,7 +67,7 @@ innodb 在事物提交时，必须先将事务的所有事务写入到磁盘上�
 
 
 
-## redo log 和 二进制文件的区别
+**redo log 和 二进制文件的区别**
 
 1. 二进制文件时存储引擎上层产生的，不管什么存储引擎都会产生二进制文件，redo log是innodb层产生的只记录存储引擎层表的修改，
 2. 二进制日志是基于行格式修改，本质也是sql。redo log是物理日志记录每个page的修改(mini transaction)
@@ -105,5 +76,15 @@ innodb 在事物提交时，必须先将事务的所有事务写入到磁盘上�
 5. 二进制记录所有影响数据库的操作，记录的内容较多。eg. 插入记录一次，删除记录一次，而redo log记录的物理页的情况，插入一次删除一次前后状态一致
 务
 
+## MVCC 多版本并发控制
+
+innodb 每个事务开始会 在 系统版本号（全局） 递增加一作为事务的版本号，用来和查询到的每行记录的版本号进行比较。在每行记录后面会保存两个隐藏的列，一：创建修改时系统版本号 二：过期时系统版本号
+
+**select**: [](https://segmentfault.com/a/1190000012650596)
 
 
+
+# 推荐阅读
+
+-   http://mysql.taobao.org/monthly/2017/12/01/
+-   https://segmentfault.com/a/1190000012650596
