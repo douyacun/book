@@ -1,37 +1,56 @@
 ---
-Title: mysql事务定义,常见问题
-Keywords: ACID，事务含义
-Description: 
+Title: innodb事务详解
+Keywords: mvcc,事务,多版本并发控制
+Description: 了解事务基础概念，搞清楚实现方式
 Cover: 
-Label: 
+Label: innodb事务
 Date: 2019-02-25 23:02:12
 LastEditTime: 2019-12-16 23:50:46
 ---
 
-[toc]
+# 基础
 
-# 隔离级别
+**事务隔离级别**
 
-**READ UNCOMMITTED (未提交读)**
-事物的修改即使没有commit也可以被其他事物读到 - `脏读`
+- READ UNCOMMITTED (RU未提交读)
+  事物的修改即使没有commit也可以被其他事物读到 - `脏读`
 
-**READ COMMITTED (已提交读)**
-一个事物从开始到提交对其他事物都是不可见的 - `不可重复读` 两次执行同样的查询读取的结果不一致
+- READ COMMITTED (RC已提交读)
+  一个事物从开始到提交对其他事物都是不可见的 - `不可重复读` 两次执行同样的查询读取的结果不一致
 
-**REPEATABLE READ (可重复读)**
-保证在同一个事物中多次读取到的结果是一致的，
+- REPEATABLE READ (RR可重复读)
+  保证在同一个事物中多次读取到的结果是一致的 `幻读`
 
-**SERIALIZABLE (串行化)**
-强制事物串行执行，在读取的每一行上加锁
+- SERIALIZABLE (串行化)
+  强制事物串行执行，在读取的每一行上加锁
 
-# 事物的实现
+**事务ACID**：隔离性由锁来实现，原子性、一致性、持久性是通过redo log和undo log来实现。redo log保证原子性和持久性，undo log保证一致性。
 
-隔离性由锁来实现，原子性、一致性、持久性是通过redo log和undo log来实现。redo log保证原子性和持久性，undo log保证一致性。
+-   atomicity 原子性：要么成功要么失败，commit事务一定是成功的，rollback整个事务的操作都要回滚掉，连接断开或者数据库崩溃也要保证事务回滚
+-   consistency 一致性：任何时刻，数据都是一致的，保证不会读到中间状态的数据。包括数据库正常提供服务，数据库从异常中恢复。
+-   isolation 隔离性：多个事务可以同时对数据修改，但是互不影响
+-   durability 持久性：commit数据在任何情况下都不能丢失
 
--   atomicity 原子性
--   consistency 一致性
--   isolation 隔离性
--   durability 持久性
+**垃圾清理** 
+
+- 对于删除的数据，innodb不是直接删除数据，而是标记一下，后台线程批量的删除
+- 对于二级索引的更新，不是直接对索引进行更新，而是标记一下，然后产生一条新的。
+- 过期的undolog也需要回收，过期指的是undo不需要被用来构建之前的版本，也不需要回滚事务
+
+**回滚段**：数据页的修改链表，链表最前面的是最老的一次修改，最后面是最近的一次修改，从链表尾部逆向操作可以恢复到数据最老的版本，在innodb中与之相关的还有undo tablespace,undo segment,undo solt,undo log。undo log是最小的粒度，若干个undo page组成一个undo solt，一个事务最多有两个undo solt，其中一个是insert undo solt，里面记录了主键的信息，方便回滚时快速找到这一行，另外一个update undo solt，用来delete/update产生的undo，详细记录修改之前的记录的详细信息，便于在读请求需要的时候构造，1024个undo solt构成一个undo segment，若干个undo segment构成了undo tablespace。
+
+**历史链表**：insert undo可以在事务提交和回滚后直接删除，没有事务要求查询新插入数据的历史版本。update undo则不可以，因为其他读请求可能需要使用update undo构建之前的历史版本。因此事务提交后，会把update undo加入一个全局链表（history list）中。链表按照事务提交顺序排序，保证最先提交的事务update undo在最情面，这样purge线程就可以从最老的事务开始清理。
+
+**回滚点**：savepoint，事务回滚时可以指定回滚点，可以保证回滚到指定点，而不是回滚整个事务
+
+```sql
+savepoint "回滚点名";
+rollback savepoint "回滚点名";
+```
+
+# 事物
+
+事务分为读写事务和只读事务
 
 ## redo
 
@@ -65,8 +84,6 @@ innodb使用buffer pool来避免数据直接写入磁盘。这样数据可以再
 
 各个事务可以交叉拷贝到log bufeer中，一次事务commit触发的写redo(fysnc)到文件，可能隐式的帮别的线程也写了redo log，从而达到group commit操作。
 
-
-
 **redo log 和 二进制文件的区别**
 
 1. 二进制文件时存储引擎上层产生的，不管什么存储引擎都会产生二进制文件，redo log是innodb层产生的只记录存储引擎层表的修改，
@@ -78,9 +95,31 @@ innodb使用buffer pool来避免数据直接写入磁盘。这样数据可以再
 
 ## MVCC 多版本并发控制
 
-innodb 每个事务开始会 在 系统版本号（全局） 递增加一作为事务的版本号，用来和查询到的每行记录的版本号进行比较。在每行记录后面会保存两个隐藏的列，一：创建修改时系统版本号 二：过期时系统版本号
+> multi-version concurrent control
 
-**select**: [](https://segmentfault.com/a/1190000012650596)
+数据版本控制，防止不该被事务发现的数据被看到，主要是通过readview来实现。 在innodb（trx_sys）事务系统，维护着一个全局的读写活跃的事务id数组(trx_sys->descriptors)，id从小到大排序，表示某个时间点，数据库中所有还未提交的读写事务。当需要一致性读时，会把全局读写事务id拷贝一份到readview本地read_view_t->desciptors，作为当前事务的快照.
+
+- read_view_t->up_limit_id: 未提交读写事务数组read_view_t->desciptors中的最小id
+
+- read_view_t->low_limit_id : 当前事务的id（先快照全局数组，然后生成当前事务id，当前事务id，一定大于快照中最大的事务id）
+
+**查出一条记录后，是否可见？**
+
+在每行记录后面会保存两个隐藏的列，一：trx_id 最后被修改时的事务id  二：删除时事务id
+
+1. 记录 trx_id 小于 read_view_t->up_limit_id, 说明这条记录在事务之前创建，这条记录可见。
+2. 记录 trx_id 大于 read_view_t->low_limit_id, 说明这条记录在事务之后修改，这条记录不可见。
+3. 记录trx_id 在 read_view_t -> up_limit_id 和 read_view_t->low_limit_id 之间，说明这条记录在事务创建时，被另外一个未提交的事务所修改，事务隔离型，这条记录不可见。
+
+如果记录不可见，则尝试用undo去构建老的版本，知道找到可见的版本或者解析完成所有的undo。
+
+RR(repeatable read 可重复度)级别的隔离：第一次创建readview后，就会一直持续到事务结束，也就是说事务执行过程中，事务的可见性不会变
+
+RC(read commited 读已提交)级别的隔离：事务中的每个查询语句都需要创建一次readview，能够读取到该事务创建后其他事务已经提交的事务，这样两个查询的结果就不一样，RR级别的效率要比RC级别的效率高
+
+RU(read uncommited 读未提交)级别的隔离： 不会去检查可见性，效率时很高，但是会读取到未提交的脏数据
+
+串行化隔离级别：使用锁来实现，性能很差
 
 
 
