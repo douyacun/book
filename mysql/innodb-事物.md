@@ -45,7 +45,7 @@ LastEditTime: 2019-12-16 23:50:46
 
 ```sql
 savepoint "回滚点名";
-rollback savepoint "回滚点名";
+rollback savepoint "回滚点名"; 
 ```
 
 # 事物
