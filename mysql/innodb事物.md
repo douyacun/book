@@ -5,7 +5,7 @@ Description: 了解事务基础概念，搞清楚实现方式
 Cover: 
 Label: innodb事务
 Date: 2019-02-25 23:02:12
-LastEditTime: 2019-12-16 23:50:46
+LastEditTime: 2019-12-22 21:00:53
 ---
 
 # 基础
