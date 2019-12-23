@@ -2,10 +2,10 @@
 Title: elasticsearch url查询的常用方法
 Keywords: url查询,query string
 Description: 看到这里才知道其实阿里云的sls查询，也是elasticsearch做了一次封装
-Label:
-Cover: es url查询
+Label: es url查询
+Cover: 
 Date: 2019-12-24 00:17:00
-LastEditTime: 2019-12-24 00:22:57
+LastEditTime: 2019-12-24 00:32:11
 ---
 
 千里之行，始于足下。一点点的去积累，es的查询不止这些。
