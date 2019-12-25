@@ -21,6 +21,7 @@
 - [es docker集群安装步骤](elasticsearch/安装运行.md)
 - [认识logstash](elasticsearch/logstash.md)
 - [es url查询](elasticsearch/url查询.md)
+- [es mapping](elasticsearch/mapping.md)
 
 # redis
 - [redis延迟](redis/redis延迟问题.md)
