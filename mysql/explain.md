@@ -113,3 +113,54 @@ explain select * from `config` C left JOIN `dark` D on D.medias = C.value where 
 
 -   unique_subquery：使用了in的子查询，而且子查询是主键或者唯一索引
 
+- range: 索引范围查询， 这个类型通常出现在 =, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, IN() 
+
+```sql
+explain select * from media where id between 2 and 10;
+```
+
+| id   | select_type | table | type  | possible_keys | key     | key_len | ref  | rows | Extra       |
+| ---- | :---------: | ----- | ----- | ------------- | ------- | ------- | ---- | ---- | ----------- |
+| 1    |   SIMPLE    | idea  | range | PRIMARY       | PRIMARY | 4       | NULL | 2    | Using where |
+
+- ALL 全表扫描,性能最差的查询之一，因为这样的查询在数据量大的情况下, 对数据库的性能是巨大的灾难. 
+
+```sql
+explain select * from creative WHERE target_url = 'http://cdn.yuming.com//allsites/1647060/3ea6c76347dd4c7167b9c1c83f069003/index_1738893.html?r=9223'
+```
+
+| id   | select_type | table | type | possible_keys | key  | key_len | ref  | rows    |    Extra    |
+| ---- | ----------- | ----- | ---- | ------------- | ---- | ------- | ---- | ------- | :---------: |
+| 1    | SIMPLE      | idea  | ALL  | NULL          | NULL | NULL    | NULL | 3222483 | Using where |
+
+# possible_key
+
+表示在mysql查询时，能够是用到的索引，即使这些索引在possible_key中出现，但是并不是此索引会真正被MYSQL使用到，具体用到使用了哪些索引，由KEY决定
+
+
+
+# key
+
+ MySQL 在当前查询时所真正使用到的索引.
+
+
+
+# key_len
+
+索引的字节数，这个字段可以评估组合索引是否完全被使用, 或只有最左部分字段被使用到.
+
+
+
+# rows
+
+rows 也是一个重要的字段. MySQL 查询优化器根据统计信息, 估算 SQL 要查找到结果集需要扫描读取的数据行数
+
+sql最重要的评价字段
+
+
+
+# Extra
+
+- using filesort: mysql需要额外的排序操作，不能通过索引达到排序的效果，一半有using filesort都建议优化掉
+- using index: 覆盖索引扫描，说明所需数据在索引中即可取到，性能不错
+- using temporary：使用了临时表，一般出现于排序, 分组和多表 join 的情况, 查询效率不高, 建议优化.

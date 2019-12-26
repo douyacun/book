@@ -18,6 +18,7 @@ Topics:
     - utf8mb4.md
     - 权限管理.md
     - mysql常用函数、控制流.md
+    - explain.md
   Golang:
     - 函数方法接口.md
     - 数组切片引用.md
