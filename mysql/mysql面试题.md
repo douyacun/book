@@ -5,7 +5,7 @@ Description: 常见面试题看似简单，实际不知道咋回答，即使
 Label: mysql面试题
 Cover: mysql面试题-cover.jpeg
 Date: 2019-12-23 13:56:00
-LastEditTime: 2019-12-23 13:57:00
+LastEditTime: 2019-12-26 09:27:50
 ---
 
 # 存储引擎相关
@@ -33,7 +33,32 @@ static所有字段都有固定宽度，dynqmic是变长
 2. varchar 255 需要多1个字节存储字符串长度 varchar (>255) 需要2个字节存储字符串长度
 3. char一次性分配，varchar变更前后会有碎片产生
 
+**列auto_increament达到最大值，会发生什么**
 
+Duplicate entry '255' for key 'PRIMARY'
+
+**date和timestamp区别**
+
+timestamp：
+
+-   客户端插入时间从当前时区转化为世界标准时间存储，查询时转化为客户端时区返回。
+-   timestamp时间范围到2038年
+
+datetime：
+
+-   不做任何改变，原样输入输出
+-   存储范围到9999
+
+**如何获取最后一次插入时分配了哪个自动增量**
+
+1.  last_insert_id返回表中自增字段的当前值
+2.  一条insert语句插入多条，`insert into foo(val) VALUES(1),(2), (3), (4);` 在当前AUTO_INCREMENT值加1返回，当前AUTO_INCREMENT=1，执行上面语句后只会返回2
+3.  `INSERT ... ON DUPLICATE KEY UPDATE` 
+    1.  如果是insert，AUTO_INCREMENT + 1返回
+    2.  如果是update，返回AUTO_INCREMENT，不是变更记录的id
+4.  显示指定自增字段id的值，last_insert_id()返回的是AUTO_INCREMENT的值，不会加1，只有自增字段由mysql来分配，
+5.  sql执行出错，last_insert_id值未定义，若事务回滚，last_insert_id的值不会恢复到事务执行前的那个值
+6.  Last_insert_id的值是每个链接独立维护的。
 
 # 日志
 
@@ -76,6 +101,3 @@ static所有字段都有固定宽度，dynqmic是变长
 - 经常排序、分组、联合查询关联的字段
 - 尽量选择重复度低的字段
 - 前缀索引
-
-
-
