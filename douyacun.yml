@@ -7,6 +7,7 @@ WechatSubscriptionQrcode: /assert/douyacun_qrcode.jpg
 Topics:
   Redis:
     - redis延迟问题.md
+    - aof.md
   Mysql:
     - mysql主从同步.md
     - mysql锁.md
@@ -42,6 +43,8 @@ Topics:
     - frp内网穿透.md
     - vmstat.md
     - libwebp.md
+    - strace.md
+    - sync_fsync_fdatasync.md
   Elasticsearch:
     - 安装运行.md
     - logstash.md
