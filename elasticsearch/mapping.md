@@ -144,45 +144,172 @@ integer_range`, `float_range`, `long_range`, `double_range`, `date_range
   }
   ```
 
-  
+- [`coerce`](https://www.elastic.co/guide/en/elasticsearch/reference/current/coerce.html) 强制字段类型
+
+  - integer 必须是int型数字
+
+  ```curl
+  PUT my_index
+  {
+    "mappings": {
+      "properties": {
+        "number_one": {
+          "type": "integer"
+        },
+        "number_two": {
+          "type": "integer",
+          "coerce": false
+        }
+      }
+    }
+  }
+  # 成功
+  PUT my_index/_doc/1
+  {
+    "number_one": "10" 
+  }
+  # 失败，number_two强制是integer
+  PUT my_index/_doc/2
+  {
+    "number_two": "10" 
+  }
+  ```
+
+- [`dynamic`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic.html) 默认情况下，es会将字段动态映射到文档中
+
+  - true （默认） 检测到新的字段添加到文档中
+  - false 新的字段会被忽略，这些字段无法被搜索，仍会出现在`_source`中
+  - strict 检测到新的字段，报错
+
+- [`enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/enabled.html) 只存储字段而不是建立索引，在`_source`中可见，像object可以存任何类型的值，但是如果索引了就会报错，也可以用于整个文档，整个文档都不会被索引
+
+  ```
+  PUT my_index
+  {
+    "mappings": {
+      "properties": {
+        "user_id": {
+          "type":  "keyword"
+        },
+        "last_updated": {
+          "type": "date"
+        },
+        "session_data": {
+          "type": "object",
+          "enabled": false
+        }
+      }
+    }
+  }
+  PUT my_index/_doc/1
+  {
+    "user_id": "刘宁",
+    "last_updated": "2019-12-26T11:34:00",
+    "session_data": {
+      "some_array": [
+        "foo",
+        "bar"
+      ]
+    }
+  }
+  # 如果session_data enabled为true的。这里会报错，不是对象类型
+  PUT my_index/_doc/2
+  {
+    "user_id": "jpountz",
+    "session_data": "none", 
+    "last_updated": "2015-12-06T18:22:13"
+  }
+  # 整个文档都不会被索引
+  PUT my_index
+  {
+    "mappings": {
+      "enabled": false 
+    }
+  }
+  ```
+
+- [`format`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html) 日期格式,es内置了很多格式，看文档就好
+
+  ```
+  PUT my_index
+  {
+    "mappings": {
+      "properties": {
+        "date": {
+          "type":   "date",
+          "format": "yyyy-MM-dd"
+        }
+      }
+    }
+  }
+  ```
+
+- [`ignore_above`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-above.html) 对于大于长度的字符串不会被索引或存储，字符串数组，会分别对每个元素判断
+
+  ```
+  PUT my_index
+  {
+    "mappings": {
+      "properties": {
+        "message": {
+          "type": "keyword",
+          "ignore_above": 20 
+        }
+      }
+    }
+  }
+  PUT my_index/_doc/1 
+  {
+    "message": "Syntax error"
+  }
+  # 这里也被存储了，没搞懂
+  PUT my_index/_doc/2 
+  {
+    "message": "Syntax error with some long stacktrace"
+  }
+  ```
+
+- [`ignore_malformed`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-malformed.html#ignore-malformed-setting) 接受其他类型的数据，true： int可以接受字符串但是不会被索引
+
+  ```
+  PUT my_index
+  {
+    "mappings": {
+      "properties": {
+        "number_one": {
+          "type": "integer",
+          "ignore_malformed": true
+        },
+        "number_two": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+  # number_one是int，ignore_malformed：true后可以写入字符串
+  PUT my_index/_doc/1
+  {
+    "text":       "Some text value",
+    "number_one": "foo" 
+  }
+  PUT my_index/_doc/2
+  {
+    "text":       "Some text value",
+    "number_two": "foo" 
+  }
+  ```
 
   
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 

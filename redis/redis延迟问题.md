@@ -6,7 +6,7 @@ Label: redis延迟
 Author: douyacun
 Cover: 
 Date: 2019-06-13 14:37:52
-LastEditTime: 2019-10-14 12:46:40
+LastEditTime: 2019-12-27 23:03:20
 ---
 
 # redis延迟高问题解决思路
@@ -125,7 +125,7 @@ redis使key过期的方式：
 - 惰性淘汰：在key请求时，判断key是否失效，失效就淘汰
 - 定时策略：每隔100毫秒检测一次
 
-redis没100毫秒会启动一个[serverCron](/redis/serverCron.md)来执行定期淘汰策略
+redis没100毫秒会启动一个serverCron来执行定期淘汰策略
 - `ACTIVE_EXPIRE_CYCLE_LOOKUPS_PER_LOOP` 移除所有已过期的键
 - 如果发现超过25%的键过期，会重复执行
 

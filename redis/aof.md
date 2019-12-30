@@ -1,10 +1,11 @@
 ---
-Title: 
-Keywords: 
-Description: 
+Title: redis AOF增量同步
+Keywords: aof
+Description: bgsave全量同步，aof增量同步
 Author: douyacun
+Label: redis aof
 Date: 2019-05-27 16:13:13
-LastEditTime: 2019-06-13 23:22:01
+LastEditTime: 2019-12-27 22:52:55
 ---
 # aof 文件增量
 
