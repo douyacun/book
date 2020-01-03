@@ -301,15 +301,12 @@ integer_range`, `float_range`, `long_range`, `double_range`, `date_range
 
   
 
+# Mapping 写入建议
 
-
-
-
-
-
-
-
-
+- 创建一个临时的index，写入一些样本数据
+- 通过index的mapping api获得临时文件的动态mapping定义
+- 修改后使用该配置创建你的索引
+- 删除临时索引
 
 
 
