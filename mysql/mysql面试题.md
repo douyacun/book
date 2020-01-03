@@ -10,7 +10,7 @@ LastEditTime: 2019-12-26 09:27:50
 
 # 存储引擎相关
 
-**innodb和myisam的区别**
+**innodb和myisam的区别?**
 
 - innodb支持事务，myisam不支持事务
 
@@ -21,23 +21,23 @@ LastEditTime: 2019-12-26 09:27:50
 - innodb不保存具体行数，`select count(*) from user`需要扫面全表
 - innodb最小粒度锁是行锁，myisam是表锁
 
-**myisam static和myisam dynamic 有什么区别**
+**myisam static和myisam dynamic 有什么区别?**
 
 static所有字段都有固定宽度，dynqmic是变长
 
 # 数据类型
 
-**char 和 vachar 的区别**
+**char 和 vachar 的区别？**
 
 1. char定长、vachar变长
 2. varchar 255 需要多1个字节存储字符串长度 varchar (>255) 需要2个字节存储字符串长度
 3. char一次性分配，varchar变更前后会有碎片产生
 
-**列auto_increament达到最大值，会发生什么**
+**列auto_increament达到最大值，会发生什么?**
 
 Duplicate entry '255' for key 'PRIMARY'
 
-**date和timestamp区别**
+**date和timestamp区别?**
 
 timestamp：
 
@@ -49,7 +49,7 @@ datetime：
 -   不做任何改变，原样输入输出
 -   存储范围到9999
 
-**如何获取最后一次插入时分配了哪个自动增量**
+**如何获取最后一次插入时分配了哪个自动增量?**
 
 1.  last_insert_id返回表中自增字段的当前值
 2.  一条insert语句插入多条，`insert into foo(val) VALUES(1),(2), (3), (4);` 在当前AUTO_INCREMENT值加1返回，当前AUTO_INCREMENT=1，执行上面语句后只会返回2
@@ -62,7 +62,7 @@ datetime：
 
 # 日志
 
-**binlog几种录入格式，有什么区别**
+**binlog几种录入格式，有什么区别?**
 
 - statement ： 基于语句记录日志。
 
@@ -78,7 +78,7 @@ datetime：
 
 - mixed: 以上两种level的混合，一般的语句修改使用statment格式保存binlog，如一些函数，statement无法完成主从复制操作，则操作row格式保存binlog
 
-**什么是mvcc（多版本并发控制），是如何做到的**
+**什么是mvcc（多版本并发控制），是如何做到的?**
 
 每个行记录后面都会多出来两个字段：上次更新的事务id，删除时的事务id，RR级别下开启一个事务后会初始化一个readview，将全局的活跃（已开启但未提交）读写事务id数组descriptors,复制到本地。记录最小的活跃事务id和当前事务id。读取一条记录
 
@@ -87,6 +87,10 @@ datetime：
 3. 该记录最后一次修改的事务ID 在 最小活跃事务id和次事务id之间，说明该记录是在此事务开启前修改，但还未提交。
 
 对于不可见记录，使用undo log构建历史版本，知道可见为止
+
+**事务是如何通过日志来实现的?**
+
+
 
 # 索引
 
@@ -101,3 +105,24 @@ datetime：
 - 经常排序、分组、联合查询关联的字段
 - 尽量选择重复度低的字段
 - 前缀索引
+
+# 主从复制
+
+**主从复制原理**
+
+1.  主服务器：binlog线程记录下所有改变了数据库数据的语句，放进master的binlog中
+2.  从服务器：在start slave 以后，I/O线程请求主服务器拉去binlog内容，主服务器binlog dump负责响应，存到中继日志(relay log)中
+3.  从服务器：sql执行线程，执行relay log中的语句
+
+**主从一致性延时，数据恢复**
+
+-   异步复制：mysql复制是异步的，主机将event写入二进制日志，但不知道从库是否或者何时检索并处理了他们，如果主服务器崩溃，则它提交的事务可能不会传输到任何服务器，主服务器到从服务器的故障转移可能会导致未同步事务丢失
+-   半同步复制：主库在应答客户端提交的事务前需要保证至少一个从库接受并写到relay log中，半同步服务器通过`rpl_semi_sync_master_wait_point` 控制master在哪个环节接受slave ack, master接收到ack返回状态给客户端
+    -   `WAIT_AFTER_COMMIT`: master write binlog -> slave sync binlog -> **master commit** -> **salve ack** -> master return result。
+    -   `WAIT_AFTER_SYNC` （默认）:master write binlog -> slave sync binlog -> **salve ack** -> **master commit** -> master return result
+
+**主从一致性检测**
+
+
+
+**mysql故障转移**
