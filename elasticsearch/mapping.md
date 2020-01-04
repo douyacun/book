@@ -299,7 +299,6 @@ integer_range`, `float_range`, `long_range`, `double_range`, `date_range
   }
   ```
 
-  
 
 # Mapping 写入建议
 
