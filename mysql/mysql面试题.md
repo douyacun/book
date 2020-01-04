@@ -8,7 +8,7 @@ Date: 2019-12-23 13:56:00
 LastEditTime: 2019-12-26 09:27:50
 ---
 
-# 存储引擎相关
+# 存储引擎
 
 **innodb和myisam的区别?**
 
@@ -90,7 +90,7 @@ datetime：
 
 **事务是如何通过日志来实现的?**
 
-
+-   [innodb事务详解](innodb事务.md)
 
 # 索引
 
@@ -108,21 +108,3 @@ datetime：
 
 # 主从复制
 
-**主从复制原理**
-
-1.  主服务器：binlog线程记录下所有改变了数据库数据的语句，放进master的binlog中
-2.  从服务器：在start slave 以后，I/O线程请求主服务器拉去binlog内容，主服务器binlog dump负责响应，存到中继日志(relay log)中
-3.  从服务器：sql执行线程，执行relay log中的语句
-
-**主从一致性延时，数据恢复**
-
--   异步复制：mysql复制是异步的，主机将event写入二进制日志，但不知道从库是否或者何时检索并处理了他们，如果主服务器崩溃，则它提交的事务可能不会传输到任何服务器，主服务器到从服务器的故障转移可能会导致未同步事务丢失
--   半同步复制：主库在应答客户端提交的事务前需要保证至少一个从库接受并写到relay log中，半同步服务器通过`rpl_semi_sync_master_wait_point` 控制master在哪个环节接受slave ack, master接收到ack返回状态给客户端
-    -   `WAIT_AFTER_COMMIT`: master write binlog -> slave sync binlog -> **master commit** -> **salve ack** -> master return result。
-    -   `WAIT_AFTER_SYNC` （默认）:master write binlog -> slave sync binlog -> **salve ack** -> **master commit** -> master return result
-
-**主从一致性检测**
-
-
-
-**mysql故障转移**

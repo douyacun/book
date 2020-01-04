@@ -241,21 +241,18 @@ mysql> show variables like '%relay%';
 
 
 # mysql 主从同步原理
-主库将变更 -> binlog\
-从库io线程 -> relay中继日志\
-从库sql线程 realylog 读取 -> 执行一遍sql\
+**主从复制原理**
 
-从库同步主库数据的过程是串行化的，主库上的并行操作在从库上串行执行的，导致的问题：
-- 从库同步是有延迟的
-- 如果主库宕机，恰好数据没有同步到从库，可能造成数据不一致的情况
+1.  主服务器：binlog线程记录下所有改变了数据库数据的语句，放进master的binlog中
+2.  从服务器：在start slave 以后，I/O线程请求主服务器拉去binlog内容，主服务器binlog dump负责响应，存到中继日志(relay log)中. 
+3.  从服务器：sql执行线程，执行relay log中的语句
 
-mysql 解决机制：
-- 半同步复制：解决数据丢失问题
-- 并行复制：解决主从同步延时问题
+**主从一致性延时，数据恢复**
 
-半同步复制，主库写入binlog，强制将数据同步给从库，从库将数据写入relaylog后，返回ack给主库，主库收到至少一个ack之后，认为写操作完成
-
-并行复制，从库开启多个线程，并行读取relaylog不同库的日志，并行重放不同库的日志，是库级别
+-   异步复制：mysql复制是异步的，主机将event写入二进制日志，但不知道从库是否或者何时检索并处理了他们，如果主服务器崩溃，则它提交的事务可能不会传输到任何服务器，主服务器到从服务器的故障转移可能会导致未同步事务丢失
+-   半同步复制：主库在应答客户端提交的事务前需要保证至少一个从库接受并写到relay log中，半同步服务器通过`rpl_semi_sync_master_wait_point` 控制master在哪个环节接受slave ack, master接收到ack返回状态给客户端
+    -   `WAIT_AFTER_COMMIT`: master write binlog -> slave sync binlog -> **master commit** -> **salve ack** -> master return result。
+    -   `WAIT_AFTER_SYNC` （默认）:master write binlog -> slave sync binlog -> **salve ack** -> **master commit** -> master return result
 
 # myaql主从同步延时问题
 
@@ -263,3 +260,9 @@ mysql 解决机制：
 - 分库，将一个主库拆分为多个主库，每个主库的写压力就小了几倍，此时延迟问题就会小了
 - 并行复制，多个库并行复制如果某个库的写入特别高，并行复制还是没
 - 重构代码
+
+**主从一致性检测**
+
+
+
+# mysql故障转移
