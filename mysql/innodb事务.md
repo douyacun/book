@@ -10,6 +10,10 @@ LastEditTime: 2019-12-22 21:00:53
 
 # 基础
 
+**事务的概念**
+
+并发操作的基本单位，逻辑上的一组操作，组成这组操作的各个单元，要么成功，要么失败。
+
 **事务隔离级别**
 
 - READ UNCOMMITTED (RU未提交读)
@@ -101,7 +105,7 @@ innodb使用buffer pool来避免数据直接写入磁盘。这样数据可以再
 
 > multi-version concurrent control
 
-数据版本控制，防止不该被事务发现的数据被看到，主要是通过readview来实现。 在innodb（trx_sys）事务系统，维护着一个全局的读写活跃的事务id数组(trx_sys->descriptors)，id从小到大排序，表示某个时间点，数据库中所有还未提交的读写事务。当需要一致性读时，会把全局读写事务id拷贝一份到readview本地read_view_t->desciptors，作为当前事务的快照.
+数据版本控制，防止不该被事务发现的数据被看到，主要是通过read view来实现。 在innodb（trx_sys）事务系统，维护着一个全局的读写活跃的事务id数组(trx_sys->descriptors)，id从小到大排序，表示某个时间点，数据库中所有还未提交的读写事务。当需要一致性读时，会把全局读写事务id拷贝一份到read view本地read_view_t->desciptors，作为当前事务的快照.
 
 - read_view_t->up_limit_id: 未提交读写事务数组read_view_t->desciptors中的最小id
 
@@ -140,6 +144,69 @@ update amount=amount-1 where id = 100 and amount = 99;
 3.  引擎将这行数据更新到内存中，同时将这个更新操作记录到redo里面，此时redo log处于prepare阶段，然后告知执行器执行完成了，随时可以提交事务
 4.  执行器生成这个操作的binlog，并把binlog写入磁盘
 5.  执行器调用引擎的提交事务接口，把写入的redo log改成commit状态。更新完成
+
+# 事务的启动
+
+长事物会长期占用锁资源，要尽量避免
+
+mysql的事务启动方式有：
+
+1.  显示启动事务语句，begin 或 start transaction，配套提交有commit，回滚语句是rollback。
+2.  set autocommit = 0, 这个命令会将当前session的自动提交关闭掉，意味着只是执行一个select语句，这个事务就启动了，而且不会自动提交，这个持续到主动commit或rollback语句，或者断开连接
+
+
+
+**使用长事务的弊病? 为什么使用长事务可能拖垮整个库?**
+
+-   读长事务：
+    -   开发同学链接从库查询，没有启用autocommit，查询完成后也没有commit（一般查询也不会commit）。连接就会被长时间挂起，这个事务会持有一个[share_read](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html) DML锁，它会影响对该表的DDL锁，如果这时DBA对主库该表做DDL操作，这个DDL操作复制到从库时，会因等待MDL锁而无法执行，这会造成从库复制大量延迟
+    -   开发同学执行了一个复杂的统计查询sql，这个sql执行完本身时间就会很长，这也会长期占用DML锁，即使启用了autocommit也没用，而且还有可能大量数据文件排序造成磁盘空间耗尽
+    -   更有甚者，程序执行了查询，没有autocommit，而程序用的是连接池，连接又不关闭
+-   写长事务：就是长事务比较好理解，批量更新、插入。造成事务长时间执行。事务本身逻辑复杂，存在锁竞争、锁等待，超时后后端应该回滚或者重试。
+
+对于复杂的应用场景，以不变应万变，监控。对于 读 的长事务，一旦超过一定阀值可立马kill掉，对与写操作不能这么任性，需要结合业务报警分析，或者代码回滚。
+
+*Information_schema.innodb_trx*  包含了当前正在运行的事务信息
+
+```sql
+Create Table: CREATE TEMPORARY TABLE `INNODB_TRX` (
+  `trx_id` varchar(18) NOT NULL DEFAULT '', -- 事务id
+  `trx_state` varchar(13) NOT NULL DEFAULT '', -- 事务执行状态
+  `trx_started` datetime NOT NULL DEFAULT '0000-00-00 00:00:00', -- 事务的开始时间
+  `trx_requested_lock_id` varchar(81) DEFAULT NULL,-- 如果trx_state是lockwait,显示事务当前等待锁的id，不是则为空。innodb_locks.id 获取等多关于锁的信息
+  `trx_wait_started` datetime DEFAULT NULL, -- 如果trx_state是lockwait,该值代表事务开始等待锁的时间；否则为空。
+  `trx_weight` bigint(21) unsigned NOT NULL DEFAULT '0',-- 事务的高度，代表修改的行数（不一定准确）和被事务锁住的行数。
+  `trx_mysql_thread_id` bigint(21) unsigned NOT NULL DEFAULT '0',-- mysql 线程id
+  `trx_query` varchar(1024) DEFAULT NULL,-- 事务正在执行的sql语句。
+  `trx_operation_state` varchar(64) DEFAULT NULL,-- 事务当前的操作状态，没有则为空。
+  `trx_tables_in_use` bigint(21) unsigned NOT NULL DEFAULT '0',-- 事务在处理当前sql语句使用表的数量。
+  `trx_tables_locked` bigint(21) unsigned NOT NULL DEFAULT '0',-- 当前sql语句有行锁的innodb表的数量。
+  `trx_lock_structs` bigint(21) unsigned NOT NULL DEFAULT '0',-- 事务保留锁的数量。
+  `trx_lock_memory_bytes` bigint(21) unsigned NOT NULL DEFAULT '0',--在内存中事务索结构占得空间大小
+  `trx_rows_locked` bigint(21) unsigned NOT NULL DEFAULT '0',-- 事务行锁最准确的数量。
+  `trx_rows_modified` bigint(21) unsigned NOT NULL DEFAULT '0', -- 事务修改和插入的行数
+  `trx_concurrency_tickets` bigint(21) unsigned NOT NULL DEFAULT '0',-- 该值代表当前事务在被清掉之前可以多少工作
+  `trx_isolation_level` varchar(16) NOT NULL DEFAULT '', -- 事务隔离等级。
+  `trx_unique_checks` int(1) NOT NULL DEFAULT '0', -- 当前事务唯一性检查启用还是禁用。
+  `trx_foreign_key_checks` int(1) NOT NULL DEFAULT '0',-- 当前事务的外键坚持是启用还是禁用
+  `trx_last_foreign_key_error` varchar(256) DEFAULT NULL,-- 最新一个外键错误信息，没有则为空。
+  `trx_adaptive_hash_latched` int(1) NOT NULL DEFAULT '0',-- 自适应哈希索引是否被当前事务阻塞。
+  `trx_adaptive_hash_timeout` bigint(21) unsigned NOT NULL DEFAULT '0',-- 是否为了自适应hash索引立即放弃查询锁，或者通过调用mysql函数保留它
+  `trx_is_read_only` int(1) NOT NULL DEFAULT '0',-- 值为1表示事务是read only。
+  `trx_autocommit_non_locking` int(1) NOT NULL DEFAULT '0'-- 值为1表示事务是一个select语句，该语句没有使用for update或者shared mode锁，并且执行开启了autocommit，因此事务只包含一个语句。当TRX_AUTOCOMMIT_NON_LOCKING和TRX_IS_READ_ONLY同时为1，innodb通过降低事务开销和改变表数据库来优化事务。
+) ENGINE=MEMORY DEFAULT CHARSET=utf8
+1 row in set (0.00 sec)
+```
+
+**查找持续时间超过60s的长事务**
+
+```sql
+select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx_started))>60
+```
+
+-   trx_query 事务正在执行的sql，innodb也不知道后续还有没有sql要执行，因此trx_query不能提供有意义的信息
+-   trx_is_read_only 1 说明是一个只读事务，用`start transaction read only`明确告诉innodb可以采用只读事务的流程来处理这个事务。会节省不少数据结构的空间。
+-   
 
 # 推荐阅读
 
