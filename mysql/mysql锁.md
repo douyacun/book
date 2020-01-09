@@ -44,7 +44,7 @@ SELECT * FROM table_name WHERE ... lock in share mode
 SELECT * FROM table_name WHERE ... for share
 ```
 
-## 排他锁
+## 排他锁 
 排他锁也叫写锁，简称x锁，原理：一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁（排他锁或者共享锁），即一个事务在读取一个数据行的时候，其他事务不能对该数据行进行增删改查。
 
 子查询中的行不会被锁定，除非在子查询中也指定了锁
