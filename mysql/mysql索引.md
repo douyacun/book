@@ -67,3 +67,12 @@ where (from_date between "2019-01-10" and "2019-02-10") and (salaries between 38
 启用ICP，则会在索引取出时就会进行where过滤，前提是where条件被索引覆盖
 
 explain 可以看到extra列 using index condition
+
+# 如何重建索引和主键索引？
+
+索引可能因为删除，或者页分裂等原因，导致数据页有空洞，造成空间浪费
+
+```sql
+alter table T engine=InnoDB;
+```
+

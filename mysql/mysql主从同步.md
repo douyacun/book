@@ -265,4 +265,6 @@ mysql> show variables like '%relay%';
 
 
 
+-   [MySQL 8 中复制延时的测量与监控分析]([https://dbalife.info/2018/06/12/MySQL-8-%E4%B8%AD%E5%A4%8D%E5%88%B6%E5%BB%B6%E6%97%B6%E7%9A%84%E6%B5%8B%E9%87%8F%E4%B8%8E%E7%9B%91%E6%8E%A7/](https://dbalife.info/2018/06/12/MySQL-8-中复制延时的测量与监控/))
+
 # mysql故障转移

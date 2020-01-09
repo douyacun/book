@@ -206,7 +206,6 @@ select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(),trx
 
 -   trx_query 事务正在执行的sql，innodb也不知道后续还有没有sql要执行，因此trx_query不能提供有意义的信息
 -   trx_is_read_only 1 说明是一个只读事务，用`start transaction read only`明确告诉innodb可以采用只读事务的流程来处理这个事务。会节省不少数据结构的空间。
--   
 
 # 推荐阅读
 
