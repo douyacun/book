@@ -6,14 +6,90 @@ Author: douyacun
 Cover: assert/mysql-locks.png
 Label: mysql锁
 Date: 2019-06-04 14:05:09
-LastEditTime: 2019-11-15 18:09:17
+LastEditTime: 2020-01-10 16:43:16
 ---
 
 # 全局锁
 
+对整个数据实例加锁，FTWRL
 
+```sql
+flush table with read lock
+```
 
+使用这个语句后其他线程的语句会阻塞：数据更新语句，数据表定义语句和更新事务的提交语句
 
+**使用场景**：全库逻辑备份，mysqldump导出的时候使用MVCC的一致性保证innodb导出数据，但是对于MyISAM来说是不支持的，备份只能通过FTWRL来保证
+
+**为什么不用 set global readonly = true**
+
+1.  readonly的值，一般被用作判断一个库是主库还是从库，修改global变量的方式影响面大，不建议使用
+2.  异常处理机制上，如果执行FTWRT由于客户端发生异常断开，mysql会自动释放这个全局锁，而设置全局readonly后，如果客户端发生异常，则数据库会一直保持readonly状态，导致整个库事件处于不可写状态，风险较高
+
+# 表级锁
+
+mysql表级锁有两种: 
+
+**表锁**
+
+与FTWRL类似，可以用unlock tables主动释放锁，也可以在客户端断开的时候自动释放
+
+```sql
+lock tables t1 read, t2 write;
+```
+
+其他线程写t1，读写t2都会被阻塞，该线程也只能读t1，读写t2
+
+不推荐使用，粒度太大，目前很少见到了
+
+**MDL（元数据锁，meta data lock）**
+
+MDL不需要显示使用，在访问一个表的时候会自动加上，MDL的作用是，保证读写的正确性，防止在一个查询在执行期间另一线程对这个表结构做变更，删除了一列，导致查询线程的结果和表结构对不上。
+
+对表做CURD时，加MDL读锁；对表结构做变更操作时，加MDL写锁；
+
+-   MDL读锁之间不互斥，可以并发读写
+-   MDL写锁互斥，两个线程同时修改，只能等拿到锁的线程执行完成
+
+| 时间点 | 会话A                                | 会话B                        | 会话C                             | 会话D                                                |
+| ------ | ------------------------------------ | ---------------------------- | --------------------------------- | ---------------------------------------------------- |
+| 1      | begin; <br />Select count(*) from t; |                              |                                   |                                                      |
+| 2      |                                      | Select * from t where id =2; |                                   |                                                      |
+| 3      |                                      |                              | alter  table t add column c3 int; |                                                      |
+| 4      |                                      |                              |                                   | Show  processlist；B：copy to tmp table              |
+| 5      |                                      |                              | 阻塞                              | Show  processlist;B：Waiting for table metadata lock |
+| 6      | A：执行完毕                          |                              |                                   |                                                      |
+| 7      |                                      | B: 执行完成                  |                                   | Show  processlist; B：rename table                   |
+| 8      | Select  count(*) from t;             |                              |                                   |                                                      |
+| 9      |                                      |                              | C：执行完毕                       |                                                      |
+| 10     |                                      |                              |                                   | Show  processlist; A: Sending data                   |
+| 11     | A:执行完毕                           |                              |                                   |                                                      |
+
+session A先启动，这是会对t加一个MDL读锁，session B需要的也是加MDL读锁。读锁不互斥可以正常执行
+
+而session C需要MDL写锁，而之后所有要在表t上申请MDL读锁的请求也会被session C阻塞。等于现在这个表t完全不可读写了，而客户端超时会有重试机制，新的session请求，这个库的线程很快就爆满。
+
+**如何安全的进行表结构变更**
+
+如果是热表的话，就麻烦了，虽然数据量不大，但是请求频繁。这时候kill掉未必管用，因为新的请求马上就来了，一般能遇到这种情况的公司都是有点实力的了，必定会有DBA的支撑了，很幸运和DBA聊了一下
+
+一般表结构变更直接执行就好了，如果遇到一直拿不到MDL锁的情况, 考虑
+
+-   处理慢查询，商量能不能kill
+-   解决长事务，会一直占着MDL锁，[长事物解决方案](innodb事务#长事务)
+-   对于热表的话，因为查询很频繁，会一直拿不到MDL写锁，考虑晚上执行，到这就很头疼了。
+-   如果是上亿数据的大表的话，而且晚上也拿不到MDL写锁的话，推荐方案：
+    -   [pt-online-schema-change](https://www.percona.com/doc/percona-toolkit/LATEST/pt-online-schema-change.html)
+    -   [gh-ost](https://github.com/github/gh-ost)
+    -   [阿里云-不锁表结构变更](https://help.aliyun.com/document_detail/98373.html)
+
+主要原理：
+
+-   1、创建临时表：CREATE TABLE tmp_table_table LIKE table_name
+-   2、变更临时表结构： ALTER TABLE tmp_table_table XXXX
+-   3、全量拷贝数据：INSERT IGNORE INTO tmp_table_table (SELECT %s FROM table_name FORCE INDEX (%s) WHERE xxx
+-   4、增量数据binlog同步： UPDATA/INSRT/DELETE tmp_table_name
+-   5、切换新旧表： RENAME TABLE table_name to old_tmp_table_table, tmp_table_name to table_name
 
 
 

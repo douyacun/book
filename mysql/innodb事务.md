@@ -154,9 +154,7 @@ mysql的事务启动方式有：
 1.  显示启动事务语句，begin 或 start transaction，配套提交有commit，回滚语句是rollback。
 2.  set autocommit = 0, 这个命令会将当前session的自动提交关闭掉，意味着只是执行一个select语句，这个事务就启动了，而且不会自动提交，这个持续到主动commit或rollback语句，或者断开连接
 
-
-
-**使用长事务的弊病? 为什么使用长事务可能拖垮整个库?**
+**[使用长事务的弊病? 为什么使用长事务可能拖垮整个库?](#长事物)**
 
 -   读长事务：
     -   开发同学链接从库查询，没有启用autocommit，查询完成后也没有commit（一般查询也不会commit）。连接就会被长时间挂起，这个事务会持有一个[share_read](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html) DML锁，它会影响对该表的DDL锁，如果这时DBA对主库该表做DDL操作，这个DDL操作复制到从库时，会因等待MDL锁而无法执行，这会造成从库复制大量延迟
