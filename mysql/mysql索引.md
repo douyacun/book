@@ -29,23 +29,32 @@ innodb是索引存储表，表数据按主键顺序存放
 # 联合索引
 对表上的多个列进行索引
 
-对a,b创建索引
+**联合索引的技巧**
 
-可以用到索引
-- where a = 1;
-- where a = 1 and b = 2;
-- where a = 1 order by b;
+1. 覆盖索引：从索引即可查询到所需字段，不需要查询聚集索引中的记录，减少io操作。
 
-用不到索引
-- where b = 2;
+2. 最左前缀：对a,b创建索引
 
-# 覆盖索引
+   - 可以用到索引
+     - where a = 1;
+     - where a = 1 and b = 2;
+     - where a = 1 order by b;
 
-从索引即可查询到所需字段，不需要查询聚集索引中的记录，减少io操作。
+   - 用不到索引
+     - where b = 2;
 
-# multi-range read
+3. 索引下推：a like 'hello%’ and b >10，检索出来的数据会先过滤掉b <= 10 的数据，然后在进行回表查询，减少回表查
+
+# MRR(multi-range read)
 
 目的： 减少磁盘的随机访问，将随机访问变为顺序的数据访问。
+
+MRR执行过程：
+
+- 优化器将二级索引查询到的记录放到一块缓存中
+- 如果二级索引扫描到文件的末尾或者缓冲区已满，使用快排对缓冲区中的内容按照住建进行排序
+- 用户线程调用MRR接口取cluster index, 然后根据cluster index取行数据
+- 当根据缓冲区中的cluster index取完数据，继续调用2、3过程，直至扫面结束 
 
 MRR好处：
 - 使数据访问变得较为顺序，在查询辅助索引时，首先根据得到的结果，按照主键排序，
@@ -53,6 +62,8 @@ MRR好处：
 - 批量处理对键值的查询
 
 explain 可以看到extra列 using MRR
+
+- [MySQL · 特性分析 · 优化器 MRR & BKA](http://mysql.taobao.org/monthly/2016/01/04/)
 
 # ICP
 
@@ -67,6 +78,8 @@ where (from_date between "2019-01-10" and "2019-02-10") and (salaries between 38
 启用ICP，则会在索引取出时就会进行where过滤，前提是where条件被索引覆盖
 
 explain 可以看到extra列 using index condition
+
+- [MySQL · 特性分析 · Index Condition Pushdown (ICP)](http://mysql.taobao.org/monthly/2015/12/08/)
 
 # 如何重建索引和主键索引？
 

@@ -91,8 +91,6 @@ session A先启动，这是会对t加一个MDL读锁，session B需要的也是�
 -   4、增量数据binlog同步： UPDATA/INSRT/DELETE tmp_table_name
 -   5、切换新旧表： RENAME TABLE table_name to old_tmp_table_table, tmp_table_name to table_name
 
-
-
 # 乐观锁
 
 [乐观锁应用场景](https://segmentfault.com/a/1190000008935924)
@@ -144,12 +142,6 @@ SELECT * FROM table_name WHERE ... FOR UPDATE。
 - 共享锁和排他锁都是锁的行记录，意向共享锁和意向排他锁锁定的是表。
 
 悲观锁，每次在拿数据都会上锁，其他session想拿这个数据就会被阻塞知道它拿到锁
-
-
-
-
-
-
 
 
 # 行锁3种算法
