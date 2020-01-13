@@ -112,6 +112,16 @@ update table set num=num-1 where num=10;
 select num from table;
 update table set num=num-1 where num=9;
 
+# 行锁
+
+
+
+
+
+
+
+
+
 # 悲观锁: 
 锁的是索引， 如果没有索引，直接锁表。
 
