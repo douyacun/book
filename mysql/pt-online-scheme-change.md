@@ -1,7 +1,7 @@
 ---
 Title: pt-online-scheme-change使用
 Keywords: 大表DDL,大表结构变更,pt工具,pt-online-scheme-change
-Description: 经常遇见 热表、大表 表结构变更的场景，每次都会很头疼，和DBA聊过以后真正复杂的场景，获取不到MDL锁的时候，或者表有几千万上亿的数据量需要时间长。就用到pt了
+Description: 经常遇见 热表、大表 表结构变更的场景，每次都会很头疼，对于获取不到MDL锁的时候，或者表有几千万上亿的数据量，变更时间长，就用到pt了。
 Label: pt工具
 Cover: assert/pt-online-scheme-change.png
 Date: 2020-01-15 23:21:00
