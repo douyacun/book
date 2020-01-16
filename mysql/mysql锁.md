@@ -1,12 +1,12 @@
 ---
 Title: mysql锁
-Keywords: 共享锁,乐观锁,悲观锁，排他锁
-Description: 深入理解一下mysql的这些常用锁
+Keywords: 共享锁,乐观锁,悲观锁,排他锁,行锁,死锁,避免死锁
+Description: 深入理解一下mysql的行表锁、行锁，如果正确对待死锁。
 Author: douyacun
 Cover: assert/mysql-locks.png
 Label: mysql锁
 Date: 2019-06-04 14:05:09
-LastEditTime: 2020-01-16 20:13:08
+LastEditTime: 2020-01-16 20:16:35
 ---
 
 [toc]
