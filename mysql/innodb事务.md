@@ -5,7 +5,7 @@ Description: start transaction以后事务是否真正启动了? MVCC是什么? 
 Cover: assert/innodb事务-cover.jpeg
 Label: innodb事务
 Date: 2019-02-25 23:02:12
-LastEditTime: 2020-01-16 22:37:48
+LastEditTime: 2020-01-16 22:44:24
 ---
 
 # 基础
