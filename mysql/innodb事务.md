@@ -1,11 +1,11 @@
 ---
 Title: innodb事务详解
-Keywords: mvcc,事务,多版本并发控制
+Keywords: mvcc,事务,多版本并发控制,mvcc,当前读,两阶段提交协议
 Description: start transaction以后事务是否真正启动了。MVCC是什么，可重复读是如何实现的，为啥RR级别要比RU级别效率高？
-Cover: 
+Cover: assert/innodb事务-cover.jpeg
 Label: innodb事务
 Date: 2019-02-25 23:02:12
-LastEditTime: 2020-01-16 22:29:03
+LastEditTime: 2020-01-16 22:35:22
 ---
 
 # 基础
