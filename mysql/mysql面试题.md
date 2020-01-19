@@ -106,5 +106,12 @@ datetime：
 - 尽量选择重复度低的字段
 - 前缀索引
 
+**如何安全的重建主键索引**
+
+```sql
+alter table T engine = innodb;
+```
+
 # 主从复制
 
+-   [mysql主从复制](mysql主从同步.md)

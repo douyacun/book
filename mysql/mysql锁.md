@@ -78,7 +78,7 @@ session A先启动，这是会对t加一个MDL读锁，session B需要的也是�
 -   处理慢查询，商量能不能kill
 -   解决长事务，会一直占着MDL锁，[长事物解决方案](innodb事务#长事务)
 -   对于热表的话，因为查询很频繁，会一直拿不到MDL写锁，考虑晚上执行，到这就很头疼了。
--   如果是上亿数据的大表的话，而且晚上也拿不到MDL写锁的话，推荐方案：
+-   如果是上亿数据的大表（数据几千万，甚至过亿）的话, 或者说一直拿不到MDL写锁的话，推荐方案：
     -   [pt-online-schema-change](https://www.percona.com/doc/percona-toolkit/LATEST/pt-online-schema-change.html)
     -   [gh-ost](https://github.com/github/gh-ost)
     -   [阿里云-不锁表结构变更](https://help.aliyun.com/document_detail/98373.html)
