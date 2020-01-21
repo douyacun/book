@@ -5,7 +5,7 @@ Description: png转webp,jpg转webp,jpeg转webp
 Cover: assert/webp-cover.jpeg
 Label: 图片转webp
 Date: 2019-12-01 20:10:05
-LastEditTime: 2019-12-01 23:22:14
+LastEditTime: 2020-01-21 17:01:28
 ---
 
 # 安装
@@ -58,6 +58,19 @@ $ ./configure --prefix=/usr           \
             --disable-static
 $ make && make install
 ```
+
+安装完libwebp之后，执行dwebp或者cwebp命令报 dwebp: error while loading shared libraries: libwebpdemux.so.2: cannot open shared object file: No such file or directory 错误的解决办法：
+```shell
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib
+echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib" >> ~/.bashrc
+```
+
+添加环境变量： 
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+echo $LD_LIBRARY_PATH
+echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib" >> ~/.bashrc
+
 
 
 # libwebp提供的功能
