@@ -10,9 +10,7 @@ before_install:
   # 确保权限是600
   - chmod 600 ~/.ssh/id_rsa
   # 方便使用 ssh douyacun 直接连接服务器
-  - echo -e "Host douyacun\n\thostname ${hostname}\n\tport ${port}\n\tuser ${user}\n\tIdentityFile  ~/.ssh/id_rsa" > ~/.ssh/config
-  # 避免ssh_know_host，ssh第一次连接的时候都会询问是否加入到~/.ssh/known_hosts,就无法继续下去
-  - echo ${key} >> ~/.ssh/known_hosts
+  - echo -e "Host douyacun\n\thostname ${hostname}\n\tport ${port}\n\tuser ${user}\n\tStrictHostKeyChecking no\n\tIdentityFile  ~/.ssh/id_rsa" > ~/.ssh/config
 # 这里skip是为了避过travis默认的脚本
 install: skip
 script: skip
