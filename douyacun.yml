@@ -22,6 +22,8 @@ Topics:
     - explain.md
     - pt-online-scheme-change.md
     - 20191125充值事故报告.md
+    - mysql排序.md
+    - mysql存储过程.md
   Golang:
     - 函数方法接口.md
     - 数组切片引用.md
