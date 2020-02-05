@@ -101,6 +101,14 @@ session A先启动，这是会对t加一个MDL读锁，session B需要的也是�
 
 在innodb事务中，行锁是在需要的时候才加上的，但并不是不需要了就立即释放，而是要等到事务结束时才释放，这个就是两阶段锁协议
 
+**加锁原则**
+
+1.  原则1：加锁的基本单位是next-key lock。next-key lock是前开后闭区间。
+2.  原则2：查找过程中访问到的对象才会加锁。
+3.  优化1：索引上的等值查询，给唯一索引加锁的时候，next-key lock退化为行锁。
+4.  优化2：索引上的等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock退化为间隙锁。
+5.  一个bug：唯一索引上的范围查询会访问到不满足条件的第一个值为止。
+
 ## 三种算法
 
 **幻像读**
@@ -138,6 +146,29 @@ innodb对于行的查询采用的是这种方式，eg. 有一个索引，有10�
 - [11, 13)
 - [13, 20)
 - [20, +∞)
+
+```sql
+CREATE TABLE `t` (
+  `id` int(11) NOT NULL,
+  `c` int(11) DEFAULT NULL,
+  `d` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `c` (`c`)
+) ENGINE=InnoDB;
+
+insert into t values(0,0,0),(5,5,5),(10,10,10),(15,15,15),(20,20,20),(25,25,25);
+```
+
+
+
+| session A                             | session B                                | session C                             |
+| ------------------------------------- | ---------------------------------------- | ------------------------------------- |
+| begin;                                |                                          |                                       |
+| update t set  d = d + 1 where id = 7; |                                          |                                       |
+|                                       | insert into t  values(8,8,8);     block; |                                       |
+|                                       |                                          | update t set d = d + 1 where id = 10; |
+
+Session B 会被block，因为session A的加锁区间是(5,10]; 因为id=7不存在，退化为间隙锁。session B会被阻塞，10是开区间，这行是可以修改的。
 
 ## 死锁
 

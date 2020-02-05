@@ -1,4 +1,4 @@
-﻿---
+---
 Title: centos7新手安装lnmp环境
 Keywords: lnmp,yum安装
 Description: 
@@ -50,7 +50,7 @@ LastEditTime: 2019-11-29 11:46:43
 
     报错的话
     后面加上 --force --nodeps
-    ```
+   ```
 
 - 安装nginx mysql php-fpm
 ```
@@ -107,9 +107,17 @@ yum --enablerepo=remi-php71 -y install php-fpm php-pdo php-mysql php-redis php-g
 初始化数据库位置:
 # mysqld --initialize-insecure --user=mysql --basedir=/usr/local/mysql --datadir=/data/mysql
 
-设置初始密码强度：
+mysql5.7 关闭密码强度校验：
 [mysqld]
 validate_password=off
+
+mysql8.0 关闭密码强度校验：
+validate_password.check_user_name = OFF
+validate_password.length = 4
+validate_password.mixed_case_count = 0
+validate_password.number_count = 0
+validate_password.policy = 0
+validate_password.special_char_count = 0
 
 查看临时密码登录:
 # cat /var/log/mysqld.log |grep "temporary password"
