@@ -172,13 +172,27 @@ insert into t values(0,0,0),(5,5,5),(10,10,10),(15,15,15),(20,20,20),(25,25,25);
 
 Session B 会被block，因为session A的加锁区间是(5,10]; 因为id=7不存在，退化为间隙锁。session B会被阻塞，10是开区间，这行是可以修改的。
 
-**非唯一锁等值锁**
+**非唯一索引等值锁**
 
+| session A                                         | session B                                     | session C                                   |
+| ------------------------------------------------- | --------------------------------------------- | ------------------------------------------- |
+| begin;                                            |                                               |                                             |
+| select id from t where c = 5 lock in  share mode; |                                               |                                             |
+|                                                   | update t set d = d + 1 where id = 5;          |                                             |
+|                                                   | update t set d = d + 1 where c =  5; (block); |                                             |
+|                                                   |                                               | insert into t values  (7,7,7);     (block); |
 
+1. `update t set d = d + 1 where id = 5;` 为什么不会阻塞？
 
+where条件是id = 5，session A `select id from t where c = 5 lock in  share mode;` 
 
+lock in share mode只锁**覆盖索引**，不会影响主键索引。for update 就不一样了，系统会认为接下来会更新数据，顺便会对主键索引上满足条件的索引加锁。
 
+如果session A查询是 `select d from t where c = 5 lock in share mode;`  session B的`update t set d = d + 1 where id = 5;`  就会被阻塞了。
 
+2. `update t set d = d + 1 where c = 5; ` 为什么会阻塞？
+
+加锁原则中的优化2: 索引上等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock退化为间隙锁。加锁的范围会变为 (c, 10];  session c `insert into t values  (7,7,7);`  也会被阻塞
 
 
 
