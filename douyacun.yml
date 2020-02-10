@@ -26,7 +26,7 @@ Topics:
     - mysql存储过程.md
   Golang:
     - 函数方法接口.md
-    - 数组切片引用.md
+    - 类型.md
     - json解析技巧.md
     - goroutine和系统线程.md
     - channel.md
