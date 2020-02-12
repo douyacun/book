@@ -20,7 +20,7 @@ Topics:
     - 权限管理.md
     - mysql常用函数、控制流.md
     - explain.md
-    - pt-online-scheme-change.md
+    - pt-online-schema-change.md
     - 20191125充值事故报告.md
     - mysql排序.md
     - mysql存储过程.md
@@ -52,5 +52,4 @@ Topics:
   Elasticsearch:
     - 安装运行.md
     - logstash.md
-    - url查询.md
   
