@@ -1,5 +1,7 @@
 language: go
-sudo: false
+sudo: true
+os: 
+  - linux
 git:
   depth: 1
 before_install:
@@ -17,6 +19,6 @@ script: skip
 deploy:
   provider: script
   script: bash scripts/travis.sh
-  skip_cleanup: true
+  cleanup: false
   on:
     tags: true
