@@ -1,5 +1,4 @@
 language: go
-sudo: true
 os: 
   - linux
 git:
