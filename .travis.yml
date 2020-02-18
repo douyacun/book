@@ -1,8 +1,6 @@
 language: go
 os: 
   - linux
-git:
-  depth: 1
 before_install:
   # 初始化可能是没有~/.ssh目录
   - mkdir -p ~/.ssh
