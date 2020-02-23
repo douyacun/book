@@ -1,11 +1,11 @@
 ---
-Title: letsencrypt_acme_泛域名证书
-Keywords: 
-Description: 
-Cover: 
-Label: 
+Title: let's encrypt免费域名证书安装
+Keywords: acme,let's encrypt,免费域名证书安装，centos
+Description: 如何免费获取泛域名证书？
+Cover: assert/letsencrypt-logo-horizontal.svg
+Label: let's encrypt
 Date: 2019-02-25 23:02:09
-LastEditTime: 2019-12-06 14:57:09
+LastEditTime: 2020-02-22 22:14:40
 ---
 
 - [letsencrypt](https://letsencrypt.org/docs/client-options/)
@@ -135,14 +135,16 @@ letsencrypt有效期只有3个月， 安装完成后会自动在`crontab`添加�
 ```
 
 泛域名需要用户依赖dns解析，关于不同云平台的的方法，看下面
-- [DNS API](https://github.com/Neilpang/acme.sh/blob/master/dnsapi/README.md)
+- [官方文档]([https://github.com/acmesh-official/acme.sh/wiki/%E8%AF%B4%E6%98%8E](https://github.com/acmesh-official/acme.sh/wiki/说明))
+- [DNS API](https://github.com/acmesh-official/acme.sh/wiki/dnsapi)
 
-这里贴一下阿里云的用法：需要用到阿里云的 [key&secret](https://link.juejin.im/?target=https%3A%2F%2Fak-console.aliyun.com%2F%23%2Faccesskey)
-```
+这里贴一下阿里云的用法：需要用到阿里云的 [key&secret](https://ak-console.aliyun.com/#/accesskey)
+```shell
+# key 和 Secret 不是完整的别想多了
 export Ali_Key="LTAIHhIap9ux2"
 export Ali_Secret="Ycc2BdWYIX5VBqwpIRLX8sdfsdf"
 
-acme.sh --issue --dns dns_ali -d 00h.tv -d *.00h.tv
+acme.sh --issue --dns dns_ali -d douyacun.com -d *.douyacun.com
 ```
 
 生成之后证书默认在: `~/.acme.sh/*.example.com/`
