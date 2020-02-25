@@ -20,13 +20,13 @@ Topics:
     - 权限管理.md
     - mysql常用函数、控制流.md
     - explain.md
-    - pt-online-scheme-change.md
+    - pt-online-schema-change.md
     - 20191125充值事故报告.md
     - mysql排序.md
     - mysql存储过程.md
   Golang:
     - 函数方法接口.md
-    - 数组切片引用.md
+    - 类型.md
     - json解析技巧.md
     - goroutine和系统线程.md
     - channel.md
@@ -52,5 +52,6 @@ Topics:
   Elasticsearch:
     - 安装运行.md
     - logstash.md
-    - url查询.md
-  
+  Https:
+    - http2.md
+    - letsencrypt.md

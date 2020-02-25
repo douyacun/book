@@ -98,3 +98,86 @@ sudo ./bin/logstash -f logstash.conf
 
 ![](assert/movies.png)
 
+# logstash 同步mysql到elasticsearch
+
+有需求需要把mysql中的数据同步到elasticsearch中, 按照每条记录的更新时间导入数据
+
+[官方文档](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html)
+
+## 安装
+
+看一下logstash已经有的plugins，我当前用的是7.6.0默认已经有了input jdbc了
+
+```
+bin/logstash-plugin list
+```
+
+老版本需要安装插件：
+
+```
+bin/logstash-plugin install logstash-input-jdbc
+```
+
+下在java mysql连接驱动，jdbc_driver_library: [从这里下载最新的版本](https://mvnrepository.com/artifact/mysql/mysql-connector-java)
+
+# 配置文件
+
+```conf
+input {
+	jdbc {
+		jdbc_validate_connection => true
+		jdbc_driver_library => "/opt/driver/mysql-connector-java-5.1.36.jar"
+		jdbc_driver_class => "com.mysql.jdbc.Driver"
+		jdbc_connection_string => "jdbc:mysql://localhost:3306/videos_t"
+		jdbc_user => "root"
+		jdbc_password => "123456"
+		# 定时器
+		schedule => "*/1 * * * * "
+		# 记录 sql_last_value 值的类型，支持: number / timestamp
+		tracking_column_type => "timestamp"
+		# 记录上一次查询是最后的值
+		use_column_value => true
+		tracking_column => "updated_at"
+		# 时区 local 或 utc
+		plugin_timezone="local"
+		# sql_last_value logstash提供的预定义宏，上一次最后查询列的值，具体那一列由 tracking_column 指定
+		statement => "select * from foo where updated_at > :sql_last_value"
+		# 分页，防止首次导入的时候数据过多
+		jdbc_paging_enabled => "true"
+		jdbc_page_size => "10000"
+	}
+}
+
+filter {
+}
+
+output {
+	stdout { codec => json_lines }
+}
+```
+
+这里的需要是按照更新时间导入数据，需要用到3个配置：
+
+- `use_column_value`:  使用上一次查询的值，作为 sql_last_value
+- `tracking_column`: 使用哪一列
+- `tracking_column_type`: 该列值的类型，`numeric`, `timestamp`
+
+> 如果是只有插入同步到elasticsearch的话，可以按id同步 `tracking_column => "id"`    `tracking_column_type => "numeric"`
+
+- `statement` : sql语句，支持参数绑定的形式
+- `prepared_statement_bind_values`: 数组，sql中绑定的参数
+
+- `schedule`: 定时器，具体看cron的用法
+- `plugin_timezone`: 按更新时间同步数据的话，一定要注意时区，默认是:utc,支持local和utc。否则每次查询条件都是差8个小时
+- `jdbc_paging_enabled`: 分页，第一次同步几百万的话，一次查询数据量可能太多
+- `jdbc_page_size`: 每页条数
+- `logstash_jdbc_last_run`: 上一次同步的值, 默认在 `～/.logstash_jdbc_last_run`, 这个最后单独配置一下，一张表同步的话还可以，如果是多张的话就会用成同一个文件中的值
+
+# 错误
+
+这个错误用logstash(7.5.0)报的错，github issue作者提到新版已经修复这个问题所以上面用的版本是7.6.0
+
+```error
+com.mysql.jdbc.Driver not loaded. Are you sure you've included the correct jdbc driver in :jdbc_driver_library?
+```
+

@@ -1,7 +1,8 @@
 language: go
-sudo: false
+os: 
+  - linux
 git:
-  depth: 1
+  depth: false
 before_install:
   # 初始化可能是没有~/.ssh目录
   - mkdir -p ~/.ssh
@@ -17,6 +18,6 @@ script: skip
 deploy:
   provider: script
   script: bash scripts/travis.sh
-  skip_cleanup: true
+  cleanup: false
   on:
     tags: true
