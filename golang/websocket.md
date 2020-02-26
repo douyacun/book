@@ -2,5 +2,3 @@ https://learnku.com/articles/23560/using-golang-to-achieve-million-level-websock
 
 https://github.com/gorilla/websocket
 
-
-
