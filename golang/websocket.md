@@ -146,3 +146,5 @@ https://github.com/sejr/react-messenger
 
 https://github.com/Detaysoft/react-chat-elements/blob/master/src/MessageList/MessageList.js
 
+https://github.com/GetStream/stream-chat-react/tree/master/src
+
