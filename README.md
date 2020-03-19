@@ -36,18 +36,26 @@
 
 - [ ] go net
 
-- [ ] http/2
+- [x] http/2
 
-- [ ] go time
+- [x] go time
 
 - [ ] go text
 
 - [ ] interface
 
-- [ ] map
+- [x] map
 
 - [ ] tcp/ip
 
-- [ ] mysql事物实现方式，mvvc：多版本并发控制
+- [x] mysql事物实现方式，mvvc：多版本并发控制
+
+- [ ] go reflect
+
+- [ ] go runtime
+
+- [ ] go syscall
+
+- [ ] go sync
 
     
