@@ -1,16 +1,18 @@
 ---
-Title: 了解一下高大上的epoll
+Title: 高大上的epoll是如何实现高效处理百万句柄
 Keywords: epoll
 Description: go实现websocket时，使用epoll优化来节省goroutine,这里特地来了解一下
 Cover:
 Label: epoll
 Date: 2020-03-18 21:37:00
-LastEditTime: 2020-03-18 21:37:00
+LastEditTime: 2020-03-20 10:41:45
 ---
 
 epoll时linux内核的可扩展I/O事件通知机制，于Linux 2.5.44首度登场， 让需要大量操作文件描述的程序得以发挥更优异的性能，poll和select的时间复杂度是O(n), 而epoll的复杂度时O(log n)。
 
 # 接口
+
+[http://man7.org/linux/man-pages/man2/epoll_create.2.html](http://man7.org/linux/man-pages/man2/epoll_create.2.html)
 
 ```c#
 int epoll_create(int size);
@@ -18,8 +20,23 @@ int epoll_create(int size);
 
 在内核中创建`epoll`实例并返回一个`epoll`文件描述符。 在最初的实现中，调用者通过 `size` 参数告知内核需要监听的文件描述符数量。如果监听的文件描述符数量超过 size, 则内核会自动扩容。而现在 size 已经没有这种语义了，但是调用者调用时 size 依然必须大于 0，以保证后向兼容性。
 
+[http://man7.org/linux/man-pages/man2/epoll_ctl.2.html](http://man7.org/linux/man-pages/man2/epoll_ctl.2.html)
+
+
 ```c
 int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
+
+typedef union epoll_data {
+    void        *ptr;
+    int          fd;
+    uint32_t     u32;
+    uint64_t     u64;
+} epoll_data_t;
+
+struct epoll_event {
+    uint32_t     events;      /* Epoll events */
+    epoll_data_t data;        /* User data variable */
+};
 ```
 
 向 epfd 对应的内核`epoll` 实例添加、修改或删除对 fd 上事件 event 的监听。
@@ -28,7 +45,17 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
   -  `EPOLL_CTL_ADD`  添加新的事件
   -  `EPOLL_CTL_MOD` 修改文件描述符上监听的事件类型
   - `EPOLL_CTL_DEL` 从实例上删除一个事件
-- 如果 event 的 events 属性设置了 `EPOLLET` flag，那么监听该事件的方式是边缘触发。
+- Event 可以是以下几个宏的集合
+
+    -   EPOLLIN 触发该事件，表示对应的文件描述符上有可读数据。(包括对端SOCKET正常关闭)
+    -   EPOLLOUT  触发该事件，表示对应的文件描述符上可以写数据
+    -   EPOLLPRI 表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）
+    -   EPOLLERR 表示对应的文件描述符发生错误
+    -   EPOLLHUP 表示对应的文件描述符被挂断
+    -   EPOLLET 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的
+    -   EPOLLONESHOT 只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里
+
+[http://man7.org/linux/man-pages/man2/epoll_wait.2.html](http://man7.org/linux/man-pages/man2/epoll_wait.2.html)
 
 ```c
 int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout);
@@ -36,8 +63,101 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 
 - events是结构体epoll_event数组， epoll会把就绪文件描述符赋值给events
 - maxevents告诉内核这个events数组有多大
-
 - 当 timeout 为 0 时，epoll_wait 永远会立即返回。而 timeout 为 -1 时，epoll_wait 会一直阻塞直到任一已注册的事件变为就绪。当 timeout 为一正整数时，epoll 会阻塞直到计时 timeout 毫秒终了或已注册的事件变为就绪。因为内核调度延迟，阻塞的时间可能会略微超过 timeout 毫秒。
+
+go实现epoll, goroutine适合cpu密集型，而epoll是I/O密集型，而I/O密集型的场景也是比较多的
+
+```go
+package main
+
+import (
+	"github.com/gorilla/websocket"
+	"log"
+	"reflect"
+	"sync"
+	"syscall"
+)
+
+type epoll struct {
+	fd       int
+	connects map[int]*websocket.Conn
+	lock     *sync.RWMutex
+}
+
+func MakeEpoll() (*epoll, error) {
+	fd, err := syscall.EpollCreate(1)
+	if err != nil {
+		return nil, err
+	}
+	return &epoll{
+		fd:       fd,
+		connects: make(map[int]*websocket.Conn),
+		lock:     &sync.RWMutex{},
+	}, nil
+}
+
+func (e *epoll) Add(conn *websocket.Conn) error {
+	// e.fd epoll_create 初始化返回epoll文件描述符
+	// syscall.EPOLL_CTL_ADD 对内核epoll实例增加一个描述符
+	// websocketSysFd(conn) 获取conn的文件描述符
+	// nil 水平触发模式
+	fd := websocketSysFd(conn)
+	err := syscall.EpollCtl(e.fd, syscall.EPOLL_CTL_ADD, fd,  &syscall.EpollEvent{Events: syscall.EPOLLIN | syscall.EPOLLHUP, Fd: int32(fd)})
+	if err != nil {
+		return err
+	}
+	e.lock.Lock()
+	defer e.lock.Unlock()
+
+	e.connects[fd] = conn
+	if len(e.connects)%100 == 0 {
+		log.Printf("number of connections: %d", len(e.connects))
+	}
+	return nil
+}
+
+func (e *epoll) Wait() ([]*websocket.Conn, error) {
+	var events = make([]syscall.EpollEvent, 100)
+	n, err := syscall.EpollWait(e.fd, events, 100)
+	if err != nil {
+		return nil, err
+	}
+	var connections []*websocket.Conn
+	for i := 0; i < n; i++ {
+		conn := e.connects[int(events[i].Fd)]
+		connections = append(connections, conn)
+	}
+	return connections, nil
+}
+
+func (e *epoll) Remove(conn *websocket.Conn) error {
+	// e.fd epoll_create 初始化返回epoll文件描述符
+	// syscall.EPOLL_CTL_ADD 对内核epoll实例增加一个描述符
+	// websocketSysFd(conn) 获取conn的文件描述符
+	// nil 水平触发模式
+	fd := websocketSysFd(conn)
+	err := syscall.EpollCtl(e.fd, syscall.EPOLL_CTL_DEL, fd, nil)
+	if err != nil {
+		return err
+	}
+	e.lock.Lock()
+	defer e.lock.Unlock()
+	delete(e.connects, fd)
+	if len(e.connects)%100 == 0 {
+		log.Printf("number of connections: %d", len(e.connects))
+	}
+	return nil
+}
+
+// 这里主要是从websocket.conn中取得文件描述符
+func websocketSysFd(conn *websocket.Conn) int {
+	connVal := reflect.Indirect(reflect.ValueOf(conn)).FieldByName("conn").Elem()
+	tcpConn := reflect.Indirect(connVal).FieldByName("conn")
+	fdVal := tcpConn.FieldByName("fd")
+	pfdVal := reflect.Indirect(fdVal).FieldByName("pfd")
+	return int(pfdVal.FieldByName("Sysfd").Int())
+}
+```
 
 # 原理
 
