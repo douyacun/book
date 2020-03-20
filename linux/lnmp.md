@@ -74,6 +74,41 @@ enabled=1
 ```
 yum --enablerepo=remi-php56 -y install php-fpm php-pdo php-mysql php-redis php-gd php-yar php-xml php-pdo php-pear php-devel php-mbstring;
 yum --enablerepo=remi-php71 -y install php-fpm php-pdo php-mysql php-redis php-gd php-xml php-zip php-pdo  php-pear php-devel php-mbstring php-tokenizer php-bcmath php-mongodb php-xdebug 
+
+
+./configure --prefix=/usr/local/php71  \
+--with-config-file-path=/usr/local/php71/etc \
+--with-curl \
+--with-freetype-dir --with-gd \
+--with-gettext-dir=/usr/local/Cellar/gettext/0.20.1 \
+--with-iconv=/usr/local/opt/libiconv  \
+--with-kerberos \
+--with-libdir=lib64 \
+--with-libxml-dir \
+--with-mysqli \
+--with-openssl-dir=/usr/local/opt/openssl@1.1 \
+--with-pcre-regex \
+--with-pdo-mysql \
+--with-pear \
+--with-png-dir \
+--with-jpeg-dir \
+--with-xmlrpc \
+--with-xsl \
+--with-zlib-dir=/usr/local/Cellar/zlib/1.2.11 \
+--with-mhash \
+--enable-fpm \
+--enable-bcmath \
+--enable-libxml \
+--enable-inline-optimization \
+--enable-gd-native-ttf \
+--enable-mbregex \
+--enable-mbstring  \
+--enable-pcntl  \
+--enable-sockets \
+--enable-sysvsem \
+--enable-sysvshm \
+--enable-xml \
+--enable-zip
 ```
 
 - 安装myql  mysql-server  从repolist   [看官网](https://dev.mysql.com/doc/refman/5.7/en/linux-installation-rpm.html)
