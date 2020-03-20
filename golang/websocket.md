@@ -5,8 +5,10 @@ Description: 一直以来对websocket保持一颗崇拜的心，php这方面比�
 Cover: assert/chat-cover.png
 Label: websocket
 Date: 2020-03-02 13:57:00
-LastEditTime: 2020-03-02 13:57:00
+LastEditTime: 2020-03-20 10:37:10
 ---
+
+[TOC]
 
 # 环境
 
@@ -294,17 +296,111 @@ https://learnku.com/articles/39701
 
 https://cloud.tencent.com/developer/article/1509469
 
-**一个连接的内存成本是多少？**
+**一个连接的成本是多少？**
 
-https://github.com/eranyanay/1m-go-websockets
+这边使用[gorilla/websocket](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go) 1万个连接测试
 
-https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4
+占用147.93MB RAM, 平均连接每个占用15kb 测试代码见：[github gwebsocket](https://github.com/douyacun/gwebsocket/blob/master/v3_ws_ulimit/wsserver.go)
 
-**go websocket**
+```shell
+(pprof) top
+Showing nodes accounting for 137.93MB, 93.24% of 147.93MB total
+Dropped 6 nodes (cum <= 0.74MB)
+Showing top 10 nodes out of 51
+      flat  flat%   sum%        cum   cum%
+   73.79MB 49.88% 49.88%    73.79MB 49.88%  bufio.NewWriterSize
+   34.63MB 23.41% 73.29%    34.63MB 23.41%  bufio.NewReaderSize
+      11MB  7.44% 80.73%       11MB  7.44%  runtime.malg
+       4MB  2.70% 83.44%     5.50MB  3.72%  net/textproto.(*Reader).ReadMIMEHeader
+       3MB  2.03% 85.46%     3.50MB  2.37%  github.com/gorilla/websocket.newConn
+       3MB  2.03% 87.49%    10.50MB  7.10%  net/http.readRequest
+    2.50MB  1.69% 89.18%    16.50MB 11.16%  net/http.(*conn).readRequest
+    2.50MB  1.69% 90.87%     3.50MB  2.37%  context.propagateCancel
+       2MB  1.35% 92.23%        2MB  1.35%  syscall.anyToSockaddr
+    1.50MB  1.01% 93.24%     1.50MB  1.01%  net.newFD
+(pprof) web
+failed to execute dot. Is Graphviz installed? Error: exec: "dot": executable file not found in $PATH
+(pprof) list flat
+Total: 147.93MB
+```
 
-https://github.com/gobwas/ws
+goroutine是10003，每个goroutine占用4kb的内存
 
-**基准测试**
+```shell
+(pprof) top
+Showing nodes accounting for 10001, 100% of 10003 total
+Dropped 24 nodes (cum <= 50)
+Showing top 10 nodes out of 19
+      flat  flat%   sum%        cum   cum%
+     10001   100%   100%      10001   100%  runtime.gopark
+         0     0%   100%       9998   100%  bufio.(*Reader).Peek
+         0     0%   100%       9998   100%  bufio.(*Reader).fill
+         0     0%   100%       9999   100%  github.com/gorilla/websocket.(*Conn).NextReader
+         0     0%   100%       9999   100%  github.com/gorilla/websocket.(*Conn).ReadMessage
+         0     0%   100%       9999   100%  github.com/gorilla/websocket.(*Conn).advanceFrame
+         0     0%   100%       9998   100%  github.com/gorilla/websocket.(*Conn).read
+         0     0%   100%       9999   100%  internal/poll.(*FD).Read
+         0     0%   100%      10001   100%  internal/poll.(*pollDesc).wait
+         0     0%   100%      10001   100%  internal/poll.(*pollDesc).waitRead (inline)
+(pprof) list flat
+Total: 10003
+(pprof)
+```
+
+
+
+根据  Eran Yanay 在 Gophercon Israel 分享的讲座 [https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4](https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4) 优化,  代码在[github](https://github.com/eranyanay/1m-go-websockets)
+
+
+- 使用epoll优化, 复用goroutine， goroutine适合cpu密集型，而epoll适合I/O密集型，这里使用epoll来复用goroutine， 如果是1万个链接的话, 4kb *  10000 / 1024 ~= 39M , epoll的原理和用法可以看一下，[了解一下高大上的epoll](/linux/websocket.md)
+
+这边使用epoll 内存节省了 147.93 - 79.94 = 67.99MB, 
+
+```shell
+(pprof) top
+Showing nodes accounting for 79.94MB, 100% of 79.94MB total
+Showing top 10 nodes out of 37
+      flat  flat%   sum%        cum   cum%
+   38.65MB 48.35% 48.35%    38.65MB 48.35%  bufio.NewReaderSize (inline)
+   30.12MB 37.67% 86.02%    30.12MB 37.67%  bufio.NewWriterSize
+    4.50MB  5.63% 91.65%        5MB  6.26%  github.com/gorilla/websocket.newConn
+    2.50MB  3.13% 94.78%     2.50MB  3.13%  net.sockaddrToTCP
+       2MB  2.50% 97.28%        2MB  2.50%  syscall.anyToSockaddr
+    0.67MB  0.84% 98.12%     0.67MB  0.84%  main.(*epoll).Add
+    0.50MB  0.63% 98.75%     0.50MB  0.63%  fmt.(*pp).handleMethods
+    0.50MB  0.63% 99.37%     0.50MB  0.63%  net.newFD
+    0.50MB  0.63%   100%     0.50MB  0.63%  github.com/gorilla/websocket.(*Conn).SetPingHandler
+         0     0%   100%    38.65MB 48.35%  bufio.NewReader
+(pprof) list flat
+Total: 79.94MB
+```
+
+运行的goroutine只有5个
+
+```shell
+(pprof) top
+Showing nodes accounting for 5, 100% of 5 total
+Showing top 10 nodes out of 35
+      flat  flat%   sum%        cum   cum%
+         2 40.00% 40.00%          2 40.00%  runtime.gopark
+         1 20.00% 60.00%          1 20.00%  runtime/pprof.writeRuntimeProfile
+         1 20.00% 80.00%          1 20.00%  syscall.Syscall
+         1 20.00%   100%          1 20.00%  syscall.Syscall6
+         0     0%   100%          2 40.00%  internal/poll.(*FD).Accept
+         0     0%   100%          1 20.00%  internal/poll.(*FD).Read
+         0     0%   100%          2 40.00%  internal/poll.(*pollDesc).wait
+         0     0%   100%          2 40.00%  internal/poll.(*pollDesc).waitRead (inline)
+         0     0%   100%          2 40.00%  internal/poll.runtime_pollWait
+         0     0%   100%          1 20.00%  main.(*epoll).Wait
+(pprof) list flat
+Total: 5
+```
+
+- 从上面内存占用情况来看还是buf占用内存比较多，接下来就考虑优化buf的使用。go websocket库有2个比较推荐，第一个就是上面一直用的另一个是：[gobwas/ws](https://github.com/gobwas/ws)， gobwas有几个特性：
+  - Zero-copy upgrade
+  - No intermediate allocations during I/O
+  - Low-level API which allows to build your own logic of packet handling and buffers reuse
+  - High-level wrappers and helpers around API in `wsutil` package, which allow to start fast without digging the protocol internals
 
 
 
@@ -313,3 +409,4 @@ https://github.com/gobwas/ws
 
 
 - [websocket优化方向](https://learnku.com/articles/23560/using-golang-to-achieve-million-level-websocket-services)
+
