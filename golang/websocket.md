@@ -270,9 +270,7 @@ const upScrollLoadMore = () => {
 
 todo::
 
-# 后端难点
-
-**nginx如何反向代理websocket?**
+# nginx如何反向代理websocket?
 
 前端开发环境配置的时候已经展示过一次
 
@@ -280,7 +278,9 @@ todo::
 - `proxy_set_header Upgrade $http_upgrade;`: http协议升级的请求头Upgrade传给后端
 - `proxy_set_header Connection 'upgrade';` http协议升级的请求头Connection传给后端
 
-**群聊和私聊是如何实现的**
+
+
+# 群聊和私聊是如何实现的
 
 不管是私聊还是群聊，都会创建一个channel来包含成员，每次消息发送消息指定channel.id即可，服务器在收到消息后，根据channel.id向channel.members推送消息。
 
@@ -290,13 +290,9 @@ channel分了3中类型：
 - public 群聊 聊天人数超过2个
 - private 私聊 聊天人群2个
 
-**现有功能都是单机，如何实现分布式?**
 
-https://learnku.com/articles/39701
 
-https://cloud.tencent.com/developer/article/1509469
-
-**一个连接的成本是多少？**
+# 一个连接的成本是多少？
 
 这边使用[gorilla/websocket](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go) 1万个连接测试
 
@@ -346,8 +342,6 @@ Showing top 10 nodes out of 19
 Total: 10003
 (pprof)
 ```
-
-
 
 根据  Eran Yanay 在 Gophercon Israel 分享的讲座 [https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4](https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4) 优化,  代码在[github](https://github.com/eranyanay/1m-go-websockets)
 
@@ -402,11 +396,50 @@ Total: 5
   - Low-level API which allows to build your own logic of packet handling and buffers reuse
   - High-level wrappers and helpers around API in `wsutil` package, which allow to start fast without digging the protocol internals
 
+1w个链接3M内存,  5个goroutine
 
+```shell
+(pprof) top
+Showing nodes accounting for 3328.46kB, 100% of 3328.46kB total
+Showing top 10 nodes out of 20
+      flat  flat%   sum%        cum   cum%
+ 1024.12kB 30.77% 30.77%  1024.12kB 30.77%  net.newFD (inline)
+ 1024.05kB 30.77% 61.54%  1024.05kB 30.77%  net.sockaddrToTCP
+  768.26kB 23.08% 84.62%   768.26kB 23.08%  main.(*epoll).Add
+  512.03kB 15.38%   100%   512.03kB 15.38%  syscall.anyToSockaddr
+         0     0%   100%   512.03kB 15.38%  internal/poll.(*FD).Accept
+         0     0%   100%   512.03kB 15.38%  internal/poll.accept
+         0     0%   100%  2560.20kB 76.92%  main.main
+         0     0%   100%   768.26kB 23.08%  main.wsHandle
+         0     0%   100%  2560.20kB 76.92%  net.(*TCPListener).Accept
+         0     0%   100%  2560.20kB 76.92%  net.(*TCPListener).accept
+(pprof) list flat
+Total: 3.25MB
 
-# 聊天
+(pprof) top
+Showing nodes accounting for 5, 100% of 5 total
+Showing top 10 nodes out of 35
+      flat  flat%   sum%        cum   cum%
+         2 40.00% 40.00%          2 40.00%  runtime.gopark
+         1 20.00% 60.00%          1 20.00%  runtime/pprof.writeRuntimeProfile
+         1 20.00% 80.00%          1 20.00%  syscall.Syscall
+         1 20.00%   100%          1 20.00%  syscall.Syscall6
+         0     0%   100%          2 40.00%  internal/poll.(*FD).Accept
+         0     0%   100%          1 20.00%  internal/poll.(*FD).Read
+         0     0%   100%          2 40.00%  internal/poll.(*pollDesc).wait
+         0     0%   100%          2 40.00%  internal/poll.(*pollDesc).waitRead (inline)
+         0     0%   100%          2 40.00%  internal/poll.runtime_pollWait
+         0     0%   100%          1 20.00%  main.(*epoll).Wait
+(pprof) list flat
+Total: 5
+```
 
+# 如何限流，防止ddos
 
+https://studygolang.com/articles/13254
 
-- [websocket优化方向](https://learnku.com/articles/23560/using-golang-to-achieve-million-level-websocket-services)
+# 如何实现分布式?
 
+https://learnku.com/articles/39701
+
+https://cloud.tencent.com/developer/article/1509469
