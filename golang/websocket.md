@@ -5,7 +5,7 @@ Description: 一直以来对websocket保持一颗崇拜的心，php这方面比�
 Cover: assert/chat-cover.png
 Label: websocket
 Date: 2020-03-02 13:57:00
-LastEditTime: 2020-03-24 10:29:35
+LastEditTime: 2020-03-24 10:44:05
 ---
 
 
@@ -347,7 +347,7 @@ Total: 10003
 根据  Eran Yanay 在 Gophercon Israel 分享的讲座 [https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4](https://www.youtube.com/watch?reload=9&v=LI1YTFMi8W4) 优化,  代码在[github](https://github.com/eranyanay/1m-go-websockets)
 
 
-- 使用epoll优化, 复用goroutine， goroutine适合cpu密集型，而epoll适合I/O密集型，这里使用epoll来复用goroutine， 如果是1万个链接的话, 4kb *  10000 / 1024 ~= 39M , epoll的原理和用法可以看一下，[了解一下高大上的epoll](/linux/websocket.md)
+- 使用epoll优化, 复用goroutine， goroutine适合cpu密集型，而epoll适合I/O密集型，这里使用epoll来复用goroutine， 如果是1万个链接的话, 4kb *  10000 / 1024 ~= 39M , epoll的原理和用法可以看一下，[了解一下高大上的epoll](/linux/epoll.md)
 
 这边使用epoll 内存节省了 147.93 - 79.94 = 67.99MB, 
 
