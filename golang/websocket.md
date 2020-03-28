@@ -389,7 +389,7 @@ Showing top 10 nodes out of 35
          0     0%   100%          2 40.00%  internal/poll.(*FD).Accept
          0     0%   100%          1 20.00%  internal/poll.(*FD).Read
          0     0%   100%          2 40.00%  internal/poll.(*pollDesc).wait
-         0     0%   100%          2 40.00%  internal/poll.(*pollDesc).waitRead (inline)
+         0     0%   100%          2 40.00%  internal/poll.(*pollDesc).waitRead (inline )
          0     0%   100%          2 40.00%  internal/poll.runtime_pollWait
          0     0%   100%          1 20.00%  main.(*epoll).Wait
 (pprof) list flat
