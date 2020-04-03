@@ -435,6 +435,24 @@ Showing top 10 nodes out of 35
 Total: 5
 ```
 
+# 每过一段时间, 连接会自动断开EOF error
+
+使用gobws重构了一下聊天室，gobws暴露的都是websocket底层协议的内容，而[gorilla/websocket](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go) 是
+
+封装比较全面的库，开箱即用，内部封装了很多，导致很多websocket协议的内容还是不了解，这里是学习阶段当然是问题暴露的越多越好。
+
+每隔一段时间，如果不发消息连接会自动断开，
+
+
+
+
+
+每隔一段时间不发送任何消息，连接会自动断开
+
+
+
+
+
 # 如何限流，防止ddos
 
 https://studygolang.com/articles/13254
