@@ -441,15 +441,49 @@ Total: 5
 
 封装比较全面的库，开箱即用，内部封装了很多，导致很多websocket协议的内容还是不了解，这里是学习阶段当然是问题暴露的越多越好。
 
-每隔一段时间，如果不发消息连接会自动断开，
+每隔一段时间，如果不发消息连接会自动断开，很难考虑到是那个方向出了问题，我特意写了一个简单的测试，然后用chrome console初始化websocket。隔很久也不会断开。我本地开发环境也是用nginx做为代理的，问题出现在nginx代理上,下面本地环境完整的配置。
 
+```nginx
+server {
+        listen 80;
+        server_name douyacun.io;
 
+        location /api/ {
+                if ($request_method = 'OPTIONS') {
+                        return 204;
+                }
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host  $http_host;
+                proxy_set_header X-Nginx-Proxy true;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
 
+                # 不需要考虑到负载的，就无需配置upstream节点。
+                proxy_pass    http://127.0.0.1:9003;
+        }
+        location / {
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host  $http_host;
+                proxy_set_header X-Nginx-Proxy true;
+                proxy_set_header Connection "";
 
+                # 不需要考虑到负载的，就无需配置upstream节点。
+                proxy_pass    http://127.0.0.1:3000;
+        }
+}
+```
 
-每隔一段时间不发送任何消息，连接会自动断开
+nginx有2个参数是涉及到timeout的
 
+- proxy_read_timeout 默认值 60s   该指令设置与代理服务器的读超时时间。它决定了nginx会等待多长时间来获得请求的响应。 这个时间不是获得整个response的时间，而是两次reading操作的时间。
+- proxy_send_timeout 默认值 60s  这个指定设置了发送请求给upstream服务器的超时时间。超时设置不是为了整个发送期间，而是在两次write操作期间。 如果超时后，upstream没有收到新的数据，nginx会关闭连接
 
+可以看到是nginx的timeout超时机制导致的连接断开的，如何解决？
+
+通过定期发送ping帧以保持连接并确认连接是否还在使用
 
 
 
