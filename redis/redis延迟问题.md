@@ -9,7 +9,10 @@ Date: 2019-06-13 14:37:52
 LastEditTime: 2019-12-27 23:03:20
 ---
 
+[toc]
+
 # redis延迟高问题解决思路
+
 延迟是 客户端从发出命令与客户端接收命令的回复之间的最大延迟，通常redis的处理时间是非常低的，但是存在高延迟的某些条件
 
 解决思路：
@@ -132,13 +135,25 @@ redis没100毫秒会启动一个serverCron来执行定期淘汰策略
 正常情况下,`ACTIVE_EXPIRE_CYCLE_LOOKUPS_PER_LOOP`默认情况下设置为20，每秒执行10次，通常每秒只有200个密钥主动过期，每秒200个key过期对redis实例是没有影响的，
 然而算法是自适应的，如果发现该组采样key中发现超过25%的key已经过期，该算法会循环，如果数据库有超过25%的key可以在同一秒过期，并且这些key占当前key的25%
 
-# 如何启用延迟监控
+# 延迟监控 & 慢查询日志
 设置延迟阀值(单位：毫秒)，只有超过阀值的事件才会被记录成为延迟峰值，根据需要设置
 ```conf
 config set latency-monitor-threshold 100
 ```
 
+redis慢查询配置:
+
+-   slowlog-log-slower-than 单位毫秒，默认10毫秒，超过的会被记录，对于高OPS的场景可以设置为1毫秒
+-   Slowly-max-len 最多纪录多少条, 线上可设置为1000条以上
+
+获取慢查询日志：
+
+```redis
+slowlog get [n]
+```
+
 # redis测量延迟工具
+
 ```shell
 [work@cpc-dev01 ~]$ redis-cli -p 6379 --intrinsic-latency 100
 Max latency so far: 1 microseconds.
