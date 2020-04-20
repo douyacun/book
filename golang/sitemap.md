@@ -10,7 +10,8 @@ LastEditTime: 2020-04-19 20:32:14
 
 [sitemap 协议](https://www.sitemaps.org/protocol.html)
 
-# Installation
+### Installation
+
 ```
 import "github.com/douyacun/gositemap"
 ```
@@ -46,17 +47,16 @@ fmt.Printf("%s", bt)
 </urlset>
 ```
 
-# Features
-- [gositemap](#gositemap)
-- [Installation](#installation)
-- [Features](#features)
-- [Image sitemap](#image-sitemap)
-- [News sitemap](#news-sitemap)
-- [Video sitemap](#video-sitemap)
-- [file storage](#file-storage)
-- [Sitemap index](#sitemap-index)
+### Features
 
-# Image sitemap
+- [x]  [gositemap](#gositemap)
+- [x]  [Image sitemap](#image-sitemap)
+- [x]  [News sitemap](#news-sitemap)
+- [x]  [Video sitemap](#video-sitemap)
+- [x]  [file storage](#file-storage)
+- [x]  [Sitemap index](#sitemap-index)
+
+### Image sitemap
 
 Google 图片扩展功能 [Google Image Support](https://support.google.com/webmasters/answer/178636?hl=zh-Hans&ref_topic=4581190)
 
@@ -119,7 +119,7 @@ fmt.Printf("%s", data)
 </urlset>
 ```
 
-# News sitemap
+### News sitemap
 
 Google 新闻站点地图准则 [google news support](https://support.google.com/webmasters/answer/178636?hl=zh-Hans&ref_topic=4581190) 
 
@@ -159,7 +159,7 @@ fmt.Printf("%s", data)
 </urlset>
 ```
 
-# Video sitemap
+### Video sitemap
 
 视频 Sitemap 及其替代方案 [Google Video Support](https://support.google.com/webmasters/answer/80471?hl=zh-Hans&ref_topic=4581190)
 
@@ -230,7 +230,7 @@ fmt.Printf("%s", bt)
 </urlset>
 ```
 
-# file storage
+### file storage
 
 ```go
 st := NewSiteMap()
@@ -276,7 +276,7 @@ fmt.Println(path)
 </urlset>
 ```
 
-# Sitemap index 
+### Sitemap index 
 
 拆分较大的站点地图
 
@@ -319,3 +319,6 @@ fmt.Printf("%v", filename)
 
 使用sitemap_index时，建议每个单独的sietmap comporess压缩成.gz文件，`SetCompress`后会自动添加 `.gz`后缀名 ,  生成`sitemap1.xml.gz` 和 `sitemap_index.xml`
 
+### Documentation
+
+[Api Reference](https://pkg.go.dev/github.com/douyacun/gositemap?tab=doc)
