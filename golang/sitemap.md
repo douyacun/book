@@ -6,6 +6,8 @@ Date: 2020-04-18 10:00:00
 LastEditTime: 2020-04-19 20:32:14
 ---
 
+[原文地址](https://www.douyacun.com/article/ff22421a7c7ea0596d893ebbbf464cab)
+
 # gositemap
 
 [sitemap 协议](https://www.sitemaps.org/protocol.html)
