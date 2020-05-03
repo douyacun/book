@@ -63,7 +63,7 @@ Github: 	  	https://www.github.com/douyacun
 
 - 服务化拆分后问题排查难度增加，各系统出现日志记录不全无法了解上下文，日志格式参差不齐，或者没有记录。主动推广接入jaeger tracing自动记录trace context关键内容
 - 为保证服务高可用，对文件上传服务、数据报表服务做服务降级处理
-- 
+- prometheus metrics监控数据收集
 
 **新闻APP 上海展盟/全栈开发**
 
