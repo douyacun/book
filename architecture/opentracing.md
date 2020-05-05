@@ -18,7 +18,7 @@ LastEditTime: 2020-05-04 00:45:42
 - [opentracing tutorial](https://github.com/yurishkuro/opentracing-tutorial) 可以不看
 - [The OpenTracing Specification repository](https://github.com/opentracing/specification) 命名规范
 - [go elasticsearch trace](https://www.elastic.co/guide/en/apm/agent/go/current/introduction.html) 收集es查询日志
-- [使用阿里云sls存储](https://github.com/aliyun/aliyun-log-jaeger) 
+- [使用阿里云sls存储](https://github.com/aliyun/aliyun-log-jaeger) 公司一般都是用sls    
 
 ### 开源库
 

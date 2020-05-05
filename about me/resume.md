@@ -2,20 +2,22 @@
 
 3年工作经验 | 1994年 | 男 
 
-联系方式： 	15258157582 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
+联系方式: 15258157582 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
 
-博客:			   https://www.douyacun.com
+博客: https://www.douyacun.com
 
-Github: 	  	https://www.github.com/douyacun
+Github: https://www.github.com/douyacun
 
 ### 技术栈
 
 1. 熟悉go、php语言，熟悉常用框架：gin、Laravel、Yii
-2. 熟悉mysql，索引优化、主从复制、读写分离，了解Elasticsearch、Mongodb
+2. 熟悉mysql，索引优化、主从复制、读写分离
 3. 熟悉linux，线上环境部署，问题排查
-4. 熟悉react，有2个后台项目前端页面开发经验
-5. 熟悉python，开发维护scrapy爬虫项目
-6. 有分布式和微服务系统设计经验
+4. 有分布式和微服务系统设计经验
+5. 熟悉redis，了解RabbitMQ、kafaka
+6. 了解Elasticsearch、Mongodb
+7. 熟悉python，有scrapy项目经验
+8. 了解react，有前端项目开发经验
 
 ---
 
@@ -44,9 +46,8 @@ Github: 	  	https://www.github.com/douyacun
 
 **项目业绩**
 
-- 服务化拆分极大提升了交付与部署的效率，各层服务接入sidecar做服务治理限流熔断，提高服务可用性
+-   
 
-- 开发代理商自助充值，针对并发充值安全优化，节省3位运营人力成本，每日达到2千万充值金额
 
 **Market Api（信息流对外推广服务） 趣头条/Golang开发**
 
@@ -63,7 +64,6 @@ Github: 	  	https://www.github.com/douyacun
 
 - 服务化拆分后问题排查难度增加，各系统出现日志记录不全无法了解上下文，日志格式参差不齐，或者没有记录。主动推广接入jaeger tracing自动记录trace context关键内容
 - 为保证服务高可用，对文件上传服务、数据报表服务做服务降级处理
-- prometheus metrics监控数据收集
 
 **新闻APP 上海展盟/全栈开发**
 
