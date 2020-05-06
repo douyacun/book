@@ -3,7 +3,7 @@ Title: go opentracing 实践与落地
 Keywords: opentracing,gin,gorm,elasticsearch,jaeger
 Description: 分布式全链路日志追踪
 Date: 2020-05-04 00:45:42
-LastEditTime: 2020-05-04 00:45:42
+LastEditTime: 2020-05-06 10:23:00
 ---
 
 [toc]
