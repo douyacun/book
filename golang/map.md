@@ -1,5 +1,5 @@
 ---
-Title: go hashmap数据结构与实现原理
+Title: 基础数据结构: hashmap数据结构与实现原理
 Keywords: go map,hashmap,数据接口,实现原理
 Description: 知道map数据结构长什么样才能知道是怎么访问的, 冲突时如何解决的
 Label: hashmap
