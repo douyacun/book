@@ -41,6 +41,7 @@ Topics:
     - websocket.md
     - delve远程调试.md
     - sitemap.md
+    - map.md
   Linux:
     - 页缓存.md
     - lnmp.md
@@ -63,10 +64,11 @@ Topics:
     - letsencrypt.md
   architecture:
     - opentracing.md
+    - 高并发.md
   algorithm:
-    - 19. 删除链表的倒数第N个节点.md
-    - 21. 合并两个有序链表.md
-    - 23. 合并k个有序链表.md
-    - 25. K 个一组翻转链表.md
-    - 61. 旋转链表.md
+    # - 19. 删除链表的倒数第N个节点.md
+    # - 21. 合并两个有序链表.md
+    # - 23. 合并k个有序链表.md
+    # - 25. K 个一组翻转链表.md
+    # - 61. 旋转链表.md
 
