@@ -19,7 +19,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - /Users/feifei/Documents/utils/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
       - prometheus_network
   grafana:
