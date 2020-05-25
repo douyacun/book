@@ -1,7 +1,7 @@
 ---
-Title: go json 解析技巧,go json.Unmarshal 常见问题
-Keywords: Unmarshal,UnmarshalJSON,MarshalJSON
-Description: cannot unmarshal bool into Go struct field githubUser.site_admin of type models.IsSiteAdmin, go语言的json解析的确没有python和php安逸
+Title: go json 解析小技巧
+Keywords: omitempty,数据流json解码,原生字符串
+Description: json包的使用不是像php那样json_encode/json_decode,有更大操作空间
 Label: json解析
 Author: douyacun
 Date: 2019-08-20 00:01:11
@@ -117,3 +117,181 @@ for{
 // float64: 1.234
 ```
 
+6. 对于不确定是int或者float的字段，可以使用json.Number
+
+```go
+type person struct {
+	Weight json.Number `json:"weight"`
+}
+
+var p person
+str := `{"weight": 19}`
+if err := json.Unmarshal([]byte(str), &p); err != nil {
+  fmt.Println(err)
+  return
+}
+fmt.Println(p.Weight.Int64())
+// 19 <nil>
+```
+
+7. 可以像orm一样写原生sql。像es的查询结果如何定义结构体：
+
+**编码**
+
+```go
+type person struct {
+	Weight json.Number     `json:"weight"`
+	Skill  json.RawMessage `json:"skill"`
+}
+
+skill := map[string]interface{}{
+  "language": []string{"c", "php", "js", "golang"},
+  "js":       []string{"react"},
+  "php":      []string{"Laravel", "ThinkPHP"},
+  "golang":   []string{"gin"},
+}
+res, err := json.Marshal(skill)
+if err != nil {
+  fmt.Println(err)
+}
+p := person{
+  Weight: "89",
+  Skill:  json.RawMessage(res),
+}
+if res, err := json.MarshalIndent(p, "", "\t"); err != nil {
+  fmt.Println(err)
+  return
+} else {
+  fmt.Println(string(res))
+}
+```
+
+输出
+
+```json
+{
+        "weight": 89,
+        "skill": {
+                "golang": [
+                        "gin"
+                ],
+                "js": [
+                        "react"
+                ],
+                "language": [
+                        "c",
+                        "php",
+                        "js",
+                        "golang"
+                ],
+                "php": [
+                        "Laravel",
+                        "ThinkPHP"
+                ]
+        }
+}
+```
+
+**解码**
+
+像ES search结果集，外层有公共的数据结构
+
+```json
+{
+  "took" : 0,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 12,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : []
+  }
+}
+```
+
+结构体
+
+```go
+type ESListResponse struct {
+	Took    int  `json:"took"`
+	Timeout bool `json:"timed_out"`
+	Shards  struct {
+		Total      int `json:"total"`
+		Successful int `json:"successful"`
+		Skipped    int `json:"skipped"`
+		Failed     int `json:"failed"`
+	} `json:"_shards"`
+	Hits struct {
+		Total struct {
+			Value    int    `json:"value"`
+			Relation string `json:"relation"`
+		} `json:"total"`
+		MaxScore float64         `json:"max_score"`
+		Hits     []json.RawMessage `json:"hits"`
+	} `json:"hits"`
+}
+type ESItemResponse struct {
+	Index  string          `json:"_index"`
+	Type   string          `json:"_type"`
+	Id     string          `json:"_id"`
+	Score  float64         `json:"_score"`
+	Source json.RawMessage `json:"_source"`
+}
+```
+
+这个有点复杂，写个简单的例子：
+
+```go
+type person struct {
+	Weight json.Number     `json:"weight"`
+	Skill  json.RawMessage `json:"skill"`
+}
+
+
+str := `{
+	"weight": 180,
+	"skill": {
+		"language": ["php", "golang", "c", "python"],
+		"database": ["elasticsearch", "mysql", "redis"]
+	}
+}`
+var p person
+if err := json.Unmarshal([]byte(str), &p); err != nil {
+  fmt.Println(err)
+  return
+}
+fmt.Printf("weight: %s\nskill: %s\n", p.Weight, p.Skill)
+
+type _skill struct {
+  Language []string `json:"language"`
+  Database []string `json:"database"`
+}
+
+var skill _skill
+if err := json.Unmarshal(p.Skill, &skill); err != nil {
+  fmt.Println(err)
+  return
+}
+fmt.Printf("%+v\n", skill)
+```
+
+输出：
+
+```
+weight: 180
+skill: {
+                "language": ["php", "golang", "c", "python"],
+                "database": ["elasticsearch", "mysql", "redis"]
+        }
+{Language:[php golang c python] Database:[elasticsearch mysql redis]}
+```
+
+其实 p.Skill 还是 []byte,可以再次被 Unmarshal
