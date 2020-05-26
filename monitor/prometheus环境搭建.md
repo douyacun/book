@@ -1,15 +1,15 @@
 ---
-Title: 
-Keywords: 
-Description: 
+Title: Prometheus Grafana docker基础环境搭建
+Keywords: prometheus,docker环境
+Description: docker-compose管理 prometheus和Grafana
 Author: douyacun
 Date: 2020-05-20 18:00:45
-Label: 
+Label: Prometheus
 LastEditTime: 2020-05-20 18:00:55
 ---
 
+`docker-compose.md`
 
-`docker-composer.md`
 ```yml
 version: '2.2'
 services:
@@ -34,7 +34,12 @@ networks:
     driver: bridge
 ```
 
+docker 启动一个容器默认网络是bridge模式，各容器相互隔离，这里指定2个容器在统一网络内
+
+
+
 `prometheus.yml`
+
 ```yml
 # my global config
 global:
@@ -66,3 +71,6 @@ scrape_configs:
     static_configs:
     - targets: ['docker.for.mac.host.internal:9003']
 ```
+
+docker 调用宿主机服务，使用 `docker.for.mac.host.internal` 作为host
+

@@ -215,6 +215,9 @@ if res, err := json.MarshalIndent(p, "", "\t"); err != nil {
     "hits" : []
   }
 }
+fmt.Println(p1)
+// {douyacun 18}
+// 如何不加string，会报错: json: cannot unmarshal string into Go struct field person.age of type int
 ```
 
 结构体
