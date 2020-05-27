@@ -1,3 +1,9 @@
+本次目的:
+
+1.  使用docker部署一套kong的环境
+2.  使用kong代理到本地服务
+3.  熟悉kong限流和鉴权
+
 # docker安装
 
 [官网](https://docs.konghq.com/install/docker/?_ga=2.181811879.1832554820.1590497490-1678089697.1590497490) 有完整介绍
@@ -108,4 +114,64 @@ service: 代表后端api服务
 route: 路由到哪个service服务，一个service可以有多个route
 
 ![](./assert/route-and-service.png)
+
+### 创建service
+
+`rest api`
+
+```shell
+$ curl -i -X POST http://localhost:8001/services \
+ --data name=douyacun \
+ --data url='http://docker.for.mac.host.internal:9003'
+```
+
+界面
+
+![](./assert/add-service.png)
+
+### 创建route
+
+`rest api`
+
+```shell
+$ curl --location --request POST '127.0.0.1:8001/services/douyacun/routes' \
+--form 'name=ping' \
+--form 'paths[]=/ping'
+```
+
+界面
+
+![](./assert/add-routes.png)
+
+访问:
+
+```shell
+curl --location --request GET '127.0.0.1:8000/ping'
+# ok
+```
+
+### 限流配置
+
+`rest api` 这样设置，默认是全局配置, 默认是针对consumer,每分钟5次
+
+```shell
+$ curl -i -X POST http://localhost:8001/plugins \
+--data "name=rate-limiting" \
+--data "config.minute=5" \
+--data "config.policy=local"
+```
+
+界面
+
+![](./assert/rate-limit.png)
+
+超过5次以后会返回
+
+```json
+{
+    "message": "API rate limit exceeded"
+}
+```
+
+
 
