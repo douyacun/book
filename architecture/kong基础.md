@@ -1,4 +1,4 @@
-本次目的:
+本篇文档目的:
 
 1.  使用docker部署一套kong的环境
 2.  使用kong代理到本地服务
@@ -173,5 +173,74 @@ $ curl -i -X POST http://localhost:8001/plugins \
 }
 ```
 
+### proxy_cache 缓存请求插件
 
+`rest api`
+
+```shell
+$ curl -i -X POST http://127.0.0.1:8001/plugins \
+--data name=proxy-cache \
+--data config.content_type="application/json" \
+--data config.cache_ttl=30 \
+--data config.strategy=memory
+```
+
+界面
+
+![](./assert/proxy-cache.png)
+
+注意： 如果`content-type` 不一致的话，缓存命中状态会是跳过状态`X-Cache-Status: Bypass` ，像我们上面设置的 `config.content_type="application/json"`  但是response content-type是 `application/json; charset=utf-8`
+
+### key-auth 鉴权
+
+添加key-auth插件
+
+```shell
+$ curl -X POST http://127.0.0.1:8001/routes/douyacun/plugins \
+ --data name=key-auth
+```
+
+添加consumer和Credentials
+
+```shell
+$ curl -i -X POST -d "username=douyacun&custom_id=douyacun" http://localhost:8001/consumers/
+```
+
+为consumer生成apikey
+
+```shell
+$ curl -i -X POST http://localhost:8001/consumers/douyacun/key-auth -d 'key=ASF-JIK-0O1'
+```
+
+验证
+
+```shell
+$ curl -i http://localhost:8000/api/articles -H 'apikey:ASF-JIK-0O1'
+```
+
+### 负载均衡
+
+创建Upstream
+
+```shell
+curl -X POST http://127.0.0.1:8001/upstreams \
+ --data name=upstream
+```
+
+修改之前创建的douyacun service
+
+```shell
+curl -X PATCH http://127.0.0.1:8001/services/example_service \
+ --data host='upstream'
+```
+
+增加两个后端节点
+
+```shell
+$ curl -X POST http://127.0.0.1:8001/upstreams/upstream/targets \
+ --data target=’docker.for.mac.host.internal:9004’
+ 
+$ curl -X POST http://127.0.0.1:8001/upstreams/upstream/targets \
+ --data target=’docker.for.mac.host.internal:9003’
+```
 
