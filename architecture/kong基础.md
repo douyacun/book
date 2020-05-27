@@ -1,8 +1,19 @@
+---
+Title: kong基础入门
+Keywords: kong,入门,负载均衡,限流,鉴权
+Description: 网关层kong
+Cover: 
+Label: kong
+Date: 2020-05-27 20:49:09
+LastEditTime: 2020-05-27 23:24:13
+---
+
 本篇文档目的:
 
 1.  使用docker部署一套kong的环境
 2.  使用kong代理到本地服务
 3.  熟悉kong限流和鉴权
+4.  负载均衡
 
 # docker安装
 
