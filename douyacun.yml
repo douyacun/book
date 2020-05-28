@@ -65,6 +65,7 @@ Topics:
   architecture:
     - opentracing.md
     - 高并发.md
+    - kong基础.md
   algorithm:
     # - 19. 删除链表的倒数第N个节点.md
     # - 21. 合并两个有序链表.md
