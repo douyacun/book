@@ -10,12 +10,16 @@ LastEditTime: 2020-05-27 23:24:13
 
 本篇文档目的:
 
-1.  使用docker部署一套kong的环境
+1.  使用docker或centos7部署一套kong的环境
 2.  使用kong代理到本地服务
 3.  熟悉kong限流和鉴权
 4.  负载均衡
 
-# docker安装
+# 安装
+
+docker、centos7安装
+
+## docker
 
 [官网](https://docs.konghq.com/install/docker/?_ga=2.181811879.1832554820.1590497490-1678089697.1590497490) 有完整介绍
 
@@ -92,6 +96,107 @@ $ docker run -d -p 1337:1337 \
 配置konga，连接kong，因为在同一个网络可以使用容器name做为host连接容器
 
 ![](./assert/konga-connection.png)
+
+## centos 7
+
+### 安装PostgreSQL
+
+**yum 安装**
+
+安装步骤官网较全
+
+[https://www.postgresql.org/download/linux/redhat/](https://www.postgresql.org/download/linux/redhat/)
+
+```shell
+$ yum install -y postgresql10-server  postgresql10  postgresql10-contrib
+```
+
+**初始化数据库**
+
+```shell
+$ /usr/pgsql-10/bin/postgresql-10-setup initdb
+```
+
+**启动数据库**
+
+```shell
+$ systemctl enable postgresql-10.service
+```
+
+**允许远程连接**
+
+` /var/lib/pgsql/10/data/postgresql.conf`
+
+```shell
+$ listen_addresses = '0.0.0.0'
+```
+
+**连接验证**
+
+` /var/lib/pgsql/10/data/pg_hba.conf`
+
+```conf
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+host    all             all             127.0.0.1/32            trust
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            ident
+host    replication     all             ::1/128                 ident
+host    all             all             0.0.0.0/0               trust
+```
+
+注意放在最上面，否则本地连接的话会优先命中
+
+`host    replication     all             127.0.0.1/32            ident`
+
+```shell
+Ident authentication failed for user "kong"
+```
+
+### 安装kong
+
+**yum安装**
+
+```shell
+$ sudo yum install epel-release
+$ sudo yum install kong-2.0.4.*.noarch.rpm --nogpgcheck
+```
+
+**创建数据库**
+
+```plsql
+ CREATE USER kong; 
+ CREATE DATABASE kong OWNER kong;
+```
+
+>   注意保留 ;
+
+**配置文件**
+
+`/etc/kong/kong.conf`
+
+```ini
+database = postgres
+pg_host = 127.0.0.1
+pg_port = 5432
+pg_user = kong
+pg_database = kong
+proxy_listen = 0.0.0.0:80
+declarative_config = /etc/kong/kong.yml
+```
+
+**迁移数据库**
+
+```
+kong migrations bootstrap -c /etc/kong/kong.conf
+```
 
 # 概念
 
