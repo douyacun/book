@@ -3,6 +3,8 @@
 -   熟悉kong的配置
 -   线上已经在运行openresty，如何无缝接入kong
 
+
+
 # 配置
 
 ## 注入kong nginx指令
@@ -87,5 +89,33 @@ nginx_http_include = /path/to/your/my-server.kong.conf
 kong start -c kong.conf --nginx-conf custom_nginx.template
 ```
 
-### kong嵌入到openresty中
+## 嵌入kong到openresty中
+
+kong下的文件，kong是openresty的插件，索引如果线上已经有openresty在运行的话，可以无缝衔接
+
+```shell
+[root@ali conf]# ll /usr/local/kong/
+total 292
+drwxr-xr-x 2 root   root   4096 May 28 14:31 bin
+drwx------ 2 nobody root   4096 May 28 15:30 client_body_temp
+-rw-r--r-- 1 root   root 234703 Apr 25 00:45 COPYRIGHT
+drwx------ 2 nobody root   4096 May 28 15:30 fastcgi_temp
+drwxr-xr-x 3 root   root   4096 May 28 14:31 include
+drwxr-xr-x 4 root   root   4096 May 28 14:31 lib
+drwxr-xr-x 2 root   root   4096 May 28 15:30 logs
+-rw-r--r-- 1 root   root    297 Jun  1 19:18 nginx.conf
+-rw-r--r-- 1 root   root   7807 Jun  1 19:18 nginx-kong.conf
+-rw-r--r-- 1 root   root   1821 Jun  1 19:18 nginx-kong-stream.conf
+drwxr-xr-x 2 root   root   4096 Jun  4 15:25 pids
+drwx------ 2 nobody root   4096 May 28 15:30 proxy_temp
+drwx------ 2 nobody root   4096 May 28 15:30 scgi_temp
+drwxr-xr-x 2 root   root   4096 May 28 15:30 ssl
+drwx------ 2 nobody root   4096 May 28 15:30 uwsgi_temp
+```
+
+启动方式:
+
+```shell
+$ /usr/local/openresty/nginx/sbin/nginx -p /usr/local/kong -c /usr/local/kong/nginx.conf
+```
 

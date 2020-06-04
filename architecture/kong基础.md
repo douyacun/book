@@ -346,7 +346,7 @@ curl -X POST http://127.0.0.1:8001/upstreams \
 修改之前创建的douyacun service
 
 ```shell
-curl -X PATCH http://127.0.0.1:8001/services/example_service \
+curl -X PATCH http://127.0.0.1:8001/services/douyacun \
  --data host='upstream'
 ```
 
