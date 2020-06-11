@@ -395,3 +395,45 @@ Host: ...
 3.  `/version/any/`
 4.  `/version`
 
+**strip path**
+
+像nginx alias的用法, 去掉前缀路由发送给upstram， 默认是启用状态
+
+`service`
+
+```json
+{
+  "path": "/",
+}
+```
+
+path 是 `/api` , 这个path是作为路由前缀的
+
+`route`
+
+```json
+{
+  "paths": [
+    "/api"
+  ]
+}
+```
+
+strip path 开启状态
+
+```
+GET /api/articles HTTP/1.1
+Host: ...
+
+404 page not found
+```
+
+upstream 接收到的请求
+
+```
+GET /articles HTTP/1.1
+Host: ...
+```
+
+
+
