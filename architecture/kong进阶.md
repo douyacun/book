@@ -5,8 +5,11 @@
 -   如何配置一个service
 -   路由如何匹配，header/path/method/source/destination/SNI 如何配置
 -   多个路由同时匹配优先级如何匹配
+-   豆瓣是否如何对匿名用户和授权用户进行不同频率限流访问的
 
 
+
+[toc]
 
 # 配置
 
@@ -369,7 +372,7 @@ Host: ...
 
 **优先级**
 
-正则匹配可以使用`regex_priority`指定优先级，否则最长前缀路径优先匹配
+正则匹配可以使用`regex_priority`指定优先级，否则最长前缀路径优先匹配,最多规则有限匹配
 
 ```json
 [
@@ -435,5 +438,122 @@ GET /articles HTTP/1.1
 Host: ...
 ```
 
+**method**
 
+通过请求方法发送过滤路由
+
+`GET`  `POST` `HEAD` `PUT`
+
+**source**
+
+通过请求涞源ip/port过滤路由
+
+`10.1.0.0/16` 
+
+
+
+# Authentication
+
+流程：
+
+1. 为service创建一个plugin
+2. 创建一个consumer
+3. 为consumer创建一个credentials
+4. 请求进入时，首先会验证权限
+
+## Consumers
+
+主要用于自定义请求行为，为安卓/iOS创建一个consumer, 或者每个版本、每个平台创建一个consumer。这是一个不透明的概念，所以称为consumer而不是用户
+
+## Anonymous Access
+
+匿名访问和鉴权访问同时存在
+
+对匿名访问进行 低频 限流，对授权用户有 高频限流
+
+流程:
+
+1. 创建service
+
+2. 创建route
+
+3. 创建key-auth plugin
+
+   ```shell
+   curl -i -X POST \
+      --url http://localhost:8001/services/douyacun/plugins/ \
+      --data 'name=key-auth'
+   ```
+
+4. 创建anonymous Consumer
+
+   ```shell
+   curl -i -X POST \
+      --url http://localhost:8001/consumers/ \
+      --data "username=anonymous_users"
+      
+   HTTP/1.1 201 Created
+   Content-Type: application/json
+   Connection: keep-alive
+   
+   {
+      "username": "anonymous_users",
+      "created_at": 1428555626000,
+      "id": "bbdf1c48-19dc-4ab7-cae0-ff4f59d87dc9"
+   }
+   ```
+
+5. 允许anonymous Consumer访问
+
+   ```shell
+   curl -i -X PATCH \
+      --url http://localhost:8001/plugins/<your-plugin-id> \
+      --data "config.anonymous=<上一步anonymous Consumer生成的id>"
+   ```
+
+最终结果,原本需要授权的url现在不授权也可以访问了, 授权的consumer也可以正常访问
+
+![](./assert/anonymous-consumer.png)
+
+6 . 针对匿名consumer创建rate limit plugin, 针对授权consumer创建rate limit plugin
+
+```shell
+curl -i -X POST \
+   --url http://localhost:8001/services/douyacun/plugins/ \
+   --data 'name=rate-limiting'
+   --data 'config.minute=5'
+   --data 'consumer.id=<匿名账户id>'
+```
+
+7. 验证 如果没有授权访问，每分钟超过5次就会被限流
+
+```shell
+{
+    "message": "API rate limit exceeded"
+}
+```
+
+# Load balancing
+
+DNS-based loadbalancing/ring-balancer
+
+DNS负载均衡，节点不是向kong注册服务，而是向DNS服务器提供注册，kong使用域名就可以了，
+
+DNS各级都有缓存，缓存时间难以把控，不方便做健康检测移除不可用节点 (不推荐使用)
+
+## ring-balancer
+
+使用ring-balancer，需要向kong进行服务注册, 使用http注册以后可以立即获取流量
+
+**upstream**: 虚拟hostname，route可以使用upstream name当作hostname
+
+**target**: ip/port 每个node 都会有weight权重，决定承担多少流量
+
+
+
+### upstram
+
+修改target的成本较小，修改upstram的成本较大
+
+slots: 根据最多设置多少个target算出，假设设置10个target，那么slot就是 `10 * 100`,  用于负载均衡算法，(todo:令牌?)
 
