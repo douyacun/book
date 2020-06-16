@@ -6,8 +6,8 @@
 -   路由如何匹配，header/path/method/source/destination/SNI 如何配置
 -   多个路由同时匹配优先级如何匹配
 -   豆瓣是否如何对匿名用户和授权用户进行不同频率限流访问的
-
-
+-   kong是如何支持蓝绿部署，金丝雀部署
+-   kong的健康检测和熔断机制
 
 [toc]
 
@@ -592,7 +592,9 @@ target自动清理，不活跃target比活跃target多10个时会自动清理不
 
 ## 蓝绿部署
 
-旧版本可以称为蓝色环境，而新版本则可称为绿色环境。一旦生产流量从蓝色完全转移到绿色，蓝色就可以在回滚或退出生产的情况下保持待机，也可以更新成为下次更新的模板。
+一个是当前运行的生产环境，接收所有的用户流量（称之为蓝）。另一个是它的副本，但是闲置（称之为绿）。两者使用相同的数据库后端和应用配置
+
+应用的新版本部署在绿色版本环境中，进行功能和性能测试。一旦测试通过，应用的流量从蓝色版本路由到绿色版本。然后绿色版本变成新的生产环境。
 
 过程：
 
@@ -602,5 +604,58 @@ target自动清理，不活跃target比活跃target多10个时会自动清理不
 4.  创建blue upstream + target
 5.  发布时 切换service hostname 为green hostname
 
-## 金丝雀部署
+## 金丝雀部署（灰度发布）
+
+和蓝绿部署很像，区别在于可以阶段性进行，不用一次性全切流量
+
+金丝雀部署可以在生产环境中基础设施小范围部署新的应用代码，一旦应用部署发布，只有少数用户被路由到，最大程度降低影响
+
+-   在允许外部用户访问之前，将内部用户暴露给金丝雀部署；
+-   基于源 IP 范围的路由；
+-   在特定地理区域发布应用；
+-   使用应用程序逻辑为特定用户和群体解锁新特性。当应用为其他用户上线后，移除此逻辑。
+
+kong的实现方式使用通过设置target权重来分配流量
+
+```
+# first target at 900
+$ curl -X POST http://kong:8001/upstreams/address.v2.service/targets \
+    --data "target=192.168.34.17:80"
+    --data "weight=900"
+
+# second target at 100
+$ curl -X POST http://kong:8001/upstreams/address.v2.service/targets \
+    --data "target=192.168.34.18:80"
+    --data "weight=100"
+```
+
+# 健康检测&熔断机制
+
+kong支持2种健康检测，可以单独使用也可以结合使用：
+
+-   主动监测，定期请求提供的http/https接口，根据响应决定target是否健康状态
+-   被动检测，分析正在代理的流量请求，根据响应局定target是否健康状态
+
+## 健康/非健康
+
+每一个target都有独自的健康检测
+
+健康检测的规则
+
+-   响应码 200 Success，增加`Success`计数，重置其他计数
+-   connect fail，增加`TCP failures`计数，重置`Success`计数
+-   timeout,  增加`timeouts`计数，重置`Success`计数
+-   响应码非 200 Success，增加`Http Failures`计数，重置`success`计数
+
+如果`TCP failures` / `timeouts` / `Http Failures` 次数达到配置的阀值，target会被标记为unhealthy
+
+如果`Success ` 次数达到配置阀值后，target会被重新标记为healthy
+
+## 健康检查
+
+### 主动检测
+
+`path`： 设置target 健康检测接口
+
+`interval`:  间隔多少秒进行一次检测，0不检测
 
