@@ -651,11 +651,40 @@ kong支持2种健康检测，可以单独使用也可以结合使用：
 
 如果`Success ` 次数达到配置阀值后，target会被重新标记为healthy
 
-## 健康检查
+## 健康检查配置
 
 ### 主动检测
 
-`path`： 设置target 健康检测接口
+`healthchecks.active.http_path`： 设置target 健康检测接, 默认`/`，常用`ping`
 
-`interval`:  间隔多少秒进行一次检测，0不检测
+`healthchecks.active.healthy.interval`:  健康target间隔多少秒进行一次检测，0不检测
 
+`healthchecks.active.unhealthy.interval`：非健康target间隔多少进行一次检测
+
+`healthchecks.active.type`: 指定协议http/https
+
+`healthchecks.active.timeout`: 连接超时时间，默认1s
+
+`healthchecks.active.concurrency`: 一次请求多少个target
+
+`healthchecks.active.healthy.successes`： 健康检测成功多少次认为是健康
+
+`healthchecks.active.unhealthy.tcp_failures`: 连接失败多少次判定target非健康
+
+`healthchecks.active.unhealthy.timeouts`: 请求超时次数判定target非健康
+
+`healthchecks.active.unhealthy.http_failures`： 非 (`healthchecks.active.unhealthy.http_statuses` 定义的状态码) 响应多少次判定target非健康
+
+### 被动检测
+
+`healthchecks.passive.healthy.successes`: 非健康节点检测
+
+`healthchecks.active.unhealthy.tcp_failures`: 连接失败多少次判定target非健康
+
+`healthchecks.active.unhealthy.timeouts`: 请求超时次数判定target非健康
+
+`healthchecks.active.unhealthy.http_failures`： 非 (`healthchecks.active.unhealthy.http_statuses` 定义的状态码) 响应多少次判定target非健康
+
+### 禁用健康检测
+
+设置间隔时间为0就关闭检测`healthchecks.active.healthy.interval`  / `healthchecks.active.unhealthy.interval`
