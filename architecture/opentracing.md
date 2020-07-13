@@ -6,9 +6,90 @@ Date: 2020-05-04 00:45:42
 LastEditTime: 2020-05-06 10:23:00
 ---
 
-[toc]
+本文概要:
 
-### 了解trace日志
+1. 了解opentracing
+2. 开源库jaeger/zipkin都实现了opentracing
+3. zipkin架构和组件
+4. go语言接入jaeger
+
+
+
+# zipkin vs jaeger
+
+|                                    | **JAEGER**                                                   | **ZIPKIN**                                                   |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **OpenTracing compatibility**      | Yes                                                          | Yes                                                          |
+| **OpenTracing-compatible clients** | [Python](https://github.com/uber/jaeger-client-python)[Go](https://github.com/uber/jaeger-client-go)[Node](https://github.com/uber/jaeger-client-node)[Java](https://github.com/uber/jaeger-client-java)[C++](https://github.com/jaegertracing/jaeger-client-cpp)[C#](https://github.com/jaegertracing/jaeger-client-csharp)[Ruby](https://github.com/salemove/jaeger-client-ruby) *[PHP](https://github.com/jukylin/jaeger-php) *[Rust](https://github.com/sile/rustracing_jaeger) * | [Go](https://github.com/openzipkin/zipkin-go-opentracing)[Java](https://github.com/openzipkin-contrib/brave-opentracing)[Ruby](https://github.com/salemove/zipkin-ruby-opentracing) *[C++](https://github.com/rnburn/zipkin-cpp-opentracing)Python (work in [progress](https://github.com/openzipkin-attic/zipkin-python-opentracing/pull/1)) |
+| **Storage support**                | In-memoryCassandraElasticsearchScyllaDB (work in [progress](https://github.com/uber/jaeger/pull/201)) | In-memoryMySQLCassandraElasticsearch                         |
+| **Sampling**                       | Dynamic sampling rate  (supports rate limiting and  probabilistic sampling strategies) | Fixed sampling rate (supports probabilistic sampling strategy) |
+| **Span transport**                 | UDPHTTP                                                      | HTTPKafkaScribeAMQP                                          |
+| **Docker ready**                   | Yes                                                          | Yes                                                          |
+
+这两个都是全链路日志追踪，都经过了时间的沉淀，文档都比较齐全。go语言推荐使用jaeger，两者都是非常优秀。
+
+## zipkin
+
+### 流程图
+
+> 来自 https://zipkin.io/pages/architecture.html
+
+```
+┌─────────────┐ ┌───────────────────────┐  ┌─────────────┐  ┌──────────────────┐
+│ User Code   │ │ Trace Instrumentation │  │ Http Client │  │ Zipkin Collector │
+└─────────────┘ └───────────────────────┘  └─────────────┘  └──────────────────┘
+       │                 │                         │                 │
+           ┌─────────┐
+       │ ──┤GET /foo ├─▶ │ ────┐                   │                 │
+           └─────────┘         │ record tags
+       │                 │ ◀───┘                   │                 │
+                           ────┐
+       │                 │     │ add trace headers │                 │
+                           ◀───┘
+       │                 │ ────┐                   │                 │
+                               │ record timestamp
+       │                 │ ◀───┘                   │                 │
+                             ┌─────────────────┐
+       │                 │ ──┤GET /foo         ├─▶ │                 │
+                             │X-B3-TraceId: aa │     ────┐
+       │                 │   │X-B3-SpanId: 6b  │   │     │           │
+                             └─────────────────┘         │ invoke
+       │                 │                         │     │ request   │
+                                                         │
+       │                 │                         │     │           │
+                                 ┌────────┐          ◀───┘
+       │                 │ ◀─────┤200 OK  ├─────── │                 │
+                           ────┐ └────────┘
+       │                 │     │ record duration   │                 │
+            ┌────────┐     ◀───┘
+       │ ◀──┤200 OK  ├── │                         │                 │
+            └────────┘       ┌────────────────────────────────┐
+       │                 │ ──┤ asynchronously report span     ├────▶ │
+                             │                                │
+                             │{                               │
+                             │  "traceId": "aa",              │
+                             │  "id": "6b",                   │
+                             │  "name": "get",                │
+                             │  "timestamp": 1483945573944000,│
+                             │  "duration": 386000,           │
+                             │  "annotations": [              │
+                             │--snip--                        │
+                             └────────────────────────────────┘
+```
+
+### go语言支持
+
+[zipkin-go-opentracing](https://github.com/openzipkin-contrib/zipkin-go-opentracing)
+
+
+
+## jaeger
+
+
+
+
+
+### 推荐阅读
 
 推荐:
 
@@ -23,8 +104,6 @@ LastEditTime: 2020-05-06 10:23:00
 ### 开源库
 
 - [jaeger](https://www.jaegertracing.io/docs/1.17/)
-
-jaeger实现了全套服从，收集到存储，我用es实现了一套，es提供个全套的docker服务[(All In One)](https://www.jaegertracing.io/docs/1.17/getting-started/)，整体还是不清楚，毕竟agent也不会和collector放在同一台机器上，不过我本地也没有多个机器，只能用一下docker
 
 ### 安装
 
