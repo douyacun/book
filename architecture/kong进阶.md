@@ -16,8 +16,8 @@ LastEditTime: 2020-05-27 23:24:13
 -   路由如何匹配，header/path/method/source/destination/SNI 如何配置
 -   多个路由同时匹配优先级如何匹配
 -   豆瓣是否如何对匿名用户和授权用户进行不同频率限流访问的
-
-
+-   kong是如何支持蓝绿部署，金丝雀部署
+-   kong的健康检测和熔断机制
 
 [toc]
 
@@ -543,7 +543,7 @@ curl -i -X POST \
 }
 ```
 
-# Load balancing
+# 负载均衡
 
 DNS-based loadbalancing/ring-balancer
 
@@ -559,11 +559,142 @@ DNS各级都有缓存，缓存时间难以把控，不方便做健康检测移�
 
 **target**: ip/port 每个node 都会有weight权重，决定承担多少流量
 
-
-
 ### upstram
 
 修改target的成本较小，修改upstram的成本较大
 
 slots: 根据最多设置多少个target算出，假设设置10个target，那么slot就是 `10 * 100`,  用于负载均衡算法，(todo:令牌?)
 
+### target
+
+target只支持创建/删除，不支持修改，如果要改权重，删除之前的taget然后新创建一个target
+
+target自动清理，不活跃target比活跃target多10个时会自动清理不活跃target
+
+### 负载算法
+
+`hash_on`
+
+-   **none**： 加权轮询
+
+-   **consumer**: 按照consumer id hash，负载到不同的机器
+
+-   **ip**：按照 ip hash
+
+-   **header**：按照指定header hash
+    -   `hash_on_header` 指定header 
+    -   `hash_fallback_header` ：`hash_on_header` 缺失时，替补
+
+-   **cookie**: 按cookie hash
+    -   `hash_on_cookie`: 指定cookie name
+    -   `hash_on_cookie_path`: 指定cookie path
+
+`hash_fallback`
+
+`hash_on` 返回的hash值为空，hash_fallback指定替代品
+
+### 注意事项
+
+-   target尽量不要使用域名，域名解析也是需要一定时间
+-   确保hash值有较好的方差平均分布
+    -   3个consumer，几十万的用户的 建议按ip hash
+    -   如果用户大多集中在统一个地区，使用同一个NAT gateway(因为大家的ip都是同一个)，建议使用cookie hash
+
+## 蓝绿部署
+
+一个是当前运行的生产环境，接收所有的用户流量（称之为蓝）。另一个是它的副本，但是闲置（称之为绿）。两者使用相同的数据库后端和应用配置
+
+应用的新版本部署在绿色版本环境中，进行功能和性能测试。一旦测试通过，应用的流量从蓝色版本路由到绿色版本。然后绿色版本变成新的生产环境。
+
+过程：
+
+1.  创建service
+2.  创建route
+3.  创建green upstream + target
+4.  创建blue upstream + target
+5.  发布时 切换service hostname 为green hostname
+
+## 金丝雀部署（灰度发布）
+
+和蓝绿部署很像，区别在于可以阶段性进行，不用一次性全切流量
+
+金丝雀部署可以在生产环境中基础设施小范围部署新的应用代码，一旦应用部署发布，只有少数用户被路由到，最大程度降低影响
+
+-   在允许外部用户访问之前，将内部用户暴露给金丝雀部署；
+-   基于源 IP 范围的路由；
+-   在特定地理区域发布应用；
+-   使用应用程序逻辑为特定用户和群体解锁新特性。当应用为其他用户上线后，移除此逻辑。
+
+kong的实现方式使用通过设置target权重来分配流量
+
+```
+# first target at 900
+$ curl -X POST http://kong:8001/upstreams/address.v2.service/targets \
+    --data "target=192.168.34.17:80"
+    --data "weight=900"
+
+# second target at 100
+$ curl -X POST http://kong:8001/upstreams/address.v2.service/targets \
+    --data "target=192.168.34.18:80"
+    --data "weight=100"
+```
+
+# 健康检测&熔断机制
+
+kong支持2种健康检测，可以单独使用也可以结合使用：
+
+-   主动监测，定期请求提供的http/https接口，根据响应决定target是否健康状态
+-   被动检测，分析正在代理的流量请求，根据响应局定target是否健康状态
+
+## 健康/非健康
+
+每一个target都有独自的健康检测
+
+健康检测的规则
+
+-   响应码 200 Success，增加`Success`计数，重置其他计数
+-   connect fail，增加`TCP failures`计数，重置`Success`计数
+-   timeout,  增加`timeouts`计数，重置`Success`计数
+-   响应码非 200 Success，增加`Http Failures`计数，重置`success`计数
+
+如果`TCP failures` / `timeouts` / `Http Failures` 次数达到配置的阀值，target会被标记为unhealthy
+
+如果`Success ` 次数达到配置阀值后，target会被重新标记为healthy
+
+## 健康检查配置
+
+### 主动检测
+
+`healthchecks.active.http_path`： 设置target 健康检测接, 默认`/`，常用`ping`
+
+`healthchecks.active.healthy.interval`:  健康target间隔多少秒进行一次检测，0不检测
+
+`healthchecks.active.unhealthy.interval`：非健康target间隔多少进行一次检测
+
+`healthchecks.active.type`: 指定协议http/https
+
+`healthchecks.active.timeout`: 连接超时时间，默认1s
+
+`healthchecks.active.concurrency`: 一次请求多少个target
+
+`healthchecks.active.healthy.successes`： 健康检测成功多少次认为是健康
+
+`healthchecks.active.unhealthy.tcp_failures`: 连接失败多少次判定target非健康
+
+`healthchecks.active.unhealthy.timeouts`: 请求超时次数判定target非健康
+
+`healthchecks.active.unhealthy.http_failures`： 非 (`healthchecks.active.unhealthy.http_statuses` 定义的状态码) 响应多少次判定target非健康
+
+### 被动检测
+
+`healthchecks.passive.healthy.successes`: 非健康节点检测
+
+`healthchecks.active.unhealthy.tcp_failures`: 连接失败多少次判定target非健康
+
+`healthchecks.active.unhealthy.timeouts`: 请求超时次数判定target非健康
+
+`healthchecks.active.unhealthy.http_failures`： 非 (`healthchecks.active.unhealthy.http_statuses` 定义的状态码) 响应多少次判定target非健康
+
+### 禁用健康检测
+
+设置间隔时间为0就关闭检测`healthchecks.active.healthy.interval`  / `healthchecks.active.unhealthy.interval`

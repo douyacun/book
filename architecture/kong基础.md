@@ -165,18 +165,38 @@ Ident authentication failed for user "kong"
 **yum安装**
 
 ```shell
-$ sudo yum install epel-release
-$ sudo yum install kong-2.0.4.*.noarch.rpm --nogpgcheck
+$ sudo wget -O kong-2.0.4.el7.amd64.rpm https://bintray.com/kong/kong-rpm/download_file?file_path=centos/7/kong-2.0.4.el7.amd64.rpm
+$ sudo yum install kong-2.0.4.el7.amd64.rpm
+$ kong -h
 ```
 
 **创建数据库**
 
+```shell
+$ sudo -u postgres psql
+```
+
 ```plsql
  CREATE USER kong; 
  CREATE DATABASE kong OWNER kong;
+ \du;
 ```
 
->   注意保留 ;
+常用命令
+
+```
+\password           设置密码。
+\q                  退出。
+\h                  查看SQL命令的解释，比如\h select。
+\?                  查看psql命令列表。
+\l                  列出所有数据库。
+\c [database_name]  连接其他数据库。
+\d                  列出当前数据库的所有表格。
+\d [table_name]     列出某一张表格的结构。
+\du                 列出所有用户。
+\e                  打开文本编辑器。
+\conninfo           列出当前数据库和连接的信息。
+```
 
 **配置文件**
 

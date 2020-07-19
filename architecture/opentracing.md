@@ -6,9 +6,207 @@ Date: 2020-05-04 00:45:42
 LastEditTime: 2020-05-06 10:23:00
 ---
 
-[toc]
+本文概要:
 
-### 了解trace日志
+1. 了解opentracing
+2. 开源库jaeger/zipkin都实现了opentracing
+3. zipkin架构和组件
+   1. xorm sql 埋点
+   2. 自定义span
+4. go语言接入jaeger
+
+# zipkin vs jaeger
+
+|                                    | **JAEGER**                                                   | **ZIPKIN**                                                   |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **OpenTracing compatibility**      | Yes                                                          | Yes                                                          |
+| **OpenTracing-compatible clients** | [Python](https://github.com/uber/jaeger-client-python)[Go](https://github.com/uber/jaeger-client-go)[Node](https://github.com/uber/jaeger-client-node)[Java](https://github.com/uber/jaeger-client-java)[C++](https://github.com/jaegertracing/jaeger-client-cpp)[C#](https://github.com/jaegertracing/jaeger-client-csharp)[Ruby](https://github.com/salemove/jaeger-client-ruby) *[PHP](https://github.com/jukylin/jaeger-php) *[Rust](https://github.com/sile/rustracing_jaeger) * | [Go](https://github.com/openzipkin/zipkin-go-opentracing)[Java](https://github.com/openzipkin-contrib/brave-opentracing)[Ruby](https://github.com/salemove/zipkin-ruby-opentracing) *[C++](https://github.com/rnburn/zipkin-cpp-opentracing)Python (work in [progress](https://github.com/openzipkin-attic/zipkin-python-opentracing/pull/1)) |
+| **Storage support**                | In-memoryCassandraElasticsearchScyllaDB (work in [progress](https://github.com/uber/jaeger/pull/201)) | In-memoryMySQLCassandraElasticsearch                         |
+| **Sampling**                       | Dynamic sampling rate  (supports rate limiting and  probabilistic sampling strategies) | Fixed sampling rate (supports probabilistic sampling strategy) |
+| **Span transport**                 | UDPHTTP                                                      | HTTPKafkaScribeAMQP                                          |
+| **Docker ready**                   | Yes                                                          | Yes                                                          |
+
+这两个都是全链路日志追踪，都经过了时间的沉淀，文档都比较齐全。go语言推荐使用jaeger，两者都是非常优秀。
+
+## zipkin
+
+### 流程图
+
+> 来自 https://zipkin.io/pages/architecture.html
+
+```
+┌─────────────┐ ┌───────────────────────┐  ┌─────────────┐  ┌──────────────────┐
+│ User Code   │ │ Trace Instrumentation │  │ Http Client │  │ Zipkin Collector │
+└─────────────┘ └───────────────────────┘  └─────────────┘  └──────────────────┘
+       │                 │                         │                 │
+           ┌─────────┐
+       │ ──┤GET /foo ├─▶ │ ────┐                   │                 │
+           └─────────┘         │ record tags
+       │                 │ ◀───┘                   │                 │
+                           ────┐
+       │                 │     │ add trace headers │                 │
+                           ◀───┘
+       │                 │ ────┐                   │                 │
+                               │ record timestamp
+       │                 │ ◀───┘                   │                 │
+                             ┌─────────────────┐
+       │                 │ ──┤GET /foo         ├─▶ │                 │
+                             │X-B3-TraceId: aa │     ────┐
+       │                 │   │X-B3-SpanId: 6b  │   │     │           │
+                             └─────────────────┘         │ invoke
+       │                 │                         │     │ request   │
+                                                         │
+       │                 │                         │     │           │
+                                 ┌────────┐          ◀───┘
+       │                 │ ◀─────┤200 OK  ├─────── │                 │
+                           ────┐ └────────┘
+       │                 │     │ record duration   │                 │
+            ┌────────┐     ◀───┘
+       │ ◀──┤200 OK  ├── │                         │                 │
+            └────────┘       ┌────────────────────────────────┐
+       │                 │ ──┤ asynchronously report span     ├────▶ │
+                             │                                │
+                             │{                               │
+                             │  "traceId": "aa",              │
+                             │  "id": "6b",                   │
+                             │  "name": "get",                │
+                             │  "timestamp": 1483945573944000,│
+                             │  "duration": 386000,           │
+                             │  "annotations": [              │
+                             │--snip--                        │
+                             └────────────────────────────────┘
+```
+
+### go语言支持
+
+- [zipkin-go-opentracing ](https://github.com/openzipkin-contrib/zipkin-go-opentracing) zipkin同样支持opentracing
+
+- [opentracing-go](https://github.com/opentracing/opentracing-go) 
+- [go-grpc-middleware](https://github.com/grpc-ecosystem/go-grpc-middleware) grpc 请求日志需要 中间件支持
+- [otgrpc](https://github.com/grpc-ecosystem/grpc-opentracing/tree/master/go/otgrpc) 记录grpc 记录请求/响应，是否记录本次请求，更像是一个装饰器
+
+#### server
+
+```go
+func main() {
+  // reporter: 输出到哪?
+	reporter := zipkinhttp.NewReporter("http://localhost:9411/api/v2/spans")
+	defer reporter.Close()
+  // endpoint: 记录服务名称和端口
+	endpoint, err := zipkin.NewEndpoint("zipkin-demo", "0.0.0.0")
+	if err != nil {
+		log.Fatalf("zipkin new endpoint error: %v", err)
+	}
+	// tracer
+	nativeTracer, err := zipkin.NewTracer(reporter, zipkin.WithLocalEndpoint(endpoint))
+	if err != nil {
+		log.Fatalf("zipkin new tracer error: %v", err)
+	}
+  // 接入opentracing
+	tracer := zipkinot.Wrap(nativeTracer)
+	opentracing.SetGlobalTracer(tracer)
+  // 初始化grpc server,并注册中间件
+	grpcServer := grpc.NewServer(
+		// otgrpc.LogPayloads 是否记录 入参和出参
+		// otgrpc.SpanDecorator 装饰器，回调函数
+		// otgrpc.IncludingSpans 是否记录
+		grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(otgrpc.OpenTracingServerInterceptor(tracer,
+			otgrpc.LogPayloads(),
+			// IncludingSpans是请求前回调
+			otgrpc.IncludingSpans(func(parentSpanCtx opentracing.SpanContext, method string, req, resp interface{}) bool {
+				log.Printf("method: %s", method)
+				log.Printf("req: %+v", req)
+				log.Printf("resp: %+v", resp)
+				return true
+			}),
+			// SpanDecorator是请求后回调
+			otgrpc.SpanDecorator(func(span opentracing.Span, method string, req, resp interface{}, grpcError error) {
+				log.Printf("method: %s", method)
+				log.Printf("req: %+v", req)
+				log.Printf("resp: %+v", resp)
+				log.Printf("grpcError: %+v", grpcError)
+			}),
+		))),
+	)
+  // 注册服务
+	greet.RegisterServiceServer(grpcServer, &handler{})
+	listener, err := net.Listen("tcp", ":1234")
+	if err != nil {
+		log.Fatalf("net listen error: %v", err.Error())
+	}
+	grpcServer.Serve(listener)
+}
+
+```
+
+> otgrpc 实现源码很简单，看一下
+>
+> 本次实践源码:  [https://github.com/douyacun/opentracing-demo](https://github.com/douyacun/opentracing-demo)
+
+#### xorm
+
+```go
+
+var DB *xorm.Engine
+
+func Init() error {
+	var err error
+	// XORM创建引擎
+	DB, err = xorm.NewEngine("mysql", "root:root@(127.0.0.1:3306)/toilet?charset=utf8mb4")
+	if err != nil {
+		return err
+	}
+	// 创建自定义的日志实例
+	log := logrus.New()
+	log.Out = os.Stdout
+	// 将日志实例设置到XORM的引擎中
+	DB.SetLogger(&TracerLogger{
+		logger:  log,
+		level:   xormLog.LOG_DEBUG,
+		showSQL: true,
+	})
+	return nil
+}
+
+type TracerLogger struct {
+	logger  *logrus.Logger
+	level   xormLog.LogLevel
+	showSQL bool
+	span    opentracing.Span
+}
+
+// 主要是实现 SQLLogger 接口
+// type SQLLogger interface {
+// 	BeforeSQL(context LogContext) // only invoked when IsShowSQL is true
+// 	AfterSQL(context LogContext)  // only invoked when IsShowSQL is true
+// }
+func (l *TracerLogger) BeforeSQL(ctx xormLog.LogContext) {
+	l.span, _ = opentracing.StartSpanFromContext(ctx.Ctx, "xorm")
+}
+
+func (l *TracerLogger) AfterSQL(ctx xormLog.LogContext) {
+	defer l.span.Finish()
+	var sessionPart string
+	l.span.LogFields(opentracingLog.String("db.statement", ctx.SQL))
+	l.span.LogFields(opentracingLog.Object("db.args", ctx.Args))
+	l.span.LogFields(opentracingLog.String("db.type", "sql"))
+	l.span.LogFields(opentracingLog.Object("db.execute_time", ctx.ExecuteTime))
+	if ctx.ExecuteTime > 0 {
+		l.logger.Infof("[SQL]%s %s %v - %v", sessionPart, ctx.SQL, ctx.Args, ctx.ExecuteTime)
+	} else {
+		l.logger.Infof("[SQL]%s %s %v", sessionPart, ctx.SQL, ctx.Args)
+	}
+}
+```
+
+> 需要xorm: 1.0 以上的版本
+>
+> - `"xorm.io/xorm/log"`
+> - `"xorm.io/xorm"`
+
+## jaeger
+
+### 推荐阅读
 
 推荐:
 
@@ -23,8 +221,6 @@ LastEditTime: 2020-05-06 10:23:00
 ### 开源库
 
 - [jaeger](https://www.jaegertracing.io/docs/1.17/)
-
-jaeger实现了全套服从，收集到存储，我用es实现了一套，es提供个全套的docker服务[(All In One)](https://www.jaegertracing.io/docs/1.17/getting-started/)，整体还是不清楚，毕竟agent也不会和collector放在同一台机器上，不过我本地也没有多个机器，只能用一下docker
 
 ### 安装
 
