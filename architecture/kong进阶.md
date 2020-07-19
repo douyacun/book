@@ -1,3 +1,13 @@
+---
+Title: kong进阶
+Keywords: kong嵌入openresty,不同频率限流,路由匹配优先级
+Description: 线上已经在运行openresty，如何无缝接入kong
+Cover: 
+Label: kong
+Date: 2020-05-27 20:49:09
+LastEditTime: 2020-05-27 23:24:13
+---
+
 这篇文章目的
 
 -   熟悉kong的配置

@@ -1,11 +1,5 @@
 [![Build Status](https://travis-ci.org/douyacun/book.svg?branch=master)](https://travis-ci.org/douyacun/book)
 
-
-
-
-
-
-
 # go
 
 - [go select 源码分析,用法](go/select.md)

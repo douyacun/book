@@ -2,8 +2,6 @@
 
 
 
-
-
 ```
 brew install graphviz
 ```
