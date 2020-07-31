@@ -59,9 +59,11 @@ LastEditTime: 2020-07-29 23:06:38
 
 
 
-## 限流
+## token获取方式
 
-无需认证: 
+顶部导航栏登录以后可以获取token
+
+![image-20200730230550806](../../../../Library/Application Support/typora-user-images/image-20200730230550806.png)
 
 
 
