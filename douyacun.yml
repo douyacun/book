@@ -56,6 +56,8 @@ Topics:
     - strace.md
     - epoll.md
     - centos使用ss代理.md
+    - 负载高.md
+    - 负载高定位工具.md
   Elasticsearch:
     - 安装运行.md
     - logstash.md
