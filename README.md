@@ -26,6 +26,8 @@
 
 # linux
 - [脏页](linux/页缓存.md)
+- [负载高](./linux/负载高.md)
+- [负载高定位工具](./linux/负载高定位工具.md)
 
 # todo
 - [ ] go new & make
