@@ -17,12 +17,30 @@ LastEditTime: 2020-09-19 21:03:21
 
 - 容灾
 
-etcd 的应用场景：
+#### 应用场景：
 
 - 服务发现
 - 配置管理
 - 分布式锁
 - 监控机器活动
+
+#### 功能
+
+- 监控 watch
+- 租约 lease
+- 全局锁 lock
+- 选举 elect
+- 集群状态 
+  - `etcdctl --write-out=table endpoint status`
+  - `etcdctl endpoint health`
+- 快照 snapshot
+  - `etcdctl --endpoints=127.0.0.1:2379 snapshot save my.db`
+  - `etcdctl --endpoints=127.0.0.1:2379 --write-out=table snapshot status my.db`
+- 迁移 migrate
+- 成员管理 member
+  - `etcdctl --endpoints=127.0.0.1:2379 member list`
+
+- 授权 auth
 
 
 
