@@ -17,14 +17,14 @@ LastEditTime: 2020-09-19 21:03:21
 
 - 容灾
 
-#### 应用场景：
+#### 应用场景
 
 - 服务发现
-- 配置管理
+- 配置中心
 - 分布式锁
 - 监控机器活动
 
-#### 功能
+#### 基础功能
 
 - 监控 watch
 - 租约 lease
@@ -156,6 +156,34 @@ go: discovery/discovery-service-protocol/client imports
 replace google.golang.org/grpc latest => google.golang.org/grpc v1.26.0
 ```
 
-3. protobuf 版本问题
+3. 目前 protobuf grpc 生成的go代码, 会报错 `undefined grpc.ClientConnInterface` `undefined: grpc.SupportPackageIsVersion6`
 
-https://blog.csdn.net/yzf279533105/article/details/104416459
+```
+go get -d -u github.com/golang/protobuf/protoc-gen-go
+git -C "$(go env GOPATH)"/src/github.com/golang/protobuf checkout $GIT_TAG
+go install github.com/golang/protobuf/protoc-gen-go
+```
+
+# go-grpc 负载均衡
+
+正常http负载均衡策略，client -> proxy gateway load balance -> service
+
+grpc提供负载均衡策略，client  load balance -> service 
+
+grpc关键点是负载均衡在客户端
+
+1. 服务端启动时，首先将服务地址注册到服务注册表，定期keepalive健康检测
+2. 客户端访问某个服务，watch订阅服务注册表，然后以某种负载均衡策略选择一个目标地址
+
+![](./assert/grpc-load-balancing.png)
+
+相关代码已发到github: [go-grpc 负载均衡](https://github.com/douyacun/discovery/tree/master/discovery-go-grpc)
+
+# etcd 配置中心
+
+1. 配置集中管理、统一标准
+2. 配置与应用分离
+3. 实时更新
+4. 高可用
+5. 安全
+
