@@ -7,6 +7,30 @@ Date: 2020-09-19 21:03:21
 LastEditTime: 2020-09-19 21:03:21
 ---
 
+Etcd几个关键特征：
+
+**raft算法**：Leader选举/操作同步，无论访问任意节点，都将获得最终一致性数据，高度可靠。
+
+**mvcc**:  etcd有2级存储结构 [B树内存索引](https://github.com/google/btree)  / [bbolt B+树](https://github.com/etcd-io/bbolt)
+
+- 每个事务有唯一事务id，就是下面的main id int64
+- 一个事务可以包含多个修改操作（put/delete），每一个操作就是一个revision, 共享同一个main id
+- 一个事务内多个连续修改操作会从0开始递增，编号 sub id int64
+
+```
+type revision struct {
+	// main is the main revision of a set of changes that happen atomically.
+	main int64
+
+	// sub is the sub revision of a change in a set of changes that happen
+	// atomically. Each change has different increasing sub revision in that
+	// set.
+	sub int64
+}
+```
+
+
+
 # 概要
 
 - etcd集群
@@ -177,7 +201,7 @@ grpc关键点是负载均衡在客户端
 
 ![](./assert/grpc-load-balancing.png)
 
-相关代码已发到github: [go-grpc 负载均衡](https://github.com/douyacun/discovery/tree/master/discovery-go-grpc)
+相关代码已发到github: [go-grpc 负载均衡](https://github.com/douyacun/discovery)
 
 # etcd 配置中心
 
@@ -186,4 +210,46 @@ grpc关键点是负载均衡在客户端
 3. 实时更新
 4. 高可用
 5. 安全
+
+
+
+# etcd 分布式锁
+
+原理:
+
+1. 租约创建一个key
+2. key不存在，创建key，成功获取到锁
+3. key存在，无法创建key，获取锁失败
+
+etcd分布式锁的实现在`go.etcd.io/etcd/clientv3/concurrency`包中
+
+
+
+`func NewSession(client *v3.Client, opts ...SessionOption) (*Session, error)` 
+
+1. 初始化租约，keepalive 保证 互斥锁一直持有
+2. 注册关闭信道
+
+> 小技巧
+>
+> 1. 匿名函数 withoption 配置
+> 2. context.WithCancel 可由上层调用控制是否中断
+> 3. donec := make(chan struct, 0) 支持阻塞式调用
+
+
+
+`func NewMutex(s *Session, pfx string) *Mutex `
+
+新建一个`Mutex`
+
+
+
+
+
+# 推荐阅读
+
+- [高可用分布式存储 etcd 的实现原理](https://draveness.me/etcd-introduction/)
+- [etcd使用经验总结](https://alexstocks.github.io/html/etcd.html)
+
+
 
