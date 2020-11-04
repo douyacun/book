@@ -11,7 +11,7 @@ Etcd几个关键特征：
 
 **raft算法**：Leader选举/操作同步，无论访问任意节点，都将获得最终一致性数据，高度可靠。
 
-**mvcc**:  etcd有2级存储结构 [B树内存索引](https://github.com/google/btree)  / [bbolt B+树](https://github.com/etcd-io/bbolt)
+**mvcc**:  etcd有2级存储结构 [B树内存索引](https://github.com/google/btree)  / [bbolt B+树](https://github.com/etcd-io/bbolt) ，内存中使用btree维护key/value索引，节点中存的是bbolt中键值K，通过这个k在bbolt查找，得到的才是用户传进去的value值
 
 - 每个事务有唯一事务id，就是下面的main id int64
 - 一个事务可以包含多个修改操作（put/delete），每一个操作就是一个revision, 共享同一个main id
@@ -27,7 +27,23 @@ type revision struct {
 	// set.
 	sub int64
 }
+
+type keyIndex struct {
+	key         []byte
+	modified    revision // the main rev of the last modification
+	generations []generation
+}
 ```
+
+内存索引中，每个原始key会关联一个key_index，里面维护了多版本信息
+
+**事务**: 
+
+
+
+
+
+
 
 
 
@@ -141,7 +157,7 @@ etcdkeeper 连接etcd: `etcd1:2379` ，它们处在同一个network中直接使�
 
 相关代码已经发到github [discovery](https://github.com/douyacun/discovery)
 
-**版本兼容**
+**版本兼容:**
 
 1. 正常安装`github.com/coreos/etcd/clientv3`会存在 `module declares its path as: go.etcd.io/bbolt`
 
