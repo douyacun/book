@@ -39,11 +39,8 @@ type keyIndex struct {
 
 **事务**: 
 
-
-
-
-
-
+- 只读事务
+- 读写事务
 
 
 
