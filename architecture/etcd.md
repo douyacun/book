@@ -218,13 +218,17 @@ grpc关键点是负载均衡在客户端
 
 # etcd 配置中心
 
-1. 配置集中管理、统一标准
-2. 配置与应用分离
-3. 实时更新
-4. 高可用
-5. 安全
+- 动态加载配置（watch）
+- 历史版本（revision）
+- 权限控制
+- 命名空间
 
+思路:
 
+1. 加载配置文件 put etcd
+2. watch prefix 配置变更可以及时变更配置
+
+相关代码已经发到 github : [etcd配置中心](https://github.com/douyacun/etcd/)
 
 # etcd 分布式锁
 
@@ -236,28 +240,91 @@ grpc关键点是负载均衡在客户端
 
 etcd分布式锁的实现在`go.etcd.io/etcd/clientv3/concurrency`包中
 
+1. 初始化sessions
 
+```go
+func NewSession(client *v3.Client, opts ...SessionOption) (*Session, error) {
+	ops := &sessionOptions{ttl: defaultSessionTTL, ctx: client.Ctx()}
+	for _, opt := range opts {
+		opt(ops)
+	}
+	// 初始化租约
+	id := ops.leaseID
+	if id == v3.NoLease {
+		resp, err := client.Grant(ops.ctx, int64(ops.ttl))
+		if err != nil {
+			return nil, err
+		}
+		id = v3.LeaseID(resp.ID)
+	}
+	// 由上层调用控制是否中断
+	ctx, cancel := context.WithCancel(ops.ctx)
+	keepAlive, err := client.KeepAlive(ctx, id)
+	if err != nil || keepAlive == nil {
+		cancel()
+		return nil, err
+	}
+	donec := make(chan struct{})
+	s := &Session{client: client, opts: ops, id: id, cancel: cancel, donec: donec}
+	go func() {
+		defer close(donec)
+		for range keepAlive {
+			// eat messages until keep alive channel closes
+		}
+	}()
+	return s, nil
+}
+```
 
-`func NewSession(client *v3.Client, opts ...SessionOption) (*Session, error)` 
+2. `func NewMutex(s *Session, pfx string) *Mutex `
 
-1. 初始化租约，keepalive 保证 互斥锁一直持有
-2. 注册关闭信道
+初始化`Mutex`
 
-> 小技巧
->
-> 1. 匿名函数 withoption 配置
-> 2. context.WithCancel 可由上层调用控制是否中断
-> 3. donec := make(chan struct, 0) 支持阻塞式调用
+3. `func (m *Mutex) Lock(ctx context.Context) error`
 
+这里类似redis的分布式锁: `set key value NX EX 60`  如果key存在就返回，否则就设置
 
+```go
+func (m *Mutex) Lock(ctx context.Context) error {
+	s := m.s
+	client := m.s.Client()
+  // 伪代码
+  // if !m.myKey {
+  //	client.Put(m.myKey, value)
+  // } else {
+  // 	client.Get(m.myKey)
+	// }
+	m.myKey = fmt.Sprintf("%s%x", m.pfx, s.Lease())
+	cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)
+	put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))
+	get := v3.OpGet(m.myKey)
+	getOwner := v3.OpGet(m.pfx, v3.WithFirstCreate()...)
+	resp, err := client.Txn(ctx).If(cmp).Then(put, getOwner).Else(get, getOwner).Commit()
+	if err != nil {
+		return err
+	}
+ 	// 此锁是否为自己获得
+	m.myRev = resp.Header.Revision
+	if !resp.Succeeded {
+		m.myRev = resp.Responses[0].GetResponseRange().Kvs[0].CreateRevision
+	}
+	ownerKey := resp.Responses[1].GetResponseRange().Kvs
+	if len(ownerKey) == 0 || ownerKey[0].CreateRevision == m.myRev {
+		m.hdr = resp.Header
+		return nil
+	}
+	// 阻塞直到获取到该锁
+	hdr, werr := waitDeletes(ctx, client, m.pfx, m.myRev-1)
+	if werr != nil {
+		m.Unlock(client.Ctx())
+	} else {
+		m.hdr = hdr
+	}
+	return werr
+}
+```
 
-`func NewMutex(s *Session, pfx string) *Mutex `
-
-新建一个`Mutex`
-
-
-
-
+4. `func (m *Mutex) Unlock(ctx context.Context) error` 删除 key
 
 # 推荐阅读
 
