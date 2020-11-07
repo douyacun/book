@@ -1,7 +1,7 @@
 ---
-Title: etcd新手教程
-Keywords: etcd应用场景
-Description: etcd
+Title: etcd应用场景
+Keywords: etcd应用场景,服务发现,配置中心,分布式锁
+Description: 已实现 grpc负载均衡、服务发现、分布式锁、配置中心、
 Label: etcd
 Date: 2020-09-19 21:03:21
 LastEditTime: 2020-11-07 21:53:21
