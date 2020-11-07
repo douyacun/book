@@ -69,6 +69,7 @@ Topics:
     - 高并发.md
     - kong基础.md
     - kong进阶.md
+    - etcd.md
   openapi:
     - ip_location.md
   algorithm:
