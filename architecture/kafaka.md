@@ -7,7 +7,7 @@ Date:
 LastEditTime:
 ---
 
-
+[toc]
 
 # 安装
 
@@ -104,68 +104,45 @@ config/server-2.properties:
   log.dir="~/Documents/kafka/data2"
 ```
 
-简单写了个shell脚本：和kafka同一级目录就可以
+启动：
 
 ```shell
-#!/bin/bash
-curDir=$(cd $(dirname "$0"); pwd)
-kafkaDir="${curDir}/kafka/"
-startStatus() {
-	startSuccess=$(lsof -i tcp:"$1")
-	if [ -z "$startSuccess" ]; then
-		echo "service $1 start failed"; exit 1
-	fi
-}
+./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties 
+./bin/kafka-server-start.sh -daemon config/server.properties
+./bin/kafka-server-start.sh -daemon config/server1.properties 
+./bin/kafka-server-start.sh -daemon config/server2.properties 
+```
 
-cleanup() {
-	rm -rf "${curDir}/data*"
-}
+创建：3副本/1分区 topic
 
-start(){
-	pushd $kafkaDir
-	echo "zookeeper starting ..."
-	./bin/zookeeper-server-start.sh -daemon config/zookeeper.properties 
-	sleep 1
-	startStatus 2181
+> alias ktopics="~/Documents/kafka/bin/kafka-topics --bootstrap-server localhost:9092,localhost:9093,localhost:9094"
 
-	echo "start kafka broker 1 ..."
-	./bin/kafka-server-start.sh -daemon config/server1.properties 
-	
+```shell
+ktopics --create --replication-factor 3 --partitions 1 --topic test
+```
 
-	if [ -n "$1" ]; then
-		if [ "$1" -eq 2 ]; then
-			echo "start kafka broker 2 ..."
-			./bin/kafka-server-start.sh -daemon config/server2.properties
-		elif [ "$1" -eq 3 ]; then
-			echo "start kafka broker 2 ..."
-			./bin/kafka-server-start.sh -daemon config/server2.properties
-			echo "start kafka broker 3 ..."
-			./bin/kafka-server-start.sh -daemon config/server3.properties
-		fi
-	fi
-}
+查看：topic状态
 
-COMMAND=$1
-case $COMMAND in
-  	-start)
-		cleanup
-		initLogs
-		start $2
-    	shift
-  		;;
-  	-stop)
-        pushd "$kafkaDir"
-		./bin/kafka-server-stop.sh
-		./bin/zookeeper-server-stop.sh
-    	;;
-  	*)
-    	;;
-esac
+```shell
+ktopics --descibe --topic test
+
+Topic: test	PartitionCount: 1	ReplicationFactor: 3	Configs: segment.bytes=1073741824
+	Topic: test	Partition: 0	Leader: 3	Replicas: 2,3,1	Isr: 3,1,2
 ```
 
 
 
+# kafka 分区策略
+
+分区策略是决定生产者将消息发送到哪个分区的算法
+
+常见的分区策略:
+
+1. 轮询策略，能保证消息尽可能分配到不同的分区上
+2. 随机策略，随机返回小于partition的数，不能保证均匀性，适用及其性能不一的情形
+3. 按key保顺策略，具有相同key的消息会保证在同一个分区中，这样可以保证消息的前后顺序
 
 
-# zookeeper 与 kafka 的关系
+
+
 
