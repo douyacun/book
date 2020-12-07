@@ -1,10 +1,9 @@
 ---
-Title: kafka 概括
-Keywords:
-Descriptions:
-Cover:
-Date:
-LastEditTime:
+Title: kafka生产环境配置
+Keywords: kafka,配置,分区策略,压缩算法
+Descriptions: kafka如果保证消息不丢失？
+Date: 2020-12-07 10:50:00
+LastEditTime: 2020-12-07 10:50:00
 ---
 
 [toc]
@@ -86,6 +85,13 @@ LastEditTime:
 - swap内存：建议配置成1，方便报警
 - 脏页刷新时间：默认5秒
 
+- 磁盘大小
+  - 新增消息数
+  - 消息留存时间
+  - 平均消息大小
+  - 备份数
+  - 是否启用压缩
+
 # 本地集群
 
 本地运行多个实例，需要指定不同的端口，和broker.id, 创建多个server.propertie，指定端口
@@ -130,19 +136,76 @@ Topic: test	PartitionCount: 1	ReplicationFactor: 3	Configs: segment.bytes=107374
 	Topic: test	Partition: 0	Leader: 3	Replicas: 2,3,1	Isr: 3,1,2
 ```
 
-
-
-# kafka 分区策略
+# kafka 分区策略 & 压缩算法
 
 分区策略是决定生产者将消息发送到哪个分区的算法
 
 常见的分区策略:
 
-1. 轮询策略，能保证消息尽可能分配到不同的分区上
+1. 轮询策略，能保证消息尽可能分配到不同的分区上 
 2. 随机策略，随机返回小于partition的数，不能保证均匀性，适用及其性能不一的情形
-3. 按key保顺策略，具有相同key的消息会保证在同一个分区中，这样可以保证消息的前后顺序
+3. hash策略，具有相同key的消息会保证在同一个分区中，这样可以保证消息的前后顺序
+
+go语言包：[github.com/Shopify/sarama](https://pkg.go.dev/github.com/Shopify/sarama)  提供了这3种分区策略的实现
+
+**轮询:** `func NewRoundRobinPartitioner(topic string) Partitioner`
+
+**随机:** `func NewRandomPartitioner(topic string) Partitioner`
+
+**hash:** `func NewHashPartitioner(topic string) Partitioner`
+
+**指定分区** `func NewManualPartitioner(topic string) Partitioner`
 
 
 
+压缩：
 
+保证Producer 和 Consumer 压缩算法一致
+
+```go
+const (
+	//CompressionNone no compression
+	CompressionNone CompressionCodec = iota
+	//CompressionGZIP compression using GZIP
+	CompressionGZIP
+	//CompressionSnappy compression using snappy
+	CompressionSnappy
+	//CompressionLZ4 compression using LZ4
+	CompressionLZ4
+	//CompressionZSTD compression using ZSTD
+	CompressionZSTD
+)
+```
+
+吞吐量： LZ4 > Snappy > zstd > GZIP
+
+压缩比：zstd > LZ4 > GZIP > Snappy
+
+CPU:  各算法差不多压缩时 Snappy 算法使用的 CPU 较多, 解压缩时 GZIP 算法可能使用更多的 CPU
+
+
+
+# FAQs
+
+**如何保证消息不丢失?**
+
+producer: 
+
+1. 消息发送异常处理, [sarama](https://github.com/Shopify/sarama)提供了2种发送消息的方式，sync/async，同步如果发送失败会返回error，异步提供了 `Errors() <-chan *ProducerError` 接口来处理错误
+2. 消息发送异常重试, `config.Producer.Retry`, 默认是 3次
+3. `config.Producer.RequiredAcks=WaitForAll` 所有副本都接受到消息，该消息才算做提交
+   1. `NoResponse RequiredAcks = 0`
+   2. `WaitForLocal RequiredAcks = 1`
+   3. `WaitForAll RequiredAcks = -1`
+
+broker:
+
+1. `unclean.leader.election.enable=false` 控制落后台太多的broker不参加leader选举
+2. `replication.factor >= 3` 副本数量不要少于3份
+3. `min.insync.replicas >= 1` 消息最少写入多少个副本才算做已提交，正式环境中建议>=3
+4. `replication.factor > min.insync.replicas`  如果2着相等，只要有1个副本挂掉，整个分区就无法工作了
+
+consumer:
+
+1. 先消费，在更新位移, `cfg.Consumer.Offsets.AutoCommit.Enable = false` 默认是自动提交的
 
