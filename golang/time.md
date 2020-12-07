@@ -1,7 +1,7 @@
 ---
 Title: go time常用方法
-Keywords: time
-Description: 学习go time提供的方法，实现方式
+Keywords: time,ParseInLocation,parse
+Description: go,时间,时区,解析,parse,timezone
 Author: douyacun
 Label: time
 Date: 2019-12-11 13:53:33
@@ -165,7 +165,7 @@ func main() {
 
 返回当前时间,这个用的最多
 
-## 时间解析 Parse
+## 时间解析 Parse & ParseInLocation
 
 ```go
 func Parse(layout, value string) (Time, error)
@@ -175,13 +175,26 @@ Layout 时间格式，value时间值，解析时间返回time
 
 ```go
 func main() {
-	t, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
+	t, _ := time.Parse("2006-01-02", "2020-12-05")
 	fmt.Println(t)
-	m, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05+07:00")
+  m, _ := time.Parse("2006-01-02 15:04:05", "2020-12-05 11:23:08")
 	fmt.Println(m)
 }
-// 2006-01-02 15:04:05 +0000 UTC
-// 2006-01-02 15:04:05 +0700 +0700
+// 2020-12-05 00:00:00 +0000 UTC
+// 2020-12-05 11:23:00 +0000 UTC
+```
+
+上面的用法其实是错误的，没有时区，正确的做法是：
+
+```go
+func main() {
+	t, _ := time.ParseInLocation("2006-01-02", "2020-12-05")
+	fmt.Println(t)
+  m, _ := time.ParseInLocation("2006-01-02 15:04:05", "2020-12-05 11:23:08")
+	fmt.Println(m)
+}
+// 2020-12-05 00:00:00 +0800 CST
+// 2020-12-05 11:23:00 +0800 CST
 ```
 
 ## 时间戳 Unix
