@@ -208,4 +208,3 @@ broker:
 consumer:
 
 1. 先消费，在更新位移, `cfg.Consumer.Offsets.AutoCommit.Enable = false` 默认是自动提交的
-
