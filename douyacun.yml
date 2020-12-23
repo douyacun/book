@@ -70,13 +70,9 @@ Topics:
     - kong基础.md
     - kong进阶.md
     - etcd.md
-    - kafka.md
   openapi:
     - ip_location.md
-  algorithm:
-    # - 19. 删除链表的倒数第N个节点.md
-    # - 21. 合并两个有序链表.md
-    # - 23. 合并k个有序链表.md
-    # - 25. K 个一组翻转链表.md
-    # - 61. 旋转链表.md
-
+  tools:
+    - yapi-环境变量.md
+  kafka:
+    - kafka.md
