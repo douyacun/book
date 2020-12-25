@@ -1,7 +1,7 @@
 ---
 Title: 每秒1亿条数据，保存7天，kafka是如何处理的？
 Keywords: kafka,持久化,带宽问题,数据积压
-Desciption: kafka，像我一样优秀
+Description: kafka，像我一样优秀
 Date: 2020-12-24 23:26:00
 LastEditTime: 2020-12-24 23:26:00
 ---
@@ -36,6 +36,4 @@ I/O操作主要是 客户端与服务端的消息传递，服务端的数据持�
 将多个消息打包成一组消息块，一次请求发送一组消息，服务端接收，consumer每次获取多组消息块，大量的I/O操作将不在是主要的性能问题，其实主要矛盾是在服务带宽问题上。producer/broker/consumer 三者使用二进制数据传输，producer 和 consumer 之间使用相同的压缩算法也可以极大的节省带宽问题
 
 sendfile 将数据从 pagecache 直接发送到网络，这样避免重新复制数据。
-
-
 
