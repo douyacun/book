@@ -13,9 +13,13 @@ Description:
   - 通过code获取token验证
   - 通过接口获取public key，验证jwt
 
-###  配置Sign in with Apple
+##  配置Sign in with Apple
 
+登录界面：
 
+![image-20201226130749503](./assert/image-20201226130749503.png)
+
+#### 配置App ID
 
 
 
