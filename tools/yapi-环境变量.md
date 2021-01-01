@@ -2,7 +2,6 @@
 Title: yapi 设置环境变量，如何修改全局变量？
 Keywords: yapi,环境变量,全局变量
 Description: yapi无法修改全局变量！如何曲线救国！
-Date: 2020-12-19 14:24:00
 ---
 
 # yapi 设置环境变量，如何修改全局变量？
