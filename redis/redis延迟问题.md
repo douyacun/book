@@ -22,7 +22,7 @@ LastEditTime: 2019-12-27 23:03:20
 4. 可能存在与redis无关的内在延迟，`redis-cli --intrinsic-latency 100`, 需要redis-server服务器上运行
 5. aof/rdb 持久化 性能/延迟的权衡
    1. AOF+fsync 总是很慢，不推荐使用
-   2. AOF+fsync+everysec 每秒执行一次，推荐(也可能会造成阻塞的问题,[当执行bgrewrite对aof进程归并优化时，redis出现被阻塞的问题](./aof.md#1))
+   2. AOF+fsync+everysec 每秒执行一次，推荐(也可能会造成阻塞的问题,[当执行bgrewrite对aof进程归并优化时，redis出现被阻塞的问题](./持久化.md#1))
    3. AOF+fsync+everysec+no-appendfsync-no-write 主进程不调用fsync()操作，最长不超过30秒，推荐
    4. AOF+fsync never
    5. RDB 配置触发save条件

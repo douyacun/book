@@ -7,7 +7,7 @@ WechatSubscriptionQrcode: /assert/douyacun_qrcode.jpg
 Topics:
   Redis:
     - redis延迟问题.md
-    - aof.md
+    - 持久化.md
   Mysql:
     - mysql主从同步.md
     - mysql锁.md
