@@ -1,10 +1,8 @@
 ---
-Title: react移动边框
+Title: react 移动边框
 Keywords: react,移动边框,ew-resize
 Description: react实现拖拽移动边框思路
 Lable: ew-resize
-Date: 2020-12-28 11:02:00
-LastEditTime: 2020-12-28 11:02:00
 ---
 
 [TOC]
