@@ -1,6 +1,6 @@
 ---
 Title: go代理请求
-Keyworlds: go,http,proxy,Transport
+Keyworlds: go,http,proxy,Transport,代理
 Description: 解决请求 github api timeout的问题
 ---
 
