@@ -4,6 +4,8 @@ Keyworlds: go,http,proxy,Transport,代理
 Description: 解决请求 github api timeout的问题
 ---
 
+![134245504_789637481968571_8633124284968352778](./assert/134245504_789637481968571_8633124284968352778.jpg)
+
 作为一名程序员有经常访问github、google的情况。比如github、google登录
 
 
