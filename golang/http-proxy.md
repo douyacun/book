@@ -1,12 +1,12 @@
 ---
-Title: go代理请求
-Keyworlds: go,http,proxy,Transport,代理
-Description: 解决请求 github api timeout的问题
+Title: "go代理: http/socks5 proxy"
+Keyworlds: "go,http,proxy,Transport,代理"
+Description: "解决: 在服务上使用代理访问github、google"
 ---
 
 ![134245504_789637481968571_8633124284968352778](./assert/134245504_789637481968571_8633124284968352778.jpg)
 
-作为一名程序员有经常访问github、gg的情况。比如github、gg登录
+博客支持github、gg登录，github虽然偶尔能访问成功，但大部分是timeout，gg直接不用说
 
 
 
