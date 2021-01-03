@@ -6,7 +6,7 @@ Description: 解决请求 github api timeout的问题
 
 ![134245504_789637481968571_8633124284968352778](./assert/134245504_789637481968571_8633124284968352778.jpg)
 
-作为一名程序员有经常访问github、google的情况。比如github、google登录
+作为一名程序员有经常访问github、gg的情况。比如github、gg登录
 
 
 
@@ -20,10 +20,14 @@ Description: 解决请求 github api timeout的问题
 
 
 
-这里说一下go使用代理的方式：
+go也是支持通过 socks5 和 http 代理访问的:
+
+# http代理
+
+正确的http代理使用姿势
 
 ```go
-proxy, _ := url.Parse("http://127.0.0.1:7891")
+proxy, _ := url.Parse("http://127.0.0.1:1081")
 clt := http.Client{
   Timeout: 5 * time.Second,
   Transport: &http.Transport{
@@ -34,8 +38,6 @@ clt := http.Client{
 resp, err := clt.Get(fmt.Sprintf("http://www.google.com/ping?sitemap=%s", sitemapUrl))
 ```
 
-
-
 go http提供了2个函数:
 
 ```go
@@ -44,4 +46,61 @@ func ProxyFromEnvironment(req *Request) (*url.URL, error)
 // 指定端口
 func ProxyURL(fixedURL *url.URL) func(*Request) (*url.URL, error)
 ```
+
+
+
+# Socks5 代理
+
+http代理直接使用http包即可完成，不过socks5就得用: [golang.org/x/net/proxy](https://pkg.go.dev/golang.org/x/net/proxy#Dialer)
+
+```go
+package main
+
+import (
+	"crypto/tls"
+	"fmt"
+	"golang.org/x/net/proxy"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"time"
+)
+
+func main() {
+	dialer, err := proxy.SOCKS5("tcp", "127.0.0.1:1080", nil, proxy.Direct)
+	if err != nil {
+		log.Fatalf("socks5 init err: %s", err.Error())
+		return
+	}
+	clt := http.Client{
+		Timeout: 5 * time.Second,
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			Dial:            dialer.Dial,
+		},
+	}
+	resp, err := clt.Get("https://www.google.com")
+	if err != nil {
+		log.Fatalf("ping google sitemap err: %s", err.Error())
+		return
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		log.Fatalf("curl google failed~")
+		return
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalf("google response body read err: %s", err.Error())
+	}
+	fmt.Println(string(body))
+	return
+}
+```
+
+结果是可以正常返回的，服务器是在北京的。
+
+![image-20210103211632721](./assert/image-20210103211632721.png)
+
+如果你想问我梯子是如何搭的话，可以邮箱联系我，不公开讨论！
 

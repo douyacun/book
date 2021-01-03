@@ -1,7 +1,7 @@
 ---
-Title: react服务端渲染cookie如何透传给后端，后端如何设置cookie
-Keywords: react,server render,cookie,服务端渲染,useEffect
-Description: nextjs getInitialProps 是在服务端执行的代码，可以通过 request.header 获取到 cookie 透传给后端接口
+Title: "react服务端渲染: cookie如何透传给后端，后端如何设置cookie"
+Keywords: "react,server render,cookie,服务端渲染,useEffect"
+Description: "nextjs getInitialProps 是在服务端执行的代码，可以通过 request.header 获取到 cookie 透传给后端接口"
 ---
 
 react 服务端渲染 cookie 有2个问题：
