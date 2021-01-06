@@ -25,4 +25,23 @@ Label: "天气组件"
 
 ## 安装
 
- 
+```bash
+npm install tencent_weather --save
+```
+
+运行demo:
+
+```bash
+git clone git@github.com:hustcc/echarts-for-react.git
+
+npm install
+
+npm start
+```
+
+本地浏览器打开 [http://127.0.0.1:3000](http://127.0.0.1:3000)
+
+
+
+# 使用
+
