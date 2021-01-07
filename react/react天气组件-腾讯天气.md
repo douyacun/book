@@ -1,7 +1,7 @@
 ---
 Title: "react天气组件: 腾讯天气"
 Keywords: "react,天气组件,腾讯天气,tencent weather"
-Desciption: "拿走，不谢～"
+Desciption: "博客右边框空荡荡的，需要一个天气组件来支撑一下，就写了这个天气组件～"
 Label: "天气组件"
 ---
 
