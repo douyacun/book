@@ -1,7 +1,7 @@
 ---
 Title: "npm publish: react component/react hook component"
 Keywords: "npm publish,react component,react hook component,发布,publish,package,libraryTarget用法,Minified React error #321"
-Descrition: "为了发布一个react npm package，在此默默的抹了2把泪～"
+Description: "为了发布一个react npm package，在此默默的抹了2把泪～"
 Label: "npm package"
 ---
 
