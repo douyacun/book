@@ -25,7 +25,6 @@ func init() {
 - db.maxOpen 打开的连接最大数量，超过该数量后，query会被阻塞等待可用连接
 - db.maxIdle 空闲池维持的最大连接数量
 
-
 **sql.Open为什么只需要一次调用即可?**
 
 1. 加载驱动程序 go-sql-driver/mysql

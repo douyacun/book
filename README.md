@@ -29,9 +29,9 @@
 - [负载高](./linux/负载高.md)
 - [负载高定位工具](./linux/负载高定位工具.md)
 
-# todo
+# kong
 - [ ] [kong/重定向](./kong/重定向.md)
+
+# todo
+
 - [ ] [es/集群搭建.md](./elasticsearch/集群搭建.md)
-
-
-

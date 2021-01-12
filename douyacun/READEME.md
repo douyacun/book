@@ -14,3 +14,7 @@
 
 - 自定义滑动条样式
 
+```text
+ffmpeg -i 1.mp4 -i 1.mp3 -vcodec copy -acodec copy output.mp4
+```
+
