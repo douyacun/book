@@ -30,35 +30,8 @@
 - [负载高定位工具](./linux/负载高定位工具.md)
 
 # todo
-- [ ] go new & make
-
-- [x] go rpc
-
-- [ ] go net
-
-- [x] http/2
-
-- [x] go time
-
-- [ ] go text
-
-- [ ] interface
-
-- [x] map
-
-- [ ] tcp/ip
-
-- [x] mysql事物实现方式，mvvc：多版本并发控制
-
-- [ ] go reflect
-
-- [ ] go runtime
-
-- [ ] go syscall
-
-- [ ] go sync
-
-    
+- [ ] [kong/重定向](./kong/重定向.md)
+- [ ] [es/集群搭建.md](./elasticsearch/集群搭建.md)
 
 
 
