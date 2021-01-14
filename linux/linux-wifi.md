@@ -19,3 +19,4 @@
 
     # wpa_passphrase [wifi] [password] >
     ```
+
