@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/douyacun/book.svg?branch=master)](https://travis-ci.org/douyacun/book)
+](https://travis-ci.org/douyacun/book)
 
 # go
 
