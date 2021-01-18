@@ -1,10 +1,8 @@
 ---
-Title: golang如何远程调试代码？
-Keywords: 远程调试代码,delve,dlv,goland
-Description: golang一般都是运行在linux机器上的，如果用不到linux特有服务的话都好说，本地直接调试开发就ok了，万一用到epoll了，只能远程调试了
-Label: delve
-Date: 2020-04-02 00:23:00
-LastEditTime: 2020-04-02 00:23:00
+Title: "golang如何远程调试代码？"
+Keywords: "远程调试代码,delve,dlv,goland"
+Description: "golang一般都是运行在linux机器上的，如果用不到linux特有服务的话都好说，本地直接调试开发就ok了，万一用到epoll了，只能远程调试了"
+Label: "delve"
 ---
 
 最近在研究websocket的路上愈走愈远了，从开始只是搭建聊天室到单机服务如何支持百万连接。现在是在弄epoll的道路上，经历一路坎坷。这里记录一下心路历程。
