@@ -18,11 +18,13 @@ Cover: assert/google-adsense.png
 
 这会得贴一下google adsense加入 [AdSense 计划的资格要求](https://support.google.com/adsense/answer/9724?hl=zh-Hans)，第一条就是：**您提供的内容是否有趣并且是您原创**的，可以看作是申请时唯一的要求了
 
-![加入google adsense资格要求](assert/加入google adsense资格要求.png)
+![加入google-adsense资格要求](assert/加入google-adsense资格要求.png)
 
 第三次申请：2021-01-16填写的申请，01-17号就获得了资格，也就是说如果你的网站是合格的话（稳定性很重好），一天就可以出结果了。这里可以看下我申请后，网站内google搜索引擎蜘蛛的请求量，正常情况每天也就10个左右，但是申请后1天内爬虫达到了143次
 
-![google adsense爬虫日志.png](assert/google adsense爬虫日志.png)
+![google-adsense-douyacun](assert/google-adsense-1022749.png)
+
+![google-adsense爬虫日志.png](assert/google-adsense爬虫日志.png)
 
 
 
