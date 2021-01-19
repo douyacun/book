@@ -76,6 +76,7 @@ Topics:
     - ip_location.md
   tools:
     - yapi-环境变量.md
+    - google-adsense.md
   kafka:
     - kafka.md
     - kafka持久化.md
