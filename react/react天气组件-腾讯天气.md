@@ -31,7 +31,7 @@ Label: "天气组件"
 ## install
 
 ```bash
-npm install tencent_weather --save
+npm install react_tencent_weather --save
 ```
 
 运行demo:
