@@ -1,7 +1,7 @@
 ---
 Title: websocket如何实现统计当前在线人数
 Keywords: 在线人数,统计,go,react,ping,pong
-Desciption: 鉴于之前开发的聊天功能没人用，考虑在三去掉了聊天功能，改成统计当前在线人数
+Description: 鉴于之前开发的聊天功能没人用，考虑在三去掉了聊天功能，改成统计当前在线人数
 Lable: 统计在线人数
 Cover: assert/websocket-在线人数.png
 ---
