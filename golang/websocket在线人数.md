@@ -10,9 +10,12 @@ Cover: assert/websocket-在线人数.png
 
 遇到的问题：
 
-- 页面虽然是react写的，但是nextsj服务端渲染的，不是单页应用就不能像单页应用那样有全局变量存储整站的websocket
+- 页面虽然是react写的，但是nextjs服务端渲染的，不是单页应用就不能像单页应用那样有全局变量存储整站的websocket
 - 服务端使用nginx作为代理服务器（之前是kong，后来干掉了），nginx proxy模块默认有 read_timeout/send_timeout 默认值 60s
 - 服务端socket存储数据结构选型
+- 限流，以及鉴权
+
+
 
 实现思路：
 
@@ -42,6 +45,8 @@ const connect = () => {
 }
 ```
 
+
+
 nginx：proxy_read_timeout/proxy_send_timeout默认60s超时，心跳检测，只需要服务端在60s内定时发送ping(0x9)消息就可以了，浏览器会自动回复pong消息
 
 ```go
@@ -60,6 +65,8 @@ for {
 }
 ```
 
+
+
 服务端存储socket结构体，没有向指定socket写数据的需求，不需要额外维护socket的数据结构，维护一个cookie在线页面数即可
 
 ```go
@@ -73,6 +80,22 @@ type Hub struct {
 	// Unregister requests from clients.
 	unregister chan *Client
 }
+
+func (h *Hub) Run() {
+  for {
+    select {
+      case client := <-h.register:
+      // 注册ws
+      h.uuid[client.uuid]++
+      client.send <- hub.Count().Bytes()
+      case client := <-h.unregister:
+      // 删除ws
+      h.uuid[client.uuid]--
+      if h.uuid[client.uuid] == 0 {
+        delete(h.uuid, client.uuid)
+      }
+    }
+  }
 ```
 
 
