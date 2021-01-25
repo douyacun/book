@@ -13,9 +13,7 @@ Cover: assert/websocket-在线人数.png
 - 页面虽然是react写的，但是nextjs服务端渲染的，不是单页应用就不能像单页应用那样有全局变量存储整站的websocket
 - 服务端使用nginx作为代理服务器（之前是kong，后来干掉了），nginx proxy模块默认有 read_timeout/send_timeout 默认值 60s
 - 服务端socket存储数据结构选型
-- 限流，以及鉴权
-
-
+- 安全防护
 
 实现思路：
 
@@ -98,7 +96,15 @@ func (h *Hub) Run() {
   }
 ```
 
+安全方面需要考虑的内容是：
 
+1. 如何检测跨站点 WebSocket 劫持漏洞?
+2. 同一设备  ws 连接数如何限制，避免bug导致连接数过多导致服务挂掉?
 
+解决方法：
 
-
+1. check origin, 确保是自己网站的来源
+2. 服务器端为每个 WebSocket 客户端生成唯一的一次性 Token；
+3. 客户端将 Token 作为 WebSocket 连接 URL 的参数（譬如 wss://www.douyacun.com/?token＝randomOneTimeToken），发送到服务器端进行 WebSocket 握手连接；
+4. 服务器端验证 Token 是否正确，一旦正确则将这个 Token 标示为废弃不再重用，同时确认 WebSocket 握手连接成功；如果 Token 验证失败或者身份认证失败，则返回 403 错误。
+5. 限流，限制设备最多最大链接数，必要时，deny ip地址
