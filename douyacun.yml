@@ -64,6 +64,7 @@ Topics:
   Elasticsearch:
     - 安装运行.md
     - logstash.md
+    - 集群.md
   Https:
     - http2.md
     - letsencrypt.md
