@@ -109,8 +109,6 @@ ReactDOM.render(
 
 MIT@[douyacun](https://github.com/douyacun)
 
-
-
 关注微信公众号
 
 ![douyacun](assert/douyacun_qrcode.jpg)
