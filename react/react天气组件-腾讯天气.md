@@ -71,8 +71,6 @@ ReactDOM.render(
 )
 ```
 
-
-
 ## component props
 
 - `province`: (optional, string)
@@ -99,12 +97,10 @@ ReactDOM.render(
 
 是否显示明日预报
 
-
-
 # LICENSE
 
 MIT@[douyacun](https://github.com/douyacun)
 
-关注微信公众号
+关注我的微信公众号
 
 ![douyacun](assert/douyacun_qrcode.jpg)
