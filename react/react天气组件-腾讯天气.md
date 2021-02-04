@@ -15,7 +15,7 @@ Label: "天气组件"
 
 文档：
 
-[http://douyacun.io/article/b9093956c565e471f45c035b5870ed0c](http://douyacun.io/article/b9093956c565e471f45c035b5870ed0c)
+[https://www.douyacun.com/article/b9093956c565e471f45c035b5870ed0c](https://www.douyacun.com/article/b9093956c565e471f45c035b5870ed0c)
 
 特点：
 
@@ -37,7 +37,7 @@ npm install react_tencent_weather --save
 运行demo:
 
 ```bash
-git clone git@github.com:hustcc/echarts-for-react.git
+git clone https://github.com/douyacun/react-tencent-weather.git
 
 npm install
 
