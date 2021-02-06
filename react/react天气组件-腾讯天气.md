@@ -9,13 +9,9 @@ Label: "天气组件"
 
  [![npm](https://img.shields.io/npm/v/react-tencent-weather)](https://www.npmjs.com/package/react-tencent-weather) [![npm](https://img.shields.io/npm/dm/react-tencent-weather)](https://www.npmjs.com/package/react-tencent-weather) [![npm](https://img.shields.io/npm/l/react-tencent-weather)](https://www.npmjs.com/package/react-tencent-weather) ![echarts supported](https://img.shields.io/badge/echarts-%5E3.0.0%20%7C%7C%20%5E4.0.0-blue.svg) ![react supported](https://img.shields.io/badge/React-%5E16.8.0-blue.svg)
 
-体验地址:
+体验地址: [https://www.douyacun.com](https://www.douyacun.com)
 
-[https://www.douyacun.com](https://www.douyacun.com)
-
-文档：
-
-[http://douyacun.io/article/b9093956c565e471f45c035b5870ed0c](http://douyacun.io/article/b9093956c565e471f45c035b5870ed0c)
+文档：[https://www.douyacun.com/article/b9093956c565e471f45c035b5870ed0c](https://www.douyacun.com/article/b9093956c565e471f45c035b5870ed0c)
 
 特点：
 
@@ -37,7 +33,7 @@ npm install react_tencent_weather --save
 运行demo:
 
 ```bash
-git clone git@github.com:hustcc/echarts-for-react.git
+git clone https://github.com/douyacun/react-tencent-weather.git
 
 npm install
 
@@ -75,8 +71,6 @@ ReactDOM.render(
 )
 ```
 
-
-
 ## component props
 
 - `province`: (optional, string)
@@ -103,12 +97,10 @@ ReactDOM.render(
 
 是否显示明日预报
 
-
-
 # LICENSE
 
-MIT@[douyacun](https://github.com/douyacun).
+MIT@[douyacun](https://github.com/douyacun)
 
-关注微信公众号
+关注我的微信公众号
 
 ![douyacun](assert/douyacun_qrcode.jpg)
