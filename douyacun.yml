@@ -74,6 +74,7 @@ Topics:
     - kong基础.md
     - kong进阶.md
     - etcd.md
+    - template.md
   openapi:
     - ip_location.md
   tools:
