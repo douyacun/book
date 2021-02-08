@@ -1,7 +1,7 @@
 ---
 Title: "es使用template自动初始化mapping"
 Keywords: "elasticsearch,template,mapping"
-Descripton: "使用es存储log日志来分析数据，需要按日期来分割数据（douyacun_log-2021-02）定时删除历史数据"
+Description: "使用es存储log日志来分析数据，需要按日期来分割数据（douyacun_log-2021-02）定时删除历史数据"
 Lable: "es template"
 ---
 
