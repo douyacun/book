@@ -4,6 +4,7 @@ Keywords: "go,kafka,producer,sync,async"
 Description: "go kafka producer在写消息时，写了1，2条就阻塞了？"
 Lable: "kafka producer"
 ---
+概述
 
 - kafka 库
 - producer config 配置
