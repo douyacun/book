@@ -84,6 +84,7 @@ Topics:
     - kafka.md
     - kafka持久化.md
     - kafka-producer.md
+    - kafka-consumer.md
   react:
     - react_markdown渲染.md
     - react可移动边框.md
