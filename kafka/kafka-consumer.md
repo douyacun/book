@@ -81,14 +81,14 @@ kafka所有的副本都有相同的 log 和相同的 offset。consumer 负责控
 - kafka崩溃恢复，可重新加入consumer group，恢复消费
 
 ```go
-
 type ConsumerGroup interface {
 	Consume(topic []string, handler sarama.ConsumerGroupHandler)
 }
 
 type consumerGroup struct {
-	ctx    context.Context
-	client sarama.ConsumerGroup
+	ctx     context.Context
+	client  sarama.ConsumerGroup
+	groupId string
 }
 
 func NewConsumerGroup(ctx context.Context, groupId string) ConsumerGroup {
@@ -111,14 +111,15 @@ func NewConsumerGroup(ctx context.Context, groupId string) ConsumerGroup {
 			// 主进程退出，通知consumer关闭
 			case <-ctx.Done():
 				_ = client.Close()
-				logger.Infof("quit: kafka consumer %s", groupId)
+				//logger.Infof("quit: kafka consumer %s", groupId)
 				return
 			}
 		}
 	}()
 	return &consumerGroup{
-		ctx:    ctx,
-		client: client,
+		ctx:     ctx,
+		client:  client,
+		groupId: groupId,
 	}
 }
 
@@ -127,10 +128,18 @@ func (c *consumerGroup) Consume(topic []string, handler sarama.ConsumerGroupHand
 		defer c.client.Close()
 		for {
 			err := c.client.Consume(c.ctx, topic, handler)
-			// todo kafka重启？
 			if err != nil {
-				logger.Wrapf(err, "kafka consumer group failed")
-				return
+				switch err {
+				case sarama.ErrClosedClient, sarama.ErrClosedConsumerGroup:
+					// 退出
+					logger.Infof("quit: kafka consumer %s", c.groupId)
+					return
+				case sarama.ErrOutOfBrokers:
+					logger.Errorf("kafka 崩溃了~")
+				default:
+					logger.Errorf("kafka exception: %s", err.Error())
+				}
+				time.Sleep(1 * time.Second)
 			}
 		}
 	}()
