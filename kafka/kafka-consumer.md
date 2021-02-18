@@ -145,3 +145,4 @@ func (c *consumerGroup) Consume(topic []string, handler sarama.ConsumerGroupHand
 	}()
 }
 ```
+---
