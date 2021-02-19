@@ -87,7 +87,9 @@ Kafka 消费者从属于消费者群组。一个群组里的消费者订阅的�
 
 如果消费者发生崩溃，consumer-group协调器broker，在确认了该consumer死亡后会出发再均衡。
 
-`max.poll.interval.ms` 可以控制心跳的间隔时间
+`max.poll.interval.ms` 控制发送心跳的间隔时间
+
+`session.timeout.ms` 控制失联多久判定为死亡
 
 # go kafka consumer 
 
