@@ -11,7 +11,7 @@ LastEditTime: 2020-07-29 23:06:38
 
 #### 接口地址:
 
- `https://www.douyacun.com/api/tools/location`
+ `https://www.douyacun.com/api/geo/ip`
 
 #### 请求方法:  
 
@@ -25,11 +25,11 @@ LastEditTime: 2020-07-29 23:06:38
 
 - `token` : `UgDS8nRousuEQ9LHXHQ2JaBCSbIn0iqE`
 
-  > 此token仅用于测试，`5次/秒 `  `500次/天`
+> 此token仅用于测试，`5次/秒 `  `500次/天`
 
 #### 示例:
 
- `curl "https://www.douyacun.com/api/tools/location?ip=118.28.8.8" -H "Token: UgDS8nRousuEQ9LHXHQ2JaBCSbIn0iqE"`
+ `curl "https://www.douyacun.com/api/geo/ip?ip=118.28.8.8" -H "Token: UgDS8nRousuEQ9LHXHQ2JaBCSbIn0iqE"`
 
 #### 响应:
 
@@ -38,32 +38,10 @@ LastEditTime: 2020-07-29 23:06:38
     "code": 0,
     "message": "success",
     "data": {
-        "city": {
-            "name": "上海市",
-            "adcode": "310100",
-            "code": ""
-        },
-        "country": {
-            "name": "中国",
-            "adcode": "",
-            "code": "CN"
-        },
-        "province": {
-            "name": "上海市",
-            "adcode": "310000",
-            "code": ""
-        }
+        "country": "中国",
+        "province": "天津",
+        "city": "天津",
+        "refer": "ipip"
     }
 }
 ```
-
-
-
-## token获取方式
-
-顶部导航栏登录以后可以获取token
-
-![image-20200730230550806](./assert/image-20200730230550806.png)
-
-
-
