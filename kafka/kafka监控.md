@@ -116,7 +116,7 @@ Kafka 使用了两个线程池来处理客户端的请求:网络处理器线程�
 
 - 网络处理器线程池负责通过网络读入和写出数据
 
-![image-20210222164713438](assert/network-processor-idle.png)
+![network-processor-idle](assert/network-processor-idle.png)
 
 JMX MBean: `kafka.network:type=SocketServer,name=NetworkProcessorAvgIdlePercent`
 
