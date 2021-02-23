@@ -98,6 +98,7 @@ Topics:
     - 日志收集.md
   prometheus:
     - prometheus环境搭建.md
+    - node_exporter.md
   引流:
     - 知乎.md
   敬请周知:
