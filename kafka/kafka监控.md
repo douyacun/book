@@ -1,7 +1,7 @@
 ---
-Title: "kafka监控"
-Keywords: "kafka,监控,ISR"
-Description: "jmx prometheus grafana 监控kafka"
+Title: "分享 kafka prometheus 监控方案: jmx 监控指标 grafana dashboard"
+Keywords: "kafka,监控指标,jmx_exporter,prometheus,grafana"
+Description: "prometheus/jmx_exporter 收集jmx指标，grafana 监控 kafka"
 Label: "kafka监控"
 ---
 
