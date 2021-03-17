@@ -86,6 +86,7 @@ Topics:
     - kafka-producer.md
     - kafka-consumer.md
     - kafka监控.md
+    - kafka多线程消费.md
   react:
     - react_markdown渲染.md
     - react可移动边框.md
