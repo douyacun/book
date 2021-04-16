@@ -5,7 +5,15 @@ Description: "免费开源ip地理位置接口"
 Label: "GEO IP"
 ---
 
-# 后端接口调用
+特点：
+
+1. 支持传参IP定位，如果不传参数IP，默认使用当前客户端的IP地址定位
+
+2. 支持前端jsonp调用，避免跨域
+
+    
+
+# 接口调用
 
 **接口地址:**
 
@@ -21,13 +29,13 @@ Label: "GEO IP"
 
 **header:**
 
-- `token` : `UgDS8nRousuEQ9LHXHQ2JaBCSbIn0iqE`
+- `token` : `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY`
 
-> 此token仅用于测试，`5次/秒 `  `500次/天`
+> 此token仅用于测试使用，限流 10次/s
 
 **示例1:**
 
- `curl "https://www.douyacun.com/api/geo/ip?ip=178.252.91.188" -H "Token: UgDS8nRousuEQ9LHXHQ2JaBCSbIn0iqE"`
+ `curl "https://www.douyacun.com/api/geo/ip?ip=178.252.91.188" -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
 
 **响应：**
 
@@ -52,7 +60,7 @@ Label: "GEO IP"
 
 **示例2:**
 
- `curl "https://www.douyacun.com/api/geo/ip?ip=178.252.91.188" -H "Token: UgDS8nRousuEQ9LHXHQ2JaBCSbIn0iqE"`
+ `curl "https://www.douyacun.com/api/geo/ip?ip=178.252.91.188" -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
 
 **响应:**
 
@@ -83,7 +91,7 @@ Label: "GEO IP"
 
 **示例:**
 
- `curl "https://www.douyacun.com/api/geo/location?callback=__jp0"`
+ `curl "https://www.douyacun.com/api/geo/location?callback=__jp0 -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
 
 **响应:**
 
@@ -108,3 +116,6 @@ __jp0(
 )
 ```
 
+建了一个微信群聊，感兴趣的朋友扫码可以加群：
+
+<img src="assert/douyacun粉丝群.jpeg" alt="douyacun" style="zoom:50%;" />
