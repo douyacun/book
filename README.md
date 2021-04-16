@@ -39,3 +39,10 @@
 
 
 https://blog.csdn.net/dt763C/article/details/79799964
+
+# brew
+
+```
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+```
+
