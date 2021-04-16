@@ -118,4 +118,4 @@ __jp0(
 
 建了一个微信群聊，感兴趣的朋友扫码可以加群：
 
-<img src="assert/douyacun粉丝群.jpeg" alt="douyacun" style="zoom:50%;" />
+![](assert/douyacun粉丝群.jpeg)
