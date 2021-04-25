@@ -79,6 +79,7 @@ Topics:
     - etcd.md
   openapi:
     - ip_location.md
+    - weather_api.md
   tools:
     - yapi-环境变量.md
     - google-adsense.md
