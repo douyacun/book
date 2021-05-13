@@ -1,5 +1,5 @@
 ---
-Title: "免费不限速ip地理位置(GEO IP)接口"
+Title: "免费ip地理位置(GEO IP)接口"
 Keywords: "ip location,geoip,ip定位,地理位置"
 Description: "免费开源ip地理位置接口"
 Label: "GEO IP"
@@ -15,9 +15,6 @@ Label: "GEO IP"
 
 # 接口调用
 
-**开通接口权限**
-- 开通接口权限 <a name="token"></a>
-    - 关注微信公众号，私信说明开通 **开通IP定位接口Token** ，后续如果接口有调整会通过推送文章
 
 **接口地址:**
 
@@ -36,6 +33,17 @@ Label: "GEO IP"
 - `token` : `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY`
 
 > 此token仅用于测试使用，限流 3次/s，大家共享此token
+
+**限流**
+- 开通接口权限 <a name="token"></a>
+    - 关注微信公众号，私信说明开通 **开通IP定位接口Token** ，后续如果接口有调整会通过推送文章
+
+- 默认 5 次/s, 50万次/天， 
+- 最大支持 10次/秒, 100万次/天，够用了。。。。
+- 更大频次需要支付流量费用，100元长期支持，不限频次
+
+
+![douyacun](https://www.douyacun.com/static/image/douyacun%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7.png)
 
 **示例1:**
 
