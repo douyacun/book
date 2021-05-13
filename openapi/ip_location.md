@@ -119,5 +119,3 @@ __jp0(
 }
 )
 ```
-
-![douyacun粉丝群](assert/douyacun粉丝群.jpeg)
