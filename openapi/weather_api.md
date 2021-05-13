@@ -20,7 +20,7 @@ Label: "中国城市天气接口"
 
 - 5 次/s ，最大发量 10， 5万次/天
 
-![douyacun1](https://cdn.douyacun.com/images/blog/1/openapi/assert/douyacun%E7%B2%89%E4%B8%9D%E7%BE%A4.webp)
+![douyacun1](https://www.douyacun.com/static/image/douyacun%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7.png)
 
 # 文档
 
