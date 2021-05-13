@@ -18,7 +18,7 @@ Label: "GEO IP"
 
 **接口地址:**
 
- `https://www.douyacun.com/api/geo/ip`
+ `https://www.douyacun.com/api/openapi/geo/location`
 
 **请求方法:**  
 
@@ -47,7 +47,7 @@ Label: "GEO IP"
 
 **示例1:**
 
- `curl "https://www.douyacun.com/api/geo/ip?ip=178.252.91.188" -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
+ `curl "https://www.douyacun.com/api/openapi/geo/location?ip=178.252.91.188" -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
 
 **响应：**
 
@@ -72,7 +72,7 @@ Label: "GEO IP"
 
 **示例2:**
 
- `curl "https://www.douyacun.com/api/geo/ip?ip=178.252.91.188" -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
+ `curl "https://www.douyacun.com/api/openapi/geo/location?ip=178.252.91.188" -H "Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY"`
 
 **响应:**
 
