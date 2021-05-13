@@ -29,7 +29,7 @@ Label: "中国城市天气接口"
 **测试Token:**
 
 - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY
-- 此token仅用于测试使用，限流 3次/s，大家共享此token
+- 此token仅用于测试使用，限流 1次/s，大家共享此token
 
 **限流**
 
