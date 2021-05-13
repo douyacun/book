@@ -116,6 +116,4 @@ __jp0(
 )
 ```
 
-建了一个微信群聊, 感兴趣的朋友扫码可以加群：
-
 ![douyacun粉丝群](assert/douyacun粉丝群.jpeg)

@@ -16,10 +16,9 @@ Label: "中国城市天气接口"
 **请求限制:**
 
 - 开通接口权限 <a name="token"></a>
-    - 发送邮件到 `douyacun@gmail.com`， 说明开通天气API
-    - 加微信 `Douyacun1` ，说明开通天气API
+    - 关注微信公众号，私信说明开通天气API，后续如果接口有调整会通过推送文章
+
 - 5 次/s ，最大发量 10， 5万次/天
-- 如果需要更高频次，加微信私聊
 
 ![douyacun1](https://cdn.douyacun.com/images/blog/1/openapi/assert/douyacun%E7%B2%89%E4%B8%9D%E7%BE%A4.webp)
 
