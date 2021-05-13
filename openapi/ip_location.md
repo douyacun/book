@@ -15,6 +15,10 @@ Label: "GEO IP"
 
 # 接口调用
 
+**开通接口权限**
+- 开通接口权限 <a name="token"></a>
+    - 关注微信公众号，私信说明开通 **开通IP定位接口Token** ，后续如果接口有调整会通过推送文章
+
 **接口地址:**
 
  `https://www.douyacun.com/api/geo/ip`
@@ -31,7 +35,7 @@ Label: "GEO IP"
 
 - `token` : `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY`
 
-> 此token仅用于测试使用，限流 10次/s
+> 此token仅用于测试使用，限流 3次/s，大家共享此token
 
 **示例1:**
 
