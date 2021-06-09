@@ -31,6 +31,10 @@ Label: "中国城市天气接口"
 - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY
 - 此token仅用于测试使用，限流 1次/s，大家共享此token
 
+**测试url：**
+
+`https://www.douyacun.com/api/openapi/weather?province=%E4%B8%8A%E6%B5%B7&city=%E4%B8%8A%E6%B5%B7&weather_type=forecast_hour|forecast_day|alarm|limit|rise|observe|index|air&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY`
+
 **限流**
 
 - 开通接口权限 <a name="token"></a>

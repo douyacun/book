@@ -12,15 +12,15 @@ Cover: "assert/remove-watermark.jpeg"
 
 **步骤：**
 
-1. 选择文件
+**第一步：**选择文件
 
 ![https://www.douyacun.com/pdf/remove-watermark](assert/image-20210519200853413.png)
 
-2. 处理图片水印，点击分析文档，此步骤会分析文档中的疑似水印的图片，对与确认是水印的会标记删除，这一步需要确认以免误删或遗漏
+**第二步：**处理图片水印，点击分析文档，此步骤会分析文档中的疑似水印的图片，对与确认是水印的会标记删除，这一步需要确认以免误删或遗漏
 
 ![https://www.douyacun.com/pdf/remove-watermark](assert/image-20210519201012631.png)
 
-3. 处理文字水印，可以打开文档，尝试选中
+**第三步：**处理文字水印，可以打开文档，尝试选中
 
 ![https://www.douyacun.com/pdf/remove-watermark](assert/image-20210519201401006.png)
 
@@ -28,5 +28,5 @@ Cover: "assert/remove-watermark.jpeg"
 
 ![https://www.douyacun.com/pdf/remove-watermark](assert/image-20210519201601685.png)
 
-4. 点击清理文档，清理完成后，点击下载文档即可
+**第四步：**点击清理文档，清理完成后，点击下载文档即可
 
