@@ -35,6 +35,7 @@ Label: "GEO IP"
 > 此token仅用于测试使用，限流 1次/s，大家共享此token
 
 **限流**
+
 - 开通接口权限 <a name="token"></a>
     - 关注微信公众号，私信说明开通 **开通IP定位API**, 自动创建并回复token
 

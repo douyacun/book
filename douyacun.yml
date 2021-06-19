@@ -83,6 +83,7 @@ Topics:
   tools:
     - yapi-环境变量.md
     - google-adsense.md
+    - tesseract安装.md
   kafka:
     - kafka.md
     - kafka持久化.md
