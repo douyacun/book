@@ -84,6 +84,8 @@ Topics:
     - yapi-环境变量.md
     - google-adsense.md
     - tesseract安装.md
+    - pdf去水印手册.md
+    - 图片文字识别为word.md
   kafka:
     - kafka.md
     - kafka持久化.md
