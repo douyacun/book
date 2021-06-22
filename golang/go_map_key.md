@@ -1,7 +1,7 @@
 ---
 Title: "go语言struct能否作为map的key"
 Keywords: "go,struct,map,key"
-Descriptions: "数据库有联合主键，取出数据后存在map里面按主键直接取数据"
+Description: "数据库有联合主键，取出数据后存在map里面按主键直接取数据"
 ---
 
 ### 背景：
