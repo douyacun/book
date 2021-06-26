@@ -1,7 +1,7 @@
 ---
-Title: "grpc proto插件使用,多目录(多包)编译"
-Keywords: ""
-Description: ""
+Title: "grpc protobuf插件安装,多目录(多包)编译"
+Keywords: "grpc,protobuf,多目录,多个文件,编译,protobuf import"
+Description: "微服务之间的protobuf文件如何优雅的维护"
 Cover: "assert/go-protobuf.png"
 ---
 
