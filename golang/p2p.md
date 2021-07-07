@@ -16,5 +16,5 @@ stun.qq.com:3478
 
 webrtc 1.0 翻译文档：
 
-https://hardocs.com/d/webrtc-book/
+https://a-wing.github.io/webrtc-book-cn
 
