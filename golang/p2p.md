@@ -12,9 +12,22 @@ https://www.freebuf.com/vuls/233854.html
 
 stun.qq.com:3478
 
-
+https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
 
 webrtc 1.0 翻译文档：
 
 https://a-wing.github.io/webrtc-book-cn
+
+
+
+# Issue
+
+MediaDevices.getUserMedia` undefined  ?
+
+ Chrome `Insecure origins treated as secure` flag 并填入相应白名单。
+
+- 打开 `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
+- 将该 flag 切换成 `enable` 状态
+- 输入框中填写需要开启的域名，譬如 `http://example.com"`，多个以逗号分隔。
+- 重启后生效。
 
