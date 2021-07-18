@@ -20,6 +20,12 @@ https://a-wing.github.io/webrtc-book-cn
 
 
 
+发送文件的例子:
+
+https://github.com/webrtc/samples/tree/gh-pages/src/content/datachannel/filetransfer
+
+https://github.com/webrtc/samples/blob/gh-pages/src/content/datachannel/filetransfer/index.html
+
 # Issue
 
 MediaDevices.getUserMedia` undefined  ?
