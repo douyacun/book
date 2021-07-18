@@ -24,7 +24,7 @@ https://a-wing.github.io/webrtc-book-cn
 
 https://github.com/webrtc/samples/tree/gh-pages/src/content/datachannel/filetransfer
 
-https://github.com/webrtc/samples/blob/gh-pages/src/content/datachannel/filetransfer/index.html
+https://github.com/webrtc/samples/blob/gh-pages/src/content/datachannel/filetransfer/js/main.js
 
 # Issue
 
