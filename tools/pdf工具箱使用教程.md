@@ -1,6 +1,6 @@
 ---
 Title: "PDF工具箱教程"
-Keywords: "PDF工具箱,PDF去水印,PDF转Word"
+Keywords: "PDF工具箱,PDF去水印,PDF转Word,PDF强力水印,PDF添加/解除密码"
 Description: "PDF工具箱有PDF去水印、PDF转Word功能，支持windows、mac的桌面工具类软件"
 ---
 
