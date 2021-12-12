@@ -36,7 +36,7 @@ PDF工具箱功能：
 
 2. 图片水印
 
-<img src="assert/image-20211212110159219.png" alt="image-20211212110159219" style="zoom:30%;" />
+<img src="http://www.douyacun.com/assert/image-20211212110159219.png" alt="image-20211212110159219" style="zoom:30%;" />
 
 软件会提取嵌入在正文中的图片，如上图，像这种水印是和正文分开的，是可以去掉的。
 
