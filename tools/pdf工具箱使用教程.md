@@ -4,14 +4,14 @@ Keywords: "PDF工具箱,PDF去水印,PDF转Word,PDF强力水印,PDF添加/解除
 Description: "PDF工具箱有PDF去水印、PDF转Word功能，支持windows、mac的桌面工具类软件"
 ---
 
-PDF工具箱功能：
-
-[toc]
-
 下载地址：
 
 - [windows](https://www.douyacun.com/s/pdf_tools.exe)
 - [mac](https://www.douyacun.com/s/pdftools)
+
+PDF工具箱功能：
+
+[toc]
 
 # 一、PDF去水印-专业版
 
@@ -79,6 +79,12 @@ PDF工具箱功能：
 控制台会显示处理进度：
 
 <img src="assert/image-20211212113600615.png" alt="image-20211212113600615" style="zoom:30%;" />
+
+# 三、PDF批量加密文件
+
+PDF批量加密功能
+
+
 
 # TODO
 
