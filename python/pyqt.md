@@ -10,3 +10,4 @@ qt-designer : https://build-system.fman.io/qt-designer-download
 打包：
 
 1. PyInstaller: https://www.cxyzjd.com/article/lxt610/111169402
+
