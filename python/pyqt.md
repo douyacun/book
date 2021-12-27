@@ -1,65 +1,108 @@
+---
+Title: "pyqt5 windows/mac打包教程"
+Keywords: pyqt5,pyinstall,innosetup,dmgcanvas,qtwebengineview
+Description: 如何打包windows/mac桌面安装程序，如果用到qtwebengineview又该如何处理
+Lable: pyqt5打包
+---
+
+背景：
+
+本文是已经假设你已经可以运行在本地运行软件了，只是受困于不知道如何将软件打包成dmg/exe安装包
+
 [toc]
 
-# 准备
+# pyinstaller打包软件
 
-qt-designer : https://build-system.fman.io/qt-designer-download
+为啥用pyinstaller，因为一搜"pyqt5打包", 都是pyinstaller如何打包的教程，这里贴一下参数下面会用到，如果需要更详细的教程可以多搜搜。
 
-教程：
-
-1. [【PyQt5中文教程】](https://www.bookstack.cn/read/PyQt5-Chinese-tutoral/hello_world.md)
-2. https://segmentfault.com/a/1190000038814109
-
-打包：
-
-1. [PyInstaller](https://www.cxyzjd.com/article/lxt610/111169402)
-
-# 设置图标
-
-## mac
-
-mac图标是显示在dock中，mac设置窗口图标就需要设置 `QApplication.setWindowIcon`
-
-```python
-·app = QApplication(sys.argv)
-path = os.path.join(os.path.dirname(sys.modules[__name__].__file__), 'assert/icon.icns')
-app.setWindowIcon(QIcon(path))
+```
+-F, –onefile 打包成一个exe文件。
+-D, –onedir 创建一个目录，包含exe文件，但会依赖很多文件（默认选项）。
+-c, –console, –nowindowed 使用控制台，无界面(默认)
+-w, –windowed, –noconsole 使用窗口，无控制台
+--paths, 一同打包此目录下的文件
+--icon, icon
 ```
 
-## windows
+建议大家使用 -D（多目录的方式）来打包软件，如果项目比较大或者用到Qt Web Engineview的话，你就会发现打包出来的软件每次启动至少20s以上～，多目录发布就要用到dmg或者set up 安装程序。
 
-暂时没有windows运行
+贴一下 PDF工具箱的打包命令
 
-# 窗口位置
+**mac**
 
-主窗口大小：
-
-```python
-from PyQt5.QtWidgets import QWidget, QDesktopWidget, QApplication
-QDesktopWidget().availableGeometry().center()
+```
+	sudo pyinstaller \
+		--windowed \
+		--onedir \
+		--icon=assert/icon.icns \
+		--clean \
+		--noconfirm \
+		--osx-bundle-identifier=org.qt-project.Qt.QtWebEngineCore \
+		--paths=.venv/lib/python3.8/site-packages/cv2 \
+		--paths=.venv/lib/python3.8/site-packages/PyQt5/Qt5/lib/QtWebEngineCore.framework/Resources \
+		main.py \
+		--name pdf工具箱
 ```
 
-## 居中
 
-1. 获取桌面中心点
-2. 获取当前窗口的图形矩阵（rect）
-3. 图形矩阵（rect）移至桌面中心点，获取左边界，右边界
-4. 当前窗口移动
 
-```python
-qr = self.frameGeometry()
-cp = QDesktopWidget().availableGeometry().center()
-qr.moveCenter(cp)
-self.move(qr.topLeft())
+**windows:**
+
+```
+ROOT=$(bash cd "$(dirname "$0")"; pwd)
+
+pyinstaller \
+  --windowed \
+  -D \
+  --icon=${ROOT}/assert/icon.ico \
+  --paths=${ROOT}/.venv/Lib/site-packages/cv2 \
+  --name pdf工具箱 \
+  main.py &&
+  cp ${ROOT}/.venv/Lib/site-packages/PyQt5/Qt5/resources/* ${ROOT}/dist/pdf工具箱/ &&
+  cp ${ROOT}/.venv/Lib/site-packages/PyQt5/Qt5/bin/QtWebEngineProcess.exe ${ROOT}/dist/pdf工具箱/
 ```
 
-# 结束进程
+这里cp等价于上面的--path
 
-```python
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import ( QToolButton )
 
-btn = QPushButton('Button', self)
-btn.clicked.connect(QApplication.instance().quit)
+
+# Qt Web Engineview如何打包
+
+官方文档：[https://doc.qt.io/qt-5/qtwebengine-deploying.html](https://doc.qt.io/qt-5/qtwebengine-deploying.html)
+
+贴一下文档上关键部分: 
+
+```
+Deploying Resources
+Qt WebEngine requires the following resource files:
+
+qtwebengine_resources.pak contains the resources needed by Chromium.
+qtwebengine_devtools_resources.pak contains tools for remote debugging.
+qtwebengine_resources_100p.pak contains images suitable for low resolution displays.
+qtwebengine_resources_200p.pak contains images suitable for high DPI displays.
+icudtl.dat provides support for International Components for Unicode (ICU). It is the Chromium version of ICU, which is not needed if Qt WebEngine was configured to use the system ICU.
+Resources are searched from the following locations:
+
+On Linux and Windows: the resources directory in the directory specified by QLibraryInfo::location(QLibraryInfo::DataPath)
+On macOS: .app/Content/Resources
 ```
 
-1. PyInstaller: https://www.cxyzjd.com/article/lxt610/111169402
+
+
+
+
+
+
+# mac app 打包dmg - dmg canvas
+
+
+
+# windows exe 打包为set up 安装引导程序  - innosetup
+
+ 
+
+
+
+
+
+1. 
