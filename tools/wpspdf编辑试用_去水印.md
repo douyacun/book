@@ -24,6 +24,12 @@ Description:  "PDF工具箱专业去除'wps pdf编辑试用'"
 
 二、PDF工具箱使用教程
 
+下载地址：
+
+mac: [https://www.douyacun.com/s/pdftools](https://www.douyacun.com/s/pdftools)
+
+windows: [https://www.douyacun.com/s/pdf_tools.exe](https://www.douyacun.com/s/pdf_tools.exe)
+
 选择文件
 
 图片水印：勾选“WPS PDF编辑试用”水印图片
