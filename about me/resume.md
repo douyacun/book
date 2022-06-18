@@ -1,6 +1,6 @@
 ### 刘宁
 
-3年工作经验 | 1994年 | 男 
+5年工作经验 | 1994年 | 男 
 
 联系方式: 15258157582 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
 
@@ -10,14 +10,15 @@ Github: https://www.github.com/douyacun
 
 ### 技术栈
 
-1. 熟悉go、php语言，熟悉常用框架：gin、Laravel、Yii
-2. 熟悉mysql，索引优化、主从复制、读写分离
-3. 熟悉linux，线上环境部署，问题排查
-4. 有分布式和微服务系统设计经验
-5. 熟悉redis，了解RabbitMQ、kafaka
-6. 了解Elasticsearch、Mongodb
-7. 熟悉python，有scrapy项目经验
-8. 了解react，有前端项目开发经验
+3年go语言工作经历，开源gositemap/dbquery/go-struct-excel工具，熟悉mysql、redis、kafaka、es
+
+5年php工作经历，熟悉laravel、yii框架
+
+熟悉python语言，开发 [PDF工具箱](https://www.douyacun.com/pdf/remove-watermark) QT软件
+
+熟悉linux，docker服务部署、问题排查
+
+前端熟悉React框架，纯手工博客
 
 ---
 
@@ -26,9 +27,7 @@ Github: https://www.github.com/douyacun
 北京泛为科技有限公司 		   后端开发     2020.07 - 至今 
 
 
-趣头条   									后端开发	 2019.03 - 2020.07
-
-上海展盟网络科技有限公司	全栈开发	 2018.01 - 2019.03
+趣头条   									后端开发	 2018.03 - 2020.07
 
 北京微赢互动科技有限公司	后端开发	 2016.10 - 2018.01
 
@@ -41,7 +40,7 @@ MediaPrime(集成广告SDK)  （泛为科技）
 工作内容
 
 - 提供广告屏蔽，地域定向广告功能，封装domino支持多条件筛选
-- 封装DI/IOC容器，
+- 封装DI/IOC容器
 
 - excel 导入/导出功能封装
 
