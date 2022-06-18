@@ -127,7 +127,7 @@ next key lock是如何解决的?
 select * from t where key > 20 for update;
 ```
 
-next key lock会锁住[20, ∞)区间，在此事物未提交期间，key > 20记录都是不能插入的。
+next key lock会锁住(20, ∞]区间，在此事物未提交期间，key > 20记录都是不能插入的。
 
 - Record Lock
 
