@@ -35,7 +35,7 @@ Github: https://www.github.com/douyacun
 
 ### 项目经历
 
-MediaPrime(集成广告SDK)  （泛为科技）
+**MediaPrime(集成广告SDK)  （泛为科技）**
 
 工作内容
 
