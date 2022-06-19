@@ -40,14 +40,16 @@ Github: https://www.github.com/douyacun
 **工作内容**
 
 - 提供广告屏蔽，地域定向广告功能，封装domino支持多条件筛选
-
 - excel 导入/导出功能封装
-
 - di/ioc容器封装，实现依赖注入控制反转
+- 改造聚合SDK配置拉取方案，通过脚本定时生成配置到redis，cdn，接口只读取缓存，协调SDK做出缓存策略。
+- 开发tracking服务，收集sdk广告流量数据到kafaka
 
-- 
+**工作业绩：**
 
-     
+- 极大提高SDK配置接口稳定性，不再出现因为广告SDK配置导致app奔溃的情形
+
+ 
 
 **DSP（广告实时竞价投放平台） 趣头条/Golang开发**
 
