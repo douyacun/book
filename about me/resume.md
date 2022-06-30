@@ -1,30 +1,33 @@
 ### 刘宁
 
-5年工作经验 | 1994年 | 男 
+5年工作经验 | 1994年 | 男
 
 联系方式: 15258157582 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
 
-博客: https://www.douyacun.com
+博客: [https://www.douyacun.com](https://www.douyacun.com)
 
-Github: https://www.github.com/douyacun
+Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 
 ### 技术栈
-- 熟练掌握olang、php语言，熟悉常用框架：gin、Laravel、Yii
-- 精通Mysql应用开发，熟悉索引原理，性能优化。熟悉redis、
-- 熟悉linux操作系统，线上环境部署，问题排查 
-- 熟悉react，有2个后台项目前端页面开发经验 
-- 熟悉python，开发维护scrapy爬虫项目 
+
+- 熟悉golang 了解java/php/python语言，精通http/grpc接口开发，了解websocket开发
+- 精通Mysql应用开发，熟悉索引原理，性能优化
+- 熟悉redis
+- 熟悉linux操作系统，线上环境部署，问题排查，熟悉shell脚本
 - 有分布式和微服务系统设计经验
+- 前端了解react、负责过后台页面开发，了解qt，设计开发桌面软件[PDF工具箱](https://www.douyacun.com/pdf/remove-watermark)
+
 ---
 
 ### 工作经历
 
-泛为科技 		  	 					后端开发     2020.07 - 至今 
+北京泛为科技有限公司 golang 2020.07 - 至今
 
+趣头条 后端开发 2018.09 - 2020.07
 
-趣头条   									 后端开发	 2018.03 - 2020.07
+上海展盟网络科技有限公司 2018.01 - 2018.09
 
-上海展盟									后端开发	 2017.01 - 2018.01
+北京柯基狗科技有限公司 后端开发 2016.11 - 2018.01
 
 ---
 
@@ -34,17 +37,15 @@ Github: https://www.github.com/douyacun
 
 **工作内容**
 
-- 提供广告屏蔽，地域定向广告功能，封装domino支持多条件筛选
-- excel 导入/导出功能封装
+- 
+- 
 - di/ioc容器封装，实现依赖注入控制反转
 - 改造聚合SDK配置拉取方案，通过脚本定时生成配置到redis，cdn，接口只读取缓存，协调SDK做出缓存策略。
-- 开发tracking服务，收集sdk广告流量数据到kafaka
 
 **工作业绩：**
 
 - 极大提高SDK配置接口稳定性，不再出现因为广告SDK配置导致app奔溃的情形
-
- 
+- excel 导入/导出功能封装
 
 **DSP（广告实时竞价投放平台） 趣头条/Golang开发**
 
@@ -60,8 +61,6 @@ Github: https://www.github.com/douyacun
 
 - 服务化拆分极大提高了交付与部署效率，各服务接入sidercar做服务治理、限流熔断
 - 开发代理商自主充值，针对并发优化充值，节省3位运营成本每日达到2千万充值流水
-
-
 
 **Market Api（信息流对外推广服务） 趣头条/Golang开发**
 
@@ -79,8 +78,6 @@ Github: https://www.github.com/douyacun
 - 服务化拆分后问题排查难度增加，各系统出现日志记录不全无法了解上下文，日志格式参差不齐，或者没有记录。主动推广接入jaeger tracing自动记录trace context关键内容
 - 为保证服务高可用，对文件上传服务、数据报表服务做服务降级处理
 
-
-
 **新闻APP 上海展盟/全栈开发**
 
 **工作内容**
@@ -96,5 +93,6 @@ Github: https://www.github.com/douyacun
 - 针对增长较快金币表做分表处理，优化sql，保证系统稳定性
 - 接入阿里云RabbitMQ，订阅用户登录、阅读等行为。异步处理运营业务加速开发迭代，保证基础业务的运行
 
--   统一docker开发环境，phpcs/phpmd统一代码风格
+- 统一docker开发环境，phpcs/phpmd统一代码风格
 
+https://xie.infoq.cn/article/531c93b9dcf8d954052ab6a73
