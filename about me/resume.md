@@ -9,17 +9,12 @@
 Github: https://www.github.com/douyacun
 
 ### 技术栈
-
-3年go语言工作经历，开源gositemap/dbquery/go-struct-excel工具，熟悉mysql、redis、kafaka、es
-
-5年php工作经历，熟悉laravel、yii框架
-
-熟悉python语言，开发 [PDF工具箱](https://www.douyacun.com/pdf/remove-watermark) QT软件
-
-熟悉linux，docker服务部署、问题排查
-
-前端熟悉React框架，纯手工博客
-
+- 熟练掌握olang、php语言，熟悉常用框架：gin、Laravel、Yii
+- 精通Mysql应用开发，熟悉索引原理，性能优化。熟悉redis、
+- 熟悉linux操作系统，线上环境部署，问题排查 
+- 熟悉react，有2个后台项目前端页面开发经验 
+- 熟悉python，开发维护scrapy爬虫项目 
+- 有分布式和微服务系统设计经验
 ---
 
 ### 工作经历
