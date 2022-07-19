@@ -10,12 +10,23 @@ Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 
 ### 技术栈
 
+<<<<<<< HEAD
 - 熟悉golang 了解java/php/python语言，精通http/grpc接口开发，了解websocket开发
 - 精通Mysql应用开发，熟悉索引原理，性能优化
 - 熟悉redis
 - 熟悉linux操作系统，线上环境部署，问题排查，熟悉shell脚本
 - 有分布式和微服务系统设计经验
 - 前端了解react、负责过后台页面开发，了解qt，设计开发桌面软件[PDF工具箱](https://www.douyacun.com/pdf/remove-watermark)
+=======
+3年go语言工作经历，开源gositemap/go-struct-excel/DI工具，熟悉mysql、redis、kafaka、es
+
+5年php工作经历，熟悉laravel、yii框架
+
+熟悉python语言，开发 [PDF工具箱](https://www.douyacun.com/pdf/remove-watermark) QT软件
+
+熟悉linux，docker服务部署、问题排查
+
+前端熟悉React框架，纯手工博客
 
 ---
 
@@ -37,15 +48,19 @@ Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 
 **工作内容**
 
-- 
-- 
 - di/ioc容器封装，实现依赖注入控制反转
 - 改造聚合SDK配置拉取方案，通过脚本定时生成配置到redis，cdn，接口只读取缓存，协调SDK做出缓存策略。
+- 提供广告屏蔽，地域定向广告功能，封装正排支持多条件筛选
+- excel结构体导入/导出功能封装
+- DI/Ioc容器封装，实现依赖注入控制反转
+- 改造聚合SDK配置拉取方案，通过脚本定时生成配置到redis，cdn，接口只读取缓存，协调SDK做出缓存策略。
+- 开发tracking服务，收集流量数据到kafaka
 
 **工作业绩：**
 
 - 极大提高SDK配置接口稳定性，不再出现因为广告SDK配置导致app奔溃的情形
 - excel 导入/导出功能封装
+- 封装的DI/Ioc容器/excel结构体导入/导出已经被公司各个项目引入
 
 **DSP（广告实时竞价投放平台） 趣头条/Golang开发**
 
