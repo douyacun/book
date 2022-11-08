@@ -1,7 +1,7 @@
 ---
 Title: "pyqt5 qtablewidget用法总结"
 Keywords: "pyqt5,qtablewidget"
-Description: ""
+Description: "qtablewidget增加选择框|QTableWidget设置进度条QProgressBar"
 Label: "pyqt5 qtablewidget"
 ---
 
