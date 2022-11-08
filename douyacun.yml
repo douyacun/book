@@ -115,3 +115,6 @@ Topics:
     - 知乎.md
   敬请周知:
     - 友情链接.md
+  pyqt:
+    - 异步批量下载.md
+    - qtablewidget.md
