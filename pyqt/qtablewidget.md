@@ -77,6 +77,6 @@ QProgressBar::chunk {
 
 
 
-### QTableWidget导出excel
+### QTableWidget导出excel，待整理
 
 https://blog.csdn.net/weixin_41882459/article/details/108394548
