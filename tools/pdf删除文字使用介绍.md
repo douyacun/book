@@ -2,7 +2,7 @@
 Title: "如何快速在线 删除/清除/去除/隐藏 pdf文字字符串"
 Keywords: "pdf删除文字,pdf去除文字,pdf清除文字,pdf隐藏字符"
 Description: "提取PDF文字，删除指定字符串"
-Cover: "assert/pdf删除水印.jpeg"
+Cover: "assert/pdf删除文字-大宁工作室.jpeg"
 ---
 
 网址：https://www.douyacun.com/pdf/delete-text
