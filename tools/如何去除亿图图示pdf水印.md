@@ -18,7 +18,7 @@ Description: "简简单单就可以去除亿图图示pdf水印"
 
 **方法二：微信小程序去除pdf水印 - 「大宁宝箱」**
 
-![大宁宝箱](https://www.douyacun.com/static/image/daningbaoxiang.jpeg)
+![大宁宝箱](https://www.douyacun.com/images/blog/1/assert/daningbaoxiang.jpeg)
 
 步骤都是一样的：
 
