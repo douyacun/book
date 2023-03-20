@@ -4,7 +4,7 @@ Keywords: "wps pdf编辑试用,移除水印,删除水印,隐藏水印"
 Description:  "PDF工具箱专业去除'wps pdf编辑试用'"
 ---
 
-叫大家如何去除 wps word导出来的pdf文件水印  "WPS PDF编辑试用" ,
+大家如何去除 wps word导出来的pdf文件水印  "WPS PDF编辑试用" ,
 
 ![WPSPDF编辑试用](assert/WPSPDF编辑试用.png)
 
