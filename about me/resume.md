@@ -1,6 +1,6 @@
 ### 刘宁
 
-5年工作经验 | 1994年 | 男
+6年工作经验 | 1994年 | 男
 
 联系方式: 15258157582 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
 
@@ -8,25 +8,14 @@
 
 Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 
-### 技术栈
+### 技术技能
 
-<<<<<<< HEAD
-- 熟悉golang 了解java/php/python语言，精通http/grpc接口开发，了解websocket开发
-- 精通Mysql应用开发，熟悉索引原理，性能优化
-- 熟悉redis
-- 熟悉linux操作系统，线上环境部署，问题排查，熟悉shell脚本
-- 有分布式和微服务系统设计经验
-- 前端了解react、负责过后台页面开发，了解qt，设计开发桌面软件[PDF工具箱](https://www.douyacun.com/pdf/remove-watermark)
-=======
-3年go语言工作经历，开源gositemap/go-struct-excel/DI工具，熟悉mysql、redis、kafaka、es
-
-5年php工作经历，熟悉laravel、yii框架
-
-熟悉python语言，开发 [PDF工具箱](https://www.douyacun.com/pdf/remove-watermark) QT软件
-
-熟悉linux，docker服务部署、问题排查
-
-前端熟悉React框架，纯手工博客
+- 编程语言：4年Golang开发、5年PHP开发经验、熟悉Python语言
+- 接口开发：精通HTTP/gRPC接口开发，了解WebSocket开发
+- 数据库：精通MySQL应用开发，熟悉索引原理和性能优化、熟悉Redis、kafka
+- 操作系统：熟悉Linux操作系统，线上环境部署和问题排查，熟悉Shell脚本
+- 分布式系统：具备分布式和微服务系统设计经验
+- 前端开发：了解React、Qt，开发桌面软件[PDF工具箱](https://www.douyacun.com/pdf/remove-watermark)
 
 ---
 
@@ -38,7 +27,7 @@ Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 
 上海展盟网络科技有限公司 2018.01 - 2018.09
 
-北京柯基狗科技有限公司 后端开发 2016.11 - 2018.01
+北京柯基狗科技有限公司 后端开发 2017.01 - 2018.01
 
 ---
 
@@ -48,19 +37,12 @@ Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 
 **工作内容**
 
-- di/ioc容器封装，实现依赖注入控制反转
+- 开发go DI/Ioc容器实现依赖注入控制反转，解决多人开发循环依赖问题
+- 开发go-struct-excel支持go结构体导入/导出为excel
 - 改造聚合SDK配置拉取方案，通过脚本定时生成配置到redis，cdn，接口只读取缓存，协调SDK做出缓存策略。
 - 提供广告屏蔽，地域定向广告功能，封装正排支持多条件筛选
-- excel结构体导入/导出功能封装
-- DI/Ioc容器封装，实现依赖注入控制反转
 - 改造聚合SDK配置拉取方案，通过脚本定时生成配置到redis，cdn，接口只读取缓存，协调SDK做出缓存策略。
 - 开发tracking服务，收集流量数据到kafaka
-
-**工作业绩：**
-
-- 极大提高SDK配置接口稳定性，不再出现因为广告SDK配置导致app奔溃的情形
-- excel 导入/导出功能封装
-- 封装的DI/Ioc容器/excel结构体导入/导出已经被公司各个项目引入
 
 **DSP（广告实时竞价投放平台） 趣头条/Golang开发**
 
@@ -93,21 +75,18 @@ Github: [https://www.github.com/douyacun](https://www.github.com/douyacun)
 - 服务化拆分后问题排查难度增加，各系统出现日志记录不全无法了解上下文，日志格式参差不齐，或者没有记录。主动推广接入jaeger tracing自动记录trace context关键内容
 - 为保证服务高可用，对文件上传服务、数据报表服务做服务降级处理
 
-**新闻APP 上海展盟/全栈开发**
 
-**工作内容**
 
-- 参与产品功能设计，需求评审，配合大数据制定推荐策略
-- 负责金币提现人工审核功能，微信、支付宝支付接入，数据报表功能开发
-- 针对金币活动制定安全防刷策略，将http协议升级为https2.0、接口限流、接口增加token签名
-- 封装oppo、⼩⽶、华为、魅族，jpush安卓推送服务
-- 使用react、ant design开发ERP后台管理系统
 
-**项目业绩**
 
-- 针对增长较快金币表做分表处理，优化sql，保证系统稳定性
-- 接入阿里云RabbitMQ，订阅用户登录、阅读等行为。异步处理运营业务加速开发迭代，保证基础业务的运行
+chatgpt 优化建议：
 
-- 统一docker开发环境，phpcs/phpmd统一代码风格
+1. 强调核心技能：在简历中，突出您的核心技能，特别是与岗位要求相关的技能。在您的技术栈中，熟练掌握Golang和Java，以及了解Python和PHP语言是非常有优势的。强调您的HTTP/GRPC接口开发经验和了解WebSocket开发，这对于构建分布式系统和微服务非常重要。
+2. 关注分布式系统和微服务经验：在项目经历中，突出您在分布式系统和微服务设计方面的经验。提及您参与的项目中如何拆分服务、进行服务治理、限流熔断以及使用Sidercar进行服务管理的经历。这显示您在构建可伸缩和高可用性系统方面的能力。
+3. 强调对开发工具和框架的熟悉：在简历中强调您熟悉的开发工具和框架，如MySQL、Redis和Linux操作系统。提及您的经验包括Mysql应用开发、索引原理和性能优化，以及对Redis的熟悉。还要突出您对Linux操作系统的熟悉程度，包括线上环境部署和问题排查，以及熟悉Shell脚本编写。
+4. 强调大数据技术经验：如果您在大数据技术方面有经验，例如Hadoop、Spark、Flink和HBase等，务必在简历中突出强调。这将显示您在处理大规模数据和分布式处理方面的能力。
+5. 前端和桌面软件经验：虽然岗位需求主要集中在后端开发，但如果您在前端开发方面有经验，特别是了解React和负责过后台页面开发，以及对桌面软件开发的理解和经验，也值得在简历中提及。
+6. 项目业绩量化：在描述项目经历时，尽量使用量化的语言来说明您的成就。例如，提到如何极大提高了SDK配置接口的稳定性，解决了广告SDK配置导致应用崩溃的问题，或者如何通过服务化拆分提高了交付与部署效率，并节省了运营成本。这样的量化描述可以更具说服力地展示您的能力和成果。
+7. 突出沟通和学习能力：在岗位要求中强调了良好的学习和沟通能力，以及责任心和钻研精神。在简历中，可以通过项目经历中的团队合作和沟通、学习新技
 
 https://xie.infoq.cn/article/531c93b9dcf8d954052ab6a73
