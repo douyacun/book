@@ -4,7 +4,6 @@ Keywords: "go接口性能监控,prometheus监控,php,qps,带宽,延迟监控,阻
 Description: "服务器负载不高，接口确很卡"
 Label: prometheus
 Date: "2023-06-12 14:09:00"
-LastEditTime: "2023-06-12 14:09:00"
 ---
 
 帮朋友维护一下后端服务器，最近开始反应app很卡，每次启动要等1，2分钟，那不是炸了吗？
