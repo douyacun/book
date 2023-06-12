@@ -50,6 +50,7 @@ Topics:
     - go_map_key.md
     - grpc-protobuf.md
     - go-struct-excel.md
+    - prometheus性能监控.md
   Linux:
     - 页缓存.md
     - lnmp.md
@@ -97,7 +98,6 @@ Topics:
     - pdf加白边.md
     - 如何去除扫描全能王水印.md
     - 批量修改PDF文字内容.md
-    - prometheus性能监控.md
   kafka:
     - kafka.md
     - kafka持久化.md
