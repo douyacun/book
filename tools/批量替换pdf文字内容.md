@@ -10,7 +10,9 @@ Description: "批量替换pdf文字，操作简单、全文替换、免费无损
 
 网页地址：https://www.douyacun.com/pdf/replace-text
 
-微信小程序：
+微信小程序:
+
+![](https://www.douyacun.com/images/blog/1/tools/assert/gh_ef4d7d1f7966_258.jpeg)
 
 同时批量替换PDF文字也可以用来批量删除PDF文字，只要在输入替换内容不输入即可。
 
@@ -20,7 +22,7 @@ mac/win软件下载地址：https://www.douyacun.com/tools/vip
 
 ### 视频教程：
 
-todo这里贴微信公众号的文章链接 2.35:1
+[微信公众号视频](https://mp.weixin.qq.com/s?__biz=Mzg2MDcwMjI4NQ==&mid=2247483758&idx=1&sn=dd01f7e81f9cccc260c2a39f45305eee&chksm=ce23124cf9549b5a577818693e34dfce8cbcaf7ea9a472996e595d8c80c5f23f597c928613e3&token=260449002&lang=zh_CN#rd)
 
 ### 文字截图教程：
 
@@ -49,5 +51,5 @@ todo这里贴微信公众号的文章链接 2.35:1
 
 ![批量替换PDF文件-成果截图](assert/批量替换PDF文件-成果截图.jpg)
 
-如果文字能从PDF中复制处理，如果存在失败会提示：文字没有匹配到，可以加qq：940203673 @群主，可以人工处理。
+如果文字能从PDF中复制处理，如果存在失败会提示：文字没有匹配到
 
