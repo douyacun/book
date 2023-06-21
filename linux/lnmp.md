@@ -7,108 +7,23 @@ Label:
 Date: 2019-02-25 23:02:12
 LastEditTime: 2019-11-29 11:46:43
 ---
-- epel
-    ```
-    32位系统选择：
-    rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-    rpm -ivh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-    64位系统选择：
+- php下载网站
 
-    centos7:
-    rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-    centos6:
-    rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-
-    导入key：
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-    ```
+https://www.php.net/downloads.php
 
 - 使用阿里云镜像:
+
     ```
     mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
     wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-
+    
     yum clean all && yum makecache
     ```
 
-- 设置remi
-    ```
-    On CentOS/RHEL/Scientific Linux 7 x86_64:
-
-    wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-   rpm -Uvh remi-release-7.rpm
-
-    On CentOS/RHEL/Scientific Linux 6 i386 or x86_64:
-
-    wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-    rpm -Uvh remi-release-6.rpm
-
-    wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-    rpm -ivh epel-release-6-8.noarch.rpm
-
-    报错的话
-    后面加上 --force --nodeps
-   ```
-
-- 安装nginx mysql php-fpm
-```
-# cd /etc/yum.repo.d/
-
-# vim nginx.repo
-
-[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
-gpgcheck=0
-enabled=1
-
-# yum list|grep nginx
-
-不要用y,确定nginx版本后再安装,默认是安装最新稳定版本
-# yum install nginx
+- 安装php
 ```
 
-- 安装php-fpm
-```
-yum --enablerepo=remi-php56 -y install php-fpm php-pdo php-mysql php-redis php-gd php-yar php-xml php-pdo php-pear php-devel php-mbstring;
-yum --enablerepo=remi-php71 -y install php-fpm php-pdo php-mysql php-redis php-gd php-xml php-zip php-pdo  php-pear php-devel php-mbstring php-tokenizer php-bcmath php-mongodb php-xdebug 
-
-
-./configure --prefix=/usr/local/php71  \
---with-config-file-path=/usr/local/php71/etc \
---with-curl \
---with-freetype-dir --with-gd \
---with-gettext-dir=/usr/local/Cellar/gettext/0.20.1 \
---with-iconv=/usr/local/opt/libiconv  \
---with-kerberos \
---with-libdir=lib64 \
---with-libxml-dir \
---with-mysqli \
---with-openssl-dir=/usr/local/opt/openssl@1.1 \
---with-pcre-regex \
---with-pdo-mysql \
---with-pear \
---with-png-dir \
---with-jpeg-dir \
---with-xmlrpc \
---with-xsl \
---with-zlib-dir=/usr/local/Cellar/zlib/1.2.11 \
---with-mhash \
---enable-fpm \
---enable-bcmath \
---enable-libxml \
---enable-inline-optimization \
---enable-gd-native-ttf \
---enable-mbregex \
---enable-mbstring  \
---enable-pcntl  \
---enable-sockets \
---enable-sysvsem \
---enable-sysvshm \
---enable-xml \
---enable-zip
+./configure --prefix=/usr/local/php81 --with-mhash --with-openssl --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-iconv --with-zlib --disable-debug --disable-rpath --enable-shared --enable-bcmath --enable-shmop --enable-sysvsem --enable-gd --with-jpeg --with-freetype --enable-mbregex --enable-mbstring --enable-ftp --enable-pcntl --enable-sockets --enable-soap --without-pear --with-gettext --enable-session --with-curl  --enable-opcache --enable-fpm --with-fpm-user=php --with-fpm-group=php --without-gdbm --enable-fast-install 
 ```
 
 - 安装myql  mysql-server  从repolist   [看官网](https://dev.mysql.com/doc/refman/5.7/en/linux-installation-rpm.html)
