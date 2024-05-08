@@ -11,7 +11,7 @@ Description: "PDF批量加水印,支持多种字体，可自定义文字大小�
 - [windows](https://www.douyacun.com/s/pdf_tools.exe) ：https://www.douyacun.com/s/pdf_tools.exe
 - [mac](https://www.douyacun.com/s/pdftools)：https://www.douyacun.com/s/pdftools
 
-![PDF批量加水印](/Users/bd/Desktop/PDF批量加水印.png)
+![PDF批量加水印](./assert/PDF批量加水印.png)
 
 ### 参数说明
 
@@ -30,5 +30,5 @@ Description: "PDF批量加水印,支持多种字体，可自定义文字大小�
   - 第一个输入框：旋转角度0-360度
   - 第二个输入框：透明度 0-100
 
-![PDF批量加水印_文件夹](/Users/bd/Desktop/PDF批量加水印_文件夹.png)
+![PDF批量加水印_文件夹](./assert/PDF批量加水印_文件夹.png)
 
