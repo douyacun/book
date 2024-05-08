@@ -8,6 +8,8 @@ Description: "PDF批量加水印,支持多种字体，可自定义文字大小�
 
 下载地址：
 
+
+
 - [windows](https://www.douyacun.com/s/pdf_tools.exe) ：https://www.douyacun.com/s/pdf_tools.exe
 - [mac](https://www.douyacun.com/s/pdftools)：https://www.douyacun.com/s/pdftools
 
@@ -32,3 +34,6 @@ Description: "PDF批量加水印,支持多种字体，可自定义文字大小�
 
 ![PDF批量加水印_文件夹](assert/PDF批量加水印_文件夹.png)
 
+如下图：
+
+![PDF批量加水印_案例1](assert/PDF批量加水印_案例1.png)
