@@ -123,6 +123,9 @@ Typical value is around 80.
 
 ```shell
 $ cwebp -q 10 stack.png -o stack.10.webp
+cwebp -q 10 a.png -o a.10.webp
+cwebp -q 8 a.png -o a.8.webp
+cwebp -q 5 a.png -o a.5.webp
 $ Desktop ll stack.*
 -rw-r--r--  1 douyacun  staff   8.3K 12  1 23:09 stack.10.webp
 -rw-r--r--@ 1 douyacun  staff   127K 12  1 23:08 stack.png
