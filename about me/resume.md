@@ -4,14 +4,18 @@
 
 联系方式:  17621556338 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
 
+Github： https://github.com/douyacun
+
+博客：https://www.douyacun.com
+
 # 技术技能
 
-- 编程语言: Go、PHP、Python
-- 框架开发: Gin、kitex、 Echo、Laravel、Yii
-- 数据库: MySQL、Redis、Elasticsearch
-- 消息队列: Kafka, RocketMQ
-- 系统/网络: Linux、K8S、Shell脚本、Http、 gRPC、WebSocket
-- 前端开发：了解React、微信小程序、Qt
+- 开发语言熟悉 go、php、python、js等编程语言，涵盖数藏、广告、电商等项目
+- 常用框架gin、go-echo、go-kitex、go-zero，php-laravel、php-thinkphp等
+- 常用数据库 mysql 、redis 、es 、clickhouse 、doris 
+- 消息队列: rocketmq、kafka、canal
+- 系统/网络: centos、k8s、http、 grpc、websocket
+- 了解React、微信小程序、Qt
 
 ## 工作经历
 
@@ -19,27 +23,22 @@
 
 > 2023.07 - 至今 		Go开发
 
-数字藏品App（HOTDOG），注册用户数1千万，交易订单数超3亿，项目按业务分层拆分微服务，领域层服务之间通过grpc调用，持久化层使用polardb存储 项目历程：
+数字藏品App（HOTDOG），注册用户数1千万交易订单数超3亿，项目按业务分层拆分微服务，领域层服务之间通过grpc调用，持久化层使用polardb存储 
 
-- **服务稳定性**
-  - 流量调度：接口迁移中需要灰度和流量调度来保证服务稳定性
-  - 问题排查修复总结：根据用户id错误信息分析elk trace日志。整理背景原因解决方案，防止问题重复出现
-  - 代码优化：代码按业务领域划分，提高代码可阅读性，划分之后进行单元测试，观察grafana各服务之间qps、接口耗时、错误率
-  - 数据库优化：开发环境debug所有sql，优化多余查询，查询索引覆盖explain，事物优化，数据在外层拼凑减少事物执行时间，排序产物扣量顺序优化死锁
-- **迁移重构**
-  - python接口迁移到grpc服务：优化订单大表查询sql， 通过errgroup并发加载数据+redis缓存数据，降低数据库压力，提高接口的性能和吞吐量
-  - 分销返利：优化二级市场订单返利体系，将接口回调改成mq消息订阅模式，利用mq重发机制解决订单漏返问题，通过乐观锁保证订单幂等性解决多返问题
-  - 藏品上链唯一性：统一提供rpc接口下发藏品编号，通过redis队列和事务影响行数保证保证编号不会重复使用
-- **日常开发**
-  - 维护藏品合成抢购活动，支持运营每日100+次的合成抢购活动
-  - 游戏开发：大转盘抽奖游戏、竞猜小游戏，祈福游戏
-  - 支付：维护支付宝支付、浦发支付
+- 负责数藏核心玩法合成/分解活动开发与迭代，重构代码分参数验证、材料、门槛、产物领域提高代码可读性，并支持产品多样性的玩法需求，通过redis实现限流令牌桶+账号限流保证整体活动稳定性，过滤80%多余请求。利用mysql乐观锁机制实现控量分量保证不多发少发。优化单个写入改批量写入提升大批量分解活动的性能从20s响应降至2s内
+- 开发二级购买封神返利等级体系，将二级订单推送至MQ，利用MQ重发机制防止漏发，利用数据库唯一索引保证订单冥等性防止少发
+- 搭建分布式websocket框架，用户socket连接维护在redis中，通过broker代理转发消息至用户，前后端统一protobuf协议，利用channel解决socket不能并发写的问题，开发了扫雷、热狗运动会、砍龙等小游戏
+- 引入canal 订阅数据库，代替cornjob轮询查询耗费数据库资源，并同步将藏品信息、消息、站内信、活动等表同步到elasticsearch支持搜索需求
+- 优化藏品唯一编号抢占问题，将从数据库中取未使用的编号改为一次性缓存10万条到redis队列中，搭配redis管道命令来实现批量操作，减少网络开销，活动参与成功率提升50%
+- python接口迁移到grpc服务：优化订单大表查询sql， 通过errgroup并发加载数据+redis缓存数据，降低数据库压力，提高接口的性能和吞吐量
+- 开发上线后，结合grafana监控接口QPS、接口延迟、失败情况，通过doris分析数据查看是否有异常情况及时处理，通过关键词导出sql执行情况是否有慢查询和多余查询
+- 利用pprof解决多次cronjob内存泄漏
 
 ### 上海泛为科技有限公司
 
 >  2020.07 - 2023.07   Go开发
 
-负责米派聚合广告SDK后台和广告DSP/ADX系统开发，项目使用go语言开发。项目结构采用了DDD分层架构、微服务直接采用gpc调用，业务开发负责广告计划、广告组、创意接口开发
+负责米派聚合广告SDK后台和广告DSP/ADX系统开发，项目使用go语言开发。项目拆分微服务grpc调用，业务开发负责广告计划、广告组、创意接口开发
 
 - **公共库** 业务开发过程中提取基础组件，减少重复开发提高效率
     - 开发go语言[di/ioc](https://github.com/douyacun/go-ioc)容器实现依赖注入控制反转，使各模块更独立更方便定义模块interface。
@@ -83,16 +82,6 @@
 - **运营活动 ** RabbitMQ，订阅用户登录、阅读等行为。异步处理运营业务加速开发迭代，保证基础业务的运行
 - **SDK推送服务 **封装接口oppo、⼩⽶、华为、魅族以及jpush安卓推送服务合力提升多通道消息到达率，推送用户关注的内容或热点资讯，提升用户活跃。
 - **技术栈：** lnmp、php框架laravel、mysql、redis、cdn、roketmq
-
-
-
-## 个人项目
-
-[博客](https://www.douyacun.com): 个人开发react项目
-
-[webrtc](https://www.douyacun.com/p2p/send) : 在线网站p2p发送文件
-
-[PDF工具箱](https://www.douyacun.com/pdf/remove-watermark) : 网站、桌面软件、微信小程序 实现 PDF去水印、PDF转word、PDF文字编辑
 
 
 
