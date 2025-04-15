@@ -10,29 +10,27 @@ Github： https://github.com/douyacun
 
 # 技术技能
 
-- 开发语言熟悉 go、php、python、js等编程语言，涵盖数藏、广告、电商等项目
-- 常用框架gin、go-echo、go-kitex、go-zero，php-laravel、php-thinkphp等
-- 常用数据库 mysql 、redis 、es 、clickhouse 、doris 
-- 消息队列: rocketmq、kafka、canal
-- 系统/网络: centos、k8s、http、 grpc、websocket
-- 了解React、微信小程序、Qt
+- 编程语言 Go（熟练）、PHP、Python、Js等编程语言，涵盖数藏、广告、电商等项目
+- 后端框架 Gin、Go-Zero、Kitex、Laravel、Yii等
+- 数据库 Mysql 、Redis（lua脚本/管道优化） 、ES（日志+搜索场景)、Doris （数据分析）
+- 分布式:  K8S、gRPC、Kafka/RocketMQ、ETCD、WebSocket（高并发游戏场景）
+- 全栈：React、微信小程序、Qt
 
 ## 工作经历
 
 ### 上海馨潮科技有限公司
 
-> 2023.07 - 至今 		Go开发
+> 2023.07 - 至今 	Go开发
 
 数字藏品App（HOTDOG），注册用户数1千万交易订单数超3亿，项目按业务分层拆分微服务，领域层服务之间通过grpc调用，持久化层使用polardb存储 
 
-- 负责数藏核心玩法合成/分解活动开发与迭代，重构代码分参数验证、材料、门槛、产物领域提高代码可读性，并支持产品多样性的玩法需求，通过redis实现限流令牌桶+账号限流保证整体活动稳定性，过滤80%多余请求。利用mysql乐观锁机制实现控量分量保证不多发少发。优化单个写入改批量写入提升大批量分解活动的性能从20s响应降至2s内
-- 开发二级购买封神返利等级体系，将二级订单推送至MQ，利用MQ重发机制防止漏发，利用数据库唯一索引保证订单冥等性防止少发
-- 搭建分布式websocket框架，用户socket连接维护在redis中，通过broker代理转发消息至用户，前后端统一protobuf协议，利用channel解决socket不能并发写的问题，开发了扫雷、热狗运动会、砍龙等小游戏
-- 引入canal 订阅数据库，代替cornjob轮询查询耗费数据库资源，并同步将藏品信息、消息、站内信、活动等表同步到elasticsearch支持搜索需求
-- 优化藏品唯一编号抢占问题，将从数据库中取未使用的编号改为一次性缓存10万条到redis队列中，搭配redis管道命令来实现批量操作，减少网络开销，活动参与成功率提升50%
-- python接口迁移到grpc服务：优化订单大表查询sql， 通过errgroup并发加载数据+redis缓存数据，降低数据库压力，提高接口的性能和吞吐量
-- 开发上线后，结合grafana监控接口QPS、接口延迟、失败情况，通过doris分析数据查看是否有异常情况及时处理，通过关键词导出sql执行情况是否有慢查询和多余查询
-- 利用pprof解决多次cronjob内存泄漏
+- 数藏合成/分级活动优化，原系统耦合严重，无法支持多样化玩法，并发性能差， 按（参数验证/材料/门槛/产物）分层设计，支持产品10+多样玩法，活动期0资损 。通过redis实现限流令牌桶+账号限流保证整体活动稳定性，过滤80%无效请求。MySQL乐观锁代替被关锁+批量写入响应时间从20降至2s。
+- 设计分布式返利系统，将二级订单推送至MQ，通过MQ重发+DB唯一索引实现订单幂等性，漏单率降至0.01%。
+- 分布式WebSocket游戏框架，设计Redis连接池+Broker代理架构，使用protobuf协议交互，利用channel解决socket并发写问题，承载扫雷/运动会等多款在线小游戏
+- 引入canal 订阅，代替cornjob轮询查询耗费数据库资源，并同步将藏品信息、消息、站内信、活动等表同步到elasticsearch支持搜索需求
+- 分布式ID分配优化，藏品唯一编号DB直接分配编号导致活动TPS<100， 改造Redis队列预缓存10W编号+管道批量操作将TPS提升至2000+，活动成功率从60%→90%
+- 将Python订单记录服务迁移至Go，通过errgroup并发加载数据+redis缓存数据，QPS 200->1500
+- Grafana监控分析：观察CPU、内存、Goroutine数、gRPC响应耗时分布（P99/P95）、数据库连接池等待数。内存泄漏治理，通过pprof发现内存堆积，定位time.NewTicker未stop导致内存未释放，goroutine代码错误导致slice内存不停append
 
 ### 上海泛为科技有限公司
 
