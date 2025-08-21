@@ -26,7 +26,7 @@ sudo spctl  --master-disable
 在终端粘贴复制输入命令：
 
 ```
-sudo xattr -r -d com.apple.quarantine /Applications/pdf工具箱.app
+sudo xattr -r -d com.apple.quarantine /Applications/墩墩PDF.app
 ```
 
 接着重新打开安装软件，就可以正常安装了。
