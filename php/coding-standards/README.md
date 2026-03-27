@@ -317,7 +317,7 @@ fi
 
 exit $?
 ```
-> 参考： https://github.com/squizlabs/PHP_CodeSniffer
+> 参考： https://github.com/PHPCSStandards/PHP_CodeSniffer
 
 # PHPMD 规则验证
 
@@ -401,7 +401,7 @@ If %PROCESSOR_ARCHITECTURE% == x86 (
  * @SuppressWarnings(PHPMD)
  */
 ``` 
-> 参考 https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+> 参考 https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
 
 # phpstorm 配置
 
