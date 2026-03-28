@@ -1,0 +1,43 @@
+---
+Title: 20200427面试整理
+LegacyId: f010dc462bce3d0009fbcaf3241ad7f0
+Slug: 20200427面试整理
+Category: database
+Summary: '### 数据结构 - string - list - hash - set - sort set ### 持久化 **RDB** save 会阻塞进程，线上不会使用
+  bgsave fork一个进程，进行持久化 **AOF** bgrewri'
+SeoTitle: 20200427面试整理
+SeoDescription: '### 数据结构 - string - list - hash - set - sort set ### 持久化 **RDB**
+  save 会阻塞进程，线上不会使用 bgsave fork一个进程，进行持久化 **AOF** bgrewri'
+Date: 2020-04-27T22:24:20+08:00
+LastEditTime: 2020-04-27T22:24:20+08:00
+---
+
+### 数据结构
+
+- string
+- list
+- hash
+- set
+- sort set
+
+### 持久化
+
+**RDB**
+
+save 会阻塞进程，线上不会使用
+
+bgsave fork一个进程，进行持久化
+
+**AOF**
+
+bgrewriteaof 重写aof文件，会占用大量的cpu和内存资源
+
+**如何保证redis热点数据?**
+
+redis3种淘汰策略
+
+- LRU: 最近最少使用的淘汰
+- TTL: 即将过期的淘汰
+- Random: 随机
+
+### 主从复制

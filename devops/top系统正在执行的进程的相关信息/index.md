@@ -1,0 +1,431 @@
+---
+Title: top系统正在执行的进程的相关信息
+LegacyId: 6d863ca98fa6c4bd0daf7e8dacc10dc7
+Slug: top系统正在执行的进程的相关信息
+Category: devops
+Summary: '[toc] top是我定位问题的想到的第一个命令，用的最多的命令 ``` top - 13:49:30 up 12 days, 5:13, 5
+  users, load average: 2.07, 1.08, 1.44 Tasks: 169'
+SeoTitle: top系统正在执行的进程的相关信息
+SeoDescription: '[toc] top是我定位问题的想到的第一个命令，用的最多的命令 ``` top - 13:49:30 up 12 days, 5:13,
+  5 users, load average: 2.07, 1.08, 1.44 Tasks: 169'
+Date: 2020-08-10T00:02:07+08:00
+LastEditTime: 2020-09-28T10:08:59+08:00
+---
+
+[toc]
+
+# top(系统正在执行的进程的相关信息)
+
+top是我定位问题的想到的第一个命令，用的最多的命令
+
+```
+top - 13:49:30 up 12 days,  5:13,  5 users,  load average: 2.07, 1.08, 1.44
+Tasks: 169 total,   1 running, 168 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.9 us, 41.4 sy,  0.0 ni, 55.0 id,  0.5 wa,  0.0 hi,  0.1 si,  0.0 st
+KiB Mem :  7924044 total,  1278284 free,  5345032 used,  1300728 buff/cache
+KiB Swap:  2097148 total,  2095868 free,     1280 used.  2109988 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3092 root      20   0    7308     96      0 D  28.2  0.0   0:09.30 stress
+ 3094 root      20   0    7308     96      0 D  27.9  0.0   0:09.37 stress
+ 3091 root      20   0    7308     96      0 D  27.6  0.0   0:09.36 stress
+ 3093 root      20   0    7308     96      0 D  27.6  0.0   0:09.31 stress
+ 3095 root      20   0    7308     96      0 D  26.9  0.0   0:09.35 stress
+```
+
+第一行：(同uptime显示的信息) 系统时间、当前登录用户数，负载均衡：1分钟 5分钟 15分钟
+
+第二行：进程统计数据
+
+- total: 进程数
+- running：运行进程数
+- slepping：处于休眠状态的进程数
+- stopped：停止的进程数
+- zombie：僵尸进程数
+
+第三行: CPU统计数据，百分比
+
+- us：用户态占比
+- sy：内核态占比
+- ni：改变过优先级的进程占用CPU的百分比
+- id：空闲占比
+- wa：io等待占比
+- hi：软中断
+- si：硬中断
+
+> 显示每个CPU的运行情况，按 1
+
+第四行/第五行：内存的统计数据
+
+- total：总内存
+- free：空闲内存
+- used：使用中的内存
+- buff：用作内核缓冲区的内存
+
+表格各字段含义：
+
+| PID    | USER     | PR                 | NI  |VIRT| RES |SHR|
+| ------ | -------- | ------------------ | ---- |---| ---|---|
+| 进程号 | 运行用户 | 优先级，越小越优先 |      |虚拟内存| 物理内存 |共享内存|
+
+---
+
+| SHR      | S        | %CPU |%MEM|TIME+|COMMAND|
+| -------- | -------- | ---- |---|---|---|
+| 共享内存 | 进程状态 | CPU使用百分比 |内存使用百分比|占用CPU使用时间的累加值|运行命令|
+
+进程状态:
+
+- R:(Running) 运行状态
+- D:(uninterruptible slepp) 不可中断睡眠状态，等待IO资源时会出现
+- S:(Sleep) 睡眠状态
+- T:(Stop) 终止状态，调试会进入终止状态
+- Z:(Zombie) 僵尸进程
+
+top命令操作指令:
+
+- c: 显示完全命令
+- P: CPU使用率排序
+- M: 内存使用率排序
+- T: 按占用CPU的总时间排序
+- R: 高亮正在运行的程序
+- q: 退出
+
+
+# mpstat: (单个CPU维度的统计数据)
+
+- `-P`: 指定CPU编号
+  - `ALL`: 全部CPU
+
+```
+$ mpstat -P ALL 2 5
+```
+
+显示所有的进程，每2秒显示一次
+
+# pidstat: (进程线程级别的统计数据)
+
+sysstat工具的一个命令, 监控全部或指定进程的CPU、内存、线程、设备IO等系统资源的占用情况,`pidstat`首次运行时显示自系统启动开始的各项统计信息，之后运行`pidstat`将显示自上次运行该命令以后的统计信息
+
+- `-C`: 正则匹配 启动命令 关键字
+
+- `-l`: 显示 命令详情，包括启动参数
+
+- `-p`: 指定进程号
+  - `SELF`: 直显示pidstat的统计数据
+  - `ALL`: 显示所有进程的统计数据
+
+- `-r`: 内存统计数据
+
+  ```
+  $ pidstat -r -l 3
+  平均时间:   UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+  平均时间:     0         1      4.07      0.00  191024   4068   0.05  /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+  平均时间:     0       780      1.44      0.00   21656   1224   0.02  /usr/sbin/irqbalance --foreground
+  平均时间:     0       913      0.07      0.00  714272  18072   0.23  /data/frp/frp_0.33.0_linux_amd64/frpc -c /data/frp/frp_0.33.0_linux_amd64/frpc.ini
+  平均时间:     0      1784      0.00      0.00 1621172  48480   0.61  /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=docker-runc --exec
+  平均时间:  1000     20879      5.96      0.00 8038196 4665088  58.87  /usr/share/elasticsearch/jdk/bin/java -Des.networkaddress.cache.ttl=60 -Des.networkaddress.cache.negative.ttl=10 -XX:+AlwaysPre
+  平均时间:  1000     21111    111.54      0.00 1735056 361671   4.56  /usr/share/kibana/bin/../node/bin/node /usr/share/kibana/bin/../src/cli --cpu.cgroup.path.override=/ --cpuacct.cgroup.path.over
+  平均时间:     0     26952     69.29      0.00  108356   1223   0.02  pidstat -r -l 3
+  平均时间:     0     28871      0.04      0.00  160888   5812   0.07  sshd: root@pts/0,pts/1,pts/2,pts/4
+  ```
+
+- `-s`: 堆栈利用率
+
+  - `StkSize`: 预留内存，但是未使用
+  - `StkRef`: 已经使用的内存
+
+- `-d`:  I/O 的统计数据
+
+  ```
+  $ pidstat -d 3
+  11时34分30秒   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+  11时34分33秒  1000     20879      0.00      1.33      0.00  java
+  11时34分33秒     0     23086      0.00 308237.87 309581.40  stress
+  11时34分33秒     0     23087      0.00 346640.53 347003.32  stress
+  11时34分33秒     0     23088      0.00 329619.93 326591.36  stress
+  ```
+
+  - `kB_rd/s` : 每秒读磁盘
+  - `KB_wr/s`:  每秒写磁盘
+  - `KB_ccwr/s`: 脏页刷新数
+
+- `-T`: 是否显示子进程/子线程
+
+  - `TASK`: 不显示子进程/子线程
+  - `CHILD`: 显示指定进程和其子进程/子线程
+  - `ALL`: 显示所有进程和其子进程/子线程
+
+- `-w`: 上下文切换统计数据
+
+  - `cswch/s` : 每秒自愿上下文切换次数
+  - `nvcswch/s`: 每秒非自愿上下文切换次数
+
+- `-t`: 显示子线程
+
+  - 显示进程号(TGID)和线程号(TID)
+
+- `-u`: CPU统计数据
+
+- `-U`: 指定用户
+
+# vmstat: (虚拟内存状态)
+
+`-S` :  k, K, m or M 显示单位，默认kb
+
+```
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0   1280 1247128    148 1326668    0    0     0     1    1    7  2  1 97  0  0
+ 0  0   1280 1247440    148 1326664    0    0     0     0  821 1592  2  1 97  0  0
+ 0  0   1280 1247316    148 1326664    0    0     0     7  342  396  2  0 98  0  0
+ 0  0   1280 1248076    148 1326660    0    0     0     0  869 1462  3  1 96  0  0
+```
+
+procs (进程)
+
+- r：运行队列中进程数量
+- b: 等待IO的进程数量
+
+memory(内存)
+
+- swpd: 虚拟内存大小
+- free：空闲物理内存大小
+- buffer 缓冲区的内存大小
+- cache 缓存的内存大小
+
+swap
+
+- si：从磁盘写入内存的大小
+- so：从内存到磁盘的大小
+
+io（每块1KB）
+
+- bi：每秒读取的块数
+- bo：每秒写入的块数
+
+system
+
+- in：每秒中断次数
+- cs：没秒上下文切换的次数
+
+CPU：
+
+- us：用户态百分比
+- sy：内核态百分比
+- id：空闲百分比
+- wa：等待io的百分比
+
+# sysbench 基础测试工具
+
+1. cpu性能
+2. 磁盘IO性能
+3. 调度程序性能
+4. 内存分配及传输速度
+5. POSIX线程性能
+6. 数据库性能
+
+使用姿势：
+
+```
+sysbench [options]... [testname] [command]
+```
+
+options：
+
+- --threads: 线程数
+- --time： 运行时间 秒
+- --thread-stack-size： 每个线程堆栈大小
+
+testname:
+
+- fileio: 磁盘io性能
+- cpu： cpu性能
+- memory:  内存分配及传输速度
+- threads：posix线程性能
+- mutex： 互斥锁性能测试
+
+commands:
+
+- prepare: 准备阶段
+- run： 运行
+- cleanup：清理
+- help： 帮助
+
+**线程性能压测**
+
+> 线程无需prepare和cleanup 直接run即可
+
+```shell
+$ sysbench --threads=10 threads run
+General statistics:
+    total time:                          10.0208s
+    total number of events:              5342
+
+Latency (ms):
+         min:                                    2.36
+         avg:                                   18.73
+         max:                                  152.47
+         95th percentile:                       70.55
+         sum:                               100069.68
+
+Threads fairness:
+    events (avg/stddev):           534.2000/22.05
+    execution time (avg/stddev):   10.0070/0.01
+```
+
+**数据库性能压测**
+
+社区提供的脚本：
+
+```
+/usr/share/sysbench/bulk_insert.lua
+/usr/share/sysbench/oltp_common.lua
+/usr/share/sysbench/oltp_delete.lua
+/usr/share/sysbench/oltp_insert.lua
+/usr/share/sysbench/oltp_point_select.lua
+/usr/share/sysbench/oltp_read_only.lua
+/usr/share/sysbench/oltp_read_write.lua
+/usr/share/sysbench/oltp_update_index.lua
+/usr/share/sysbench/oltp_update_non_index.lua
+/usr/share/sysbench/oltp_write_only.lua
+/usr/share/sysbench/select_random_points.lua
+/usr/share/sysbench/select_random_ranges.lua
+```
+
+>  On-Line Transaction Processing联机事务处理过程(*OLTP*)
+
+准备数据（prepare）：
+
+```shell
+$ sysbench /usr/share/sysbench/oltp_read_only.lua --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password='' --mysql-db=sbtest --db-driver=mysql --tables=10 --table-size=1000000 --report-interval=10 --threads=128 --time=120 prepare
+```
+
+压测 (run):
+
+```shell
+$ sysbench /usr/share/sysbench/oltp_read_only.lua --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password='' --mysql-db=sbtest --db-driver=mysql --tables=10 --table-size=1000000 --report-interval=10 --threads=128 --time=120 run
+```
+
+```
+[ 10s ] thds: 128 tps: 83.61 qps: 1460.28 (r/w/o: 1280.37/0.00/179.91) lat (ms,95%): 3151.62 err/s: 0.00 reconn/s: 0.00
+[ 20s ] thds: 128 tps: 114.82 qps: 1829.74 (r/w/o: 1600.00/0.00/229.74) lat (ms,95%): 3267.19 err/s: 0.00 reconn/s: 0.00
+[ 30s ] thds: 128 tps: 116.70 qps: 1862.06 (r/w/o: 1628.67/0.00/233.40) lat (ms,95%): 3208.88 err/s: 0.00 reconn/s: 0.00
+[ 40s ] thds: 128 tps: 125.20 qps: 2015.85 (r/w/o: 1765.55/0.00/250.29) lat (ms,95%): 1803.47 err/s: 0.00 reconn/s: 0.00
+[ 50s ] thds: 128 tps: 123.80 qps: 1954.32 (r/w/o: 1706.71/0.00/247.60) lat (ms,95%): 1618.78 err/s: 0.00 reconn/s: 0.00
+[ 60s ] thds: 128 tps: 119.30 qps: 1925.28 (r/w/o: 1686.69/0.00/238.60) lat (ms,95%): 1771.29 err/s: 0.00 reconn/s: 0.00
+[ 70s ] thds: 128 tps: 119.49 qps: 1922.65 (r/w/o: 1683.77/0.00/238.88) lat (ms,95%): 1739.68 err/s: 0.00 reconn/s: 0.00
+[ 80s ] thds: 128 tps: 120.21 qps: 1919.50 (r/w/o: 1679.09/0.00/240.41) lat (ms,95%): 1771.29 err/s: 0.00 reconn/s: 0.00
+[ 90s ] thds: 128 tps: 121.11 qps: 1931.94 (r/w/o: 1689.52/0.00/242.42) lat (ms,95%): 1739.68 err/s: 0.00 reconn/s: 0.00
+[ 100s ] thds: 128 tps: 121.90 qps: 1964.95 (r/w/o: 1721.16/0.00/243.79) lat (ms,95%): 1618.78 err/s: 0.00 reconn/s: 0.00
+[ 110s ] thds: 128 tps: 122.40 qps: 1943.02 (r/w/o: 1698.23/0.00/244.79) lat (ms,95%): 1803.47 err/s: 0.00 reconn/s: 0.00
+[ 120s ] thds: 128 tps: 120.79 qps: 1928.00 (r/w/o: 1686.71/0.00/241.29) lat (ms,95%): 1648.20 err/s: 0.00 reconn/s: 0.00
+SQL statistics:
+    queries performed:
+        read:                            199108 // 总select数量
+        write:                           0
+        other:                           28444
+        total:                           227552
+    transactions:                        14222  (117.57 per sec.) // tps
+    queries:                             227552 (1881.20 per sec.) // qps
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          120.9538s
+    total number of events:              14222
+
+Latency (ms):
+         min:                                   13.84 // 最小响应时间
+         avg:                                 1084.70 // 平均响应时间
+         max:                                 5281.53 // 最大响应时间
+         95th percentile:                     2120.76 // 95分位响应时间
+         sum:                             15426627.71 // 总时间
+
+Threads fairness:
+    events (avg/stddev):           111.1094/4.84
+    execution time (avg/stddev):   120.5205/0.26
+```
+
+> 这是早期的联想电脑装的linux，本身不带固态，4H8G配置
+
+清理数据：
+
+```shell
+$ sysbench /usr/share/sysbench/oltp_read_only.lua --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-user=root --mysql-password='' --mysql-db=sbtest --db-driver=mysql --tables=10 --table-size=1000000 --report-interval=10 --threads=128 --time=120 cleanup
+```
+
+**磁盘IO压测**
+
+options：
+
+- --file-num=N  文件数量 128
+
+- --file-block-size=N 写入块的大小 16K
+
+- --file-total-size=SIZE 每个文件的大小 2G
+
+- --file-test-mode=STRING 
+
+  - seqwr（顺序写）
+  - seqrewr（顺序读写）
+  - seqrd（顺序读）
+  - rndrd（随机读）
+  - rndwr（随机写）
+  - rndrw（随机读写）
+
+- --file-io-mode=STRING 
+
+  - sync 同步 默认
+  - async 异步
+  - mmap map映射
+
+- --file-fsync-freq=N 调用fysnc同步磁盘的频率 （0不调用）100
+
+- --file-fsync-all=[off|on] 每次写完文件立即 fsync  off
+
+- --file-fsync-end=[off|on] 测试结束执行 fsync on
+
+- --file-fsync-mode=STRING
+
+  - fsync 默认
+
+  - fdatasync 
+
+  - > sync 只是将修改过的块缓冲区加入同步队列，直接返回，不等待写磁盘操作完成
+    >
+    > fsync 只对单一文件起作用，等待写磁盘完成，fsync会同步文件属性
+    >
+    > fdatasync 只同步文件数据部分
+
+- --file-merged-requests=N 合并IO请求 0（不合并）
+- --file-rw-ratio=N 读写比例 1.5 （2:1）
+
+# lsof(列出系统打开的工具)
+
+主要用途：查看进程打开的mysql连接，文件，网络连接等
+
+1. 普通文件
+2. 目录
+3. 网络文件系统的文件
+4. 字符或设备文件
+5. (函数)共享库
+6. 管道，命名管道
+7. 符号链接
+8. 网络文件（例如：NFS file、网络socket，unix域名socket）
+9. 还有其它类型的文件，等等
+
+**命令参数**
+
+- `-c <进程名>` 
+  - `losf -c mysqld`： 列出mysql进程打开的文件
+- `+d <目录>` 列出目录下被打开的文件
+  - `lsof +d /data/mysql` 列出 /data/mysql 目录下被打开的文件
+- `+D <目录>` 递归列出目录下被打开的文件
+- `-i <条件> ` 列出符合条件的进程 
+  - `lsof -i 4` / `lsof -i 6`：列出打开ipv4/ipv6网络的进程
+  - `lsof -i @<域名>`：列出与域名建立连接的进程
+  - `lsof -i :<端口>`：列出占用端口的进程
+  - `losf -i tcop -p 1969`: 列出1969进程建立的所有tcp连接
+- `-p <进程号>` 
+  - `lsof -p 1969` 列出 1969 进程 打开的文件

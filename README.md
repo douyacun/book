@@ -1,48 +1,36 @@
-# go1799
+# Book
 
-- [go select 源码分析,用法](go/select.md)
-- [go 数组/切片/引用](go/数组切片引用.md)
-- [goroutine vs 操作系统线程](go/goroutine和系统线程.md)
-- [go channel 也是通过共享内存和互斥锁来实现通信的](go/channel.md)
-- [go 函数方法接口](go/函数方法接口.md)
-- [go 拼接数组为字符串的几种方式](go/数组拼接为字符串.md)
-- [go grpc](go/grpc入门.md)
-- [go 内存分配](go/内存分配.md)
+`book` 现在只保留正式内容结构，文章统一放在：
 
-# mysql
-- [mysql主从同步](mysql/mysql主从同步.md)
-- [mysql锁](mysql/mysql锁.md)
+`<category>/<slug>/index.md`
 
-# elasticsearch
-- [es docker集群安装步骤](elasticsearch/安装运行.md)
-- [认识logstash](elasticsearch/logstash.md)
-- [es url查询](elasticsearch/url查询.md)
-- [es mapping](elasticsearch/mapping.md)
+图片和附件统一放在：
 
-# redis
-- [redis延迟](redis/redis延迟问题.md)
+`<category>/<slug>/images/*`
 
-# linux
-- [脏页](linux/页缓存.md)
-- [负载高](./linux/负载高.md)
-- [负载高定位工具](./linux/负载高定位工具.md)
+当前一级分类：
 
-# kong
-- [ ] [kong/重定向](./kong/重定向.md)
+- `backend`
+- `database`
+- `devops`
+- `architecture`
+- `frontend`
+- `pdf`
+- `growth`
+- `notes`
 
-# todo
+辅助目录：
 
-- [ ] [es/集群搭建.md](./elasticsearch/集群搭建.md)
+- `assert/`：站点共享资源，例如订阅号二维码
+- `migration/`：历史文章迁移映射和校验结果
 
+迁移产物：
 
+- `migration/article-map.csv`：旧文件到新文章目录映射
+- `migration/url-map.csv`：旧 `/article/<legacy_id>` 到新 canonical URL 映射
+- `migration/errors.csv`：迁移异常清单，当前已清空
 
+发布控制：
 
-
-https://blog.csdn.net/dt763C/article/details/79799964
-
-# brew
-
-```
-/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
-```
-
+- 文章默认发布
+- 如需跳过发布，可在文章 `index.md` front matter 中增加 `Publish: false`
