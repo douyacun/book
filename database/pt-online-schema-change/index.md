@@ -8,6 +8,7 @@ SeoTitle: pt-online-schema-change
 SeoDescription: '下载地址: [https://www.percona.com/downloads/percona-toolkit/LATEST/](https://www.percona.com/downloads/percona-toolkit/LATE'
 Date: 2020-01-19T10:45:42+08:00
 LastEditTime: 2020-01-19T10:53:33+08:00
+Publish: true
 ---
 
 # 安装

@@ -10,6 +10,7 @@ SeoDescription: '- iwlist wlan0 scan 扫描网络 - 得安装 wpa_supplicant ```
   [wifi] [password] /etc/my_wpa_supplicant.conf 会生成 net'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2021-01-14T20:53:34+08:00
+Publish: false
 ---
 
 # linux 设置使用wifi

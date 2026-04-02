@@ -10,6 +10,7 @@ SeoDescription: '本文概要: 1. 了解opentracing 2. 开源库jaeger/zipkin都
   1. xorm sql 埋点 2. 自定义span 4. go语言接入jaeger | | *'
 Date: 2020-04-30T17:45:03+08:00
 LastEditTime: 2020-07-13T20:23:41+08:00
+Publish: true
 ---
 
 本文概要:

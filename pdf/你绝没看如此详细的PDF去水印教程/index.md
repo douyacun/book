@@ -10,6 +10,7 @@ SeoDescription: 网上可能很多会教你用Adobe Acrobat、福昕风腾PDF去
   因为它只能去除由其「福昕风腾PDF」、「迅捷PDF」、「PDFelement」软
 Date: 2023-03-20T10:23:12+08:00
 LastEditTime: 2023-03-20T10:23:12+08:00
+Publish: false
 ---
 
 网上可能很多会教你用Adobe Acrobat、福昕风腾PDF去水印、迅捷PDF去水印、PDFelement ...就能直接去掉水印，其实很多时候是去不掉的。

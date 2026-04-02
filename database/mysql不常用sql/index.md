@@ -10,6 +10,7 @@ SeoDescription: '- 导出数据库结构和数据 mysqldump -u root -pa123456 de
   mysqldump -u root -pa123456 -d demodb > demo.sql my'
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2019-11-29T11:38:31+08:00
+Publish: false
 ---
 
 - 导出数据库结构和数据

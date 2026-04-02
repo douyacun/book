@@ -8,6 +8,7 @@ SeoTitle: 中分分词
 SeoDescription: '**中文分词** 直接安装： ```shell ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/d'
 Date: 2020-02-17T12:41:09+08:00
 LastEditTime: 2020-02-17T12:41:09+08:00
+Publish: false
 ---
 
 # 安装

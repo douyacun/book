@@ -10,6 +10,7 @@ SeoDescription: '## nginx referer 介绍 ngx_http_referer_module用于非法来�
   - 有些合法的请求头没有referer,不要拒绝请求头（'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 # nginx图片防盗链

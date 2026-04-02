@@ -10,6 +10,7 @@ SeoDescription: 下载地址： https://ghostscript.com/releases/gsdnld.html Gho
   Release 已经编译版本可以直接使用 mv gs* /usr/local/bin
 Date: 2023-03-20T10:23:12+08:00
 LastEditTime: 2023-03-20T10:23:12+08:00
+Publish: false
 ---
 
 下载地址：

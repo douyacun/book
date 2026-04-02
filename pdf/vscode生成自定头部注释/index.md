@@ -10,6 +10,7 @@ SeoDescription: '[fileheader](https://github.com/OBKoro1/koro1FileHeader) vscode
   code/首选项/设置 - 搜索 `fileheader` - 在`setting.json`中配置 ``'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 [fileheader](https://github.com/OBKoro1/koro1FileHeader)

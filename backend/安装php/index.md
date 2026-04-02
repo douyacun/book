@@ -10,6 +10,7 @@ SeoDescription: 下载地址： - 安装及安装扩展 ``` yum install libxml2-
   oniguruma-devel libpng-devel libjpeg-devel free
 Date: 2023-07-14T10:35:17+08:00
 LastEditTime: 2026-03-09T21:18:13+08:00
+Publish: false
 ---
 
 # 安装php

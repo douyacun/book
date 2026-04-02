@@ -10,6 +10,7 @@ SeoDescription: '- 授权相当于root权限的账户 liuning 任何地点都可
   privileges -> on *.* to ''liuning''@''%'' // on 将数据库中的表授权给'
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2019-11-29T11:38:31+08:00
+Publish: true
 ---
 
 # mysql用户账户管理

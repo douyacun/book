@@ -10,6 +10,7 @@ SeoDescription: 支持pdf编辑的软件挺多，比如：wps pdf编辑，福昕
   多文件批量替换PDF文字内容。不喜欢下载软件的同学可以使用网页或者微信小程序免费体验，不过网页
 Date: 2023-05-29T18:14:16+08:00
 LastEditTime: 2023-06-13T14:08:26+08:00
+Publish: true
 ---
 
 支持pdf编辑的软件挺多，比如：wps pdf编辑，福昕pdf 是很好用的

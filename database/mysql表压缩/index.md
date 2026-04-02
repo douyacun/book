@@ -10,6 +10,7 @@ SeoDescription: '1. 客户端和服务端数据量传输量大，需要压缩节
   场景一 使用mysql的压缩协议 场景二 使用mysql的压缩函数 场景三 使用mysql存储引擎压缩 '
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 # mysql表压缩

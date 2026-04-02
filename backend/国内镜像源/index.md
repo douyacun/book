@@ -10,6 +10,7 @@ SeoDescription: '``` http://pypi.douban.com/ 豆瓣 http://pypi.hustunique.com/ 
   http://pypi.sdutlinux.org/ 山东理工大学 http://pypi.mirrors.'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 # 国内镜像源:

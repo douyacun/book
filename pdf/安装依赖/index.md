@@ -10,6 +10,7 @@ SeoDescription: '```shell yum install autoconf automake libtool pkgconfig.x86_64
   libjpeg-devel libtiff-devel.x86_64'
 Date: 2021-06-19T16:02:24+08:00
 LastEditTime: 2021-06-19T16:02:24+08:00
+Publish: true
 ---
 
 # 安装依赖

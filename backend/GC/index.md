@@ -8,6 +8,7 @@ SeoTitle: GC
 SeoDescription: 推荐阅读： - [Golang’s Real-time GC in Theory and Practice](https://making.pusher.com/golangs-real-time-gc-in-theory-and-prac
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2020-05-10T21:01:25+08:00
+Publish: false
 ---
 
 推荐阅读：

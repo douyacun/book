@@ -10,6 +10,7 @@ SeoDescription: '![](./assert/redis-list-node.jpg) ```c typedef struct listNode 
   // 前置节点 struct listNode *prev; // 后置节点 struct listNode '
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 # redis链表节点

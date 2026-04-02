@@ -10,6 +10,7 @@ SeoDescription: '[toc] 负载首先看的是top(htop也可以)，可以定位到
   - **CPU密集型进程**: 使用大量CPU会导致平均负载高，与平均负载一致 - **I/O密'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2020-09-28T10:08:59+08:00
+Publish: true
 ---
 
 [toc]

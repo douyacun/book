@@ -8,6 +8,7 @@ SeoTitle: frp内网穿透
 SeoDescription: 使用的[frp](https://github.com/fatedier/frp),详情可以去github看，那里有中文文档，可以使用[supervisor管理frp连接进程](/linux/supervisor_安装_进程管理_配置_fr
 Date: 2019-11-30T17:00:48+08:00
 LastEditTime: 2019-11-30T17:00:48+08:00
+Publish: true
 ---
 
 使用的[frp](https://github.com/fatedier/frp),详情可以去github看，那里有中文文档，可以使用[supervisor管理frp连接进程](/devops/supervisor-frpspiderkeeperjobs-6d0542c4),以下介绍的是我的使用场景和一些个人理解

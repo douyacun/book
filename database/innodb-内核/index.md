@@ -8,6 +8,7 @@ SeoTitle: innodb-内核
 SeoDescription: '## 事物ACID - 原子性：指的是整个事物要么全部成功，要么全部失败，的对于innodb,只要收到client的commit报文，事物一定是成功的，收到rollback报文事物一定是失败的，所有操作一定要回滚掉，如果连接中断或serve'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 # innodb 内核

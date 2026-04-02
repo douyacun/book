@@ -10,6 +10,7 @@ SeoDescription: vagrant添加高级组件 ``` vagrant plugin install vagrant-vbg
   ``` ll -ah /opt/VBoxGuestAdditions-5.1.20/other/ ll -a
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 # "vboxsf" is not available

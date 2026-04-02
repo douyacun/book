@@ -10,6 +10,7 @@ SeoDescription: '### 1. qtablewidget增加选择框？ ``` cb = QtWidgets.QTable
   | QtCore.Qt.It'
 Date: 2022-11-08T17:52:10+08:00
 LastEditTime: 2022-11-08T18:05:26+08:00
+Publish: true
 ---
 
 ### 1. qtablewidget增加选择框？

@@ -10,6 +10,7 @@ SeoDescription: '常用的配置 ``` Host douyacun # ip或域名 hostname douyac
   22 # 登录用户名 User douyacun # 密钥地址 IdentityFile ~/.ssh/id_'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
+Publish: false
 ---
 
 常用的配置

@@ -10,6 +10,7 @@ SeoDescription: '## time.AddDate(0, -1, 0)出现的问题 **需求背景：**活
   - 数据库增加`monthly` 字段标记月份， - 比如：在8月1好执行sql `update t'
 Date: 2024-08-08T19:47:01+08:00
 LastEditTime: 2024-08-08T19:47:01+08:00
+Publish: true
 ---
 
 ## time.AddDate(0, -1, 0)出现的问题

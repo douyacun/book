@@ -10,6 +10,7 @@ SeoDescription: 1. 从本地加载图片 ```python img = QImage("/Users/admin/De
   pimg = QPixmap.fromImage(image) self.imgLabel.setPix
 Date: 2023-01-11T16:03:00+08:00
 LastEditTime: 2023-01-11T16:03:00+08:00
+Publish: true
 ---
 
 1. 从本地加载图片

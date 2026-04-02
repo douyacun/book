@@ -10,6 +10,7 @@ SeoDescription: 'mac签名打包的坑比较深：有需求的朋友可以加微
   bundle="com.douyacun.pdftools" appname="PDF工具箱" ec'
 Date: 2023-01-13T08:48:21+08:00
 LastEditTime: 2023-01-19T13:19:12+08:00
+Publish: true
 ---
 
 mac签名打包的坑比较深：有需求的朋友可以加微信  私聊

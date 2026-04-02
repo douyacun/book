@@ -10,6 +10,7 @@ SeoDescription: '## 查看内存使用情况 ``` free -m cat /proc/meminfo ``` #
   ``` MEM | tot 7.8G | free 6.6G | cache 402.0M | dirty'
 Date: 2020-02-25T10:44:34+08:00
 LastEditTime: 2020-02-25T10:44:34+08:00
+Publish: false
 ---
 
 # Linux 内存过高解决思路

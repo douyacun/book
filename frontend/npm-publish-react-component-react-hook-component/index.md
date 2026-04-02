@@ -8,6 +8,7 @@ SeoTitle: npm-publish-react-component-react-hook-component
 SeoDescription: '[![npm](https://img.shields.io/npm/v/npm-publish-react-component)](https://www.npmjs.com/package/npm-publish-react-compo'
 Date: 2021-01-07T23:32:15+08:00
 LastEditTime: 2021-01-09T23:19:28+08:00
+Publish: true
 ---
 
 # npm publish: react component/react hook component

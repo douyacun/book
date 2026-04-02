@@ -10,6 +10,7 @@ SeoDescription: 'innodb是索引存储表，表数据按主键顺序存放 [toc]
   每张表只能按照一颗B+树排序，每张'
 Date: 2019-11-26T09:53:58+08:00
 LastEditTime: 2020-01-19T23:34:28+08:00
+Publish: true
 ---
 
 innodb是索引存储表，表数据按主键顺序存放
