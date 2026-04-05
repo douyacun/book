@@ -1,12 +1,10 @@
 ---
 Title: innodb-介绍
 LegacyId: d2de81a574c5be0cb8ac1c6b6417e3ca
-Slug: innodb-介绍
-Category: database
-Summary: '- 灾难恢复，重启即可 - 独立的缓冲区，使用的数据通常直接来自内存，专门的数据库服务器，80%的内存会交给 buffer pool - 关联数据表字段可以使用外键，innodb会强制参照完整性，更新，删除数据关联表会自动更新,次表中如果插'
-SeoTitle: innodb-介绍
-SeoDescription: '- 灾难恢复，重启即可 - 独立的缓冲区，使用的数据通常直接来自内存，专门的数据库服务器，80%的内存会交给 buffer pool
-  - 关联数据表字段可以使用外键，innodb会强制参照完整性，更新，删除数据关联表会自动更新,次表中如果插'
+topic: database
+Keywords:
+Label:
+description: "- 灾难恢复，重启即可 - 独立的缓冲区，使用的数据通常直接来自内存，专门的数据库服务器，80%的内存会交给 buffer pool - 关联数据表字段可以使用外键，innodb会强制参照完整性，更新，删除数据关联表会自动更新,次表中如果插"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

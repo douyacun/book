@@ -1,11 +1,10 @@
 ---
 Title: 基础字段类型
 LegacyId: 71b5073a06d5cd87be26093d980eb130
-Slug: 基础字段类型
-Category: database
-Summary: 原文文档位置：[https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html](https://www.elastic.co/guide/en/el
-SeoTitle: 基础字段类型
-SeoDescription: 原文文档位置：[https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html](https://www.elastic.co/guide/en/el
+topic: database
+Keywords:
+Label:
+description: "原文文档位置：[https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html](https://www.elastic.co/guide/en/el"
 Date: 2019-12-25T09:24:58+08:00
 LastEditTime: 2020-01-04T01:00:07+08:00
 Publish: false

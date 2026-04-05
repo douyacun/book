@@ -1,13 +1,10 @@
 ---
 Title: time
 LegacyId: 2969a9a7dca7fee897919348b6c014b1
-Slug: time
-Category: backend
-Summary: '[TOC] ## 标准 ```go const ( ANSIC = "Mon Jan _2 15:04:05 2006" UnixDate =
-  "Mon Jan _2 15:04:05 MST 2006" RubyDate = "Mon J'
-SeoTitle: time
-SeoDescription: '[TOC] ## 标准 ```go const ( ANSIC = "Mon Jan _2 15:04:05 2006" UnixDate
-  = "Mon Jan _2 15:04:05 MST 2006" RubyDate = "Mon J'
+topic: backend
+Keywords:
+Label:
+description: "[TOC] ## 标准 ```go const ( ANSIC = \"Mon Jan _2 15:04:05 2006\" UnixDate = \"Mon Jan _2 15:04:05 MST 2006\" RubyDate = \"Mon J"
 Date: 2019-12-11T19:23:09+08:00
 LastEditTime: 2020-12-07T20:08:36+08:00
 Publish: true

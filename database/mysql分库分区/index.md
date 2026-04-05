@@ -1,13 +1,10 @@
 ---
 Title: mysql分库分区
 LegacyId: 70750149da7089a32c4e7de2c5062b97
-Slug: mysql分库分区
-Category: database
-Summary: '建议看下： - [淘宝DB团队](http://mysql.taobao.org/monthly/2017/11/09/) - [淘宝中间件团队](http://jm.taobao.org/2017/01/19/20170119/)
-  1. '
-SeoTitle: mysql分库分区
-SeoDescription: '建议看下： - [淘宝DB团队](http://mysql.taobao.org/monthly/2017/11/09/) - [淘宝中间件团队](http://jm.taobao.org/2017/01/19/20170119/)
-  1. '
+topic: database
+Keywords:
+Label:
+description: "建议看下： - [淘宝DB团队](http://mysql.taobao.org/monthly/2017/11/09/) - [淘宝中间件团队](http://jm.taobao.org/2017/01/19/20170119/) 1."
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

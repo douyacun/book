@@ -1,13 +1,10 @@
 ---
 Title: innodb事务
 LegacyId: 0c2b8df6a1d21c9c4b631aef1e8cec87
-Slug: innodb事务
-Category: database
-Summary: '[toc] **事务的概念** 并发操作的基本单位，逻辑上的一组操作，组成这组操作的各个单元，要么成功，要么失败。 **事务隔离级别** - READ
-  UNCOMMITTED (RU未提交读) 事物的修改即使没有commit也可以被其他事物'
-SeoTitle: innodb事务
-SeoDescription: '[toc] **事务的概念** 并发操作的基本单位，逻辑上的一组操作，组成这组操作的各个单元，要么成功，要么失败。 **事务隔离级别**
-  - READ UNCOMMITTED (RU未提交读) 事物的修改即使没有commit也可以被其他事物'
+topic: database
+Keywords:
+Label:
+description: "[toc] **事务的概念** 并发操作的基本单位，逻辑上的一组操作，组成这组操作的各个单元，要么成功，要么失败。 **事务隔离级别** - READ UNCOMMITTED (RU未提交读) 事物的修改即使没有commit也可以被其他事物"
 Date: 2019-12-24T00:35:15+08:00
 LastEditTime: 2020-01-21T14:47:03+08:00
 Publish: true

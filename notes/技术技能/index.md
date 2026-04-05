@@ -1,13 +1,10 @@
 ---
 Title: 技术技能
 LegacyId: 9121a6be89f475b16ae9487630556f78
-Slug: 技术技能
-Category: notes
-Summary: '姓名：刘宁 求职意向：Go后端开发 联系方式: 17621556338 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
-  Github： https://github.com/douyacu'
-SeoTitle: 技术技能
-SeoDescription: '姓名：刘宁 求职意向：Go后端开发 联系方式: 17621556338 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com)
-  Github： https://github.com/douyacu'
+topic: notes
+Keywords:
+Label:
+description: "姓名：刘宁 求职意向：Go后端开发 联系方式: 17621556338 ｜ [douyacun@gmail.com](mailto:douyacun@gmail.com) Github： https://github.com/douyacu"
 Date: 2026-03-28T23:20:43.366527+08:00
 LastEditTime: 2026-03-28T23:20:43.366527+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: git-查看历史-待删除
 LegacyId: 49d1cda87efd18aab8fefd1685c5b787
-Slug: git-查看历史-待删除
-Category: pdf
-Summary: '**最后一次提交时间** git log --date-order -1 --format="%ad" -- path/to/file **第一次提交时间**
-  git log --reverse --format="%ci" -- path'
-SeoTitle: git-查看历史-待删除
-SeoDescription: '**最后一次提交时间** git log --date-order -1 --format="%ad" -- path/to/file
-  **第一次提交时间** git log --reverse --format="%ci" -- path'
+topic: pdf
+Keywords:
+Label:
+description: "**最后一次提交时间** git log --date-order -1 --format=\"%ad\" -- path/to/file **第一次提交时间** git log --reverse --format=\"%ci\" -- path"
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2019-11-29T11:38:31+08:00
 Publish: false

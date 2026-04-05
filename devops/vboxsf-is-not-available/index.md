@@ -1,13 +1,10 @@
 ---
 Title: vboxsf-is-not-available
 LegacyId: c9d810c99fab56a7505b27b5b148cf64
-Slug: vboxsf-is-not-available
-Category: devops
-Summary: vagrant添加高级组件 ``` vagrant plugin install vagrant-vbguest ``` 虚拟机中 ``` ll
-  -ah /opt/VBoxGuestAdditions-5.1.20/other/ ll -a
-SeoTitle: vboxsf-is-not-available
-SeoDescription: vagrant添加高级组件 ``` vagrant plugin install vagrant-vbguest ``` 虚拟机中
-  ``` ll -ah /opt/VBoxGuestAdditions-5.1.20/other/ ll -a
+topic: devops
+Keywords:
+Label:
+description: "vagrant添加高级组件 ``` vagrant plugin install vagrant-vbguest ``` 虚拟机中 ``` ll -ah /opt/VBoxGuestAdditions-5.1.20/other/ ll -a"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

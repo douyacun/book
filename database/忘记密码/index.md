@@ -1,13 +1,10 @@
 ---
 Title: 忘记密码
 LegacyId: 5837158700388a68ee4f531349c73863
-Slug: 忘记密码
-Category: database
-Summary: '/** * mysql 无法登录 * @author 刘宁 * @date 2017/04/11 **/ 场景描述: ``` 1 yum --enablerepo=remi
-  install -y mysql mysql-server 2 s'
-SeoTitle: 忘记密码
-SeoDescription: '/** * mysql 无法登录 * @author 刘宁 * @date 2017/04/11 **/ 场景描述: ``` 1
-  yum --enablerepo=remi install -y mysql mysql-server 2 s'
+topic: database
+Keywords:
+Label:
+description: "/** * mysql 无法登录 * @author 刘宁 * @date 2017/04/11 **/ 场景描述: ``` 1 yum --enablerepo=remi install -y mysql mysql-server 2 s"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

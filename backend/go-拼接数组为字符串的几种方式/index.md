@@ -1,13 +1,10 @@
 ---
 Title: go-拼接数组为字符串的几种方式
 LegacyId: f685120cbf69dcea51811a631020e535
-Slug: go-拼接数组为字符串的几种方式
-Category: backend
-Summary: 1. `+` 拼接 最慢 少量比较推荐 2. `strings.join` 拼接 其次-推荐 3. `buffers.NewBufferString`
-  拼接 最快，需要自己实现 ```go package main import ( "by
-SeoTitle: go-拼接数组为字符串的几种方式
-SeoDescription: 1. `+` 拼接 最慢 少量比较推荐 2. `strings.join` 拼接 其次-推荐 3. `buffers.NewBufferString`
-  拼接 最快，需要自己实现 ```go package main import ( "by
+topic: backend
+Keywords:
+Label:
+description: "1. `+` 拼接 最慢 少量比较推荐 2. `strings.join` 拼接 其次-推荐 3. `buffers.NewBufferString` 拼接 最快，需要自己实现 ```go package main import ( \"by"
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: true

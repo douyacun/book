@@ -1,13 +1,10 @@
 ---
 Title: mysql主从同步
 LegacyId: cc72505cf7cbb0674253d8c7d39b3054
-Slug: mysql主从同步
-Category: database
-Summary: 家里一台联想笔记本作为爬虫服务器，有一台公网阿里云服务器，目的爬虫跑完之后，公网服务器可以主从同步，家里的服务器和公网服务器通信的问题通过[内网穿透工具(frp)](https://github.com/fatedier/frp)解决,
-  优
-SeoTitle: mysql主从同步
-SeoDescription: 家里一台联想笔记本作为爬虫服务器，有一台公网阿里云服务器，目的爬虫跑完之后，公网服务器可以主从同步，家里的服务器和公网服务器通信的问题通过[内网穿透工具(frp)](https://github.com/fatedier/frp)解决,
-  优
+topic: database
+Keywords:
+Label:
+description: "家里一台联想笔记本作为爬虫服务器，有一台公网阿里云服务器，目的爬虫跑完之后，公网服务器可以主从同步，家里的服务器和公网服务器通信的问题通过[内网穿透工具(frp)](https://github.com/fatedier/frp)解决, 优"
 Date: 2019-10-09T14:27:03+08:00
 LastEditTime: 2020-01-09T20:03:52+08:00
 Publish: true

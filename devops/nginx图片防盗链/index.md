@@ -1,13 +1,10 @@
 ---
 Title: nginx图片防盗链
 LegacyId: 256e3ac3a90cdf6291702057fa32d484
-Slug: nginx图片防盗链
-Category: devops
-Summary: '## nginx referer 介绍 ngx_http_referer_module用于非法来源的请求 - 伪装Referer头部是非常简单的事情,这个模块只能拦截大部分非法请求,
-  - 有些合法的请求头没有referer,不要拒绝请求头（'
-SeoTitle: nginx图片防盗链
-SeoDescription: '## nginx referer 介绍 ngx_http_referer_module用于非法来源的请求 - 伪装Referer头部是非常简单的事情,这个模块只能拦截大部分非法请求,
-  - 有些合法的请求头没有referer,不要拒绝请求头（'
+topic: devops
+Keywords:
+Label:
+description: "## nginx referer 介绍 ngx_http_referer_module用于非法来源的请求 - 伪装Referer头部是非常简单的事情,这个模块只能拦截大部分非法请求, - 有些合法的请求头没有referer,不要拒绝请求头（"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

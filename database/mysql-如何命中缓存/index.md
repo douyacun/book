@@ -1,13 +1,10 @@
 ---
 Title: mysql-如何命中缓存
 LegacyId: 70750149da7089a32c4e7de2c5062b97
-Slug: mysql-如何命中缓存
-Category: database
-Summary: '```javascript { "title": "mysql缓存", "author": "douyacun", "date": "2019-01-14",
-  } ``` - MySQL如何命中缓存 - 查询缓存如何使用内存 - 什么情况下'
-SeoTitle: mysql-如何命中缓存
-SeoDescription: '```javascript { "title": "mysql缓存", "author": "douyacun", "date":
-  "2019-01-14", } ``` - MySQL如何命中缓存 - 查询缓存如何使用内存 - 什么情况下'
+topic: database
+Keywords:
+Label:
+description: "```javascript { \"title\": \"mysql缓存\", \"author\": \"douyacun\", \"date\": \"2019-01-14\", } ``` - MySQL如何命中缓存 - 查询缓存如何使用内存 - 什么情况下"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

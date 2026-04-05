@@ -1,13 +1,10 @@
 ---
 Title: 批量下载视频文件-不影响GUI运行-GUI展示相应的进度
 LegacyId: 4f5ee12c48b693e35349c7cfdb6bb576
-Slug: 批量下载视频文件-不影响GUI运行-GUI展示相应的进度
-Category: frontend
-Summary: '版本 - 平台 - mac 11 - windows 10 - QT：5.15.7 - aiohttp: 3.8.3 - qasync: 0.23.0
-  **思路一：** 启动一个线程QThread后台去执行，下载任务和下载进度 都是 通过p'
-SeoTitle: 批量下载视频文件-不影响GUI运行-GUI展示相应的进度
-SeoDescription: '版本 - 平台 - mac 11 - windows 10 - QT：5.15.7 - aiohttp: 3.8.3 - qasync:
-  0.23.0 **思路一：** 启动一个线程QThread后台去执行，下载任务和下载进度 都是 通过p'
+topic: frontend
+Keywords:
+Label:
+description: "版本 - 平台 - mac 11 - windows 10 - QT：5.15.7 - aiohttp: 3.8.3 - qasync: 0.23.0 **思路一：** 启动一个线程QThread后台去执行，下载任务和下载进度 都是 通过p"
 Date: 2022-11-08T17:52:10+08:00
 LastEditTime: 2022-11-08T18:05:26+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: mysql存储过程
 LegacyId: 5f6a3012bdcdc0086322138df4fdfc5a
-Slug: mysql存储过程
-Category: database
-Summary: '## 一、存储过程的创建和调用 - 存储过程就是具有名字的一段代码，用来完成一个特定的功能。 - 创建的存储过程保存在数据库的数据字典中。 **MYSQL
-  存储过程中的关键语法** 声明语句结束符，可以自定义: ``` DELIMITER '
-SeoTitle: mysql存储过程
-SeoDescription: '## 一、存储过程的创建和调用 - 存储过程就是具有名字的一段代码，用来完成一个特定的功能。 - 创建的存储过程保存在数据库的数据字典中。
-  **MYSQL 存储过程中的关键语法** 声明语句结束符，可以自定义: ``` DELIMITER '
+topic: database
+Keywords:
+Label:
+description: "## 一、存储过程的创建和调用 - 存储过程就是具有名字的一段代码，用来完成一个特定的功能。 - 创建的存储过程保存在数据库的数据字典中。 **MYSQL 存储过程中的关键语法** 声明语句结束符，可以自定义: ``` DELIMITER"
 Date: 2020-01-22T17:11:06+08:00
 LastEditTime: 2020-01-22T17:11:06+08:00
 Publish: true

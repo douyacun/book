@@ -1,13 +1,10 @@
 ---
 Title: elasticsearch-安装
 LegacyId: 5e47af2374e9bd0846d11ac45310e1c9
-Slug: elasticsearch-安装
-Category: database
-Summary: '[TOC] ## 下载和安装步骤 [官方文档](https://www.elastic.co/cn/downloads/elasticsearch)给出的安装步骤是比较详细的
-  1. 下载压缩文件 2. Linux运行 bin/elastic'
-SeoTitle: elasticsearch-安装
-SeoDescription: '[TOC] ## 下载和安装步骤 [官方文档](https://www.elastic.co/cn/downloads/elasticsearch)给出的安装步骤是比较详细的
-  1. 下载压缩文件 2. Linux运行 bin/elastic'
+topic: database
+Keywords:
+Label:
+description: "[TOC] ## 下载和安装步骤 [官方文档](https://www.elastic.co/cn/downloads/elasticsearch)给出的安装步骤是比较详细的 1. 下载压缩文件 2. Linux运行 bin/elastic"
 Date: 2019-12-17T10:44:11+08:00
 LastEditTime: 2020-02-24T10:00:06+08:00
 Publish: true

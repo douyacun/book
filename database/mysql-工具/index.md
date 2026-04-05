@@ -1,13 +1,10 @@
 ---
 Title: mysql-工具
 LegacyId: d0c4ca38863c5d947e67abda734f9f2d
-Slug: mysql-工具
-Category: database
-Summary: '[推荐站点](http://www.ywnds.com/?p=8677) 设置全局 `show variables like ''%profil%''`
-  ``` profiling 开启关闭sql语句分析功能 profiling_history'
-SeoTitle: mysql-工具
-SeoDescription: '[推荐站点](http://www.ywnds.com/?p=8677) 设置全局 `show variables like ''%profil%''`
-  ``` profiling 开启关闭sql语句分析功能 profiling_history'
+topic: database
+Keywords:
+Label:
+description: "[推荐站点](http://www.ywnds.com/?p=8677) 设置全局 `show variables like ''%profil%''` ``` profiling 开启关闭sql语句分析功能 profiling_history"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

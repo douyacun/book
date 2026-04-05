@@ -1,13 +1,10 @@
 ---
 Title: go-struct-excel
 LegacyId: 82099482cde78ecc57c3cb2bedb08b43
-Slug: go-struct-excel
-Category: backend
-Summary: 1. struct支持导出为excel 2. excel导入为struct 3. 表头支持扩展，如：日期表头不确定长度 4. excel第一行为备注
-  5. excel表头进行汇总 6. 标记某行为特殊颜色 7. 如果字段为空，就不生成该表头
-SeoTitle: go-struct-excel
-SeoDescription: 1. struct支持导出为excel 2. excel导入为struct 3. 表头支持扩展，如：日期表头不确定长度 4. excel第一行为备注
-  5. excel表头进行汇总 6. 标记某行为特殊颜色 7. 如果字段为空，就不生成该表头
+topic: backend
+Keywords:
+Label:
+description: 1. struct支持导出为excel 2. excel导入为struct 3. 表头支持扩展，如：日期表头不确定长度 4. excel第一行为备注 5. excel表头进行汇总 6. 标记某行为特殊颜色 7. 如果字段为空，就不生成该表头
 Date: 2022-06-18T13:41:38+08:00
 LastEditTime: 2022-06-18T17:58:06+08:00
 Publish: true

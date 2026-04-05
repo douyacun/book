@@ -1,13 +1,10 @@
 ---
 Title: iostat
 LegacyId: 11a1575fd553f8e69b846aea8248d146
-Slug: iostat
-Category: devops
-Summary: '``` yum install sysstat ``` ``` iostat Linux 2.6.32-754.2.1.el6.x86_64 (iZ2zej76z8h545jaqmtldsZ)
-  2019年01月20日 _x86_64_ (4'
-SeoTitle: iostat
-SeoDescription: '``` yum install sysstat ``` ``` iostat Linux 2.6.32-754.2.1.el6.x86_64
-  (iZ2zej76z8h545jaqmtldsZ) 2019年01月20日 _x86_64_ (4'
+topic: devops
+Keywords:
+Label:
+description: "``` yum install sysstat ``` ``` iostat Linux 2.6.32-754.2.1.el6.x86_64 (iZ2zej76z8h545jaqmtldsZ) 2019年01月20日 _x86_64_ (4"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-11-30T17:00:48+08:00
 Publish: true

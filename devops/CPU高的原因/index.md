@@ -1,13 +1,10 @@
 ---
 Title: CPU高的原因
 LegacyId: 855ebe9c9812342d859e43290fe6f367
-Slug: CPU高的原因
-Category: devops
-Summary: '[toc] 负载首先看的是top(htop也可以)，可以定位到是哪个进程（线上服务也不会运行多个服务的） 但是进程是因为什么导致的进程负载高？
-  - **CPU密集型进程**: 使用大量CPU会导致平均负载高，与平均负载一致 - **I/O密'
-SeoTitle: CPU高的原因
-SeoDescription: '[toc] 负载首先看的是top(htop也可以)，可以定位到是哪个进程（线上服务也不会运行多个服务的） 但是进程是因为什么导致的进程负载高？
-  - **CPU密集型进程**: 使用大量CPU会导致平均负载高，与平均负载一致 - **I/O密'
+topic: devops
+Keywords:
+Label:
+description: "[toc] 负载首先看的是top(htop也可以)，可以定位到是哪个进程（线上服务也不会运行多个服务的） 但是进程是因为什么导致的进程负载高？ - **CPU密集型进程**: 使用大量CPU会导致平均负载高，与平均负载一致 - **I/O密"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2020-09-28T10:08:59+08:00
 Publish: true

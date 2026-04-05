@@ -1,13 +1,10 @@
 ---
 Title: 服务端cookie透传
 LegacyId: 761b5465f678de8a0e877b873ca80611
-Slug: 服务端cookie透传
-Category: frontend
-Summary: react 服务端渲染 cookie 有2个问题： 1. [服务端执行的代码如何拿到cookie并解析透穿给后端接口，后端又如何设置cookie？](#服务端cookie透传)
-  2. [浏览器执行的代码如何读取cookie？](#客户端读取
-SeoTitle: 服务端cookie透传
-SeoDescription: react 服务端渲染 cookie 有2个问题： 1. [服务端执行的代码如何拿到cookie并解析透穿给后端接口，后端又如何设置cookie？](#服务端cookie透传)
-  2. [浏览器执行的代码如何读取cookie？](#客户端读取
+topic: frontend
+Keywords:
+Label:
+description: "react 服务端渲染 cookie 有2个问题： 1. [服务端执行的代码如何拿到cookie并解析透穿给后端接口，后端又如何设置cookie？](#服务端cookie透传) 2. [浏览器执行的代码如何读取cookie？](#客户端读取"
 Date: 2021-01-02T16:13:19+08:00
 LastEditTime: 2021-01-03T21:19:29+08:00
 Publish: true

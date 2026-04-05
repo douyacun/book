@@ -1,13 +1,10 @@
 ---
 Title: httprouter特性
 LegacyId: 4e5e2d25f0310dc7fd636803d10da67a
-Slug: httprouter特性
-Category: backend
-Summary: '只是个人学习笔记，在学习go httprouter时，路由匹配用到trie树，在此总结一下 [TOC] ### Router struct ```go
-  type Router struct { trees map[string]*node '
-SeoTitle: httprouter特性
-SeoDescription: '只是个人学习笔记，在学习go httprouter时，路由匹配用到trie树，在此总结一下 [TOC] ### Router struct
-  ```go type Router struct { trees map[string]*node '
+topic: backend
+Keywords:
+Label:
+description: "只是个人学习笔记，在学习go httprouter时，路由匹配用到trie树，在此总结一下 [TOC] ### Router struct ```go type Router struct { trees map[string]*node"
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: false

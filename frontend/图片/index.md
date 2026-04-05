@@ -1,13 +1,10 @@
 ---
 Title: 图片
 LegacyId: b485646770c02d77ae5da9a28f300c0f
-Slug: 图片
-Category: frontend
-Summary: 1. 从本地加载图片 ```python img = QImage("/Users/admin/Desktop/hello.png") pimg
-  = QPixmap.fromImage(image) self.imgLabel.setPix
-SeoTitle: 图片
-SeoDescription: 1. 从本地加载图片 ```python img = QImage("/Users/admin/Desktop/hello.png")
-  pimg = QPixmap.fromImage(image) self.imgLabel.setPix
+topic: frontend
+Keywords:
+Label:
+description: "1. 从本地加载图片 ```python img = QImage(\"/Users/admin/Desktop/hello.png\") pimg = QPixmap.fromImage(image) self.imgLabel.setPix"
 Date: 2023-01-11T16:03:00+08:00
 LastEditTime: 2023-01-11T16:03:00+08:00
 Publish: true

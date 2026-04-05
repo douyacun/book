@@ -1,13 +1,10 @@
 ---
 Title: 语法高亮
 LegacyId: 6cab88a875830c9559889ba5a7617d6b
-Slug: 语法高亮
-Category: frontend
-Summary: 开源库：[markdown-it](https://github.com/markdown-it/markdown-it) <a name="anchor1"></a>
-  [TOC] markdown-it服务很到家不需要过多的配置 ```r
-SeoTitle: 语法高亮
-SeoDescription: 开源库：[markdown-it](https://github.com/markdown-it/markdown-it) <a name="anchor1"></a>
-  [TOC] markdown-it服务很到家不需要过多的配置 ```r
+topic: frontend
+Keywords:
+Label:
+description: "开源库：[markdown-it](https://github.com/markdown-it/markdown-it) <a name=\"anchor1\"></a> [TOC] markdown-it服务很到家不需要过多的配置 ```r"
 Date: 2021-01-02T00:43:56+08:00
 LastEditTime: 2021-01-02T17:06:47+08:00
 Publish: true

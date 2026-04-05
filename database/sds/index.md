@@ -1,13 +1,10 @@
 ---
 Title: sds
 LegacyId: 62a6d422977980d872e373057715e8b1
-Slug: sds
-Category: database
-Summary: sds是c的字符串，旨在通过堆分配的字符串来增强有限的libc字符串功能 - 使用起来更简单 - 二进制安全 - 计算效率更高 - 兼容普通c字符串
-  ```shell +--------+--------------------------
-SeoTitle: sds
-SeoDescription: sds是c的字符串，旨在通过堆分配的字符串来增强有限的libc字符串功能 - 使用起来更简单 - 二进制安全 - 计算效率更高 -
-  兼容普通c字符串 ```shell +--------+--------------------------
+topic: database
+Keywords:
+Label:
+description: "sds是c的字符串，旨在通过堆分配的字符串来增强有限的libc字符串功能 - 使用起来更简单 - 二进制安全 - 计算效率更高 - 兼容普通c字符串 ```shell +--------+--------------------------"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

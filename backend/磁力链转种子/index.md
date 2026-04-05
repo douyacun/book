@@ -1,13 +1,10 @@
 ---
 Title: 磁力链转种子
 LegacyId: 76ae6a29dfbf6d220785f28f9f176c6a
-Slug: 磁力链转种子
-Category: backend
-Summary: '推荐使用 `aria2` 下载 # 安装 ``` apt install aria2 ``` # 配置 ``` mkdir ~/.aria2 touch
-  aria2.session vim aria2.conf ``` aria2.conf'
-SeoTitle: 磁力链转种子
-SeoDescription: '推荐使用 `aria2` 下载 # 安装 ``` apt install aria2 ``` # 配置 ``` mkdir ~/.aria2
-  touch aria2.session vim aria2.conf ``` aria2.conf'
+topic: backend
+Keywords:
+Label:
+description: "推荐使用 `aria2` 下载 # 安装 ``` apt install aria2 ``` # 配置 ``` mkdir ~/.aria2 touch aria2.session vim aria2.conf ``` aria2.conf"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

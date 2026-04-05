@@ -1,13 +1,10 @@
 ---
 Title: item-转为checkbox-样式受checkbox样式影响
 LegacyId: e21ee662c1d7119f6e44e559910a4014
-Slug: item-转为checkbox-样式受checkbox样式影响
-Category: frontend
-Summary: '### 1. qtablewidget增加选择框？ ``` cb = QtWidgets.QTableWidgetItem() cb.setFlags(QtCore.Qt.ItemIsUserCheckable
-  | QtCore.Qt.It'
-SeoTitle: item-转为checkbox-样式受checkbox样式影响
-SeoDescription: '### 1. qtablewidget增加选择框？ ``` cb = QtWidgets.QTableWidgetItem() cb.setFlags(QtCore.Qt.ItemIsUserCheckable
-  | QtCore.Qt.It'
+topic: frontend
+Keywords:
+Label:
+description: "### 1. qtablewidget增加选择框？ ``` cb = QtWidgets.QTableWidgetItem() cb.setFlags(QtCore.Qt.ItemIsUserCheckable | QtCore.Qt.It"
 Date: 2022-11-08T17:52:10+08:00
 LastEditTime: 2022-11-08T18:05:26+08:00
 Publish: true

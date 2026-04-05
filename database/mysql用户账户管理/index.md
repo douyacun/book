@@ -1,13 +1,10 @@
 ---
 Title: mysql用户账户管理
 LegacyId: 83db0afa5bae2cf936aea5a5d8ea408e
-Slug: mysql用户账户管理
-Category: database
-Summary: '- 授权相当于root权限的账户 liuning 任何地点都可以登录 密码123456 ```` 第一种方式: grant all privileges
-  -> on *.* to ''liuning''@''%'' // on 将数据库中的表授权给'
-SeoTitle: mysql用户账户管理
-SeoDescription: '- 授权相当于root权限的账户 liuning 任何地点都可以登录 密码123456 ```` 第一种方式: grant all
-  privileges -> on *.* to ''liuning''@''%'' // on 将数据库中的表授权给'
+topic: database
+Keywords:
+Label:
+description: "- 授权相当于root权限的账户 liuning 任何地点都可以登录 密码123456 ```` 第一种方式: grant all privileges -> on *.* to ''liuning''@''%'' // on 将数据库中的表授权给"
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2019-11-29T11:38:31+08:00
 Publish: true

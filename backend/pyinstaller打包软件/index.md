@@ -1,13 +1,10 @@
 ---
 Title: pyinstaller打包软件
 LegacyId: 7cd8b102e54300f07fe3a5203b2b969d
-Slug: pyinstaller打包软件
-Category: backend
-Summary: 背景： 本文是已经假设你已经可以运行在本地运行软件了，只是受困于不知道如何将软件打包成dmg/exe安装包 [toc] 为啥用pyinstaller，因为一搜"pyqt5打包",
-  都是pyinstaller如何打包的教程，这里贴一下参数下面
-SeoTitle: pyinstaller打包软件
-SeoDescription: 背景： 本文是已经假设你已经可以运行在本地运行软件了，只是受困于不知道如何将软件打包成dmg/exe安装包 [toc] 为啥用pyinstaller，因为一搜"pyqt5打包",
-  都是pyinstaller如何打包的教程，这里贴一下参数下面
+topic: backend
+Keywords:
+Label:
+description: "背景： 本文是已经假设你已经可以运行在本地运行软件了，只是受困于不知道如何将软件打包成dmg/exe安装包 [toc] 为啥用pyinstaller，因为一搜\"pyqt5打包\", 都是pyinstaller如何打包的教程，这里贴一下参数下面"
 Date: 2021-11-04T18:02:06+08:00
 LastEditTime: 2021-12-27T22:47:15+08:00
 Publish: false

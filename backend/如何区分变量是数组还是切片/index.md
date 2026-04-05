@@ -1,13 +1,10 @@
 ---
 Title: 如何区分变量是数组还是切片
 LegacyId: eb9656c05ef5b8224206044077b59807
-Slug: 如何区分变量是数组还是切片
-Category: backend
-Summary: '[toc] 1. 如何区分变量是数组还是切片 2. 数组复制是否像c语言一样，只复制数组开始的地址 3. 为什么字符串（"hello world"）计算大小unsafe.Sizeof()是16
-  ### 定义方式： ```go var a ['
-SeoTitle: 如何区分变量是数组还是切片
-SeoDescription: '[toc] 1. 如何区分变量是数组还是切片 2. 数组复制是否像c语言一样，只复制数组开始的地址 3. 为什么字符串（"hello
-  world"）计算大小unsafe.Sizeof()是16 ### 定义方式： ```go var a ['
+topic: backend
+Keywords:
+Label:
+description: "[toc] 1. 如何区分变量是数组还是切片 2. 数组复制是否像c语言一样，只复制数组开始的地址 3. 为什么字符串（\"hello world\"）计算大小unsafe.Sizeof()是16 ### 定义方式： ```go var a ["
 Date: 2020-02-11T01:00:18+08:00
 LastEditTime: 2020-05-09T14:53:08+08:00
 Publish: true

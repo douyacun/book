@@ -1,11 +1,10 @@
 ---
 Title: frp内网穿透
 LegacyId: 616b091b4ca30fb828e2aef65176dbd2
-Slug: frp内网穿透
-Category: devops
-Summary: 使用的[frp](https://github.com/fatedier/frp),详情可以去github看，那里有中文文档，可以使用[supervisor管理frp连接进程](/linux/supervisor_安装_进程管理_配置_fr
-SeoTitle: frp内网穿透
-SeoDescription: 使用的[frp](https://github.com/fatedier/frp),详情可以去github看，那里有中文文档，可以使用[supervisor管理frp连接进程](/linux/supervisor_安装_进程管理_配置_fr
+topic: devops
+Keywords:
+Label:
+description: "使用的[frp](https://github.com/fatedier/frp),详情可以去github看，那里有中文文档，可以使用[supervisor管理frp连接进程](/linux/supervisor_安装_进程管理_配置_fr"
 Date: 2019-11-30T17:00:48+08:00
 LastEditTime: 2019-11-30T17:00:48+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: 全局锁
 LegacyId: 98dffc82d2cc93505ee7c164770803b1
-Slug: 全局锁
-Category: database
-Summary: '[toc] 对整个数据实例加锁，FTWRL ```sql flush table with read lock ``` 使用这个语句后其他线程的语句会阻塞：数据更新语句，数据表定义语句和更新事务的提交语句
-  **使用场景**：全库逻辑备份，m'
-SeoTitle: 全局锁
-SeoDescription: '[toc] 对整个数据实例加锁，FTWRL ```sql flush table with read lock ``` 使用这个语句后其他线程的语句会阻塞：数据更新语句，数据表定义语句和更新事务的提交语句
-  **使用场景**：全库逻辑备份，m'
+topic: database
+Keywords:
+Label:
+description: "[toc] 对整个数据实例加锁，FTWRL ```sql flush table with read lock ``` 使用这个语句后其他线程的语句会阻塞：数据更新语句，数据表定义语句和更新事务的提交语句 **使用场景**：全库逻辑备份，m"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2022-06-18T23:16:07+08:00
 Publish: true

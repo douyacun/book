@@ -1,11 +1,10 @@
 ---
 Title: npm-publish-react-component-react-hook-component
 LegacyId: 8ac1417e443668a2ed208de7d3c13003
-Slug: npm-publish-react-component-react-hook-component
-Category: frontend
-Summary: '[![npm](https://img.shields.io/npm/v/npm-publish-react-component)](https://www.npmjs.com/package/npm-publish-react-compo'
-SeoTitle: npm-publish-react-component-react-hook-component
-SeoDescription: '[![npm](https://img.shields.io/npm/v/npm-publish-react-component)](https://www.npmjs.com/package/npm-publish-react-compo'
+topic: frontend
+Keywords:
+Label:
+description: "[![npm](https://img.shields.io/npm/v/npm-publish-react-component)](https://www.npmjs.com/package/npm-publish-react-compo"
 Date: 2021-01-07T23:32:15+08:00
 LastEditTime: 2021-01-09T23:19:28+08:00
 Publish: true

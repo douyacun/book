@@ -1,13 +1,10 @@
 ---
 Title: 调试进程和定位问题的配置项
 LegacyId: 4c2efef562f5ece265d444ac987568ce
-Slug: 调试进程和定位问题的配置项
-Category: devops
-Summary: '## 是否以守护进程方式运行nginx，方便gdb调试 ``` daemon on|off deafult daemon on ``` > 前台任务/后台任务：两者区别时是否继承标准输入STDIN\
-  > 守护进程：进程退出取决于是否是否会收'
-SeoTitle: 调试进程和定位问题的配置项
-SeoDescription: '## 是否以守护进程方式运行nginx，方便gdb调试 ``` daemon on|off deafult daemon on ```
-  > 前台任务/后台任务：两者区别时是否继承标准输入STDIN\ > 守护进程：进程退出取决于是否是否会收'
+topic: devops
+Keywords:
+Label:
+description: "## 是否以守护进程方式运行nginx，方便gdb调试 ``` daemon on|off deafult daemon on ``` > 前台任务/后台任务：两者区别时是否继承标准输入STDIN\\ > 守护进程：进程退出取决于是否是否会收"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: 国内镜像源
 LegacyId: 813b596b6dbf06871fe5234ca4a3c304
-Slug: 国内镜像源
-Category: backend
-Summary: '``` http://pypi.douban.com/ 豆瓣 http://pypi.hustunique.com/ 华中理工大学 http://pypi.sdutlinux.org/
-  山东理工大学 http://pypi.mirrors.'
-SeoTitle: 国内镜像源
-SeoDescription: '``` http://pypi.douban.com/ 豆瓣 http://pypi.hustunique.com/ 华中理工大学
-  http://pypi.sdutlinux.org/ 山东理工大学 http://pypi.mirrors.'
+topic: backend
+Keywords:
+Label:
+description: "``` http://pypi.douban.com/ 豆瓣 http://pypi.hustunique.com/ 华中理工大学 http://pypi.sdutlinux.org/ 山东理工大学 http://pypi.mirrors."
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

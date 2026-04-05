@@ -1,13 +1,10 @@
 ---
 Title: zipkin-vs-jaeger
 LegacyId: d95b4536b417981318b934381b0a5f18
-Slug: zipkin-vs-jaeger
-Category: architecture
-Summary: '本文概要: 1. 了解opentracing 2. 开源库jaeger/zipkin都实现了opentracing 3. zipkin架构和组件
-  1. xorm sql 埋点 2. 自定义span 4. go语言接入jaeger | | *'
-SeoTitle: zipkin-vs-jaeger
-SeoDescription: '本文概要: 1. 了解opentracing 2. 开源库jaeger/zipkin都实现了opentracing 3. zipkin架构和组件
-  1. xorm sql 埋点 2. 自定义span 4. go语言接入jaeger | | *'
+topic: architecture
+Keywords:
+Label:
+description: "本文概要: 1. 了解opentracing 2. 开源库jaeger/zipkin都实现了opentracing 3. zipkin架构和组件 1. xorm sql 埋点 2. 自定义span 4. go语言接入jaeger | | *"
 Date: 2020-04-30T17:45:03+08:00
 LastEditTime: 2020-07-13T20:23:41+08:00
 Publish: true

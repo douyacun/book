@@ -1,13 +1,10 @@
 ---
 Title: gositemap
 LegacyId: 73a46261d44a792e9c5e6115e8e1a41f
-Slug: gositemap
-Category: backend
-Summary: 'Sitemap 协议: https://www.sitemaps.org/protocol.html 博客: [https://www.douyacun.com](https://www.douyacun.com)
-  博客 sitemap: '
-SeoTitle: gositemap
-SeoDescription: 'Sitemap 协议: https://www.sitemaps.org/protocol.html 博客: [https://www.douyacun.com](https://www.douyacun.com)
-  博客 sitemap: '
+topic: backend
+Keywords:
+Label:
+description: "Sitemap 协议: https://www.sitemaps.org/protocol.html 博客: [https://www.douyacun.com](https://www.douyacun.com) 博客 sitemap:"
 Date: 2020-04-19T20:34:11+08:00
 LastEditTime: 2021-01-22T11:01:38+08:00
 Publish: true

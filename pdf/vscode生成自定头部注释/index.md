@@ -1,13 +1,10 @@
 ---
 Title: vscode生成自定头部注释
 LegacyId: 0adfd91209e17697b69fe14ee29ef414
-Slug: vscode生成自定头部注释
-Category: pdf
-Summary: '[fileheader](https://github.com/OBKoro1/koro1FileHeader) vscode配置, code/首选项/设置
-  - 搜索 `fileheader` - 在`setting.json`中配置 ``'
-SeoTitle: vscode生成自定头部注释
-SeoDescription: '[fileheader](https://github.com/OBKoro1/koro1FileHeader) vscode配置,
-  code/首选项/设置 - 搜索 `fileheader` - 在`setting.json`中配置 ``'
+topic: pdf
+Keywords:
+Label:
+description: "[fileheader](https://github.com/OBKoro1/koro1FileHeader) vscode配置, code/首选项/设置 - 搜索 `fileheader` - 在`setting.json`中配置 ``"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

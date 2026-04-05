@@ -1,12 +1,10 @@
 ---
 Title: 最终一致性
 LegacyId: eaae76d1d47082071d9bd25d721cb814
-Slug: 最终一致性
-Category: database
-Summary: '> 建议阅读 > - [分布式事务一致性，3种模式](https://zhuanlan.zhihu.com/p/36153160) > - [TCC](https://juejin.im/post/5bf201f7f265da610f635'
-SeoTitle: 最终一致性
-SeoDescription: '> 建议阅读 > - [分布式事务一致性，3种模式](https://zhuanlan.zhihu.com/p/36153160)
-  > - [TCC](https://juejin.im/post/5bf201f7f265da610f635'
+topic: database
+Keywords:
+Label:
+description: "> 建议阅读 > - [分布式事务一致性，3种模式](https://zhuanlan.zhihu.com/p/36153160) > - [TCC](https://juejin.im/post/5bf201f7f265da610f635"
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2020-05-10T21:01:25+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: 一、PDF去水印-专业版
 LegacyId: 12451fe65a1bbeac6f0eed8f5225da17
-Slug: 一、PDF去水印-专业版
-Category: pdf
-Summary: '**下载地址**： - [windows](https://www.douyacun.com/s/pdf_tools.exe) - [mac](https://www.douyacun.com/s/pdftools)
-  PDF工具箱功能： ['
-SeoTitle: 一、PDF去水印-专业版
-SeoDescription: '**下载地址**： - [windows](https://www.douyacun.com/s/pdf_tools.exe) -
-  [mac](https://www.douyacun.com/s/pdftools) PDF工具箱功能： ['
+topic: pdf
+Keywords:
+Label:
+description: "**下载地址**： - [windows](https://www.douyacun.com/s/pdf_tools.exe) - [mac](https://www.douyacun.com/s/pdftools) PDF工具箱功能： ["
 Date: 2021-12-12T11:40:35+08:00
 LastEditTime: 2021-12-29T15:49:13+08:00
 Publish: true

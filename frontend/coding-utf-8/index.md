@@ -1,13 +1,10 @@
 ---
 Title: mac签名打包的坑
 LegacyId: 4b6183a4a68aa89e33a00d374c84c487
-Slug: coding-utf-8
-Category: frontend
-Summary: 'mac签名打包的坑比较深：有需求的朋友可以加微信 私聊 ## app打包 python打包工具用的pyinstaller ```shell bundle="com.douyacun.pdftools"
-  appname="PDF工具箱" ec'
-SeoTitle: mac签名打包的坑
-SeoDescription: 'mac签名打包的坑比较深：有需求的朋友可以加微信 私聊 ## app打包 python打包工具用的pyinstaller ```shell
-  bundle="com.douyacun.pdftools" appname="PDF工具箱" ec'
+topic: frontend
+Keywords:
+Label:
+description: "mac签名打包的坑比较深：有需求的朋友可以加微信 私聊 ## app打包 python打包工具用的pyinstaller ```shell bundle=\"com.douyacun.pdftools\" appname=\"PDF工具箱\" ec"
 Date: 2023-01-13T08:48:21+08:00
 LastEditTime: 2023-01-19T13:19:12+08:00
 Publish: true

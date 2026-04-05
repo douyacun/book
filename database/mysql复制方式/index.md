@@ -1,13 +1,10 @@
 ---
 Title: mysql复制方式
 LegacyId: 70750149da7089a32c4e7de2c5062b97
-Slug: mysql复制方式
-Category: database
-Summary: '- mysql复制方式 - 复制解决的问题，常见用途 - 配置复制-新的服务器 - 从另一个服务器开始复制 - 复制拓扑 - 基于行的复制 -
-  基于语句的复制 ==数据分布== mysql复制通常不会给带宽造成很大压力，即使在不稳定的网络环'
-SeoTitle: mysql复制方式
-SeoDescription: '- mysql复制方式 - 复制解决的问题，常见用途 - 配置复制-新的服务器 - 从另一个服务器开始复制 - 复制拓扑 - 基于行的复制
-  - 基于语句的复制 ==数据分布== mysql复制通常不会给带宽造成很大压力，即使在不稳定的网络环'
+topic: database
+Keywords:
+Label:
+description: "- mysql复制方式 - 复制解决的问题，常见用途 - 配置复制-新的服务器 - 从另一个服务器开始复制 - 复制拓扑 - 基于行的复制 - 基于语句的复制 ==数据分布== mysql复制通常不会给带宽造成很大压力，即使在不稳定的网络环"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

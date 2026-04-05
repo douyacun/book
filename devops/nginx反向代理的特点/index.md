@@ -1,13 +1,10 @@
 ---
 Title: nginx反向代理的特点
 LegacyId: 98ba2b95281ffc065e5ad45086199308
-Slug: nginx反向代理的特点
-Category: devops
-Summary: 相比squid， 在客户端发送请求，nginx不会立即转发给上游服务器，而是先把用户的请求（包括http包体）完整的接收到nginx服务器所在的内存或磁盘中，再向上游服务器发起连接,
-  把缓存的客户端请求转发给上游服务器。 缺点是延长了一个请
-SeoTitle: nginx反向代理的特点
-SeoDescription: 相比squid， 在客户端发送请求，nginx不会立即转发给上游服务器，而是先把用户的请求（包括http包体）完整的接收到nginx服务器所在的内存或磁盘中，再向上游服务器发起连接,
-  把缓存的客户端请求转发给上游服务器。 缺点是延长了一个请
+topic: devops
+Keywords:
+Label:
+description: 相比squid， 在客户端发送请求，nginx不会立即转发给上游服务器，而是先把用户的请求（包括http包体）完整的接收到nginx服务器所在的内存或磁盘中，再向上游服务器发起连接, 把缓存的客户端请求转发给上游服务器。 缺点是延长了一个请
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: Linux-内存过高解决思路
 LegacyId: 84c3d5627936ad039f2a9d3731364c30
-Slug: Linux-内存过高解决思路
-Category: devops
-Summary: '## 查看内存使用情况 ``` free -m cat /proc/meminfo ``` ## atop 按 m 统计内存使用情况 ``` MEM
-  | tot 7.8G | free 6.6G | cache 402.0M | dirty'
-SeoTitle: Linux-内存过高解决思路
-SeoDescription: '## 查看内存使用情况 ``` free -m cat /proc/meminfo ``` ## atop 按 m 统计内存使用情况
-  ``` MEM | tot 7.8G | free 6.6G | cache 402.0M | dirty'
+topic: devops
+Keywords:
+Label:
+description: "## 查看内存使用情况 ``` free -m cat /proc/meminfo ``` ## atop 按 m 统计内存使用情况 ``` MEM | tot 7.8G | free 6.6G | cache 402.0M | dirty"
 Date: 2020-02-25T10:44:34+08:00
 LastEditTime: 2020-02-25T10:44:34+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: fsync-fdatasync-同步内核的页缓存到磁盘
 LegacyId: 6db15910cac7885f6a97958db5ac631c
-Slug: fsync-fdatasync-同步内核的页缓存到磁盘
-Category: devops
-Summary: '```c #include <unistd.h> int fsync(int fd); int fdatasync(int fd); ``` -
-  fsync： 文件描述符(fd)在内核中所有的[脏页](/linux/页缓存.md#dirty'
-SeoTitle: fsync-fdatasync-同步内核的页缓存到磁盘
-SeoDescription: '```c #include <unistd.h> int fsync(int fd); int fdatasync(int fd);
-  ``` - fsync： 文件描述符(fd)在内核中所有的[脏页](/linux/页缓存.md#dirty'
+topic: devops
+Keywords:
+Label:
+description: "```c #include <unistd.h> int fsync(int fd); int fdatasync(int fd); ``` - fsync： 文件描述符(fd)在内核中所有的[脏页](/linux/页缓存.md#dirty"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: true

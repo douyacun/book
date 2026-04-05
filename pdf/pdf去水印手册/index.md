@@ -1,13 +1,10 @@
 ---
 Title: pdf去水印手册
 LegacyId: 9171f2ac03979f67288ec9468aac8576
-Slug: pdf去水印手册
-Category: pdf
-Summary: '**在线网站地址：[https://www.douyacun.com/pdf/remove-watermark](https://www.douyacun.com/pdf/remove-watermark)**
-  **步骤：** **第一步：'
-SeoTitle: pdf去水印手册
-SeoDescription: '**在线网站地址：[https://www.douyacun.com/pdf/remove-watermark](https://www.douyacun.com/pdf/remove-watermark)**
-  **步骤：** **第一步：'
+topic: pdf
+Keywords:
+Label:
+description: "**在线网站地址：[https://www.douyacun.com/pdf/remove-watermark](https://www.douyacun.com/pdf/remove-watermark)** **步骤：** **第一步："
 Date: 2021-05-19T20:25:33+08:00
 LastEditTime: 2021-06-09T11:11:38+08:00
 Publish: true

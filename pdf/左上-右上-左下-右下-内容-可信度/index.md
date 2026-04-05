@@ -1,13 +1,10 @@
 ---
 Title: 左上-右上-左下-右下-内容-可信度
 LegacyId: f019c2d5a60855b150c5e00fc479c3ec
-Slug: 左上-右上-左下-右下-内容-可信度
-Category: pdf
-Summary: 网站地址：[https://www.douyacun.com/image/ocr-to-docx](https://www.douyacun.com/image/ocr-to-docx)
-  **功能特点：** 1. 识别图片上的文字 2. 按
-SeoTitle: 左上-右上-左下-右下-内容-可信度
-SeoDescription: 网站地址：[https://www.douyacun.com/image/ocr-to-docx](https://www.douyacun.com/image/ocr-to-docx)
-  **功能特点：** 1. 识别图片上的文字 2. 按
+topic: pdf
+Keywords:
+Label:
+description: "网站地址：[https://www.douyacun.com/image/ocr-to-docx](https://www.douyacun.com/image/ocr-to-docx) **功能特点：** 1. 识别图片上的文字 2. 按"
 Date: 2021-06-17T19:31:08+08:00
 LastEditTime: 2021-06-22T07:56:33+08:00
 Publish: true

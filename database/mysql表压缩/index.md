@@ -1,13 +1,10 @@
 ---
 Title: mysql表压缩
 LegacyId: 12dec8746775f74d991179f804b2a847
-Slug: mysql表压缩
-Category: database
-Summary: '1. 客户端和服务端数据量传输量大，需要压缩节约带宽 2. 某个列数据量大，只针对某个列压缩 3. 某个表或几个表太大需要压缩节省空间 场景一
-  使用mysql的压缩协议 场景二 使用mysql的压缩函数 场景三 使用mysql存储引擎压缩 '
-SeoTitle: mysql表压缩
-SeoDescription: '1. 客户端和服务端数据量传输量大，需要压缩节约带宽 2. 某个列数据量大，只针对某个列压缩 3. 某个表或几个表太大需要压缩节省空间
-  场景一 使用mysql的压缩协议 场景二 使用mysql的压缩函数 场景三 使用mysql存储引擎压缩 '
+topic: database
+Keywords:
+Label:
+description: 1. 客户端和服务端数据量传输量大，需要压缩节约带宽 2. 某个列数据量大，只针对某个列压缩 3. 某个表或几个表太大需要压缩节省空间 场景一 使用mysql的压缩协议 场景二 使用mysql的压缩函数 场景三 使用mysql存储引擎压缩
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

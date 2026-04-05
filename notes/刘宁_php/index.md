@@ -1,13 +1,10 @@
 ---
 Title: 刘宁_php
 LegacyId: 79220bb8d5fb1becad512eb4a4eecdb7
-Slug: 刘宁_php
-Category: notes
-Summary: '### 刘宁 5年工作经验 | 1994年 | 男 学校：青岛理工大学｜专科｜计算机技术 博客: [https://www.douyacun.com](https://www.douyacun.com)
-  Github: [https://w'
-SeoTitle: 刘宁_php
-SeoDescription: '### 刘宁 5年工作经验 | 1994年 | 男 学校：青岛理工大学｜专科｜计算机技术 博客: [https://www.douyacun.com](https://www.douyacun.com)
-  Github: [https://w'
+topic: notes
+Keywords:
+Label:
+description: "### 刘宁 5年工作经验 | 1994年 | 男 学校：青岛理工大学｜专科｜计算机技术 博客: [https://www.douyacun.com](https://www.douyacun.com) Github: [https://w"
 Date: 2026-03-28T23:20:43.375657+08:00
 LastEditTime: 2026-03-28T23:20:43.375657+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: InnoDB刷脏页的控制策略
 LegacyId: 5e755806a99c003e691d8afb0177bd9a
-Slug: InnoDB刷脏页的控制策略
-Category: database
-Summary: '[toc] [脏页](../linux/页缓存.md#dirty_page)：**当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”**
-  首先告诉innodb刷脏页的I/O能力，建议设置磁盘IOPS。可以使用FIO工具来测'
-SeoTitle: InnoDB刷脏页的控制策略
-SeoDescription: '[toc] [脏页](../linux/页缓存.md#dirty_page)：**当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”**
-  首先告诉innodb刷脏页的I/O能力，建议设置磁盘IOPS。可以使用FIO工具来测'
+topic: database
+Keywords:
+Label:
+description: "[toc] [脏页](../linux/页缓存.md#dirty_page)：**当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”** 首先告诉innodb刷脏页的I/O能力，建议设置磁盘IOPS。可以使用FIO工具来测"
 Date: 2020-01-21T14:47:03+08:00
 LastEditTime: 2020-01-21T14:47:03+08:00
 Publish: false

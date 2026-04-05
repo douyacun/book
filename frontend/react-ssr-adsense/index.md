@@ -1,13 +1,10 @@
 ---
 Title: react-ssr-adsense
 LegacyId: 20883227643364bc08924b717b10ad15
-Slug: react-ssr-adsense
-Category: frontend
-Summary: '@hustcc react-adsense 不支持服务端渲染框架，受 [react-adsense](https://www.npmjs.com/package/react-adsense)
-  启发写了 react-ssr-adsense r'
-SeoTitle: react-ssr-adsense
-SeoDescription: '@hustcc react-adsense 不支持服务端渲染框架，受 [react-adsense](https://www.npmjs.com/package/react-adsense)
-  启发写了 react-ssr-adsense r'
+topic: frontend
+Keywords:
+Label:
+description: "@hustcc react-adsense 不支持服务端渲染框架，受 [react-adsense](https://www.npmjs.com/package/react-adsense) 启发写了 react-ssr-adsense r"
 Date: 2021-01-18T11:49:56+08:00
 LastEditTime: 2021-01-18T11:49:56+08:00
 Publish: true

@@ -1,11 +1,10 @@
 ---
 Title: pt-online-schema-change
 LegacyId: 4bd0a9395373e8c3c6fe81d80772690b
-Slug: pt-online-schema-change
-Category: database
-Summary: '下载地址: [https://www.percona.com/downloads/percona-toolkit/LATEST/](https://www.percona.com/downloads/percona-toolkit/LATE'
-SeoTitle: pt-online-schema-change
-SeoDescription: '下载地址: [https://www.percona.com/downloads/percona-toolkit/LATEST/](https://www.percona.com/downloads/percona-toolkit/LATE'
+topic: database
+Keywords:
+Label:
+description: "下载地址: [https://www.percona.com/downloads/percona-toolkit/LATEST/](https://www.percona.com/downloads/percona-toolkit/LATE"
 Date: 2020-01-19T10:45:42+08:00
 LastEditTime: 2020-01-19T10:53:33+08:00
 Publish: true

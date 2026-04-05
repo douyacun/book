@@ -1,13 +1,10 @@
 ---
 Title: 20200505-golang面试整理
 LegacyId: e2af9c0b191037a8cb9b354226da3242
-Slug: 20200505-golang面试整理
-Category: backend
-Summary: '### 协程、线程、进程 进程：系统分配资源的基本单位 线程：cpu调度和分派的基本单位 协程：用户态轻量级线程，调度由用户控制 **goroutine和线程的区别**
-  - 调度: os线程调度切换有cpu决定，go有自己的调度器，M:N调'
-SeoTitle: 20200505-golang面试整理
-SeoDescription: '### 协程、线程、进程 进程：系统分配资源的基本单位 线程：cpu调度和分派的基本单位 协程：用户态轻量级线程，调度由用户控制
-  **goroutine和线程的区别** - 调度: os线程调度切换有cpu决定，go有自己的调度器，M:N调'
+topic: backend
+Keywords:
+Label:
+description: "### 协程、线程、进程 进程：系统分配资源的基本单位 线程：cpu调度和分派的基本单位 协程：用户态轻量级线程，调度由用户控制 **goroutine和线程的区别** - 调度: os线程调度切换有cpu决定，go有自己的调度器，M:N调"
 Date: 2020-05-06T00:30:37+08:00
 LastEditTime: 2020-05-07T20:49:10+08:00
 Publish: false

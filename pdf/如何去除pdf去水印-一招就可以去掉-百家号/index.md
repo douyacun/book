@@ -1,13 +1,10 @@
 ---
 Title: 如何去除pdf去水印-一招就可以去掉-百家号
 LegacyId: c37d565d8df5d9c0d82f2b419d9f9da2
-Slug: 如何去除pdf去水印-一招就可以去掉-百家号
-Category: pdf
-Summary: 百度一搜，如何去除PDF水印 都是如何用「迅捷pdf去水印」、「超级pdf」、「福昕去水印」、「万兴pdf专家去水印」...，「wps pdf编辑」去除水印。
-  挨个测试了一下，如下面扫描全能王的水印，在线PDF删除水印都是无法用的 ![扫描
-SeoTitle: 如何去除pdf去水印-一招就可以去掉-百家号
-SeoDescription: 百度一搜，如何去除PDF水印 都是如何用「迅捷pdf去水印」、「超级pdf」、「福昕去水印」、「万兴pdf专家去水印」...，「wps
-  pdf编辑」去除水印。 挨个测试了一下，如下面扫描全能王的水印，在线PDF删除水印都是无法用的 ![扫描
+topic: pdf
+Keywords:
+Label:
+description: "百度一搜，如何去除PDF水印 都是如何用「迅捷pdf去水印」、「超级pdf」、「福昕去水印」、「万兴pdf专家去水印」...，「wps pdf编辑」去除水印。 挨个测试了一下，如下面扫描全能王的水印，在线PDF删除水印都是无法用的 ![扫描"
 Date: 2026-03-28T23:20:50.978122+08:00
 LastEditTime: 2026-03-28T23:20:50.978122+08:00
 Publish: false

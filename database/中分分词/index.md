@@ -1,11 +1,10 @@
 ---
 Title: 中分分词
 LegacyId: ba5d87d5f0f05c1d964dfa3768124947
-Slug: 中分分词
-Category: database
-Summary: '**中文分词** 直接安装： ```shell ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/d'
-SeoTitle: 中分分词
-SeoDescription: '**中文分词** 直接安装： ```shell ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/d'
+topic: database
+Keywords:
+Label:
+description: "**中文分词** 直接安装： ```shell ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/d"
 Date: 2020-02-17T12:41:09+08:00
 LastEditTime: 2020-02-17T12:41:09+08:00
 Publish: false

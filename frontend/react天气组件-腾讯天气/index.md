@@ -1,11 +1,10 @@
 ---
 Title: react天气组件-腾讯天气
 LegacyId: 61934127ecbb9c4ad395874ef6822c20
-Slug: react天气组件-腾讯天气
-Category: frontend
-Summary: '## react天气组件 [![npm](https://img.shields.io/npm/v/react-tencent-weather)](https://www.npmjs.com/package/react-tencent-we'
-SeoTitle: react天气组件-腾讯天气
-SeoDescription: '## react天气组件 [![npm](https://img.shields.io/npm/v/react-tencent-weather)](https://www.npmjs.com/package/react-tencent-we'
+topic: frontend
+Keywords:
+Label:
+description: "## react天气组件 [![npm](https://img.shields.io/npm/v/react-tencent-weather)](https://www.npmjs.com/package/react-tencent-we"
 Date: 2021-01-05T19:03:40+08:00
 LastEditTime: 2021-02-04T18:20:44+08:00
 Publish: true

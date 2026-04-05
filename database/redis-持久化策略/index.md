@@ -1,13 +1,10 @@
 ---
 Title: redis-持久化策略
 LegacyId: 5648293989eae26654306ece0c62a6fe
-Slug: redis-持久化策略
-Category: database
-Summary: '- master关闭持久化 - slave 开启rdb，必要时开启aof和rdb - `save` rdb出发记录条件 - `save 900
-  1` # 服务器在900秒内，修改了1次 - `save 300 10` # 服务器在300秒内'
-SeoTitle: redis-持久化策略
-SeoDescription: '- master关闭持久化 - slave 开启rdb，必要时开启aof和rdb - `save` rdb出发记录条件 - `save
-  900 1` # 服务器在900秒内，修改了1次 - `save 300 10` # 服务器在300秒内'
+topic: database
+Keywords:
+Label:
+description: "- master关闭持久化 - slave 开启rdb，必要时开启aof和rdb - `save` rdb出发记录条件 - `save 900 1` # 服务器在900秒内，修改了1次 - `save 300 10` # 服务器在300秒内"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: true

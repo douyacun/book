@@ -1,13 +1,10 @@
 ---
 Title: mind-map
 LegacyId: 711b41eebb40225453f33eedd3eb2daf
-Slug: mind-map
-Category: backend
-Summary: '[TOC] go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写
-  ![](assert/'
-SeoTitle: mind-map
-SeoDescription: '[TOC] go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写
-  ![](assert/'
+topic: backend
+Keywords:
+Label:
+description: "[TOC] go select 是一种仅能用于channel发送和接收消息的专用语句，此语句运行期间是阻塞的。select是go在语言层面提供的I/O多路复用的机制，专门检测多个channel是否准备完毕，可读或可写 ![](assert/"
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: PDF如何去除水印三种方法教你如何去除PDF文件水印
 LegacyId: 0eb14052aad9080f4df2a32f2e4c072d
-Slug: PDF如何去除水印三种方法教你如何去除PDF文件水印
-Category: pdf
-Summary: PDF水印是PDF文档中常见的一种标识符号，用于标识文件的版权或者来源等信息。如果您想去除PDF文档中的水印，可以尝试以下方法： 1.使用Adobe
-  Acrobat Pro 这是全世界最大的软件公司Adobe旗下的PDF阅读器，可以进行PD
-SeoTitle: PDF如何去除水印三种方法教你如何去除PDF文件水印
-SeoDescription: PDF水印是PDF文档中常见的一种标识符号，用于标识文件的版权或者来源等信息。如果您想去除PDF文档中的水印，可以尝试以下方法： 1.使用Adobe
-  Acrobat Pro 这是全世界最大的软件公司Adobe旗下的PDF阅读器，可以进行PD
+topic: pdf
+Keywords:
+Label:
+description: PDF水印是PDF文档中常见的一种标识符号，用于标识文件的版权或者来源等信息。如果您想去除PDF文档中的水印，可以尝试以下方法： 1.使用Adobe Acrobat Pro 这是全世界最大的软件公司Adobe旗下的PDF阅读器，可以进行PD
 Date: 2023-03-20T10:23:12+08:00
 LastEditTime: 2023-03-20T10:23:12+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: channel
 LegacyId: 3afebf8f93d1fc17088fc5c6b5d3b134
-Slug: channel
-Category: backend
-Summary: go语言提倡的并发模型就是：**不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存** [TOC] ![](assert/channel.png)
-  ```go type hchan struct { qcount uint //
-SeoTitle: channel
-SeoDescription: go语言提倡的并发模型就是：**不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存** [TOC] ![](assert/channel.png)
-  ```go type hchan struct { qcount uint //
+topic: backend
+Keywords:
+Label:
+description: "go语言提倡的并发模型就是：**不要通过共享内存的方式进行通信，而是应该通过通信的方式共享内存** [TOC] ![](assert/channel.png) ```go type hchan struct { qcount uint //"
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: true

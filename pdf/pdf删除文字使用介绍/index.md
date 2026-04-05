@@ -1,13 +1,10 @@
 ---
 Title: pdf删除文字使用介绍
 LegacyId: 48324d10cbb47cfbb089ad8f7bee74e9
-Slug: pdf删除文字使用介绍
-Category: pdf
-Summary: 网址：https://www.douyacun.com/pdf/delete-text 微信小程序：搜索 「**大宁宝箱**」 步骤概览 - 第一步：选择文件，上传文件
-  - 第二步：选择页面，分析文字 - 第三步：选择文字，删除文字 - 第
-SeoTitle: pdf删除文字使用介绍
-SeoDescription: 网址：https://www.douyacun.com/pdf/delete-text 微信小程序：搜索 「**大宁宝箱**」 步骤概览
-  - 第一步：选择文件，上传文件 - 第二步：选择页面，分析文字 - 第三步：选择文字，删除文字 - 第
+topic: pdf
+Keywords:
+Label:
+description: 网址：https://www.douyacun.com/pdf/delete-text 微信小程序：搜索 「**大宁宝箱**」 步骤概览 - 第一步：选择文件，上传文件 - 第二步：选择页面，分析文字 - 第三步：选择文字，删除文字 - 第
 Date: 2023-03-07T10:51:19+08:00
 LastEditTime: 2023-03-20T10:23:12+08:00
 Publish: true

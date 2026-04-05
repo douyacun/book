@@ -1,13 +1,10 @@
 ---
 Title: 别名
 LegacyId: f8b9036d54b15de84ecd1faa6a33077c
-Slug: 别名
-Category: devops
-Summary: '常用的配置 ``` Host douyacun # ip或域名 hostname douyacun.com # 端口号 port 22 # 登录用户名
-  User douyacun # 密钥地址 IdentityFile ~/.ssh/id_'
-SeoTitle: 别名
-SeoDescription: '常用的配置 ``` Host douyacun # ip或域名 hostname douyacun.com # 端口号 port
-  22 # 登录用户名 User douyacun # 密钥地址 IdentityFile ~/.ssh/id_'
+topic: devops
+Keywords:
+Label:
+description: "常用的配置 ``` Host douyacun # ip或域名 hostname douyacun.com # 端口号 port 22 # 登录用户名 User douyacun # 密钥地址 IdentityFile ~/.ssh/id_"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: 架构说的高大上一点
 LegacyId: 561fab2a070aeb6a5da6d4738c06cf94
-Slug: 架构说的高大上一点
-Category: backend
-Summary: '- 前端框架 - [react](https://zh-hans.reactjs.org/) - [nextjs](https://nextjs.org/docs)
-  - [nocookie](https://github.com/matic'
-SeoTitle: 架构说的高大上一点
-SeoDescription: '- 前端框架 - [react](https://zh-hans.reactjs.org/) - [nextjs](https://nextjs.org/docs)
-  - [nocookie](https://github.com/matic'
+topic: backend
+Keywords:
+Label:
+description: "- 前端框架 - [react](https://zh-hans.reactjs.org/) - [nextjs](https://nextjs.org/docs) - [nocookie](https://github.com/matic"
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: false

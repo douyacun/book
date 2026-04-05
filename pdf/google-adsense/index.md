@@ -1,13 +1,10 @@
 ---
 Title: google-adsense
 LegacyId: 8c2336096a93b53bac2adfe17b924389
-Slug: google-adsense
-Category: pdf
-Summary: 非常重要：原创，原创数量，Google搜索引擎收录数量 总结一下我的3次申请经历，希望能给大家有点提示 第一次申请：2018年3月那时开始学习react，摸索着做了一个视频种子站（00h.tv），现在在google上还是可以通过
-  [site
-SeoTitle: google-adsense
-SeoDescription: 非常重要：原创，原创数量，Google搜索引擎收录数量 总结一下我的3次申请经历，希望能给大家有点提示 第一次申请：2018年3月那时开始学习react，摸索着做了一个视频种子站（00h.tv），现在在google上还是可以通过
-  [site
+topic: pdf
+Keywords:
+Label:
+description: "非常重要：原创，原创数量，Google搜索引擎收录数量 总结一下我的3次申请经历，希望能给大家有点提示 第一次申请：2018年3月那时开始学习react，摸索着做了一个视频种子站（00h.tv），现在在google上还是可以通过 [site"
 Date: 2021-01-18T20:05:50+08:00
 LastEditTime: 2021-01-19T10:19:31+08:00
 Publish: true

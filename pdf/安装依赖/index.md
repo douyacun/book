@@ -1,13 +1,10 @@
 ---
 Title: 安装依赖
 LegacyId: cdc92c8e3dae14af0ccaf2bd7098b759
-Slug: 安装依赖
-Category: pdf
-Summary: '```shell yum install autoconf automake libtool pkgconfig.x86_64 libpng12-devel.x86_64
-  libjpeg-devel libtiff-devel.x86_64'
-SeoTitle: 安装依赖
-SeoDescription: '```shell yum install autoconf automake libtool pkgconfig.x86_64 libpng12-devel.x86_64
-  libjpeg-devel libtiff-devel.x86_64'
+topic: pdf
+Keywords:
+Label:
+description: "```shell yum install autoconf automake libtool pkgconfig.x86_64 libpng12-devel.x86_64 libjpeg-devel libtiff-devel.x86_64"
 Date: 2021-06-19T16:02:24+08:00
 LastEditTime: 2021-06-19T16:02:24+08:00
 Publish: true

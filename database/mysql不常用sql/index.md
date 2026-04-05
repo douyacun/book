@@ -1,13 +1,10 @@
 ---
 Title: mysql不常用sql
 LegacyId: 2b54aebe3ca54af6f11f4fcce4993e43
-Slug: mysql不常用sql
-Category: database
-Summary: '- 导出数据库结构和数据 mysqldump -u root -pa123456 demodb > demo.sql - 导出数据库结构 mysqldump
-  -u root -pa123456 -d demodb > demo.sql my'
-SeoTitle: mysql不常用sql
-SeoDescription: '- 导出数据库结构和数据 mysqldump -u root -pa123456 demodb > demo.sql - 导出数据库结构
-  mysqldump -u root -pa123456 -d demodb > demo.sql my'
+topic: database
+Keywords:
+Label:
+description: "- 导出数据库结构和数据 mysqldump -u root -pa123456 demodb > demo.sql - 导出数据库结构 mysqldump -u root -pa123456 -d demodb > demo.sql my"
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2019-11-29T11:38:31+08:00
 Publish: false

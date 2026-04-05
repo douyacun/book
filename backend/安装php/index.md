@@ -1,13 +1,10 @@
 ---
 Title: 安装php
 LegacyId: 4bd58d70a512ebb9dcc5de7e34dd7cc7
-Slug: 安装php
-Category: backend
-Summary: 下载地址： - 安装及安装扩展 ``` yum install libxml2-devel sqlite-devel libcurl-devel
-  oniguruma-devel libpng-devel libjpeg-devel free
-SeoTitle: 安装php
-SeoDescription: 下载地址： - 安装及安装扩展 ``` yum install libxml2-devel sqlite-devel libcurl-devel
-  oniguruma-devel libpng-devel libjpeg-devel free
+topic: backend
+Keywords:
+Label:
+description: "下载地址： - 安装及安装扩展 ``` yum install libxml2-devel sqlite-devel libcurl-devel oniguruma-devel libpng-devel libjpeg-devel free"
 Date: 2023-07-14T10:35:17+08:00
 LastEditTime: 2026-03-09T21:18:13+08:00
 Publish: false

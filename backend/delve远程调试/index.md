@@ -1,13 +1,10 @@
 ---
 Title: delve远程调试
 LegacyId: 5986054a941dabeac7203699f40feba6
-Slug: delve远程调试
-Category: backend
-Summary: 最近在研究websocket的路上愈走愈远了，从开始只是搭建聊天室到单机服务如何支持百万连接。现在是在弄epoll的道路上，经历一路坎坷。这里记录一下心路历程。
-  问题： **epoll这只能运行在linux，有问题没发调试，蛋疼吗？** 首
-SeoTitle: delve远程调试
-SeoDescription: 最近在研究websocket的路上愈走愈远了，从开始只是搭建聊天室到单机服务如何支持百万连接。现在是在弄epoll的道路上，经历一路坎坷。这里记录一下心路历程。
-  问题： **epoll这只能运行在linux，有问题没发调试，蛋疼吗？** 首
+topic: backend
+Keywords:
+Label:
+description: 最近在研究websocket的路上愈走愈远了，从开始只是搭建聊天室到单机服务如何支持百万连接。现在是在弄epoll的道路上，经历一路坎坷。这里记录一下心路历程。 问题： **epoll这只能运行在linux，有问题没发调试，蛋疼吗？** 首
 Date: 2020-04-02T01:08:14+08:00
 LastEditTime: 2021-01-18T10:14:41+08:00
 Publish: true

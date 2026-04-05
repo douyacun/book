@@ -1,13 +1,10 @@
 ---
 Title: 错误日志
 LegacyId: 006c03a0a4220b3dcac3705e2de7d999
-Slug: 错误日志
-Category: database
-Summary: 'mysql中常见的日志文件： - 错误日志(error log) - 二进制日志(binlog) - 慢查询日志(slow log) - 查询日志(log)
-  查看错误日志的位置 ```shell mysql> show variables '
-SeoTitle: 错误日志
-SeoDescription: 'mysql中常见的日志文件： - 错误日志(error log) - 二进制日志(binlog) - 慢查询日志(slow log)
-  - 查询日志(log) 查看错误日志的位置 ```shell mysql> show variables '
+topic: database
+Keywords:
+Label:
+description: "mysql中常见的日志文件： - 错误日志(error log) - 二进制日志(binlog) - 慢查询日志(slow log) - 查询日志(log) 查看错误日志的位置 ```shell mysql> show variables"
 Date: 2019-11-26T09:53:58+08:00
 LastEditTime: 2019-11-26T23:08:49+08:00
 Publish: true

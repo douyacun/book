@@ -1,13 +1,10 @@
 ---
 Title: ssh端口代理
 LegacyId: bc3b750e7311ad7ff61aa1049157da50
-Slug: 这里解释一下-阿里云RDS不允许外网访问-但是允许内网访问-那就可以走内网网关-127.0.0.1是不生效的-通过-dev@121.40.160.207-代理-这里是避
-Category: devops
-Summary: 有一台 LDAP 服务器（LDAP Server），但是限制了只有本机上部署的应用才能直接连接此 LDAP 服务器。现在我们想临时从本地机器（LDAP
-  Client）直接连接到这个 LDAP 服务器，只需要在LDAP Client上运用本地
-SeoTitle: ssh端口代理
-SeoDescription: 有一台 LDAP 服务器（LDAP Server），但是限制了只有本机上部署的应用才能直接连接此 LDAP 服务器。现在我们想临时从本地机器（LDAP
-  Client）直接连接到这个 LDAP 服务器，只需要在LDAP Client上运用本地
+topic: devops
+Keywords:
+Label:
+description: 有一台 LDAP 服务器（LDAP Server），但是限制了只有本机上部署的应用才能直接连接此 LDAP 服务器。现在我们想临时从本地机器（LDAP Client）直接连接到这个 LDAP 服务器，只需要在LDAP Client上运用本地
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

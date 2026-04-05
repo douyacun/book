@@ -1,13 +1,10 @@
 ---
 Title: go面试题-闭包函数与标准输出阻塞
 LegacyId: ffd30d5c23ecaa3deeb1185380953b91
-Slug: go面试题-闭包函数与标准输出阻塞
-Category: backend
-Summary: '面试题: ```go package main func main() { m := make(map[string]*student) stus
-  := []*student{ &student{Name: "zhou", Age: 24}'
-SeoTitle: go面试题-闭包函数与标准输出阻塞
-SeoDescription: '面试题: ```go package main func main() { m := make(map[string]*student)
-  stus := []*student{ &student{Name: "zhou", Age: 24}'
+topic: backend
+Keywords:
+Label:
+description: "面试题: ```go package main func main() { m := make(map[string]*student) stus := []*student{ &student{Name: \"zhou\", Age: 24}"
 Date: 2021-04-04T17:03:34+08:00
 LastEditTime: 2021-04-04T17:03:34+08:00
 Publish: true

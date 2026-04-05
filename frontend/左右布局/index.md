@@ -1,12 +1,10 @@
 ---
 Title: 左右布局
 LegacyId: 0e7fc048a171a1e4dd58011dc28527ad
-Slug: 左右布局
-Category: frontend
-Summary: '[TOC] 定义父框`root` 左视图 `left`，点击移动区 `resizer`，右试图 `right`，建议使用flex布局 ![image-20201228233232732](./assert/image-20201228233'
-SeoTitle: 左右布局
-SeoDescription: '[TOC] 定义父框`root` 左视图 `left`，点击移动区 `resizer`，右试图 `right`，建议使用flex布局
-  ![image-20201228233232732](./assert/image-20201228233'
+topic: frontend
+Keywords:
+Label:
+description: "[TOC] 定义父框`root` 左视图 `left`，点击移动区 `resizer`，右试图 `right`，建议使用flex布局 ![image-20201228233232732](./assert/image-20201228233"
 Date: 2021-01-02T00:43:56+08:00
 LastEditTime: 2021-01-02T00:48:14+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: time-rate-原理
 LegacyId: 1996c04eb313eccf7f8a07dfc49b8f8e
-Slug: time-rate-原理
-Category: backend
-Summary: '背景： - gin框架，中间件 - 博客开放好玩的 API 需求： - 接口限流 - 按账户/IP/Token限流 - 定时加载配置 todo:
-  - 分布式限流 time/rate 是go提供的官方限流工具 原理: 令牌桶，以一个恒定的速度'
-SeoTitle: time-rate-原理
-SeoDescription: '背景： - gin框架，中间件 - 博客开放好玩的 API 需求： - 接口限流 - 按账户/IP/Token限流 - 定时加载配置
-  todo: - 分布式限流 time/rate 是go提供的官方限流工具 原理: 令牌桶，以一个恒定的速度'
+topic: backend
+Keywords:
+Label:
+description: "背景： - gin框架，中间件 - 博客开放好玩的 API 需求： - 接口限流 - 按账户/IP/Token限流 - 定时加载配置 todo: - 分布式限流 time/rate 是go提供的官方限流工具 原理: 令牌桶，以一个恒定的速度"
 Date: 2021-03-31T18:48:05+08:00
 LastEditTime: 2021-04-01T11:24:04+08:00
 Publish: true

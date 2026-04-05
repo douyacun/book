@@ -1,13 +1,10 @@
 ---
 Title: mac-卡在开机进度条
 LegacyId: 0e11d80070e134fbb4d3b14a9be6883c
-Slug: mac-卡在开机进度条
-Category: devops
-Summary: '那些按键恢复的就不说了， 基本上是不会生效的 - 开机 按 `command + v` 进入开机详情页面， 观察开机状态，是否有明显error
-  - 开机 按 `command + r` 进入单用户页面 ## 单用户界面 `Operation'
-SeoTitle: mac-卡在开机进度条
-SeoDescription: '那些按键恢复的就不说了， 基本上是不会生效的 - 开机 按 `command + v` 进入开机详情页面， 观察开机状态，是否有明显error
-  - 开机 按 `command + r` 进入单用户页面 ## 单用户界面 `Operation'
+topic: devops
+Keywords:
+Label:
+description: "那些按键恢复的就不说了， 基本上是不会生效的 - 开机 按 `command + v` 进入开机详情页面， 观察开机状态，是否有明显error - 开机 按 `command + r` 进入单用户页面 ## 单用户界面 `Operation"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

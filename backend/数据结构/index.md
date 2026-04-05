@@ -1,13 +1,10 @@
 ---
 Title: 数据结构
 LegacyId: c7d7dc4a8b5affbe2a80045503013a8f
-Slug: 数据结构
-Category: backend
-Summary: '[toc] 通过数据结构、实现原理、读写操作来了解go hashmap ![](./assert/go-map.jpg) hash有2个关键数据结构:
-  `hmap` `bmap` **hmap: `runtime/map.go`** ```'
-SeoTitle: 数据结构
-SeoDescription: '[toc] 通过数据结构、实现原理、读写操作来了解go hashmap ![](./assert/go-map.jpg) hash有2个关键数据结构:
-  `hmap` `bmap` **hmap: `runtime/map.go`** ```'
+topic: backend
+Keywords:
+Label:
+description: "[toc] 通过数据结构、实现原理、读写操作来了解go hashmap ![](./assert/go-map.jpg) hash有2个关键数据结构: `hmap` `bmap` **hmap: `runtime/map.go`** ```"
 Date: 2020-05-09T14:53:08+08:00
 LastEditTime: 2021-01-01T21:06:25+08:00
 Publish: true

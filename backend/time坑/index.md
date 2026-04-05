@@ -1,13 +1,10 @@
 ---
 Title: time坑
 LegacyId: 38668d284cb89f7f4240e8c2a89ab4a2
-Slug: time坑
-Category: backend
-Summary: '## time.AddDate(0, -1, 0)出现的问题 **需求背景：**活动需要在每个月初的时候自动给团队降级 **实现方案：** -
-  数据库增加`monthly` 字段标记月份， - 比如：在8月1好执行sql `update t'
-SeoTitle: time坑
-SeoDescription: '## time.AddDate(0, -1, 0)出现的问题 **需求背景：**活动需要在每个月初的时候自动给团队降级 **实现方案：**
-  - 数据库增加`monthly` 字段标记月份， - 比如：在8月1好执行sql `update t'
+topic: backend
+Keywords:
+Label:
+description: "## time.AddDate(0, -1, 0)出现的问题 **需求背景：**活动需要在每个月初的时候自动给团队降级 **实现方案：** - 数据库增加`monthly` 字段标记月份， - 比如：在8月1好执行sql `update t"
 Date: 2024-08-08T19:47:01+08:00
 LastEditTime: 2024-08-08T19:47:01+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: go_map_key
 LegacyId: 356289ac90af6239d3e8f7a2e152d7f1
-Slug: go_map_key
-Category: backend
-Summary: '### 背景： 数据库是联合主键，取出数据后存在map里面按主键直接取数据，以 date + campaign_id + adgroup_id
-  + ad_id 作为唯一索引。以 struct做为map key是可以的，但是struct中有 '
-SeoTitle: go_map_key
-SeoDescription: '### 背景： 数据库是联合主键，取出数据后存在map里面按主键直接取数据，以 date + campaign_id + adgroup_id
-  + ad_id 作为唯一索引。以 struct做为map key是可以的，但是struct中有 '
+topic: backend
+Keywords:
+Label:
+description: "### 背景： 数据库是联合主键，取出数据后存在map里面按主键直接取数据，以 date + campaign_id + adgroup_id + ad_id 作为唯一索引。以 struct做为map key是可以的，但是struct中有"
 Date: 2021-06-22T11:43:04+08:00
 LastEditTime: 2021-06-22T11:45:26+08:00
 Publish: true

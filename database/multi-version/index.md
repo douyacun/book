@@ -1,13 +1,10 @@
 ---
 Title: multi-version
 LegacyId: 3edeea1be6fcbfa1bf3fb0312838b425
-Slug: multi-version
-Category: database
-Summary: 'innodb 多版本 ## rollback segment - innodb 是一个多版本存储引擎 - 为了支持事物回滚和事物并发,数据存储在rollback
-  segment数据结构中 - innodb使用rollback segment'
-SeoTitle: multi-version
-SeoDescription: 'innodb 多版本 ## rollback segment - innodb 是一个多版本存储引擎 - 为了支持事物回滚和事物并发,数据存储在rollback
-  segment数据结构中 - innodb使用rollback segment'
+topic: database
+Keywords:
+Label:
+description: "innodb 多版本 ## rollback segment - innodb 是一个多版本存储引擎 - 为了支持事物回滚和事物并发,数据存储在rollback segment数据结构中 - innodb使用rollback segment"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

@@ -1,13 +1,10 @@
 ---
 Title: 插入缓冲
 LegacyId: 1d96210c8f8f6d58a86f3937f116c68a
-Slug: 插入缓冲
-Category: database
-Summary: innodb关键特性包括： - 插入缓冲 (insert buffer) - 两次写(double write) - 自适应hash索引(adaptive
-  hash index) - 异步I/O (async i/o) - 刷新临界页 (f
-SeoTitle: 插入缓冲
-SeoDescription: innodb关键特性包括： - 插入缓冲 (insert buffer) - 两次写(double write) - 自适应hash索引(adaptive
-  hash index) - 异步I/O (async i/o) - 刷新临界页 (f
+topic: database
+Keywords:
+Label:
+description: innodb关键特性包括： - 插入缓冲 (insert buffer) - 两次写(double write) - 自适应hash索引(adaptive hash index) - 异步I/O (async i/o) - 刷新临界页 (f
 Date: 2019-11-04T09:56:58+08:00
 LastEditTime: 2019-11-26T23:08:49+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: top系统正在执行的进程的相关信息
 LegacyId: 6d863ca98fa6c4bd0daf7e8dacc10dc7
-Slug: top系统正在执行的进程的相关信息
-Category: devops
-Summary: '[toc] top是我定位问题的想到的第一个命令，用的最多的命令 ``` top - 13:49:30 up 12 days, 5:13, 5
-  users, load average: 2.07, 1.08, 1.44 Tasks: 169'
-SeoTitle: top系统正在执行的进程的相关信息
-SeoDescription: '[toc] top是我定位问题的想到的第一个命令，用的最多的命令 ``` top - 13:49:30 up 12 days, 5:13,
-  5 users, load average: 2.07, 1.08, 1.44 Tasks: 169'
+topic: devops
+Keywords:
+Label:
+description: "[toc] top是我定位问题的想到的第一个命令，用的最多的命令 ``` top - 13:49:30 up 12 days, 5:13, 5 users, load average: 2.07, 1.08, 1.44 Tasks: 169"
 Date: 2020-08-10T00:02:07+08:00
 LastEditTime: 2020-09-28T10:08:59+08:00
 Publish: true

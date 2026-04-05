@@ -1,13 +1,10 @@
 ---
 Title: vmstat
 LegacyId: f46716e9f100c184924ca4680e032d84
-Slug: vmstat
-Category: devops
-Summary: '``` vmstat 5 procs -----------memory---------- ---swap-- -----io---- --system--
-  -----cpu----- r b swpd free buff cache s'
-SeoTitle: vmstat
-SeoDescription: '``` vmstat 5 procs -----------memory---------- ---swap-- -----io----
-  --system-- -----cpu----- r b swpd free buff cache s'
+topic: devops
+Keywords:
+Label:
+description: "``` vmstat 5 procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu----- r b swpd free buff cache s"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: true

@@ -1,13 +1,10 @@
 ---
 Title: pdf加白边
 LegacyId: fb4dc649e6371c680be9ede3db978878
-Slug: pdf加白边
-Category: pdf
-Summary: '**问题：PDF每页怎么批量添加两侧留白？pdf怎么调整上下边距？pdf扩展左右两侧边距？如何给pdf增加留白，方便备注？** PDF扩展边距的操作非常简单，只需要打开
-  网站: [pdf加白边 - 大宁工作室](https://www.do'
-SeoTitle: pdf加白边
-SeoDescription: '**问题：PDF每页怎么批量添加两侧留白？pdf怎么调整上下边距？pdf扩展左右两侧边距？如何给pdf增加留白，方便备注？** PDF扩展边距的操作非常简单，只需要打开
-  网站: [pdf加白边 - 大宁工作室](https://www.do'
+topic: pdf
+Keywords:
+Label:
+description: "**问题：PDF每页怎么批量添加两侧留白？pdf怎么调整上下边距？pdf扩展左右两侧边距？如何给pdf增加留白，方便备注？** PDF扩展边距的操作非常简单，只需要打开 网站: [pdf加白边 - 大宁工作室](https://www.do"
 Date: 2023-03-22T16:44:41+08:00
 LastEditTime: 2023-03-22T16:44:41+08:00
 Publish: true

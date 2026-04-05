@@ -1,13 +1,10 @@
 ---
 Title: redis延迟高问题解决思路
 LegacyId: fa616a92d6a1e576801fb1431ad1261b
-Slug: redis延迟高问题解决思路
-Category: database
-Summary: '[toc] 延迟是 客户端从发出命令与客户端接收命令的回复之间的最大延迟，通常redis的处理时间是非常低的，但是存在高延迟的某些条件 解决思路：
-  1. 确保没有慢执行的命令，通过redis慢查询日志查看 2. 对于EC2用户，EC2是基于'
-SeoTitle: redis延迟高问题解决思路
-SeoDescription: '[toc] 延迟是 客户端从发出命令与客户端接收命令的回复之间的最大延迟，通常redis的处理时间是非常低的，但是存在高延迟的某些条件
-  解决思路： 1. 确保没有慢执行的命令，通过redis慢查询日志查看 2. 对于EC2用户，EC2是基于'
+topic: database
+Keywords:
+Label:
+description: "[toc] 延迟是 客户端从发出命令与客户端接收命令的回复之间的最大延迟，通常redis的处理时间是非常低的，但是存在高延迟的某些条件 解决思路： 1. 确保没有慢执行的命令，通过redis慢查询日志查看 2. 对于EC2用户，EC2是基于"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2021-01-01T21:06:25+08:00
 Publish: true

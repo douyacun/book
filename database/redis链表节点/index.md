@@ -1,13 +1,10 @@
 ---
 Title: redis链表节点
 LegacyId: 5e65376c1fe913466351ae3d5fecd497
-Slug: redis链表节点
-Category: database
-Summary: '![](./assert/redis-list-node.jpg) ```c typedef struct listNode { // 前置节点
-  struct listNode *prev; // 后置节点 struct listNode '
-SeoTitle: redis链表节点
-SeoDescription: '![](./assert/redis-list-node.jpg) ```c typedef struct listNode {
-  // 前置节点 struct listNode *prev; // 后置节点 struct listNode '
+topic: database
+Keywords:
+Label:
+description: "![](./assert/redis-list-node.jpg) ```c typedef struct listNode { // 前置节点 struct listNode *prev; // 后置节点 struct listNode"
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false

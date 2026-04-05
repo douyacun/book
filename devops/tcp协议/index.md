@@ -1,13 +1,10 @@
 ---
 Title: tcp协议
 LegacyId: 37dd28072f9168ecac68368560c10e8f
-Slug: tcp协议
-Category: devops
-Summary: '### 三次握手 1. 客户端: - 同步包：SYN = 1 - 序列号： Sequence Number = k - 状态：SYN_SEND
-  2. 服务端: - 确认包：ACK = 1 - 同步包：SYN = 1 - 序列号：Sequen'
-SeoTitle: tcp协议
-SeoDescription: '### 三次握手 1. 客户端: - 同步包：SYN = 1 - 序列号： Sequence Number = k - 状态：SYN_SEND
-  2. 服务端: - 确认包：ACK = 1 - 同步包：SYN = 1 - 序列号：Sequen'
+topic: devops
+Keywords:
+Label:
+description: "### 三次握手 1. 客户端: - 同步包：SYN = 1 - 序列号： Sequence Number = k - 状态：SYN_SEND 2. 服务端: - 确认包：ACK = 1 - 同步包：SYN = 1 - 序列号：Sequen"
 Date: 2020-05-14T13:21:33+08:00
 LastEditTime: 2020-05-14T13:21:33+08:00
 Publish: false
