@@ -10,6 +10,7 @@ SeoDescription: '> 建议阅读 > - [分布式事务一致性，3种模式](http
 Date: 2019-11-29T11:38:31+08:00
 LastEditTime: 2020-05-10T21:01:25+08:00
 Publish: true
+Lang: zh
 ---
 
 # 最终一致性

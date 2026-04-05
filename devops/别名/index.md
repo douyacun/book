@@ -11,6 +11,7 @@ SeoDescription: '常用的配置 ``` Host douyacun # ip或域名 hostname douyac
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 常用的配置

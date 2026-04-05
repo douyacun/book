@@ -9,6 +9,7 @@ SeoDescription: '[![npm](https://img.shields.io/npm/v/npm-publish-react-componen
 Date: 2021-01-07T23:32:15+08:00
 LastEditTime: 2021-01-09T23:19:28+08:00
 Publish: true
+Lang: zh
 ---
 
 # npm publish: react component/react hook component

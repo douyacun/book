@@ -9,6 +9,7 @@ SeoDescription: '下载地址: [https://www.percona.com/downloads/percona-toolki
 Date: 2020-01-19T10:45:42+08:00
 LastEditTime: 2020-01-19T10:53:33+08:00
 Publish: true
+Lang: zh
 ---
 
 # 安装

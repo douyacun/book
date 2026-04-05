@@ -9,6 +9,7 @@ SeoDescription: '## react天气组件 [![npm](https://img.shields.io/npm/v/react
 Date: 2021-01-05T19:03:40+08:00
 LastEditTime: 2021-02-04T18:20:44+08:00
 Publish: true
+Lang: zh
 ---
 
 ## react天气组件

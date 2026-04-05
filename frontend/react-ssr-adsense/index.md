@@ -11,6 +11,7 @@ SeoDescription: '@hustcc react-adsense 不支持服务端渲染框架，受 [rea
 Date: 2021-01-18T11:49:56+08:00
 LastEditTime: 2021-01-18T11:49:56+08:00
 Publish: true
+Lang: zh
 ---
 
 @hustcc react-adsense  不支持服务端渲染框架，受 [react-adsense](https://www.npmjs.com/package/react-adsense) 启发写了 react-ssr-adsense

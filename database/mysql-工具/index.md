@@ -11,6 +11,7 @@ SeoDescription: '[推荐站点](http://www.ywnds.com/?p=8677) 设置全局 `show
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 # mysql 工具

@@ -9,6 +9,7 @@ SeoDescription: '[readis官方文档 ](https://redis.io/documentation)'
 Date: 2020-04-14T17:56:46+08:00
 LastEditTime: 2020-04-14T17:56:46+08:00
 Publish: false
+Lang: zh
 ---
 
 [readis官方文档 ](https://redis.io/documentation)

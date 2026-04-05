@@ -9,6 +9,7 @@ SeoDescription: '- [nginx下载连接](http://nginx.org/download/) - []'
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 - [nginx下载连接](http://nginx.org/download/)

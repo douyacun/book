@@ -11,6 +11,7 @@ SeoDescription: '## 下载iso镜像 [镜像下载](http://centos.01link.hk/) ```
 Date: 2019-11-30T17:00:48+08:00
 LastEditTime: 2019-11-30T17:00:48+08:00
 Publish: true
+Lang: zh
 ---
 
 # 电脑重装成centos系统

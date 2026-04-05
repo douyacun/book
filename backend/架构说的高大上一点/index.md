@@ -11,6 +11,7 @@ SeoDescription: '- 前端框架 - [react](https://zh-hans.reactjs.org/) - [nextj
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: false
+Lang: zh
 ---
 
 # 架构（说的高大上一点）

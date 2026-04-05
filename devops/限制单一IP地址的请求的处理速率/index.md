@@ -11,6 +11,7 @@ SeoDescription: 'nginx文档阅读： - [Module ngx_http_limit_req_module](http:
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 nginx文档阅读：

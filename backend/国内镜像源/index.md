@@ -11,6 +11,7 @@ SeoDescription: '``` http://pypi.douban.com/ 豆瓣 http://pypi.hustunique.com/ 
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 # 国内镜像源:

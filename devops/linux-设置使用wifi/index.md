@@ -11,6 +11,7 @@ SeoDescription: '- iwlist wlan0 scan 扫描网络 - 得安装 wpa_supplicant ```
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2021-01-14T20:53:34+08:00
 Publish: false
+Lang: zh
 ---
 
 # linux 设置使用wifi

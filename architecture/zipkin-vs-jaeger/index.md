@@ -11,6 +11,7 @@ SeoDescription: '本文概要: 1. 了解opentracing 2. 开源库jaeger/zipkin都
 Date: 2020-04-30T17:45:03+08:00
 LastEditTime: 2020-07-13T20:23:41+08:00
 Publish: true
+Lang: zh
 ---
 
 本文概要:

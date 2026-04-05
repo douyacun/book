@@ -11,6 +11,7 @@ SeoDescription: '### bug1: ignore process 400 ... 解决方案: 1. 造成400的�
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 # scrapy - spider 爬虫

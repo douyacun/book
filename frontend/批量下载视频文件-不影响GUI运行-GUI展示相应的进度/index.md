@@ -11,6 +11,7 @@ SeoDescription: '版本 - 平台 - mac 11 - windows 10 - QT：5.15.7 - aiohttp: 
 Date: 2022-11-08T17:52:10+08:00
 LastEditTime: 2022-11-08T18:05:26+08:00
 Publish: true
+Lang: zh
 ---
 
 # 批量下载视频文件，不影响GUI运行，GUI展示相应的进度

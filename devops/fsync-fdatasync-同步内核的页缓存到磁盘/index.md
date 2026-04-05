@@ -11,6 +11,7 @@ SeoDescription: '```c #include <unistd.h> int fsync(int fd); int fdatasync(int f
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: true
+Lang: zh
 ---
 
 # fsync,  fdatasync 同步内核的页缓存到磁盘

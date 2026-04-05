@@ -11,6 +11,7 @@ SeoDescription: 网站地址：[https://www.douyacun.com/image/ocr-to-docx](http
 Date: 2021-06-17T19:31:08+08:00
 LastEditTime: 2021-06-22T07:56:33+08:00
 Publish: true
+Lang: zh
 ---
 
 网站地址：[https://www.douyacun.com/image/ocr-to-docx](https://www.douyacun.com/image/ocr-to-docx)

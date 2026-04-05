@@ -11,6 +11,7 @@ SeoDescription: vagrant添加高级组件 ``` vagrant plugin install vagrant-vbg
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 # "vboxsf" is not available

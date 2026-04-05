@@ -11,6 +11,7 @@ SeoDescription: '[TOC] ## 标准 ```go const ( ANSIC = "Mon Jan _2 15:04:05 2006
 Date: 2019-12-11T19:23:09+08:00
 LastEditTime: 2020-12-07T20:08:36+08:00
 Publish: true
+Lang: zh
 ---
 
 [TOC]

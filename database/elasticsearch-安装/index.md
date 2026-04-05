@@ -11,6 +11,7 @@ SeoDescription: '[TOC] ## 下载和安装步骤 [官方文档](https://www.elast
 Date: 2019-12-17T10:44:11+08:00
 LastEditTime: 2020-02-24T10:00:06+08:00
 Publish: true
+Lang: zh
 ---
 
 [TOC]

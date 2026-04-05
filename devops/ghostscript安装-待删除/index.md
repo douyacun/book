@@ -11,6 +11,7 @@ SeoDescription: 下载地址： https://ghostscript.com/releases/gsdnld.html Gho
 Date: 2023-03-20T10:23:12+08:00
 LastEditTime: 2023-03-20T10:23:12+08:00
 Publish: false
+Lang: zh
 ---
 
 下载地址：

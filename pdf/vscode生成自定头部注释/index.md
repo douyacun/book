@@ -11,6 +11,7 @@ SeoDescription: '[fileheader](https://github.com/OBKoro1/koro1FileHeader) vscode
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 [fileheader](https://github.com/OBKoro1/koro1FileHeader)

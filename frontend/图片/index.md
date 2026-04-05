@@ -11,6 +11,7 @@ SeoDescription: 1. 从本地加载图片 ```python img = QImage("/Users/admin/De
 Date: 2023-01-11T16:03:00+08:00
 LastEditTime: 2023-01-11T16:03:00+08:00
 Publish: true
+Lang: zh
 ---
 
 1. 从本地加载图片

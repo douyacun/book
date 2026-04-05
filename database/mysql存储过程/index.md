@@ -11,6 +11,7 @@ SeoDescription: '## 一、存储过程的创建和调用 - 存储过程就是具
 Date: 2020-01-22T17:11:06+08:00
 LastEditTime: 2020-01-22T17:11:06+08:00
 Publish: true
+Lang: zh
 ---
 
 ## 一、存储过程的创建和调用

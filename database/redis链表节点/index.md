@@ -11,6 +11,7 @@ SeoDescription: '![](./assert/redis-list-node.jpg) ```c typedef struct listNode 
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 # redis链表节点

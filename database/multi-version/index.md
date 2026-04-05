@@ -11,6 +11,7 @@ SeoDescription: 'innodb 多版本 ## rollback segment - innodb 是一个多版�
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 innodb 多版本

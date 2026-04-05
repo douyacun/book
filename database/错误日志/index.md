@@ -11,6 +11,7 @@ SeoDescription: 'mysql中常见的日志文件： - 错误日志(error log) - �
 Date: 2019-11-26T09:53:58+08:00
 LastEditTime: 2019-11-26T23:08:49+08:00
 Publish: true
+Lang: zh
 ---
 
 mysql中常见的日志文件：

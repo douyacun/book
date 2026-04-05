@@ -9,6 +9,7 @@ SeoDescription: 原文文档位置：[https://www.elastic.co/guide/en/elasticsea
 Date: 2019-12-25T09:24:58+08:00
 LastEditTime: 2020-01-04T01:00:07+08:00
 Publish: false
+Lang: zh
 ---
 
 原文文档位置：[https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html)

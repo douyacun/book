@@ -11,6 +11,7 @@ SeoDescription: '## 是否以守护进程方式运行nginx，方便gdb调试 ```
 Date: 2019-09-24T20:04:29+08:00
 LastEditTime: 2019-09-24T20:04:29+08:00
 Publish: false
+Lang: zh
 ---
 
 # 调试进程和定位问题的配置项

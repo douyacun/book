@@ -11,6 +11,7 @@ SeoDescription: 1. `+` 拼接 最慢 少量比较推荐 2. `strings.join` 拼接
 Date: 2019-11-28T21:10:35+08:00
 LastEditTime: 2019-11-28T21:10:35+08:00
 Publish: true
+Lang: zh
 ---
 
 # go 拼接数组为字符串的几种方式

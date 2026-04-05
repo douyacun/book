@@ -11,6 +11,7 @@ SeoDescription: '## 查看内存使用情况 ``` free -m cat /proc/meminfo ``` #
 Date: 2020-02-25T10:44:34+08:00
 LastEditTime: 2020-02-25T10:44:34+08:00
 Publish: false
+Lang: zh
 ---
 
 # Linux 内存过高解决思路

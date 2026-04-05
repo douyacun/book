@@ -11,6 +11,7 @@ SeoDescription: '**一、允许“任何来源”开启** 苹果从macOS Sierra 
 Date: 2024-04-10T16:11:10+08:00
 LastEditTime: 2025-08-21T23:20:17+08:00
 Publish: true
+Lang: zh
 ---
 
 **一、允许“任何来源”开启**
