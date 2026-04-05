@@ -20,7 +20,7 @@ PDF扩展边距的操作非常简单，只需要打开
 
 微信小程序：大宁宝箱
 
-![大宁宝箱](/images/common/daningbaoxiang.webp)
+![大宁宝箱](/images/common/daningbaoxiang.jpeg)
 
 支持的多种样式，按比例自定义边距空白大小
 

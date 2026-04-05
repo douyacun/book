@@ -25,7 +25,7 @@ Lang: zh
 
 **方法二：微信小程序去除pdf水印 - 「大宁宝箱」**
 
-![大宁宝箱](images/common/daningbaoxiang.jpeg)
+![大宁宝箱](/images/common/daningbaoxiang.jpeg)
 
 步骤都是一样的：
 
