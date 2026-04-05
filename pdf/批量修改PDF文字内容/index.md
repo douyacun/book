@@ -25,7 +25,7 @@ Lang: zh
 
 **微信小程序:** 「大宁宝箱」
 
-![大宁宝箱](https://www.douyacun.com/images/blog/1/assert/daningbaoxiang.jpeg)
+![大宁宝箱](/images/common/daningbaoxiang.jpeg)
 
 #### 操作步骤
 

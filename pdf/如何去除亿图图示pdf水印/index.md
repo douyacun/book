@@ -21,11 +21,11 @@ Lang: zh
 
 
 
-**方法一：使用网站去除pdf水印** - [pdf去除水印-专业版](/pdf/remove-watermark)
+**方法一：使用网站去除pdf水印** - [pdf去除水印-专业版](https://www.douyacun.com/pdf/remove-watermark)
 
 **方法二：微信小程序去除pdf水印 - 「大宁宝箱」**
 
-![大宁宝箱](/images/blog/1/assert/daningbaoxiang.jpeg)
+![大宁宝箱](images/common/daningbaoxiang.jpeg)
 
 步骤都是一样的：
 
