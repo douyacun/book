@@ -19,7 +19,7 @@ Lang: zh
 
 微信小程序:
 
-![](https://www.douyacun.com/images/blog/1/pdf/assert/gh_ef4d7d1f7966_258.jpeg)
+![](images/common/gh_ef4d7d1f7966_258.jpeg)
 
 同时批量替换PDF文字也可以用来批量删除PDF文字，只要在输入替换内容不输入即可。
 

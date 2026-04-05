@@ -7,7 +7,7 @@ Label: PDF去水印, 去水印方法
 description: 这篇文章对比从 PDF 中去除图片水印和文字水印的 5 种常见方法，涵盖在线工具、Word 转换和专业软件，帮助你选择更适合的去水印方案。
 Date: 2026-03-28T23:20:51.222922+08:00
 LastEditTime: 2026-03-28T23:20:51.222922+08:00
-Publish: true
+Publish: false
 Lang: zh
 ---
 
