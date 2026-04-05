@@ -2,9 +2,9 @@
 Title: 如何去除亿图图示pdf水印
 LegacyId: f09fbd48701e081aee7df87a96688177
 topic: pdf
-Keywords:
-Label:
-description: "**如何去除亿图图示/亿图脑图导出的pdf水印？** > 亿图软件可让您轻松绘制流程图，思维导图，信息图，组织架构图，网络拓扑图，户型图，电路图等210种绘图类型，但是导出pdf是有水印存在的。 去除之后的pdf保留原有格式，无其他水印嵌入"
+Keywords: 亿图图示PDF水印, 亿图脑图水印, PDF去水印, 在线去水印, 多页文档处理
+Label: PDF去水印, 亿图图示
+description: 这篇文章介绍如何去除亿图图示和亿图脑图导出 PDF 中的水印，并说明多页文件的处理方式和效果。
 Date: 2023-03-18T22:55:27+08:00
 LastEditTime: 2023-03-18T23:27:45+08:00
 Publish: true

@@ -2,9 +2,9 @@
 Title: 安装依赖
 LegacyId: cdc92c8e3dae14af0ccaf2bd7098b759
 topic: pdf
-Keywords:
-Label:
-description: "```shell yum install autoconf automake libtool pkgconfig.x86_64 libpng12-devel.x86_64 libjpeg-devel libtiff-devel.x86_64"
+Keywords: Tesseract安装, Leptonica安装, OCR依赖, Linux编译环境, 图片识别
+Label: OCR, 环境安装
+description: 这篇文章记录在 Linux 环境安装 Leptonica、Tesseract 等 OCR 相关依赖的命令和步骤，方便部署图片文字识别功能。
 Date: 2021-06-19T16:02:24+08:00
 LastEditTime: 2021-06-19T16:02:24+08:00
 Publish: true

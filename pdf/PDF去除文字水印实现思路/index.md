@@ -2,9 +2,9 @@
 Title: PDF去除文字水印实现思路：从误删标题到精准删除的优化复盘
 LegacyId: 89e14cb071be503fd83f03ac58cab787
 topic: pdf
-Keywords:
-Label:
-description: 这篇文章系统复盘 PDF 文字水印为什么难删、早期为什么会误删标题，以及当前如何通过内容流识别、候选打分、语法级精准删除和前端交互优化，把文字去水印做得更稳定、更高效。
+Keywords: PDF文字水印, PDF去水印原理, 内容流解析, 精准删除文字, 水印识别
+Label: PDF文字水印, 实现原理
+description: 这篇文章复盘 PDF 文字水印为什么难删，以及如何通过内容流识别、候选打分和语法级删除实现更精准的文字去水印。
 Date: 2026-03-29T12:00:00+08:00
 LastEditTime: 2026-03-29T12:00:00+08:00
 Publish: false

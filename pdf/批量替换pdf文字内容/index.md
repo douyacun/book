@@ -2,9 +2,9 @@
 Title: 批量替换pdf文字内容
 LegacyId: 4c46a74ee6c76122f769976060ad4a6f
 topic: pdf
-Keywords:
-Label:
-description: 支持pdf编辑的软件挺多，比如：wps pdf编辑，福昕pdf 是很好用的 但是如果有一堆文件需要去修改的话估计会累死个人。更新软件此次就新增了 多文件批量替换PDF文字内容。不喜欢下载软件的同学可以使用网页或者微信小程序免费体验，不过网页
+Keywords: 批量替换PDF文字, PDF编辑, 多文件替换, 覆盖原文件, 批量删除文字
+Label: PDF编辑, 批量处理, 文字替换
+description: 这篇文章介绍多文件批量替换 PDF 文字的操作方式和适用场景，也可用于批量删除指定文字内容。
 Date: 2023-05-29T18:14:16+08:00
 LastEditTime: 2023-06-13T14:08:26+08:00
 Publish: true

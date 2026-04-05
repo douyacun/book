@@ -2,9 +2,9 @@
 Title: 一、PDF去水印-专业版
 LegacyId: 12451fe65a1bbeac6f0eed8f5225da17
 topic: pdf
-Keywords:
-Label:
-description: "**下载地址**： - [windows](https://www.douyacun.com/s/pdf_tools.exe) - [mac](https://www.douyacun.com/s/pdftools) PDF工具箱功能： ["
+Keywords: PDF去水印, 本地去水印, 图片水印, 文字水印, 批量处理
+Label: PDF去水印, 专业版, PDF工具箱
+description: 这篇文章介绍 PDF 工具箱专业版的去水印能力，区分图片水印和文字水印，并说明本地批量处理的适用场景与操作方式。
 Date: 2021-12-12T11:40:35+08:00
 LastEditTime: 2021-12-29T15:49:13+08:00
 Publish: true

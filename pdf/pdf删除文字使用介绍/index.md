@@ -2,9 +2,9 @@
 Title: pdf删除文字使用介绍
 LegacyId: 48324d10cbb47cfbb089ad8f7bee74e9
 topic: pdf
-Keywords:
-Label:
-description: 网址：https://www.douyacun.com/pdf/delete-text 微信小程序：搜索 「**大宁宝箱**」 步骤概览 - 第一步：选择文件，上传文件 - 第二步：选择页面，分析文字 - 第三步：选择文字，删除文字 - 第
+Keywords: PDF删除文字, PDF编辑, 在线删除文字, 精准删字, 删除敏感信息
+Label: PDF编辑, 删除文字, 使用教程
+description: 这篇文章介绍在线删除 PDF 文字的完整流程，适合处理页眉页脚、敏感文字和局部内容，同时尽量保留原始版式。
 Date: 2023-03-07T10:51:19+08:00
 LastEditTime: 2023-03-20T10:23:12+08:00
 Publish: true

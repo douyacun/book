@@ -2,9 +2,9 @@
 Title: pdf去水印手册
 LegacyId: 9171f2ac03979f67288ec9468aac8576
 topic: pdf
-Keywords:
-Label:
-description: "**在线网站地址：[https://www.douyacun.com/pdf/remove-watermark](https://www.douyacun.com/pdf/remove-watermark)** **步骤：** **第一步："
+Keywords: PDF去水印, 图片水印, 文字水印, 操作手册, 在线去水印
+Label: PDF去水印, 使用手册
+description: 这是一篇 PDF 去水印工具操作手册，包含图片水印和文字水印的处理步骤、确认方法和下载流程。
 Date: 2021-05-19T20:25:33+08:00
 LastEditTime: 2021-06-09T11:11:38+08:00
 Publish: true

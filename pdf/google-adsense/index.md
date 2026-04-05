@@ -2,9 +2,9 @@
 Title: google-adsense
 LegacyId: 8c2336096a93b53bac2adfe17b924389
 topic: pdf
-Keywords:
-Label:
-description: "非常重要：原创，原创数量，Google搜索引擎收录数量 总结一下我的3次申请经历，希望能给大家有点提示 第一次申请：2018年3月那时开始学习react，摸索着做了一个视频种子站（00h.tv），现在在google上还是可以通过 [site"
+Keywords: Google AdSense, 网站收录, 原创内容, 审核经验, 博客变现
+Label: AdSense, SEO, 站点运营
+description: 这篇文章复盘多次 Google AdSense 申请经历，总结原创内容、搜索收录和站点质量对广告审核通过的实际影响。
 Date: 2021-01-18T20:05:50+08:00
 LastEditTime: 2021-01-19T10:19:31+08:00
 Publish: true

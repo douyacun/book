@@ -2,9 +2,9 @@
 Title: pdf工具箱批量加水印
 LegacyId: 317deafa7263b11c6e171fab2ce7627a
 topic: pdf
-Keywords:
-Label:
-description: "功能免费使用，不限制次数、文件数，支持并发批量处理，有需要的同学可以加QQ（799618819）交流 下载地址： - [windows](https://www.douyacun.com/s/pdf_tools.exe) ：https://"
+Keywords: PDF加水印, 批量加水印, PDF工具箱, 文字水印, 图片水印
+Label: PDF加水印, PDF工具箱
+description: 这篇文章介绍 PDF 工具箱批量加水印功能的参数设置和使用方式，适合批量给文档添加文字或图片水印。
 Date: 2024-05-08T16:27:26+08:00
 LastEditTime: 2024-05-08T16:45:25+08:00
 Publish: true

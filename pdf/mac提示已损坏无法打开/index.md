@@ -2,9 +2,9 @@
 Title: mac提示已损坏无法打开
 LegacyId: f2736b4c9d8b7002cf40e0374d7fbab3
 topic: pdf
-Keywords:
-Label:
-description: "**一、允许“任何来源”开启** 苹果从macOS Sierra 10.12 开始，已经**去除了允许“任何来源”的选项**，如果不开启“任何来源”的选项，会直接影响到无法运行的第三方应用。 所以开启“任何来源”的方法如下： 打开【启动台】"
+Keywords: mac已损坏无法打开, macOS应用安装, 任何来源, Gatekeeper, 安全限制
+Label: macOS, 安装问题
+description: 这篇文章说明 macOS 提示“已损坏无法打开”时的处理方法，包括开启“任何来源”和处理系统安全限制的常见步骤。
 Date: 2024-04-10T16:11:10+08:00
 LastEditTime: 2025-08-21T23:20:17+08:00
 Publish: true

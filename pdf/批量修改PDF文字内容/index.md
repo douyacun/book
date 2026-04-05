@@ -2,9 +2,9 @@
 Title: 批量修改PDF文字内容
 LegacyId: 6a94fc3a40aceb969c4d42c6fe82d284
 topic: pdf
-Keywords:
-Label:
-description: 就想简简单单的改PDF里面一两个字，怎么就这么难？我就遇到过这样的问题，公司入职让打印流水，面的时候谈的和现在不一样好不容易面过了，银行给的流水都是PDF想改一下真难啊，还有运营同学问我能否将PDF里面对方的公司名称全部替换成我们公司的名称
+Keywords: 批量修改PDF文字, PDF替换文字, PDF编辑, 在线替换, 批量处理
+Label: PDF编辑, 批量替换
+description: 这篇文章介绍批量修改 PDF 文字内容的使用场景和操作方式，适合替换公司名、流水信息等固定文本。
 Date: 2023-04-14T13:12:41+08:00
 LastEditTime: 2023-04-15T00:10:30+08:00
 Publish: true

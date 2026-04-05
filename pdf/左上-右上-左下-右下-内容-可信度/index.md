@@ -2,9 +2,9 @@
 Title: 左上-右上-左下-右下-内容-可信度
 LegacyId: f019c2d5a60855b150c5e00fc479c3ec
 topic: pdf
-Keywords:
-Label:
-description: "网站地址：[https://www.douyacun.com/image/ocr-to-docx](https://www.douyacun.com/image/ocr-to-docx) **功能特点：** 1. 识别图片上的文字 2. 按"
+Keywords: OCR转Word, 图片文字识别, 版式还原, Tesseract, EasyOCR
+Label: OCR, 图片转Word
+description: 这篇文章介绍图片 OCR 转 Word 功能的能力范围，包括文字识别、版式还原和双算法支持的适用场景。
 Date: 2021-06-17T19:31:08+08:00
 LastEditTime: 2021-06-22T07:56:33+08:00
 Publish: true
