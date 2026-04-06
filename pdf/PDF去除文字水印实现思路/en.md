@@ -1,5 +1,5 @@
 ---
-Title: How We Improved PDF Text Watermark Removal: From Accidentally Deleting Titles to Precise Deletion
+Title: "How We Improved PDF Text Watermark Removal: From Accidentally Deleting Titles to Precise Deletion"
 LegacyId: 505aac578b7af9de5d707bf7ddd989d0
 topic: pdf
 Keywords: PDF text watermark removal, PDF watermark detection, content stream parsing, precise text deletion, PDF Tj TJ
