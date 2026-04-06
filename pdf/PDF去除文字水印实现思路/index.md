@@ -7,13 +7,12 @@ Label: PDF文字水印, 实现原理
 description: 这篇文章复盘 PDF 文字水印为什么难删，以及如何通过内容流识别、候选打分和语法级删除实现更精准的文字去水印。
 Date: 2026-03-29T12:00:00+08:00
 LastEditTime: 2026-03-29T12:00:00+08:00
-Publish: false
+Publish: true
 Lang: zh
 ---
 
 在线体验地址：[https://www.douyacun.com/pdf/remove-watermark](https://www.douyacun.com/pdf/remove-watermark)
 
-[toc]
 
 PDF 去除文字水印看起来像是在“删字”，真正难的是两件事要同时成立: 先把真正的水印识别出来，再把它精准删除，而且不能误伤正文、标题和页眉。
 
